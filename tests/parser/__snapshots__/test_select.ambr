@@ -74,6 +74,82 @@
   
   '''
 # ---
+# name: test_select_ok[select_kitchen_sink]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_mode	DISTINCT
+          select_list
+            select_item
+              select_star
+                select_star_except
+                  column_name
+                    ident	column1
+                  column_name
+                    ident	column2
+                select_star_replace
+                  alias_expr
+                    column_expr
+                      column_name
+                        ident	column3
+                    column_name
+                      ident	alias3
+                  alias_expr
+                    column_expr
+                      column_name
+                        ident	column4
+                    column_name
+                      ident	alias4
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column5
+            select_item
+              select_expr
+                column_expr
+                  subquery
+                    query_expr
+                      select
+                        select_list
+                          select_item
+                            select_expr
+                              column_expr
+                                literal	1
+                as_alias
+                  column_name
+                    ident	column6
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+                as_alias
+                  column_name
+                    ident	alias1
+            from_clause
+              from_item
+                query_expr
+                  select
+                    select_list
+                      select_item
+                        select_expr
+                          column_expr
+                            column_name
+                              ident	column7
+                    select_from
+                      from_clause
+                        from_item
+                          table_name
+                            ident	table2
+                as_alias
+                  column_name
+                    ident	alias2
+  
+  '''
+# ---
 # name: test_select_ok[select_list_alias_explicit]
   '''
   start
@@ -315,7 +391,7 @@
                       column_name
                         ident	column1
                     column_name
-                      ident	alias2
+                      ident	alias1
                   alias_expr
                     column_expr
                       column_name
