@@ -30,6 +30,7 @@ def parser():
     pytest.param("SELECT DISTINCT column1 FROM table1", id="select_mode_distinct"),
     pytest.param("SELECT column1 FROM (SELECT column1 FROM table1)", id="select_from_subquery"),
     pytest.param("SELECT column1 FROM (SELECT column1 FROM table1) AS table2", id="select_from_subquery_aliased"),
+    pytest.param("SELECT column1, FROM table2", id="select_list_trailing_comma"),
 ))
 def test_select_ok(sql, parser, snapshot):
     tree = parser.parse(sql)

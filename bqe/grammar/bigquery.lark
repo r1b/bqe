@@ -150,7 +150,8 @@ select_from : _FROM from_clause ( _COMMA from_clause )*
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list
 
-select_list : select_item ( _COMMA select_item )*
+# See https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#trailing_commas
+select_list : select_item ( _COMMA select_item )* _COMMA?
 
 select_item : select_star | select_expr
 

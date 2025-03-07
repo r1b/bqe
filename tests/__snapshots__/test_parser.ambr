@@ -272,6 +272,26 @@
   
   '''
 # ---
+# name: test_select_ok[select_list_trailing_comma]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table2
+  
+  '''
+# ---
 # name: test_select_ok[select_literal]
   '''
   start
