@@ -1,0 +1,132 @@
+# serializer version: 1
+# name: test_function_call_ok[fcall_kitchen_sink]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  function_call_expr
+                    function_name
+                      ident	FUNC
+                    function_args
+                      pos_args
+                        column_expr
+                          literal	1
+                      named_args
+                        named_arg
+                          ident	name2
+                          column_expr
+                            literal	2
+  
+  '''
+# ---
+# name: test_function_call_ok[fcall_named_arg_multi]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  function_call_expr
+                    function_name
+                      ident	FUNC
+                    function_args
+                      named_args
+                        named_arg
+                          ident	name1
+                          column_expr
+                            literal	1
+                        named_arg
+                          ident	name2
+                          column_expr
+                            literal	2
+  
+  '''
+# ---
+# name: test_function_call_ok[fcall_named_arg_single]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  function_call_expr
+                    function_name
+                      ident	FUNC
+                    function_args
+                      named_args
+                        named_arg
+                          ident	name1
+                          column_expr
+                            literal	1
+  
+  '''
+# ---
+# name: test_function_call_ok[fcall_pos_arg_multi]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  function_call_expr
+                    function_name
+                      ident	FUNC
+                    function_args
+                      pos_args
+                        column_expr
+                          literal	1
+                        column_expr
+                          literal	2
+  
+  '''
+# ---
+# name: test_function_call_ok[fcall_pos_arg_none]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  function_call_expr
+                    function_name
+                      ident	FUNC
+  
+  '''
+# ---
+# name: test_function_call_ok[fcall_pos_arg_single]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  function_call_expr
+                    function_name
+                      ident	FUNC
+                    function_args
+                      pos_args
+                        column_expr
+                          literal	1
+  
+  '''
+# ---

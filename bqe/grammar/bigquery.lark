@@ -11,12 +11,15 @@
 # Punctuation
 ################################################################################
 
+_ARROW : "=>"
 BACKTICK : "`"
 COLON : ":"
 _COMMA : ","
 DASH : "-"
 _DOT : "."
+_LBRACK : "["
 _LPAR : "("
+_RBRACK : "]"
 _RPAR : ")"
 SLASH : "/"
 _STAR : "*"
@@ -34,6 +37,7 @@ _EXCEPT : "EXCEPT"i
 _FROM : "FROM"i
 _REPLACE : "REPLACE"i
 _SELECT : "SELECT"i
+_UNNEST : "UNNEST"i
 WHERE : "WHERE"i
 
 ################################################################################
@@ -108,6 +112,80 @@ field_path : field_name ( _DOT field_name )+
 literal : INT
 
 ################################################################################
+# Expressions
+################################################################################
+
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#operator_precedence
+
+
+column_expr : literal
+    | column_name
+    | subquery
+    | function_call_expr
+#   | field_access_expr
+#   | subscript_expr
+#   | plus
+#   | minus
+#   | bitnot
+#   | mul
+#   | div
+#   | concat
+#   | add
+#   | sub
+#   | shl
+#   | shr
+#   | bitand
+#   | bitxor
+#   | bitor
+#   | eq
+#   | lt
+#   | gt
+#   | lte
+#   | gte
+#   | ne
+#   | like
+#   | qlike
+#   | between
+#   | in
+#   | isnull
+#   | istrue
+#   | isfalse
+#   | not
+#   | and
+#   | or
+    | column_expr
+
+# Functions
+
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-reference
+# Ref: https://github.com/lark-parser/lark/blob/master/lark/grammars/python.lark#L145-L146
+function_call_expr : function_name _LPAR function_args? _RPAR
+
+# TODO: Consider using a template (see table_path above)
+function_name : function_path | ident
+
+function_path : ident ( _DOT ident ) ~ 1..2
+
+function_args : pos_args ( _COMMA named_args)?
+    | named_args
+
+pos_args : column_expr (_COMMA column_expr)*
+
+named_args : named_arg ( _COMMA named_arg)*
+
+named_arg : ident _ARROW column_expr
+
+# Operators
+
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#field_access_operator
+#field_access_expr : ...
+
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#array_subscript_operator
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#struct_subscript_operator
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#json_subscript_operator
+#subscript_expr : ...
+
+################################################################################
 # Entry point
 ################################################################################
 
@@ -121,7 +199,7 @@ start : query_statement
 
 query_statement : query_expr
 
-query_expr : select | _LPAR query_expr _RPAR
+query_expr : select | subquery
 #   [ WITH [ RECURSIVE ] { non_recursive_cte | recursive_cte }[, ...] ]
 #   select | _LPAR query_expr _RPAR # | set_operation
 #   [ ORDER BY expression [{ ASC | DESC }] [, ...] ]
@@ -139,6 +217,8 @@ select : _SELECT select_mode? select_list select_from?
 #   [ HAVING bool_expression ]
 #   [ QUALIFY bool_expression ]
 #   [ WINDOW window_clause ]
+
+subquery : _LPAR query_expr _RPAR
 
 select_mode : ALL | DISTINCT
 
@@ -165,8 +245,6 @@ select_star_replace : _REPLACE _LPAR alias_expr ( _COMMA alias_expr )* _RPAR
 
 select_expr : column_expr ( as_alias )?
 
-column_expr : literal | column_name | _LPAR query_expr _RPAR
-
 alias_expr : column_expr _AS column_name
 
 as_alias : [ _AS ] column_name
@@ -189,3 +267,25 @@ from_item : table_name ( as_alias )?
 #   | field_path
 #   | unnest_operator
 #   | cte_name [ as_alias ]
+
+################################################################################
+# UNNEST
+################################################################################
+
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#unnest_operator
+
+# unnest_operator:
+#   {
+#     UNNEST( array ) [ as_alias ]
+#     | array_path [ as_alias ]
+#   }
+#   [ WITH OFFSET [ as_alias ] ]
+#
+# array:
+#   { array_expression | array_path }
+#
+# as_alias:
+#   [AS] alias
+
+
+#unnest_operator : _UNNEST _LPAR

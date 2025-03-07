@@ -1,46 +1,4 @@
 # serializer version: 1
-# name: test_query_expr_ok[query_expr]
-  '''
-  start
-    query_statement
-      query_expr
-        query_expr
-          select
-            select_list
-              select_item
-                select_expr
-                  column_expr
-                    literal	1
-  
-  '''
-# ---
-# name: test_query_expr_ok[query_expr_nested]
-  '''
-  start
-    query_statement
-      query_expr
-        query_expr
-          select
-            select_list
-              select_item
-                select_expr
-                  column_expr
-                    query_expr
-                      select
-                        select_list
-                          select_item
-                            select_expr
-                              column_expr
-                                query_expr
-                                  select
-                                    select_list
-                                      select_item
-                                        select_expr
-                                          column_expr
-                                            literal	1
-  
-  '''
-# ---
 # name: test_select_ok[select_from_alias_explicit]
   '''
   start
@@ -113,71 +71,6 @@
               from_item
                 table_name
                   ident	table2
-  
-  '''
-# ---
-# name: test_select_ok[select_from_subquery]
-  '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                column_expr
-                  column_name
-                    ident	column1
-          select_from
-            from_clause
-              from_item
-                query_expr
-                  select
-                    select_list
-                      select_item
-                        select_expr
-                          column_expr
-                            column_name
-                              ident	column1
-                    select_from
-                      from_clause
-                        from_item
-                          table_name
-                            ident	table1
-  
-  '''
-# ---
-# name: test_select_ok[select_from_subquery_aliased]
-  '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                column_expr
-                  column_name
-                    ident	column1
-          select_from
-            from_clause
-              from_item
-                query_expr
-                  select
-                    select_list
-                      select_item
-                        select_expr
-                          column_expr
-                            column_name
-                              ident	column1
-                    select_from
-                      from_clause
-                        from_item
-                          table_name
-                            ident	table1
-                as_alias
-                  column_name
-                    ident	table2
   
   '''
 # ---
@@ -503,6 +396,117 @@
               from_item
                 table_name
                   ident	table1
+  
+  '''
+# ---
+# name: test_subquery_ok[select_from_subquery]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+          select_from
+            from_clause
+              from_item
+                query_expr
+                  select
+                    select_list
+                      select_item
+                        select_expr
+                          column_expr
+                            column_name
+                              ident	column1
+                    select_from
+                      from_clause
+                        from_item
+                          table_name
+                            ident	table1
+  
+  '''
+# ---
+# name: test_subquery_ok[select_from_subquery_aliased]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+          select_from
+            from_clause
+              from_item
+                query_expr
+                  select
+                    select_list
+                      select_item
+                        select_expr
+                          column_expr
+                            column_name
+                              ident	column1
+                    select_from
+                      from_clause
+                        from_item
+                          table_name
+                            ident	table1
+                as_alias
+                  column_name
+                    ident	table2
+  
+  '''
+# ---
+# name: test_subquery_ok[subquery]
+  '''
+  start
+    query_statement
+      query_expr
+        subquery
+          query_expr
+            select
+              select_list
+                select_item
+                  select_expr
+                    column_expr
+                      literal	1
+  
+  '''
+# ---
+# name: test_subquery_ok[subquery_nested]
+  '''
+  start
+    query_statement
+      query_expr
+        subquery
+          query_expr
+            select
+              select_list
+                select_item
+                  select_expr
+                    column_expr
+                      subquery
+                        query_expr
+                          select
+                            select_list
+                              select_item
+                                select_expr
+                                  column_expr
+                                    subquery
+                                      query_expr
+                                        select
+                                          select_list
+                                            select_item
+                                              select_expr
+                                                column_expr
+                                                  literal	1
   
   '''
 # ---
