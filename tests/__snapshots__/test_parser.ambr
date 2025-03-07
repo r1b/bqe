@@ -1,0 +1,488 @@
+# serializer version: 1
+# name: test_select_ok[query_expr]
+  '''
+  start
+    query_statement
+      query_expr
+        query_expr
+          select
+            select_list
+              select_item
+                select_expr
+                  column_expr
+                    literal	1
+  
+  '''
+# ---
+# name: test_select_ok[query_expr_nested]
+  '''
+  start
+    query_statement
+      query_expr
+        query_expr
+          select
+            select_list
+              select_item
+                select_expr
+                  column_expr
+                    query_expr
+                      select
+                        select_list
+                          select_item
+                            select_expr
+                              column_expr
+                                query_expr
+                                  select
+                                    select_list
+                                      select_item
+                                        select_expr
+                                          column_expr
+                                            literal	1
+  
+  '''
+# ---
+# name: test_select_ok[select_column_expr_alias_explicit]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+                as_alias
+                  column_name
+                    ident	alias1
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_column_expr_alias_implicit]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+                as_alias
+                  column_name
+                    ident	alias1
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_column_expr_multi]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column2
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_column_expr_single]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_from_alias_explicit]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+                as_alias
+                  column_name
+                    ident	alias1
+  
+  '''
+# ---
+# name: test_select_ok[select_from_alias_implicit]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+                as_alias
+                  column_name
+                    ident	alias1
+  
+  '''
+# ---
+# name: test_select_ok[select_from_multi]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column2
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+            from_clause
+              from_item
+                table_name
+                  ident	table2
+  
+  '''
+# ---
+# name: test_select_ok[select_from_subquery]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+          select_from
+            from_clause
+              from_item
+                query_expr
+                  select
+                    select_list
+                      select_item
+                        select_expr
+                          column_expr
+                            column_name
+                              ident	column1
+                    select_from
+                      from_clause
+                        from_item
+                          table_name
+                            ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_from_subquery_aliased]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+          select_from
+            from_clause
+              from_item
+                query_expr
+                  select
+                    select_list
+                      select_item
+                        select_expr
+                          column_expr
+                            column_name
+                              ident	column1
+                    select_from
+                      from_clause
+                        from_item
+                          table_name
+                            ident	table1
+                as_alias
+                  column_name
+                    ident	table2
+  
+  '''
+# ---
+# name: test_select_ok[select_literal]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal	1
+  
+  '''
+# ---
+# name: test_select_ok[select_mode_all]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_mode	ALL
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_mode_distinct]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_mode	DISTINCT
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  column_name
+                    ident	column1
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_star]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_star
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_star_except_multi]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_star
+                select_star_except
+                  column_name
+                    ident	column1
+                  column_name
+                    ident	column2
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_star_except_single]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_star
+                select_star_except
+                  column_name
+                    ident	column1
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_star_replace_multi]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_star
+                select_star_replace
+                  alias_expr
+                    column_expr
+                      column_name
+                        ident	column1
+                    column_name
+                      ident	alias2
+                  alias_expr
+                    column_expr
+                      column_name
+                        ident	column2
+                    column_name
+                      ident	alias2
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_star_replace_single]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_star
+                select_star_replace
+                  alias_expr
+                    column_expr
+                      column_name
+                        ident	column1
+                    column_name
+                      ident	alias1
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_star_scoped]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_star
+                select_star_scope
+                  column_expr
+                    column_name
+                      ident	column1
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_star_scoped_nested]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_star
+                select_star_scope
+                  column_expr
+                    column_name
+                      ident	column1
+                  column_expr
+                    column_name
+                      ident	column2
+          select_from
+            from_clause
+              from_item
+                table_name
+                  ident	table1
+  
+  '''
+# ---

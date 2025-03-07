@@ -1,0 +1,190 @@
+%import common (CNAME, INT, WS)
+
+# TODO: See ZetaSQL for a more complete definition of WS
+%ignore WS
+
+# TODO: Use tree construction features
+# Ref: https://lark-parser.readthedocs.io/en/stable/tree_construction.html
+
+
+################################################################################
+# Punctuation
+################################################################################
+
+BACKTICK : "`"
+COLON : ":"
+_COMMA : ","
+DASH : "-"
+_DOT : "."
+_LPAR : "("
+_RPAR : ")"
+SLASH : "/"
+_STAR : "*"
+
+################################################################################
+# Keywords
+################################################################################
+
+# All keywords are case-insensitive
+
+ALL : "ALL"i
+_AS : "AS"i
+DISTINCT : "DISTINCT"i
+_EXCEPT : "EXCEPT"i
+_FROM : "FROM"i
+_REPLACE : "REPLACE"i
+_SELECT : "SELECT"i
+WHERE : "WHERE"i
+
+################################################################################
+# Identifiers
+################################################################################
+
+# TODO: Flesh this out with context from ZetaSQL
+# Ref: https://github.com/google/zetasql/blob/master/zetasql/parser/zetasql.tm
+# Ref: https://github.com/google/zetasql/blob/master/zetasql/parser/flex_tokenizer.l
+
+# TODO: Support escape sequences
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#escape_sequences
+
+UNQUOTED_IDENT : CNAME
+QUOTED_IDENT : BACKTICK /[^`]+/ BACKTICK
+
+ident : UNQUOTED_IDENT | QUOTED_IDENT
+
+# Path Expressions
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#path_expressions
+
+path : path_expression ( _DOT path_expression )*
+
+path_expression: [ first_part ] SLASH subsequent_part ( path_sep subsequent_part )*
+
+first_part : ident
+
+subsequent_part : ident | INT
+
+path_sep : SLASH | COLON | DASH
+
+# Table names
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#table_names
+
+# TODO: Table names have additional rules
+# Ref: https://cloud.google.com/bigquery/docs/tables#table_naming
+
+table_name : table_path | ident | path
+
+table_path : ident ( _DOT ident ) ~ 1..2
+
+# Column names
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#column_names
+
+# TODO: Column names have additional rules
+# Ref: https://cloud.google.com/bigquery/docs/schemas#flexible-column-names
+
+column_name : ident
+
+# Field names
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#field_names
+
+# TODO: Field names have additional rules (identical to column names)
+# Ref: https://cloud.google.com/bigquery/docs/schemas#flexible-column-names
+
+field_name : column_name
+
+# Field paths
+# TODO: This isn't well defined, for now assume that its "field access operator"
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#field_access_operator
+
+field_path : field_name ( _DOT field_name )+
+
+################################################################################
+# Literals
+################################################################################
+
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#literals
+
+# TODO: Flesh this out - numeric only for now
+
+literal : INT
+
+################################################################################
+# Entry point
+################################################################################
+
+start : query_statement
+
+################################################################################
+# Query
+################################################################################
+
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#sql_syntax
+
+query_statement : query_expr
+
+query_expr : select | _LPAR query_expr _RPAR
+#   [ WITH [ RECURSIVE ] { non_recursive_cte | recursive_cte }[, ...] ]
+#   select | _LPAR query_expr _RPAR # | set_operation
+#   [ ORDER BY expression [{ ASC | DESC }] [, ...] ]
+#   [ LIMIT count [ OFFSET skip_rows ] ]
+
+select : _SELECT select_mode? select_list select_from?
+#   [ WITH differential_privacy_clause ]
+#   SELECT
+#   [ ALL | DISTINCT ]
+#   [ _AS { STRUCT | VALUE } ]
+#   select_list
+#   [ FROM from_clause ( _COMMA from_clause )* ]
+#   [ WHERE bool_expression ]
+#   [ GROUP BY group_by_specification ]
+#   [ HAVING bool_expression ]
+#   [ QUALIFY bool_expression ]
+#   [ WINDOW window_clause ]
+
+select_mode : ALL | DISTINCT
+
+select_from : _FROM from_clause ( _COMMA from_clause )*
+
+################################################################################
+# SELECT
+################################################################################
+
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list
+
+select_list : select_item ( _COMMA select_item )*
+
+select_item : select_star | select_expr
+
+select_star : select_star_scope? _STAR select_star_except? select_star_replace?
+
+select_star_scope : column_expr _DOT ( column_expr _DOT )*
+
+select_star_except : _EXCEPT _LPAR column_name ( _COMMA column_name )* _RPAR
+
+select_star_replace : _REPLACE _LPAR alias_expr ( _COMMA alias_expr )* _RPAR
+
+select_expr : column_expr ( as_alias )?
+
+column_expr : literal | column_name | _LPAR query_expr _RPAR
+
+alias_expr : column_expr _AS column_name
+
+as_alias : [ _AS ] column_name
+
+################################################################################
+# FROM
+################################################################################
+
+# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#from_clause
+
+from_clause : from_item
+#   from_item
+#   [ pivot_operator | unpivot_operator ]
+#   [ tablesample_operator ]
+
+from_item : table_name ( as_alias )?
+#   table_name [ as_alias ] [ FOR SYSTEM_TIME AS OF timestamp_expression ]
+#   | ( join_operation | LPAR join_operation RPAR )
+    | _LPAR query_expr _RPAR ( as_alias )?
+#   | field_path
+#   | unnest_operator
+#   | cte_name [ as_alias ]
