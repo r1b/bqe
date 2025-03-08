@@ -17,12 +17,18 @@ COLON : ":"
 _COMMA : ","
 DASH : "-"
 _DOT : "."
+_DQUOT : "\""
 _LBRACK : "["
 _LPAR : "("
+MINUS : "-"
+PLUS : "+"
 _RBRACK : "]"
 _RPAR : ")"
 SLASH : "/"
+_SQUOT : "'"
 _STAR : "*"
+_TDQUOT : "\"\"\""
+_TSQUOT : "'''"
 
 ################################################################################
 # Keywords
@@ -107,9 +113,63 @@ field_path : field_name ( _DOT field_name )+
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#literals
 
-# TODO: Flesh this out - numeric only for now
+literal : string_literal
+#   | bytes_literal
+    | integer_literal
+#   | numeric_literal
+#   | bignumeric_literal
+#   | float_literal
+#   | array_literal
+#   | struct_literal
+#   | date_literal
+#   | time_literal
+#   | datetime_literal
+#   | range_literal
+#   | interval_literal
+#   | json_literal
 
-literal : INT
+# Strings
+
+string_literal : rstring? (dqstring | sqstring | tdqstring | tsqstring)
+
+# TODO: This requires transformer cleanup
+# TODO: Handle escape characters
+
+rstring : _RSTRING_PREFIX
+
+_RSTRING_PREFIX : /[Rr]/
+
+dqstring : DQSTRING
+
+DQSTRING : _DQUOT /.*?/ _DQUOT
+
+sqstring : SQSTRING
+
+SQSTRING : _SQUOT /.*?/ _SQUOT
+
+tdqstring : TDQSTRING
+
+TDQSTRING : _TDQUOT /.*?/ _TDQUOT
+
+tsqstring : TSQSTRING
+
+TSQSTRING : _TSQUOT /.*?/ _TSQUOT
+
+# Integers
+
+integer_literal : ( sign )? ( decimal_literal | hex_literal )
+
+sign : PLUS | MINUS
+
+decimal_literal : /[0-9]+/
+
+# FIXME: Priority here to avoid parsing SELECT 0xff -> SELECT 0 AS xff
+# This is a hack, we should handle this explicitly. Also relevant for sci notation in floats.
+# ref: https://github.com/google/zetasql/blob/a516c6b26d183efc4f56293256bba92e243b7a61/zetasql/parser/lookahead_transformer.h#L327-L330
+# ref: https://github.com/google/zetasql/blob/a516c6b26d183efc4f56293256bba92e243b7a61/zetasql/parser/lookahead_transformer.cc#L1323-L1344
+# To do this in lark, look at `postlex` - otherwise a transformer may be OK
+
+hex_literal.1 : /0[Xx][0-9A-Fa-f]+/
 
 ################################################################################
 # Expressions
@@ -166,8 +226,7 @@ function_name : function_path | ident
 
 function_path : ident ( _DOT ident ) ~ 1..2
 
-function_args : pos_args ( _COMMA named_args)?
-    | named_args
+function_args : pos_args ( _COMMA named_args)? | named_args
 
 pos_args : column_expr (_COMMA column_expr)*
 

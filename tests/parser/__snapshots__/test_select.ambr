@@ -117,7 +117,9 @@
                           select_item
                             select_expr
                               column_expr
-                                literal	1
+                                literal
+                                  integer_literal
+                                    decimal_literal	1
                 as_alias
                   column_name
                     ident	column6
@@ -271,7 +273,9 @@
             select_item
               select_expr
                 column_expr
-                  literal	1
+                  literal
+                    integer_literal
+                      decimal_literal	1
   
   '''
 # ---
@@ -552,7 +556,9 @@
                 select_item
                   select_expr
                     column_expr
-                      literal	1
+                      literal
+                        integer_literal
+                          decimal_literal	1
   
   '''
 # ---
@@ -582,7 +588,9 @@
                                             select_item
                                               select_expr
                                                 column_expr
-                                                  literal	1
+                                                  literal
+                                                    integer_literal
+                                                      decimal_literal	1
   
   '''
 # ---

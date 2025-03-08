@@ -15,12 +15,16 @@
                     function_args
                       pos_args
                         column_expr
-                          literal	1
+                          literal
+                            integer_literal
+                              decimal_literal	1
                       named_args
                         named_arg
                           ident	name2
                           column_expr
-                            literal	2
+                            literal
+                              integer_literal
+                                decimal_literal	2
   
   '''
 # ---
@@ -42,11 +46,15 @@
                         named_arg
                           ident	name1
                           column_expr
-                            literal	1
+                            literal
+                              integer_literal
+                                decimal_literal	1
                         named_arg
                           ident	name2
                           column_expr
-                            literal	2
+                            literal
+                              integer_literal
+                                decimal_literal	2
   
   '''
 # ---
@@ -68,7 +76,9 @@
                         named_arg
                           ident	name1
                           column_expr
-                            literal	1
+                            literal
+                              integer_literal
+                                decimal_literal	1
   
   '''
 # ---
@@ -88,9 +98,13 @@
                     function_args
                       pos_args
                         column_expr
-                          literal	1
+                          literal
+                            integer_literal
+                              decimal_literal	1
                         column_expr
-                          literal	2
+                          literal
+                            integer_literal
+                              decimal_literal	2
   
   '''
 # ---
@@ -126,7 +140,9 @@
                     function_args
                       pos_args
                         column_expr
-                          literal	1
+                          literal
+                            integer_literal
+                              decimal_literal	1
   
   '''
 # ---

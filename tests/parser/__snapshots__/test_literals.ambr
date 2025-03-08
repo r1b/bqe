@@ -1,0 +1,398 @@
+# serializer version: 1
+# name: test_integer_literal_ok[literal_integer_decimal]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    integer_literal
+                      decimal_literal	1
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_decimal_minus]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    integer_literal
+                      sign	-
+                      decimal_literal	1
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_decimal_plus]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    integer_literal
+                      sign	+
+                      decimal_literal	1
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_hex]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    integer_literal
+                      hex_literal	0xff
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_hex_cap]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    integer_literal
+                      hex_literal	0XFF
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_hex_minus]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    integer_literal
+                      sign	-
+                      hex_literal	0xff
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_hex_plus]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    integer_literal
+                      sign	+
+                      hex_literal	0xff
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      dqstring	""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      dqstring	"string"
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_raw_cap]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      rstring
+                      dqstring	"string"
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_raw_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      rstring
+                      dqstring	""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_raw_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      rstring
+                      dqstring	"string"
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_squot_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      sqstring	''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_squot_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      sqstring	'string'
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_squot_raw_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      rstring
+                      sqstring	''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_squot_raw_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      rstring
+                      sqstring	'string'
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tdquot_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      tdqstring	""""""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tdquot_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      tdqstring	"""We say: "hello"."""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tdquot_raw_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      rstring
+                      tdqstring	""""""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tdquot_raw_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      rstring
+                      tdqstring	"""We say: "hello"."""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tsquot_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      tsqstring	''''''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tsquot_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      tsqstring	'''We say: 'hello'.'''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tsquot_raw_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      rstring
+                      tsqstring	''''''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tsquot_raw_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    string_literal
+                      rstring
+                      tsqstring	'''We say: 'hello'.'''
+  
+  '''
+# ---
