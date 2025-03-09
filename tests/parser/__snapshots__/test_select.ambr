@@ -118,8 +118,7 @@
                             select_expr
                               column_expr
                                 literal
-                                  integer_literal
-                                    decimal_literal	1
+                                  integer_literal	1
                 as_alias
                   column_name
                     ident	column6
@@ -274,8 +273,7 @@
               select_expr
                 column_expr
                   literal
-                    integer_literal
-                      decimal_literal	1
+                    integer_literal	1
   
   '''
 # ---
@@ -442,11 +440,10 @@
         select
           select_list
             select_item
-              select_star
-                select_star_scope
-                  column_expr
-                    column_name
-                      ident	column1
+              select_dot_star
+                column_expr
+                  column_name
+                    ident	column1
           select_from
             from_clause
               from_item
@@ -463,14 +460,13 @@
         select
           select_list
             select_item
-              select_star
-                select_star_scope
-                  column_expr
-                    column_name
-                      ident	column1
-                  column_expr
-                    column_name
-                      ident	column2
+              select_dot_star
+                column_expr
+                  column_name
+                    ident	column1
+                column_expr
+                  column_name
+                    ident	column2
           select_from
             from_clause
               from_item
@@ -557,8 +553,7 @@
                   select_expr
                     column_expr
                       literal
-                        integer_literal
-                          decimal_literal	1
+                        integer_literal	1
   
   '''
 # ---
@@ -589,8 +584,7 @@
                                               select_expr
                                                 column_expr
                                                   literal
-                                                    integer_literal
-                                                      decimal_literal	1
+                                                    integer_literal	1
   
   '''
 # ---

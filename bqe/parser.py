@@ -6,4 +6,4 @@ GRAMMAR_PATH = PACKAGE_ROOT / Path("grammar/bigquery.lark")
 
 
 def get_parser() -> Lark:
-    return Lark(GRAMMAR_PATH.read_text())
+    return Lark(GRAMMAR_PATH.read_text(), parser='lalr')

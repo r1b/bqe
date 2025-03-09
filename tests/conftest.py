@@ -4,7 +4,7 @@ from lark.exceptions import UnexpectedInput
 from bqe.parser import get_parser
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def parser():
     return get_parser()
 

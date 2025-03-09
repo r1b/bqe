@@ -10,8 +10,7 @@
               select_expr
                 column_expr
                   literal
-                    integer_literal
-                      decimal_literal	1
+                    integer_literal	1
   
   '''
 # ---
@@ -26,9 +25,7 @@
               select_expr
                 column_expr
                   literal
-                    integer_literal
-                      sign	-
-                      decimal_literal	1
+                    integer_literal	-1
   
   '''
 # ---
@@ -43,9 +40,7 @@
               select_expr
                 column_expr
                   literal
-                    integer_literal
-                      sign	+
-                      decimal_literal	1
+                    integer_literal	+1
   
   '''
 # ---
@@ -60,8 +55,7 @@
               select_expr
                 column_expr
                   literal
-                    integer_literal
-                      hex_literal	0xff
+                    integer_literal	0xff
   
   '''
 # ---
@@ -76,8 +70,7 @@
               select_expr
                 column_expr
                   literal
-                    integer_literal
-                      hex_literal	0XFF
+                    integer_literal	0XFF
   
   '''
 # ---
@@ -92,9 +85,7 @@
               select_expr
                 column_expr
                   literal
-                    integer_literal
-                      sign	-
-                      hex_literal	0xff
+                    integer_literal	-0xff
   
   '''
 # ---
@@ -109,9 +100,25 @@
               select_expr
                 column_expr
                   literal
-                    integer_literal
-                      sign	+
-                      hex_literal	0xff
+                    integer_literal	+0xff
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_quoted_alias_adjacent]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  literal
+                    integer_literal	1
+                as_alias
+                  column_name
+                    ident	`alias`
   
   '''
 # ---
@@ -126,8 +133,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      dqstring	""
+                    string_literal	""
   
   '''
 # ---
@@ -142,8 +148,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      dqstring	"string"
+                    string_literal	"string"
   
   '''
 # ---
@@ -159,8 +164,8 @@
                 column_expr
                   literal
                     string_literal
-                      rstring
-                      dqstring	"string"
+                      R
+                      "string"
   
   '''
 # ---
@@ -176,8 +181,8 @@
                 column_expr
                   literal
                     string_literal
-                      rstring
-                      dqstring	""
+                      r
+                      ""
   
   '''
 # ---
@@ -193,8 +198,8 @@
                 column_expr
                   literal
                     string_literal
-                      rstring
-                      dqstring	"string"
+                      r
+                      "string"
   
   '''
 # ---
@@ -209,8 +214,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      sqstring	''
+                    string_literal	''
   
   '''
 # ---
@@ -225,8 +229,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      sqstring	'string'
+                    string_literal	'string'
   
   '''
 # ---
@@ -242,8 +245,8 @@
                 column_expr
                   literal
                     string_literal
-                      rstring
-                      sqstring	''
+                      r
+                      ''
   
   '''
 # ---
@@ -259,8 +262,8 @@
                 column_expr
                   literal
                     string_literal
-                      rstring
-                      sqstring	'string'
+                      r
+                      'string'
   
   '''
 # ---
@@ -275,8 +278,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      tdqstring	""""""
+                    string_literal	""""""
   
   '''
 # ---
@@ -291,8 +293,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      tdqstring	"""We say: "hello"."""
+                    string_literal	"""We say: "hello"."""
   
   '''
 # ---
@@ -308,8 +309,8 @@
                 column_expr
                   literal
                     string_literal
-                      rstring
-                      tdqstring	""""""
+                      r
+                      """"""
   
   '''
 # ---
@@ -325,8 +326,8 @@
                 column_expr
                   literal
                     string_literal
-                      rstring
-                      tdqstring	"""We say: "hello"."""
+                      r
+                      """We say: "hello"."""
   
   '''
 # ---
@@ -341,8 +342,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      tsqstring	''''''
+                    string_literal	''''''
   
   '''
 # ---
@@ -357,8 +357,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      tsqstring	'''We say: 'hello'.'''
+                    string_literal	'''We say: 'hello'.'''
   
   '''
 # ---
@@ -374,8 +373,8 @@
                 column_expr
                   literal
                     string_literal
-                      rstring
-                      tsqstring	''''''
+                      r
+                      ''''''
   
   '''
 # ---
@@ -391,8 +390,8 @@
                 column_expr
                   literal
                     string_literal
-                      rstring
-                      tsqstring	'''We say: 'hello'.'''
+                      r
+                      '''We say: 'hello'.'''
   
   '''
 # ---

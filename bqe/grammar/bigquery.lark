@@ -3,10 +3,6 @@
 # TODO: See ZetaSQL for a more complete definition of WS
 %ignore WS
 
-# TODO: Use tree construction features
-# Ref: https://lark-parser.readthedocs.io/en/stable/tree_construction.html
-
-
 ################################################################################
 # Punctuation
 ################################################################################
@@ -22,6 +18,8 @@ _LBRACK : "["
 _LPAR : "("
 MINUS : "-"
 PLUS : "+"
+RAW_PREFIX_LOWER : "r"
+RAW_PREFIX_UPPER : "R"
 _RBRACK : "]"
 _RPAR : ")"
 SLASH : "/"
@@ -130,46 +128,24 @@ literal : string_literal
 
 # Strings
 
-string_literal : rstring? (dqstring | sqstring | tdqstring | tsqstring)
+string_literal : ( RAW_PREFIX_LOWER | RAW_PREFIX_UPPER )? ( DQSTRING | SQSTRING | TDQSTRING | TSQSTRING )
 
 # TODO: This requires transformer cleanup
 # TODO: Handle escape characters
 
-rstring : _RSTRING_PREFIX
+DQSTRING : /".*?"/
 
-_RSTRING_PREFIX : /[Rr]/
+SQSTRING : /'.*?'/
 
-dqstring : DQSTRING
+TDQSTRING : /""".*?"""/
 
-DQSTRING : _DQUOT /.*?/ _DQUOT
-
-sqstring : SQSTRING
-
-SQSTRING : _SQUOT /.*?/ _SQUOT
-
-tdqstring : TDQSTRING
-
-TDQSTRING : _TDQUOT /.*?/ _TDQUOT
-
-tsqstring : TSQSTRING
-
-TSQSTRING : _TSQUOT /.*?/ _TSQUOT
+TSQSTRING : /'''.*?'''/
 
 # Integers
 
-integer_literal : ( sign )? ( decimal_literal | hex_literal )
+integer_literal : INTEGER_LITERAL
 
-sign : PLUS | MINUS
-
-decimal_literal : /[0-9]+/
-
-# FIXME: Priority here to avoid parsing SELECT 0xff -> SELECT 0 AS xff
-# This is a hack, we should handle this explicitly. Also relevant for sci notation in floats.
-# ref: https://github.com/google/zetasql/blob/a516c6b26d183efc4f56293256bba92e243b7a61/zetasql/parser/lookahead_transformer.h#L327-L330
-# ref: https://github.com/google/zetasql/blob/a516c6b26d183efc4f56293256bba92e243b7a61/zetasql/parser/lookahead_transformer.cc#L1323-L1344
-# To do this in lark, look at `postlex` - otherwise a transformer may be OK
-
-hex_literal.1 : /0[Xx][0-9A-Fa-f]+/
+INTEGER_LITERAL : /[\+\-]?(0[Xx][0-9A-Fa-f]+|[0-9]+)/
 
 ################################################################################
 # Expressions
@@ -213,7 +189,6 @@ column_expr : literal
 #   | not
 #   | and
 #   | or
-    | column_expr
 
 # Functions
 
@@ -221,16 +196,11 @@ column_expr : literal
 # Ref: https://github.com/lark-parser/lark/blob/master/lark/grammars/python.lark#L145-L146
 function_call_expr : function_name _LPAR function_args? _RPAR
 
-# TODO: Consider using a template (see table_path above)
-function_name : function_path | ident
+function_name : ident
 
-function_path : ident ( _DOT ident ) ~ 1..2
+function_args : pos_arg ( _COMMA pos_arg )* ( _COMMA named_arg )* | named_arg ( _COMMA named_arg )*
 
-function_args : pos_args ( _COMMA named_args)? | named_args
-
-pos_args : column_expr (_COMMA column_expr)*
-
-named_args : named_arg ( _COMMA named_arg)*
+pos_arg : column_expr
 
 named_arg : ident _ARROW column_expr
 
@@ -292,11 +262,11 @@ select_from : _FROM from_clause ( _COMMA from_clause )*
 # See https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#trailing_commas
 select_list : select_item ( _COMMA select_item )* _COMMA?
 
-select_item : select_star | select_expr
+select_item : select_star | select_dot_star | select_expr
 
-select_star : select_star_scope? _STAR select_star_except? select_star_replace?
+select_star : _STAR select_star_except? select_star_replace?
 
-select_star_scope : column_expr _DOT ( column_expr _DOT )*
+select_dot_star : column_expr (_DOT column_expr)* _DOT _STAR select_star_except? select_star_replace?
 
 select_star_except : _EXCEPT _LPAR column_name ( _COMMA column_name )* _RPAR
 
