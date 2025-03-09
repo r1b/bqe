@@ -163,9 +163,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      R
-                      "string"
+                    string_literal	R"string"
   
   '''
 # ---
@@ -180,9 +178,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      r
-                      ""
+                    string_literal	r""
   
   '''
 # ---
@@ -197,9 +193,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      r
-                      "string"
+                    string_literal	r"string"
   
   '''
 # ---
@@ -244,9 +238,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      r
-                      ''
+                    string_literal	r''
   
   '''
 # ---
@@ -261,9 +253,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      r
-                      'string'
+                    string_literal	r'string'
   
   '''
 # ---
@@ -308,9 +298,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      r
-                      """"""
+                    string_literal	r""""""
   
   '''
 # ---
@@ -325,9 +313,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      r
-                      """We say: "hello"."""
+                    string_literal	r"""We say: "hello"."""
   
   '''
 # ---
@@ -372,9 +358,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      r
-                      ''''''
+                    string_literal	r''''''
   
   '''
 # ---
@@ -389,9 +373,7 @@
               select_expr
                 column_expr
                   literal
-                    string_literal
-                      r
-                      '''We say: 'hello'.'''
+                    string_literal	r'''We say: 'hello'.'''
   
   '''
 # ---

@@ -13,7 +13,7 @@ COLON : ":"
 _COMMA : ","
 DASH : "-"
 _DOT : "."
-_DQUOT : "\""
+DQUOT : "\""
 _LBRACK : "["
 _LPAR : "("
 MINUS : "-"
@@ -23,7 +23,7 @@ RAW_PREFIX_UPPER : "R"
 _RBRACK : "]"
 _RPAR : ")"
 SLASH : "/"
-_SQUOT : "'"
+SQUOT : "'"
 _STAR : "*"
 _TDQUOT : "\"\"\""
 _TSQUOT : "'''"
@@ -128,18 +128,25 @@ literal : string_literal
 
 # Strings
 
-string_literal : ( RAW_PREFIX_LOWER | RAW_PREFIX_UPPER )? ( DQSTRING | SQSTRING | TDQSTRING | TSQSTRING )
-
 # TODO: This requires transformer cleanup
 # TODO: Handle escape characters
 
-DQSTRING : /".*?"/
+string_literal : STRING_LITERAL
 
-SQSTRING : /'.*?'/
+STRING_LITERAL : ("R" | "r")? _DQUOT_STRING_LITERAL
+    | ("R" | "r")? _DQUOT3_STRING_LITERAL
+    | ("R" | "r")? _SQUOT_STRING_LITERAL
+    | ("R" | "r")? _SQUOT3_STRING_LITERAL
 
-TDQSTRING : /""".*?"""/
+_DQUOT_STRING_LITERAL : DQUOT _STRING_LITERAL_INNER DQUOT
 
-TSQSTRING : /'''.*?'''/
+_DQUOT3_STRING_LITERAL : DQUOT DQUOT DQUOT _STRING_LITERAL_INNER DQUOT DQUOT DQUOT
+
+_SQUOT_STRING_LITERAL : SQUOT _STRING_LITERAL_INNER SQUOT
+
+_SQUOT3_STRING_LITERAL : SQUOT SQUOT SQUOT _STRING_LITERAL_INNER SQUOT SQUOT SQUOT
+
+_STRING_LITERAL_INNER : /.*?/
 
 # Integers
 
