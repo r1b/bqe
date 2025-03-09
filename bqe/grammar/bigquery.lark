@@ -18,15 +18,11 @@ _LBRACK : "["
 _LPAR : "("
 MINUS : "-"
 PLUS : "+"
-RAW_PREFIX_LOWER : "r"
-RAW_PREFIX_UPPER : "R"
 _RBRACK : "]"
 _RPAR : ")"
 SLASH : "/"
 SQUOT : "'"
 _STAR : "*"
-_TDQUOT : "\"\"\""
-_TSQUOT : "'''"
 
 ################################################################################
 # Keywords
@@ -127,8 +123,7 @@ column_expr : literal
     | function_call_expr
     | ident
     | column_expr _DOT ident
-#   | field_access_expr
-#   | subscript_expr
+    | subscript_expr
 #   | plus
 #   | minus
 #   | bitnot
@@ -174,13 +169,10 @@ named_arg : ident _ARROW column_expr
 
 # Operators
 
-# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#field_access_operator
-#field_access_expr : ...
-
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#array_subscript_operator
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#struct_subscript_operator
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#json_subscript_operator
-#subscript_expr : ...
+subscript_expr : column_expr _LBRACK column_expr _RBRACK
 
 ################################################################################
 # Entry point

@@ -214,3 +214,116 @@
   
   '''
 # ---
+# name: test_subscript_expr_ok[subscript_expr_integer_literal_multi]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  subscript_expr
+                    column_expr
+                      subscript_expr
+                        column_expr
+                          ident	column1
+                        column_expr
+                          literal
+                            integer_literal	0
+                    column_expr
+                      literal
+                        integer_literal	1
+  
+  '''
+# ---
+# name: test_subscript_expr_ok[subscript_expr_integer_literal_single]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  subscript_expr
+                    column_expr
+                      ident	column1
+                    column_expr
+                      literal
+                        integer_literal	0
+  
+  '''
+# ---
+# name: test_subscript_expr_ok[subscript_expr_offset]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  subscript_expr
+                    column_expr
+                      ident	column1
+                    column_expr
+                      function_call_expr
+                        column_expr
+                          ident	OFFSET
+                        function_args
+                          pos_arg
+                            column_expr
+                              literal
+                                integer_literal	2
+  
+  '''
+# ---
+# name: test_subscript_expr_ok[subscript_expr_path_expr_nested]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  subscript_expr
+                    column_expr
+                      subscript_expr
+                        column_expr
+                          column_expr
+                            ident	column1
+                          ident	column2
+                        column_expr
+                          literal
+                            integer_literal	0
+                    column_expr
+                      literal
+                        integer_literal	1
+  
+  '''
+# ---
+# name: test_subscript_expr_ok[subscript_expr_string_literal]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  subscript_expr
+                    column_expr
+                      ident	column1
+                    column_expr
+                      literal
+                        string_literal	'key1'
+  
+  '''
+# ---
