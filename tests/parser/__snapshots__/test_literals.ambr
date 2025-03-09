@@ -117,8 +117,7 @@
                   literal
                     integer_literal	1
                 as_alias
-                  column_name
-                    ident	`alias`
+                  ident	`alias`
   
   '''
 # ---

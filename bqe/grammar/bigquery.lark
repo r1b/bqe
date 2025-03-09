@@ -60,50 +60,8 @@ QUOTED_IDENT : BACKTICK /[^`]+/ BACKTICK
 
 ident : UNQUOTED_IDENT | QUOTED_IDENT
 
-# Path Expressions
-# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#path_expressions
-
-path : path_expression ( _DOT path_expression )*
-
-path_expression: [ first_part ] SLASH subsequent_part ( path_sep subsequent_part )*
-
-first_part : ident
-
-subsequent_part : ident | INT
-
-path_sep : SLASH | COLON | DASH
-
-# Table names
-# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#table_names
-
-# TODO: Table names have additional rules
-# Ref: https://cloud.google.com/bigquery/docs/tables#table_naming
-
-table_name : table_path | ident | path
-
-table_path : ident ( _DOT ident ) ~ 1..2
-
-# Column names
-# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#column_names
-
-# TODO: Column names have additional rules
-# Ref: https://cloud.google.com/bigquery/docs/schemas#flexible-column-names
-
-column_name : ident
-
-# Field names
-# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#field_names
-
-# TODO: Field names have additional rules (identical to column names)
-# Ref: https://cloud.google.com/bigquery/docs/schemas#flexible-column-names
-
-field_name : column_name
-
-# Field paths
-# TODO: This isn't well defined, for now assume that its "field access operator"
-# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#field_access_operator
-
-field_path : field_name ( _DOT field_name )+
+# This is quite foundational, starting with https://github.com/google/zetasql/blob/master/zetasql/parser/zetasql.tm#L9262
+path_expression : ident | path_expression _DOT ident
 
 ################################################################################
 # Literals
@@ -159,12 +117,16 @@ INTEGER_LITERAL : /[\+\-]?(0[Xx][0-9A-Fa-f]+|[0-9]+)/
 ################################################################################
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#operator_precedence
+# Ref: https://github.com/google/zetasql/blob/master/zetasql/parser/zetasql.tm#L8795
 
+# TODO: This requires transformer cleanup
+# Its necessary to use left-recursion to remove ambiguity in dotted path expressions
 
 column_expr : literal
-    | column_name
     | subquery
     | function_call_expr
+    | ident
+    | column_expr _DOT ident
 #   | field_access_expr
 #   | subscript_expr
 #   | plus
@@ -201,9 +163,8 @@ column_expr : literal
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-reference
 # Ref: https://github.com/lark-parser/lark/blob/master/lark/grammars/python.lark#L145-L146
-function_call_expr : function_name _LPAR function_args? _RPAR
-
-function_name : ident
+# TODO: Transformer cleanup for column_expr -> function name
+function_call_expr : column_expr _LPAR function_args? _RPAR
 
 function_args : pos_arg ( _COMMA pos_arg )* ( _COMMA named_arg )* | named_arg ( _COMMA named_arg )*
 
@@ -273,17 +234,17 @@ select_item : select_star | select_dot_star | select_expr
 
 select_star : _STAR select_star_except? select_star_replace?
 
-select_dot_star : column_expr (_DOT column_expr)* _DOT _STAR select_star_except? select_star_replace?
+select_dot_star : column_expr _DOT _STAR select_star_except? select_star_replace?
 
-select_star_except : _EXCEPT _LPAR column_name ( _COMMA column_name )* _RPAR
+select_star_except : _EXCEPT _LPAR ident ( _COMMA ident )* _RPAR
 
 select_star_replace : _REPLACE _LPAR alias_expr ( _COMMA alias_expr )* _RPAR
 
 select_expr : column_expr ( as_alias )?
 
-alias_expr : column_expr _AS column_name
+alias_expr : column_expr _AS ident
 
-as_alias : [ _AS ] column_name
+as_alias : [ _AS ] ident
 
 ################################################################################
 # FROM
@@ -296,10 +257,10 @@ from_clause : from_item
 #   [ pivot_operator | unpivot_operator ]
 #   [ tablesample_operator ]
 
-from_item : table_name ( as_alias )?
+from_item : path_expression ( as_alias )? -> from_item_table
 #   table_name [ as_alias ] [ FOR SYSTEM_TIME AS OF timestamp_expression ]
 #   | ( join_operation | LPAR join_operation RPAR )
-    | _LPAR query_expr _RPAR ( as_alias )?
+    | _LPAR query_expr _RPAR ( as_alias )? -> from_item_subquery
 #   | field_path
 #   | unnest_operator
 #   | cte_name [ as_alias ]

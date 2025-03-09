@@ -9,16 +9,14 @@
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
                 as_alias
-                  column_name
-                    ident	alias1
+                  ident	alias1
   
   '''
 # ---
@@ -32,16 +30,14 @@
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
                 as_alias
-                  column_name
-                    ident	alias1
+                  ident	alias1
   
   '''
 # ---
@@ -55,21 +51,19 @@
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column2
+                  ident	column2
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table2
   
   '''
@@ -85,28 +79,21 @@
             select_item
               select_star
                 select_star_except
-                  column_name
-                    ident	column1
-                  column_name
-                    ident	column2
+                  ident	column1
+                  ident	column2
                 select_star_replace
                   alias_expr
                     column_expr
-                      column_name
-                        ident	column3
-                    column_name
-                      ident	alias3
+                      ident	column3
+                    ident	alias3
                   alias_expr
                     column_expr
-                      column_name
-                        ident	column4
-                    column_name
-                      ident	alias4
+                      ident	column4
+                    ident	alias4
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column5
+                  ident	column5
             select_item
               select_expr
                 column_expr
@@ -120,34 +107,30 @@
                                 literal
                                   integer_literal	1
                 as_alias
-                  column_name
-                    ident	column6
+                  ident	column6
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
                 as_alias
-                  column_name
-                    ident	alias1
+                  ident	alias1
             from_clause
-              from_item
+              from_item_subquery
                 query_expr
                   select
                     select_list
                       select_item
                         select_expr
                           column_expr
-                            column_name
-                              ident	column7
+                            ident	column7
                     select_from
                       from_clause
-                        from_item
-                          table_name
+                        from_item_table
+                          path_expression
                             ident	table2
                 as_alias
-                  column_name
-                    ident	alias2
+                  ident	alias2
   
   '''
 # ---
@@ -161,15 +144,13 @@
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
                 as_alias
-                  column_name
-                    ident	alias1
+                  ident	alias1
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -184,15 +165,13 @@
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
                 as_alias
-                  column_name
-                    ident	alias1
+                  ident	alias1
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -207,17 +186,15 @@
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column2
+                  ident	column2
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -232,12 +209,11 @@
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -252,12 +228,11 @@
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table2
   
   '''
@@ -288,12 +263,11 @@
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -309,12 +283,11 @@
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -330,8 +303,8 @@
               select_star
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -346,14 +319,12 @@
             select_item
               select_star
                 select_star_except
-                  column_name
-                    ident	column1
-                  column_name
-                    ident	column2
+                  ident	column1
+                  ident	column2
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -368,12 +339,11 @@
             select_item
               select_star
                 select_star_except
-                  column_name
-                    ident	column1
+                  ident	column1
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -390,20 +360,16 @@
                 select_star_replace
                   alias_expr
                     column_expr
-                      column_name
-                        ident	column1
-                    column_name
-                      ident	alias1
+                      ident	column1
+                    ident	alias1
                   alias_expr
                     column_expr
-                      column_name
-                        ident	column2
-                    column_name
-                      ident	alias2
+                      ident	column2
+                    ident	alias2
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -420,14 +386,12 @@
                 select_star_replace
                   alias_expr
                     column_expr
-                      column_name
-                        ident	column1
-                    column_name
-                      ident	alias1
+                      ident	column1
+                    ident	alias1
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -442,12 +406,11 @@
             select_item
               select_dot_star
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -462,15 +425,13 @@
             select_item
               select_dot_star
                 column_expr
-                  column_name
+                  column_expr
                     ident	column1
-                column_expr
-                  column_name
-                    ident	column2
+                  ident	column2
           select_from
             from_clause
-              from_item
-                table_name
+              from_item_table
+                path_expression
                   ident	table1
   
   '''
@@ -485,23 +446,21 @@
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
           select_from
             from_clause
-              from_item
+              from_item_subquery
                 query_expr
                   select
                     select_list
                       select_item
                         select_expr
                           column_expr
-                            column_name
-                              ident	column1
+                            ident	column1
                     select_from
                       from_clause
-                        from_item
-                          table_name
+                        from_item_table
+                          path_expression
                             ident	table1
   
   '''
@@ -516,27 +475,24 @@
             select_item
               select_expr
                 column_expr
-                  column_name
-                    ident	column1
+                  ident	column1
           select_from
             from_clause
-              from_item
+              from_item_subquery
                 query_expr
                   select
                     select_list
                       select_item
                         select_expr
                           column_expr
-                            column_name
-                              ident	column1
+                            ident	column1
                     select_from
                       from_clause
-                        from_item
-                          table_name
+                        from_item_table
+                          path_expression
                             ident	table1
                 as_alias
-                  column_name
-                    ident	table2
+                  ident	table2
   
   '''
 # ---
