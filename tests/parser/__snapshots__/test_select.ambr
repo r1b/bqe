@@ -58,10 +58,10 @@
                   ident	column2
           select_from
             from_clause
-              from_item_table
-                path_expression
-                  ident	table1
-            from_clause
+              from_clause
+                from_item_table
+                  path_expression
+                    ident	table1
               from_item_table
                 path_expression
                   ident	table2
@@ -110,25 +110,26 @@
                   ident	column6
           select_from
             from_clause
-              from_item_table
-                path_expression
-                  ident	table1
-                as_alias
-                  ident	alias1
-            from_clause
+              from_clause
+                from_item_table
+                  path_expression
+                    ident	table1
+                  as_alias
+                    ident	alias1
               from_item_subquery
-                query_expr
-                  select
-                    select_list
-                      select_item
-                        select_expr
-                          column_expr
-                            ident	column7
-                    select_from
-                      from_clause
-                        from_item_table
-                          path_expression
-                            ident	table2
+                subquery
+                  query_expr
+                    select
+                      select_list
+                        select_item
+                          select_expr
+                            column_expr
+                              ident	column7
+                      select_from
+                        from_clause
+                          from_item_table
+                            path_expression
+                              ident	table2
                 as_alias
                   ident	alias2
   
@@ -450,18 +451,19 @@
           select_from
             from_clause
               from_item_subquery
-                query_expr
-                  select
-                    select_list
-                      select_item
-                        select_expr
-                          column_expr
-                            ident	column1
-                    select_from
-                      from_clause
-                        from_item_table
-                          path_expression
-                            ident	table1
+                subquery
+                  query_expr
+                    select
+                      select_list
+                        select_item
+                          select_expr
+                            column_expr
+                              ident	column1
+                      select_from
+                        from_clause
+                          from_item_table
+                            path_expression
+                              ident	table1
   
   '''
 # ---
@@ -479,18 +481,19 @@
           select_from
             from_clause
               from_item_subquery
-                query_expr
-                  select
-                    select_list
-                      select_item
-                        select_expr
-                          column_expr
-                            ident	column1
-                    select_from
-                      from_clause
-                        from_item_table
-                          path_expression
-                            ident	table1
+                subquery
+                  query_expr
+                    select
+                      select_list
+                        select_item
+                          select_expr
+                            column_expr
+                              ident	column1
+                      select_from
+                        from_clause
+                          from_item_table
+                            path_expression
+                              ident	table1
                 as_alias
                   ident	table2
   
@@ -541,6 +544,159 @@
                                                 column_expr
                                                   literal
                                                     integer_literal	1
+  
+  '''
+# ---
+# name: test_unnest_ok[unnest_single]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  ident	column1
+          select_from
+            from_clause
+              from_item
+                from_item_unnest
+                  unnest_expression
+                    column_expr
+                      ident	array1
+  
+  '''
+# ---
+# name: test_unnest_ok[unnest_single_alias]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  ident	column1
+          select_from
+            from_clause
+              from_item
+                from_item_unnest
+                  unnest_expression
+                    column_expr
+                      ident	array1
+                    as_alias
+                      ident	alias1
+  
+  '''
+# ---
+# name: test_unnest_ok[unnest_trailing]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  ident	column1
+          select_from
+            from_clause
+              from_clause
+                from_item_table
+                  path_expression
+                    ident	table1
+              from_item
+                from_item_unnest
+                  unnest_expression
+                    column_expr
+                      ident	array1
+  
+  '''
+# ---
+# name: test_unnest_ok[unnest_trailing_alias_with_offset_alias]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  ident	column1
+          select_from
+            from_clause
+              from_clause
+                from_item_table
+                  path_expression
+                    ident	table1
+              from_item
+                from_item_unnest
+                  unnest_expression
+                    column_expr
+                      ident	array1
+                    as_alias
+                      ident	alias1
+                  unnest_expression_zip_mode
+                    as_alias
+                      ident	alias2
+  
+  '''
+# ---
+# name: test_unnest_ok[unnest_trailing_with_offset]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  ident	column1
+          select_from
+            from_clause
+              from_clause
+                from_item_table
+                  path_expression
+                    ident	table1
+              from_item
+                from_item_unnest
+                  unnest_expression
+                    column_expr
+                      ident	array1
+                  unnest_expression_zip_mode
+  
+  '''
+# ---
+# name: test_unnest_ok[unnest_trailing_with_offset_alias]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            select_item
+              select_expr
+                column_expr
+                  ident	column1
+          select_from
+            from_clause
+              from_clause
+                from_item_table
+                  path_expression
+                    ident	table1
+              from_item
+                from_item_unnest
+                  unnest_expression
+                    column_expr
+                      ident	array1
+                  unnest_expression_zip_mode
+                    as_alias
+                      ident	alias1
   
   '''
 # ---

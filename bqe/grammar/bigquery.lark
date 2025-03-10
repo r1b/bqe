@@ -35,10 +35,12 @@ _AS : "AS"i
 DISTINCT : "DISTINCT"i
 _EXCEPT : "EXCEPT"i
 _FROM : "FROM"i
+_OFFSET : "OFFSET"i
 _REPLACE : "REPLACE"i
 _SELECT : "SELECT"i
 _UNNEST : "UNNEST"i
 WHERE : "WHERE"i
+_WITH : "WITH"i
 
 ################################################################################
 # Identifiers
@@ -172,6 +174,7 @@ named_arg : ident _ARROW column_expr
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#array_subscript_operator
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#struct_subscript_operator
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/operators#json_subscript_operator
+
 subscript_expr : column_expr _LBRACK column_expr _RBRACK
 
 ################################################################################
@@ -211,8 +214,6 @@ subquery : _LPAR query_expr _RPAR
 
 select_mode : ALL | DISTINCT
 
-select_from : _FROM from_clause ( _COMMA from_clause )*
-
 ################################################################################
 # SELECT
 ################################################################################
@@ -232,7 +233,7 @@ select_star_except : _EXCEPT _LPAR ident ( _COMMA ident )* _RPAR
 
 select_star_replace : _REPLACE _LPAR alias_expr ( _COMMA alias_expr )* _RPAR
 
-select_expr : column_expr ( as_alias )?
+select_expr : column_expr as_alias?
 
 alias_expr : column_expr _AS ident
 
@@ -244,17 +245,19 @@ as_alias : [ _AS ] ident
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#from_clause
 
-from_clause : from_item
+select_from : _FROM from_clause
+
+from_clause : from_item | from_clause _COMMA from_item
 #   from_item
 #   [ pivot_operator | unpivot_operator ]
 #   [ tablesample_operator ]
 
-from_item : path_expression ( as_alias )? -> from_item_table
+from_item : path_expression as_alias? -> from_item_table
 #   table_name [ as_alias ] [ FOR SYSTEM_TIME AS OF timestamp_expression ]
 #   | ( join_operation | LPAR join_operation RPAR )
-    | _LPAR query_expr _RPAR ( as_alias )? -> from_item_subquery
+    | subquery as_alias? -> from_item_subquery
 #   | field_path
-#   | unnest_operator
+    | from_item_unnest
 #   | cte_name [ as_alias ]
 
 ################################################################################
@@ -263,18 +266,8 @@ from_item : path_expression ( as_alias )? -> from_item_table
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#unnest_operator
 
-# unnest_operator:
-#   {
-#     UNNEST( array ) [ as_alias ]
-#     | array_path [ as_alias ]
-#   }
-#   [ WITH OFFSET [ as_alias ] ]
-#
-# array:
-#   { array_expression | array_path }
-#
-# as_alias:
-#   [AS] alias
+from_item_unnest : unnest_expression unnest_expression_zip_mode?
 
+unnest_expression : _UNNEST _LPAR column_expr _RPAR as_alias?
 
-#unnest_operator : _UNNEST _LPAR
+unnest_expression_zip_mode : _WITH _OFFSET as_alias?

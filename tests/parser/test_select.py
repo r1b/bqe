@@ -56,3 +56,16 @@ def test_select_error(sql, assert_parse_tree_error):
 ))
 def test_subquery_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("SELECT column1 FROM UNNEST(array1)", id="unnest_single"),
+    pytest.param("SELECT column1 FROM UNNEST(array1) AS alias1", id="unnest_single_alias"),
+    pytest.param("SELECT column1 FROM table1, UNNEST(array1)", id="unnest_trailing"),
+    pytest.param("SELECT column1 FROM table1, UNNEST(array1) WITH OFFSET", id="unnest_trailing_with_offset"),
+    pytest.param("SELECT column1 FROM table1, UNNEST(array1) WITH OFFSET AS alias1", id="unnest_trailing_with_offset_alias"),
+    pytest.param("SELECT column1 FROM table1, UNNEST(array1) AS alias1 WITH OFFSET AS alias2",
+                 id="unnest_trailing_alias_with_offset_alias"),
+))
+def test_unnest_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
