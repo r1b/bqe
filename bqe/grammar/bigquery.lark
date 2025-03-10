@@ -23,6 +23,7 @@ _RPAR : ")"
 SLASH : "/"
 SQUOT : "'"
 _STAR : "*"
+_USCORE : "_"
 
 ################################################################################
 # Keywords
@@ -34,10 +35,14 @@ ALL : "ALL"i
 _AS : "AS"i
 DISTINCT : "DISTINCT"i
 _EXCEPT : "EXCEPT"i
+_FOR : "FOR"i
 _FROM : "FROM"i
+_OF : "OF"i
 _OFFSET : "OFFSET"i
 _REPLACE : "REPLACE"i
 _SELECT : "SELECT"i
+_SYSTEM : "SYSTEM"i
+_TIME : "TIME"i
 _UNNEST : "UNNEST"i
 WHERE : "WHERE"i
 _WITH : "WITH"i
@@ -252,13 +257,14 @@ from_clause : from_item | from_clause _COMMA from_item
 #   [ pivot_operator | unpivot_operator ]
 #   [ tablesample_operator ]
 
-from_item : path_expression as_alias? -> from_item_table
-#   table_name [ as_alias ] [ FOR SYSTEM_TIME AS OF timestamp_expression ]
+from_item : path_expression as_alias? time_travel? -> from_item_table
 #   | ( join_operation | LPAR join_operation RPAR )
     | subquery as_alias? -> from_item_subquery
-#   | field_path
     | from_item_unnest
-#   | cte_name [ as_alias ]
+
+# Time travel
+
+time_travel : _FOR _SYSTEM _USCORE _TIME _AS _OF column_expr
 
 ################################################################################
 # UNNEST

@@ -20,6 +20,7 @@ import pytest
     pytest.param("SELECT column1, column2 FROM table1, table2", id="select_from_multi"),
     pytest.param("SELECT column1 FROM table1 AS alias1", id="select_from_alias_explicit"),
     pytest.param("SELECT column1 FROM table1 alias1", id="select_from_alias_implicit"),
+    pytest.param("SELECT column1 FROM table1 FOR SYSTEM_TIME AS OF '1970-01-01'", id="select_from_time_travel"),
     pytest.param(
         """
         SELECT DISTINCT
