@@ -9,9 +9,7 @@
 
 _ARROW : "=>"
 BACKTICK : "`"
-COLON : ":"
 _COMMA : ","
-DASH : "-"
 _DOT : "."
 DQUOT : "\""
 _LBRACK : "["
@@ -20,7 +18,6 @@ MINUS : "-"
 PLUS : "+"
 _RBRACK : "]"
 _RPAR : ")"
-SLASH : "/"
 SQUOT : "'"
 _STAR : "*"
 _USCORE : "_"
@@ -31,20 +28,15 @@ _USCORE : "_"
 
 # All keywords are case-insensitive
 
-ALL : "ALL"i
 _AS : "AS"i
-DISTINCT : "DISTINCT"i
-_EXCEPT : "EXCEPT"i
 _FOR : "FOR"i
 _FROM : "FROM"i
 _OF : "OF"i
 _OFFSET : "OFFSET"i
-_REPLACE : "REPLACE"i
 _SELECT : "SELECT"i
 _SYSTEM : "SYSTEM"i
 _TIME : "TIME"i
 _UNNEST : "UNNEST"i
-WHERE : "WHERE"i
 _WITH : "WITH"i
 
 ################################################################################
@@ -63,7 +55,6 @@ QUOTED_IDENT : BACKTICK /[^`]+/ BACKTICK
 
 ident : UNQUOTED_IDENT | QUOTED_IDENT
 
-# This is quite foundational, starting with https://github.com/google/zetasql/blob/master/zetasql/parser/zetasql.tm#L9262
 path_expression : ident | path_expression _DOT ident
 
 ################################################################################
@@ -123,7 +114,7 @@ INTEGER_LITERAL : /[\+\-]?(0[Xx][0-9A-Fa-f]+|[0-9]+)/
 # Ref: https://github.com/google/zetasql/blob/master/zetasql/parser/zetasql.tm#L8795
 
 # TODO: This requires transformer cleanup
-# Its necessary to use left-recursion to remove ambiguity in dotted path expressions
+# Per zetasql, explicitly not using path_expression here to avoid ambiguity
 
 column_expr : literal
     | subquery
@@ -197,27 +188,8 @@ start : query_statement
 query_statement : query_expr
 
 query_expr : select | subquery
-#   [ WITH [ RECURSIVE ] { non_recursive_cte | recursive_cte }[, ...] ]
-#   select | _LPAR query_expr _RPAR # | set_operation
-#   [ ORDER BY expression [{ ASC | DESC }] [, ...] ]
-#   [ LIMIT count [ OFFSET skip_rows ] ]
-
-select : _SELECT select_mode? select_list select_from?
-#   [ WITH differential_privacy_clause ]
-#   SELECT
-#   [ ALL | DISTINCT ]
-#   [ _AS { STRUCT | VALUE } ]
-#   select_list
-#   [ FROM from_clause ( _COMMA from_clause )* ]
-#   [ WHERE bool_expression ]
-#   [ GROUP BY group_by_specification ]
-#   [ HAVING bool_expression ]
-#   [ QUALIFY bool_expression ]
-#   [ WINDOW window_clause ]
 
 subquery : _LPAR query_expr _RPAR
-
-select_mode : ALL | DISTINCT
 
 ################################################################################
 # SELECT
@@ -225,18 +197,17 @@ select_mode : ALL | DISTINCT
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list
 
+select : _SELECT select_list select_from?
+#   [ _AS { STRUCT | VALUE } ]
+
 # See https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#trailing_commas
 select_list : select_item ( _COMMA select_item )* _COMMA?
 
 select_item : select_star | select_dot_star | select_expr
 
-select_star : _STAR select_star_except? select_star_replace?
+select_star : _STAR
 
-select_dot_star : column_expr _DOT _STAR select_star_except? select_star_replace?
-
-select_star_except : _EXCEPT _LPAR ident ( _COMMA ident )* _RPAR
-
-select_star_replace : _REPLACE _LPAR alias_expr ( _COMMA alias_expr )* _RPAR
+select_dot_star : column_expr _DOT _STAR
 
 select_expr : column_expr as_alias?
 
@@ -253,12 +224,8 @@ as_alias : [ _AS ] ident
 select_from : _FROM from_clause
 
 from_clause : from_item | from_clause _COMMA from_item
-#   from_item
-#   [ pivot_operator | unpivot_operator ]
-#   [ tablesample_operator ]
 
 from_item : path_expression as_alias? time_travel? -> from_item_table
-#   | ( join_operation | LPAR join_operation RPAR )
     | subquery as_alias? -> from_item_subquery
     | from_item_unnest
 
@@ -272,8 +239,8 @@ time_travel : _FOR _SYSTEM _USCORE _TIME _AS _OF column_expr
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#unnest_operator
 
-from_item_unnest : unnest_expression unnest_expression_zip_mode?
+from_item_unnest : unnest_expression unnest_expression_with_offset?
 
 unnest_expression : _UNNEST _LPAR column_expr _RPAR as_alias?
 
-unnest_expression_zip_mode : _WITH _OFFSET as_alias?
+unnest_expression_with_offset : _WITH _OFFSET as_alias?

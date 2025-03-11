@@ -97,26 +97,13 @@
     query_statement
       query_expr
         select
-          select_mode	DISTINCT
           select_list
             select_item
               select_star
-                select_star_except
-                  ident	column1
-                  ident	column2
-                select_star_replace
-                  alias_expr
-                    column_expr
-                      ident	column3
-                    ident	alias3
-                  alias_expr
-                    column_expr
-                      ident	column4
-                    ident	alias4
             select_item
               select_expr
                 column_expr
-                  ident	column5
+                  ident	column1
             select_item
               select_expr
                 column_expr
@@ -130,7 +117,7 @@
                                 literal
                                   integer_literal	1
                 as_alias
-                  ident	column6
+                  ident	column2
           select_from
             from_clause
               from_clause
@@ -276,46 +263,6 @@
   
   '''
 # ---
-# name: test_select_ok[select_mode_all]
-  '''
-  start
-    query_statement
-      query_expr
-        select
-          select_mode	ALL
-          select_list
-            select_item
-              select_expr
-                column_expr
-                  ident	column1
-          select_from
-            from_clause
-              from_item_table
-                path_expression
-                  ident	table1
-  
-  '''
-# ---
-# name: test_select_ok[select_mode_distinct]
-  '''
-  start
-    query_statement
-      query_expr
-        select
-          select_mode	DISTINCT
-          select_list
-            select_item
-              select_expr
-                column_expr
-                  ident	column1
-          select_from
-            from_clause
-              from_item_table
-                path_expression
-                  ident	table1
-  
-  '''
-# ---
 # name: test_select_ok[select_star]
   '''
   start
@@ -325,93 +272,6 @@
           select_list
             select_item
               select_star
-          select_from
-            from_clause
-              from_item_table
-                path_expression
-                  ident	table1
-  
-  '''
-# ---
-# name: test_select_ok[select_star_except_multi]
-  '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_star
-                select_star_except
-                  ident	column1
-                  ident	column2
-          select_from
-            from_clause
-              from_item_table
-                path_expression
-                  ident	table1
-  
-  '''
-# ---
-# name: test_select_ok[select_star_except_single]
-  '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_star
-                select_star_except
-                  ident	column1
-          select_from
-            from_clause
-              from_item_table
-                path_expression
-                  ident	table1
-  
-  '''
-# ---
-# name: test_select_ok[select_star_replace_multi]
-  '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_star
-                select_star_replace
-                  alias_expr
-                    column_expr
-                      ident	column1
-                    ident	alias1
-                  alias_expr
-                    column_expr
-                      ident	column2
-                    ident	alias2
-          select_from
-            from_clause
-              from_item_table
-                path_expression
-                  ident	table1
-  
-  '''
-# ---
-# name: test_select_ok[select_star_replace_single]
-  '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_star
-                select_star_replace
-                  alias_expr
-                    column_expr
-                      ident	column1
-                    ident	alias1
           select_from
             from_clause
               from_item_table
@@ -663,7 +523,7 @@
                       ident	array1
                     as_alias
                       ident	alias1
-                  unnest_expression_zip_mode
+                  unnest_expression_with_offset
                     as_alias
                       ident	alias2
   
@@ -691,7 +551,7 @@
                   unnest_expression
                     column_expr
                       ident	array1
-                  unnest_expression_zip_mode
+                  unnest_expression_with_offset
   
   '''
 # ---
@@ -717,7 +577,7 @@
                   unnest_expression
                     column_expr
                       ident	array1
-                  unnest_expression_zip_mode
+                  unnest_expression_with_offset
                     as_alias
                       ident	alias1
   
