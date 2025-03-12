@@ -34,9 +34,11 @@ _FROM : "FROM"i
 _OF : "OF"i
 _OFFSET : "OFFSET"i
 _SELECT : "SELECT"i
+STRUCT : "STRUCT"i
 _SYSTEM : "SYSTEM"i
 _TIME : "TIME"i
 _UNNEST : "UNNEST"i
+VALUE : "VALUE"i
 _WITH : "WITH"i
 
 ################################################################################
@@ -197,8 +199,9 @@ subquery : _LPAR query_expr _RPAR
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list
 
-select : _SELECT select_list select_from?
-#   [ _AS { STRUCT | VALUE } ]
+select : _SELECT select_shape? select_list select_from?
+
+select_shape : _AS ( STRUCT | VALUE )
 
 # See https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#trailing_commas
 select_list : select_item ( _COMMA select_item )* _COMMA?
