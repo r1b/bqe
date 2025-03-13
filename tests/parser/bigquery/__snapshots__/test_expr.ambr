@@ -4,8 +4,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
@@ -22,8 +22,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
@@ -38,14 +38,14 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
                   bigquery__ident	column1
           bigquery__select_from
-            bigquery__from_clause
+            from_clause
               bigquery__from_item_table
                 bigquery__path_expression
                   bigquery__path_expression
@@ -61,14 +61,14 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
                   bigquery__ident	column1
           bigquery__select_from
-            bigquery__from_clause
+            from_clause
               bigquery__from_item_table
                 bigquery__path_expression
                   bigquery__path_expression
@@ -82,8 +82,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
@@ -108,8 +108,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
@@ -135,8 +135,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
@@ -157,8 +157,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
@@ -182,8 +182,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
@@ -198,8 +198,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
@@ -219,8 +219,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
@@ -243,8 +243,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
@@ -262,8 +262,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
@@ -287,8 +287,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr
@@ -313,8 +313,8 @@
   start
     query_statement
       query_expr
-        bigquery__select
-          bigquery__select_list
+        select
+          select_list
             bigquery__select_item
               bigquery__select_expr
                 bigquery__column_expr

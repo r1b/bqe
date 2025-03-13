@@ -1,5 +1,5 @@
 %import common (WS)
-%import .bigquery (query_expr, query_statement, start)
+%import .bigquery (_FROM, _SELECT, from_clause, query_expr, query_statement, select, select_list, subquery, start)
 
 # TODO: See ZetaSQL for a more complete definition of WS
 %ignore WS
@@ -8,6 +8,8 @@
 # Punctuation
 ################################################################################
 
+_GT : ">"
+_PIPE : "|"
 _SEMI : ";"
 
 ################################################################################
@@ -16,6 +18,44 @@ _SEMI : ";"
 
 %extend query_statement : script
 
-script : query_expr script_item
+script : query_statement script_item
 
 script_item : _SEMI query_statement?
+
+################################################################################
+# Pipe
+################################################################################
+
+%extend query_expr : pipe_from
+
+pipe_from : _FROM from_clause
+
+%extend query_expr : pipe_expr
+
+pipe_expr : pipe_start pipe_item+
+
+pipe_start : select | subquery | pipe_from
+
+pipe_item : _PIPE _GT pipe_operator
+
+pipe_operator : pipe_select
+#   | pipe_extend
+#   | pipe_set
+#   | pipe_drop
+#   | pipe_rename
+#   | pipe_as
+#   | pipe_where
+#   | pipe_limit
+#   | pipe_agg
+#   | pipe_order_by
+#   | pipe_union
+#   | pipe_intersect
+#   | pipe_except
+#   | pipe_join
+#   | pipe_call
+#   | pipe_window
+#   | pipe_tablesample
+#   | pipe_pivot
+#   | pipe_unpivot
+
+pipe_select : _SELECT select_list
