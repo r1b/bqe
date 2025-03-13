@@ -125,7 +125,9 @@ FROM table1
 
 ### procedural extensions
 
-In general, we think that avoiding side effects and state is a Good Thing. However, there are select cases where escape hatches are useful. For these cases, `bqe` prefers procedural features over sessions, because this allows the developer to add all of their business logic in one script without extra orchestration overhead.
+In general, we think that avoiding side effects and state is a Good Thing. However, there are many real-world use cases where these features are necessary. For these cases, `bqe` prefers procedural features over sessions or external orchestration because this allows the developer to keep all of their business logic in one place.
+
+All procedural extensions are _terminal_ - no additional pipeline operators can be added to the statement after a procedural pipeline operator.
 
 #### materialization
 
@@ -192,4 +194,29 @@ DECLARE var2 STRING;
         
 SET var1 = (SELECT [1, 2]);
 SET var2 = (SELECT CAST(var1[0] AS STRING));
+```
+
+#### merge
+
+We have observed serving-side workloads that merge the results of a query into a state table.
+
+To support this use case, `bqe` extends pipe SQL with a `MERGE` pipe operator:
+
+```sql
+FROM table1
+    |> MERGE INTO table2
+        USING src
+        ON table2.col1 = src.col1
+        WHEN MATCHED THEN
+            UPDATE SET table2.col2 = src.col2;
+```
+
+This compiles to:
+
+```sql
+MERGE INTO table2
+USING (FROM table1) AS src
+ON table2.col1 = src.col1
+WHEN MATCHED THEN
+    UPDATE SET table2.col2 = src.col2;
 ```
