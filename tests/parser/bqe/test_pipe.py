@@ -34,3 +34,12 @@ def test_pipe_extend_ok(sql, assert_parse_tree):
 ))
 def test_pipe_set_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> DROP col1", id="pipe_drop_single"),
+    pytest.param("FROM table1 |> DROP col1,", id="pipe_drop_single_trailing_comma"),
+    pytest.param("FROM table1 |> DROP col1, col2", id="pipe_drop_multi"),
+))
+def test_pipe_drop_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)

@@ -1,4 +1,69 @@
 # serializer version: 1
+# name: test_pipe_drop_ok[pipe_drop_multi]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_drop
+                drop_list
+                  drop_item
+                    ident	col1
+                  drop_item
+                    ident	col2
+  
+  '''
+# ---
+# name: test_pipe_drop_ok[pipe_drop_single]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_drop
+                drop_list
+                  drop_item
+                    ident	col1
+  
+  '''
+# ---
+# name: test_pipe_drop_ok[pipe_drop_single_trailing_comma]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_drop
+                drop_list
+                  drop_item
+                    ident	col1
+  
+  '''
+# ---
 # name: test_pipe_extend_ok[pipe_extend_multi]
   '''
   start

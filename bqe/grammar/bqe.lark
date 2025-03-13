@@ -17,6 +17,7 @@ _SEMI : ";"
 
 # All keywords are case-insensitive
 
+_DROP : "DROP"i
 _EXTEND : "EXTEND"i
 _SET : "SET"i
 
@@ -49,7 +50,7 @@ pipe_item : _PIPE_OP pipe_operator
 pipe_operator : pipe_select
     | pipe_extend
     | pipe_set
-#   | pipe_drop
+    | pipe_drop
 #   | pipe_rename
 #   | pipe_as
 #   | pipe_where
@@ -79,3 +80,9 @@ pipe_set : _SET set_list
 set_list : set_item ( _COMMA set_item )* _COMMA?
 
 set_item : ident _EQ column_expr
+
+pipe_drop : _DROP drop_list
+
+drop_list : drop_item ( _COMMA drop_item )* _COMMA?
+
+drop_item : ident
