@@ -43,3 +43,19 @@ def test_pipe_set_ok(sql, assert_parse_tree):
 ))
 def test_pipe_drop_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> RENAME col1 AS col2", id="pipe_rename_single"),
+    pytest.param("FROM table1 |> RENAME col1 AS col2,", id="pipe_rename_single_trailing_comma"),
+    pytest.param("FROM table1 |> RENAME col1 AS col2, col3 AS col4", id="pipe_rename_multi"),
+))
+def test_pipe_rename_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> RENAME col1.nested AS col2", id="pipe_rename_nested"),
+))
+def test_pipe_rename_error(sql, assert_parse_tree_error):
+    assert_parse_tree_error(sql)

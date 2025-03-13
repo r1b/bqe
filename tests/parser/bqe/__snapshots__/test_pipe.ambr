@@ -305,6 +305,79 @@
   
   '''
 # ---
+# name: test_pipe_rename_ok[pipe_rename_multi]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_rename
+                rename_list
+                  rename_item
+                    ident	col1
+                    as_alias
+                      ident	col2
+                  rename_item
+                    ident	col3
+                    as_alias
+                      ident	col4
+  
+  '''
+# ---
+# name: test_pipe_rename_ok[pipe_rename_single]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_rename
+                rename_list
+                  rename_item
+                    ident	col1
+                    as_alias
+                      ident	col2
+  
+  '''
+# ---
+# name: test_pipe_rename_ok[pipe_rename_single_trailing_comma]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_rename
+                rename_list
+                  rename_item
+                    ident	col1
+                    as_alias
+                      ident	col2
+  
+  '''
+# ---
 # name: test_pipe_set_ok[pipe_set_multi]
   '''
   start

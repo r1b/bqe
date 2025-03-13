@@ -19,6 +19,7 @@ _SEMI : ";"
 
 _DROP : "DROP"i
 _EXTEND : "EXTEND"i
+_RENAME : "RENAME"i
 _SET : "SET"i
 
 ################################################################################
@@ -51,7 +52,7 @@ pipe_operator : pipe_select
     | pipe_extend
     | pipe_set
     | pipe_drop
-#   | pipe_rename
+    | pipe_rename
 #   | pipe_as
 #   | pipe_where
 #   | pipe_limit
@@ -67,7 +68,11 @@ pipe_operator : pipe_select
 #   | pipe_pivot
 #   | pipe_unpivot
 
+# SELECT
+
 pipe_select : _SELECT select_list
+
+# EXTEND
 
 pipe_extend : _EXTEND extend_list
 
@@ -75,14 +80,26 @@ extend_list : extend_item ( _COMMA extend_item )* _COMMA?
 
 extend_item : column_expr as_alias?
 
+# SET
+
 pipe_set : _SET set_list
 
 set_list : set_item ( _COMMA set_item )* _COMMA?
 
 set_item : ident _EQ column_expr
 
+# DROP
+
 pipe_drop : _DROP drop_list
 
 drop_list : drop_item ( _COMMA drop_item )* _COMMA?
 
 drop_item : ident
+
+# RENAME
+
+pipe_rename : _RENAME rename_list
+
+rename_list : rename_item ( _COMMA rename_item )* _COMMA?
+
+rename_item : ident as_alias
