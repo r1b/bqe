@@ -66,3 +66,10 @@ def test_pipe_rename_error(sql, assert_parse_tree_error):
 ))
 def test_as_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> WHERE col1", id="pipe_where_single"),
+))
+def test_where_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)

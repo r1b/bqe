@@ -125,6 +125,7 @@ column_expr : literal
     | ident
     | column_expr _DOT ident
     | subscript_expr
+#   | exists
 #   | plus
 #   | minus
 #   | bitnot

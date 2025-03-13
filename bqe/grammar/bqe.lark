@@ -21,6 +21,7 @@ _DROP : "DROP"i
 _EXTEND : "EXTEND"i
 _RENAME : "RENAME"i
 _SET : "SET"i
+_WHERE : "WHERE"i
 
 ################################################################################
 # Procedural
@@ -54,7 +55,7 @@ pipe_operator : pipe_select
     | pipe_drop
     | pipe_rename
     | pipe_as
-#   | pipe_where
+    | pipe_where
 #   | pipe_limit
 #   | pipe_agg
 #   | pipe_order_by
@@ -107,3 +108,7 @@ rename_item : ident as_alias
 # AS
 
 pipe_as : _AS ident
+
+# WHERE
+
+pipe_where : _WHERE column_expr
