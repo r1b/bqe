@@ -1,0 +1,21 @@
+%import common (WS)
+%import .bigquery (query_expr, query_statement, start)
+
+# TODO: See ZetaSQL for a more complete definition of WS
+%ignore WS
+
+################################################################################
+# Punctuation
+################################################################################
+
+_SEMI : ";"
+
+################################################################################
+# Procedural
+################################################################################
+
+%extend query_statement : script
+
+script : query_expr script_item
+
+script_item : _SEMI query_statement?

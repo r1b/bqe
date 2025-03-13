@@ -1,0 +1,378 @@
+# serializer version: 1
+# name: test_integer_literal_ok[literal_integer_decimal]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__integer_literal	1
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_decimal_minus]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__integer_literal	-1
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_decimal_plus]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__integer_literal	+1
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_hex]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__integer_literal	0xff
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_hex_cap]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__integer_literal	0XFF
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_hex_minus]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__integer_literal	-0xff
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_hex_plus]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__integer_literal	+0xff
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_quoted_alias_adjacent]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__integer_literal	1
+                bigquery__as_alias
+                  bigquery__ident	`alias`
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	"string"
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_raw_cap]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	R"string"
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_raw_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	r""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_raw_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	r"string"
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_squot_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_squot_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	'string'
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_squot_raw_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	r''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_squot_raw_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	r'string'
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tdquot_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	""""""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tdquot_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	"""We say: "hello"."""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tdquot_raw_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	r""""""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tdquot_raw_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	r"""We say: "hello"."""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tsquot_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	''''''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tsquot_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	'''We say: 'hello'.'''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tsquot_raw_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	r''''''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tsquot_raw_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        bigquery__select
+          bigquery__select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__column_expr
+                  bigquery__literal
+                    bigquery__string_literal	r'''We say: 'hello'.'''
+  
+  '''
+# ---
