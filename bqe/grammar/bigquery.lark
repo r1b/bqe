@@ -189,9 +189,13 @@ start : query_statement
 
 query_statement : query_expr
 
-query_expr : select | subquery
+query_expr : select | subquery | cte
 
 subquery : _LPAR query_expr _RPAR
+
+cte : _WITH cte_item query_expr
+
+cte_item : ident _AS subquery ( _COMMA cte_item )?
 
 ################################################################################
 # SELECT

@@ -66,3 +66,10 @@ def test_subquery_ok(sql, assert_parse_tree):
 ))
 def test_unnest_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("WITH table1 AS ( SELECT 1 AS col1 ) SELECT col1 FROM table1", id="cte_single"),
+    pytest.param("WITH table1 AS ( SELECT 1 AS col1 ), table2 AS ( SELECT 2 AS col2 ) SELECT col1, col2 FROM table1, table2", id="cte_multi"),
+))
+def test_cte_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
