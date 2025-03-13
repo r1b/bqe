@@ -41,11 +41,12 @@ Expressions are generated with the expression API. It should feel familiar for u
 
 ```python
 # TODO: Flesh this out
+from bqe.builtins import search
 from bqe.compiler import compile
 from bqe.query import column, func, table, text
 
 query = "FROM @(table) |> WHERE @(dsl) |> SELECT d"
-dsl = (func("SEARCH", column("a"), text_analyzer=text("NOOP_ANALYZER")) & column("b") != 2) | column("c").is(None)
+dsl = (search(column("a"), text_analyzer=text("NOOP_ANALYZER")) & column("b") != 2) | column("c").is(None)
 sql = compile(path_or_str, context={"dsl": dsl, "table": table("table1")}, options={"paramstyle": "bigquery"})
 
 # FROM table1
@@ -54,17 +55,7 @@ sql = compile(path_or_str, context={"dsl": dsl, "table": table("table1")}, optio
 
 #### conditional rendering: statements and pipe operators
 
-To conditionally render statements and pipe operators, `bqe` extends Pipe SQL with a conditional pipe operator:
-
-```sql
--- statement
-WHEN [NOT] @(condition) <statement>
-
--- pipe operator
-|? WHEN [NOT] @(condition) <pipe operator>
-|? WHEN [NOT] ...
-|? ELSE <sql>
-```
+`bqe` extends Pipe SQL with a conditional pipe operator:
 
 The operator can be used at the top level to conditionally render statements:
 

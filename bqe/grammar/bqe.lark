@@ -1,5 +1,5 @@
 %import common (WS)
-%import .bigquery (_FROM, _SELECT, from_clause, query_expr, query_statement, select, select_list, subquery, start)
+%import .bigquery (_COMMA, _FROM, _SELECT, as_alias, column_expr, from_clause, query_expr, query_statement, select, select_list, subquery, start)
 
 # TODO: See ZetaSQL for a more complete definition of WS
 %ignore WS
@@ -11,6 +11,14 @@
 _GT : ">"
 _PIPE : "|"
 _SEMI : ";"
+
+################################################################################
+# Keywords
+################################################################################
+
+# All keywords are case-insensitive
+
+_EXTEND : "EXTEND"i
 
 ################################################################################
 # Procedural
@@ -39,7 +47,7 @@ pipe_start : select | subquery | pipe_from
 pipe_item : _PIPE _GT pipe_operator
 
 pipe_operator : pipe_select
-#   | pipe_extend
+    | pipe_extend
 #   | pipe_set
 #   | pipe_drop
 #   | pipe_rename
@@ -59,3 +67,9 @@ pipe_operator : pipe_select
 #   | pipe_unpivot
 
 pipe_select : _SELECT select_list
+
+pipe_extend : _EXTEND extend_list
+
+extend_list : extend_item ( _COMMA extend_item )* _COMMA?
+
+extend_item : column_expr as_alias?

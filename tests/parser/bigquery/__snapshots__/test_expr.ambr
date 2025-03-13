@@ -8,9 +8,9 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
-                  bigquery__column_expr
-                    bigquery__column_expr
+                column_expr
+                  column_expr
+                    column_expr
                       bigquery__ident	column1
                     bigquery__ident	column2
                   bigquery__ident	column3
@@ -26,8 +26,8 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
-                  bigquery__column_expr
+                column_expr
+                  column_expr
                     bigquery__ident	column1
                   bigquery__ident	column2
   
@@ -42,7 +42,7 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__ident	column1
           bigquery__select_from
             from_clause
@@ -65,7 +65,7 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__ident	column1
           bigquery__select_from
             from_clause
@@ -86,18 +86,18 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__function_call_expr
-                    bigquery__column_expr
+                    column_expr
                       bigquery__ident	FUNC
                     bigquery__function_args
                       bigquery__pos_arg
-                        bigquery__column_expr
+                        column_expr
                           bigquery__literal
                             bigquery__integer_literal	1
                       bigquery__named_arg
                         bigquery__ident	name2
-                        bigquery__column_expr
+                        column_expr
                           bigquery__literal
                             bigquery__integer_literal	2
   
@@ -112,19 +112,19 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__function_call_expr
-                    bigquery__column_expr
+                    column_expr
                       bigquery__ident	FUNC
                     bigquery__function_args
                       bigquery__named_arg
                         bigquery__ident	name1
-                        bigquery__column_expr
+                        column_expr
                           bigquery__literal
                             bigquery__integer_literal	1
                       bigquery__named_arg
                         bigquery__ident	name2
-                        bigquery__column_expr
+                        column_expr
                           bigquery__literal
                             bigquery__integer_literal	2
   
@@ -139,14 +139,14 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__function_call_expr
-                    bigquery__column_expr
+                    column_expr
                       bigquery__ident	FUNC
                     bigquery__function_args
                       bigquery__named_arg
                         bigquery__ident	name1
-                        bigquery__column_expr
+                        column_expr
                           bigquery__literal
                             bigquery__integer_literal	1
   
@@ -161,17 +161,17 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__function_call_expr
-                    bigquery__column_expr
+                    column_expr
                       bigquery__ident	FUNC
                     bigquery__function_args
                       bigquery__pos_arg
-                        bigquery__column_expr
+                        column_expr
                           bigquery__literal
                             bigquery__integer_literal	1
                       bigquery__pos_arg
-                        bigquery__column_expr
+                        column_expr
                           bigquery__literal
                             bigquery__integer_literal	2
   
@@ -186,9 +186,9 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__function_call_expr
-                    bigquery__column_expr
+                    column_expr
                       bigquery__ident	FUNC
   
   '''
@@ -202,13 +202,13 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__function_call_expr
-                    bigquery__column_expr
+                    column_expr
                       bigquery__ident	FUNC
                     bigquery__function_args
                       bigquery__pos_arg
-                        bigquery__column_expr
+                        column_expr
                           bigquery__literal
                             bigquery__integer_literal	1
   
@@ -223,16 +223,16 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__subscript_expr
-                    bigquery__column_expr
+                    column_expr
                       bigquery__subscript_expr
-                        bigquery__column_expr
+                        column_expr
                           bigquery__ident	column1
-                        bigquery__column_expr
+                        column_expr
                           bigquery__literal
                             bigquery__integer_literal	0
-                    bigquery__column_expr
+                    column_expr
                       bigquery__literal
                         bigquery__integer_literal	1
   
@@ -247,11 +247,11 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__subscript_expr
-                    bigquery__column_expr
+                    column_expr
                       bigquery__ident	column1
-                    bigquery__column_expr
+                    column_expr
                       bigquery__literal
                         bigquery__integer_literal	0
   
@@ -266,17 +266,17 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__subscript_expr
-                    bigquery__column_expr
+                    column_expr
                       bigquery__ident	column1
-                    bigquery__column_expr
+                    column_expr
                       bigquery__function_call_expr
-                        bigquery__column_expr
+                        column_expr
                           bigquery__ident	OFFSET
                         bigquery__function_args
                           bigquery__pos_arg
-                            bigquery__column_expr
+                            column_expr
                               bigquery__literal
                                 bigquery__integer_literal	2
   
@@ -291,18 +291,18 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__subscript_expr
-                    bigquery__column_expr
+                    column_expr
                       bigquery__subscript_expr
-                        bigquery__column_expr
-                          bigquery__column_expr
+                        column_expr
+                          column_expr
                             bigquery__ident	column1
                           bigquery__ident	column2
-                        bigquery__column_expr
+                        column_expr
                           bigquery__literal
                             bigquery__integer_literal	0
-                    bigquery__column_expr
+                    column_expr
                       bigquery__literal
                         bigquery__integer_literal	1
   
@@ -317,11 +317,11 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__column_expr
+                column_expr
                   bigquery__subscript_expr
-                    bigquery__column_expr
+                    column_expr
                       bigquery__ident	column1
-                    bigquery__column_expr
+                    column_expr
                       bigquery__literal
                         bigquery__string_literal	'key1'
   
