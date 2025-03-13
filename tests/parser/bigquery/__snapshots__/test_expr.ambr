@@ -11,9 +11,9 @@
                 column_expr
                   column_expr
                     column_expr
-                      bigquery__ident	column1
-                    bigquery__ident	column2
-                  bigquery__ident	column3
+                      ident	column1
+                    ident	column2
+                  ident	column3
   
   '''
 # ---
@@ -28,8 +28,8 @@
               bigquery__select_expr
                 column_expr
                   column_expr
-                    bigquery__ident	column1
-                  bigquery__ident	column2
+                    ident	column1
+                  ident	column2
   
   '''
 # ---
@@ -43,16 +43,16 @@
             bigquery__select_item
               bigquery__select_expr
                 column_expr
-                  bigquery__ident	column1
+                  ident	column1
           bigquery__select_from
             from_clause
               bigquery__from_item_table
                 bigquery__path_expression
                   bigquery__path_expression
                     bigquery__path_expression
-                      bigquery__ident	`project1`
-                    bigquery__ident	dataset1
-                  bigquery__ident	table1
+                      ident	`project1`
+                    ident	dataset1
+                  ident	table1
   
   '''
 # ---
@@ -66,14 +66,14 @@
             bigquery__select_item
               bigquery__select_expr
                 column_expr
-                  bigquery__ident	column1
+                  ident	column1
           bigquery__select_from
             from_clause
               bigquery__from_item_table
                 bigquery__path_expression
                   bigquery__path_expression
-                    bigquery__ident	dataset1
-                  bigquery__ident	table1
+                    ident	dataset1
+                  ident	table1
   
   '''
 # ---
@@ -89,14 +89,14 @@
                 column_expr
                   bigquery__function_call_expr
                     column_expr
-                      bigquery__ident	FUNC
+                      ident	FUNC
                     bigquery__function_args
                       bigquery__pos_arg
                         column_expr
                           bigquery__literal
                             bigquery__integer_literal	1
                       bigquery__named_arg
-                        bigquery__ident	name2
+                        ident	name2
                         column_expr
                           bigquery__literal
                             bigquery__integer_literal	2
@@ -115,15 +115,15 @@
                 column_expr
                   bigquery__function_call_expr
                     column_expr
-                      bigquery__ident	FUNC
+                      ident	FUNC
                     bigquery__function_args
                       bigquery__named_arg
-                        bigquery__ident	name1
+                        ident	name1
                         column_expr
                           bigquery__literal
                             bigquery__integer_literal	1
                       bigquery__named_arg
-                        bigquery__ident	name2
+                        ident	name2
                         column_expr
                           bigquery__literal
                             bigquery__integer_literal	2
@@ -142,10 +142,10 @@
                 column_expr
                   bigquery__function_call_expr
                     column_expr
-                      bigquery__ident	FUNC
+                      ident	FUNC
                     bigquery__function_args
                       bigquery__named_arg
-                        bigquery__ident	name1
+                        ident	name1
                         column_expr
                           bigquery__literal
                             bigquery__integer_literal	1
@@ -164,7 +164,7 @@
                 column_expr
                   bigquery__function_call_expr
                     column_expr
-                      bigquery__ident	FUNC
+                      ident	FUNC
                     bigquery__function_args
                       bigquery__pos_arg
                         column_expr
@@ -189,7 +189,7 @@
                 column_expr
                   bigquery__function_call_expr
                     column_expr
-                      bigquery__ident	FUNC
+                      ident	FUNC
   
   '''
 # ---
@@ -205,7 +205,7 @@
                 column_expr
                   bigquery__function_call_expr
                     column_expr
-                      bigquery__ident	FUNC
+                      ident	FUNC
                     bigquery__function_args
                       bigquery__pos_arg
                         column_expr
@@ -228,7 +228,7 @@
                     column_expr
                       bigquery__subscript_expr
                         column_expr
-                          bigquery__ident	column1
+                          ident	column1
                         column_expr
                           bigquery__literal
                             bigquery__integer_literal	0
@@ -250,7 +250,7 @@
                 column_expr
                   bigquery__subscript_expr
                     column_expr
-                      bigquery__ident	column1
+                      ident	column1
                     column_expr
                       bigquery__literal
                         bigquery__integer_literal	0
@@ -269,11 +269,11 @@
                 column_expr
                   bigquery__subscript_expr
                     column_expr
-                      bigquery__ident	column1
+                      ident	column1
                     column_expr
                       bigquery__function_call_expr
                         column_expr
-                          bigquery__ident	OFFSET
+                          ident	OFFSET
                         bigquery__function_args
                           bigquery__pos_arg
                             column_expr
@@ -297,8 +297,8 @@
                       bigquery__subscript_expr
                         column_expr
                           column_expr
-                            bigquery__ident	column1
-                          bigquery__ident	column2
+                            ident	column1
+                          ident	column2
                         column_expr
                           bigquery__literal
                             bigquery__integer_literal	0
@@ -320,7 +320,7 @@
                 column_expr
                   bigquery__subscript_expr
                     column_expr
-                      bigquery__ident	column1
+                      ident	column1
                     column_expr
                       bigquery__literal
                         bigquery__string_literal	'key1'

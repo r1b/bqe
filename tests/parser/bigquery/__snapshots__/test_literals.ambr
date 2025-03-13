@@ -117,7 +117,7 @@
                   bigquery__literal
                     bigquery__integer_literal	1
                 as_alias
-                  bigquery__ident	`alias`
+                  ident	`alias`
   
   '''
 # ---

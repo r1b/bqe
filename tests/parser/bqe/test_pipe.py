@@ -25,3 +25,12 @@ def test_pipe_error(sql, assert_parse_tree_error):
 ))
 def test_pipe_extend_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> SET col1 = POW(col1, 2)", id="pipe_set_single"),
+    pytest.param("FROM table1 |> SET col1 = POW(col1, 2),", id="pipe_set_single_trailing_comma"),
+    pytest.param("FROM table1 |> SET col1 = POW(col1, 2), col2 = EXP(col1, 2)", id="pipe_set_multi"),
+))
+def test_pipe_set_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)

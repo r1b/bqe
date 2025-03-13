@@ -55,6 +55,10 @@ sql = compile(path_or_str, context={"dsl": dsl, "table": table("table1")}, optio
 
 #### conditional rendering: statements and pipe operators
 
+FIXME: haha I think I have fallen victim to the classic "if then else" ambiguity
+
+I think we can fix this by doing everything with @WHEN([NOT] condition, expr), which is better anyways.
+
 `bqe` extends Pipe SQL with a conditional pipe operator:
 
 The operator can be used at the top level to conditionally render statements:
