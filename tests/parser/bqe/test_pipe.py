@@ -11,6 +11,13 @@ def test_pipe_ok(sql, assert_parse_tree):
 
 
 @pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 | > SELECT col1", id="pipe_with_space"),
+))
+def test_pipe_error(sql, assert_parse_tree_error):
+    assert_parse_tree_error(sql)
+
+
+@pytest.mark.parametrize("sql", (
     pytest.param("FROM table1 |> EXTEND POW(col1, 2)", id="pipe_extend_single"),
     pytest.param("FROM table1 |> EXTEND POW(col1, 2),", id="pipe_extend_single_trailing_comma"),
     pytest.param("FROM table1 |> EXTEND POW(col1, 2) AS col2", id="pipe_extend_single_alias"),

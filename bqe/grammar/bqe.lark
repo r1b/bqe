@@ -8,8 +8,7 @@
 # Punctuation
 ################################################################################
 
-_GT : ">"
-_PIPE : "|"
+_PIPE_OP : "|>"
 _SEMI : ";"
 
 ################################################################################
@@ -44,7 +43,7 @@ pipe_expr : pipe_start pipe_item+
 
 pipe_start : select | subquery | pipe_from
 
-pipe_item : _PIPE _GT pipe_operator
+pipe_item : _PIPE_OP pipe_operator
 
 pipe_operator : pipe_select
     | pipe_extend
