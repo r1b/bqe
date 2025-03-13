@@ -1,5 +1,5 @@
 %import common (WS)
-%import .bigquery (_COMMA, _EQ, _FROM, _SELECT, as_alias, column_expr, from_clause, ident, query_expr, query_statement, select, select_list, subquery, start)
+%import .bigquery (_AS, _COMMA, _EQ, _FROM, _SELECT, as_alias, column_expr, from_clause, ident, query_expr, query_statement, select, select_list, subquery, start)
 
 # TODO: See ZetaSQL for a more complete definition of WS
 %ignore WS
@@ -53,7 +53,7 @@ pipe_operator : pipe_select
     | pipe_set
     | pipe_drop
     | pipe_rename
-#   | pipe_as
+    | pipe_as
 #   | pipe_where
 #   | pipe_limit
 #   | pipe_agg
@@ -103,3 +103,7 @@ pipe_rename : _RENAME rename_list
 rename_list : rename_item ( _COMMA rename_item )* _COMMA?
 
 rename_item : ident as_alias
+
+# AS
+
+pipe_as : _AS ident

@@ -59,3 +59,10 @@ def test_pipe_rename_ok(sql, assert_parse_tree):
 ))
 def test_pipe_rename_error(sql, assert_parse_tree_error):
     assert_parse_tree_error(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> AS table2", id="pipe_as_single"),
+))
+def test_as_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
