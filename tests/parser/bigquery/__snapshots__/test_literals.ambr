@@ -10,7 +10,7 @@
               bigquery__select_expr
                 column_expr
                   bigquery__literal
-                    bigquery__integer_literal	1
+                    integer_literal	1
   
   '''
 # ---
@@ -25,7 +25,7 @@
               bigquery__select_expr
                 column_expr
                   bigquery__literal
-                    bigquery__integer_literal	-1
+                    integer_literal	-1
   
   '''
 # ---
@@ -40,7 +40,7 @@
               bigquery__select_expr
                 column_expr
                   bigquery__literal
-                    bigquery__integer_literal	+1
+                    integer_literal	+1
   
   '''
 # ---
@@ -55,7 +55,7 @@
               bigquery__select_expr
                 column_expr
                   bigquery__literal
-                    bigquery__integer_literal	0xff
+                    integer_literal	0xff
   
   '''
 # ---
@@ -70,7 +70,7 @@
               bigquery__select_expr
                 column_expr
                   bigquery__literal
-                    bigquery__integer_literal	0XFF
+                    integer_literal	0XFF
   
   '''
 # ---
@@ -85,7 +85,7 @@
               bigquery__select_expr
                 column_expr
                   bigquery__literal
-                    bigquery__integer_literal	-0xff
+                    integer_literal	-0xff
   
   '''
 # ---
@@ -100,7 +100,7 @@
               bigquery__select_expr
                 column_expr
                   bigquery__literal
-                    bigquery__integer_literal	+0xff
+                    integer_literal	+0xff
   
   '''
 # ---
@@ -115,7 +115,7 @@
               bigquery__select_expr
                 column_expr
                   bigquery__literal
-                    bigquery__integer_literal	1
+                    integer_literal	1
                 as_alias
                   ident	`alias`
   

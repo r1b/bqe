@@ -15,7 +15,7 @@
                       bigquery__select_expr
                         column_expr
                           bigquery__literal
-                            bigquery__integer_literal	1
+                            integer_literal	1
                         as_alias
                           ident	col1
             bigquery__cte_item
@@ -28,7 +28,7 @@
                         bigquery__select_expr
                           column_expr
                             bigquery__literal
-                              bigquery__integer_literal	2
+                              integer_literal	2
                           as_alias
                             ident	col2
           query_expr
@@ -70,7 +70,7 @@
                       bigquery__select_expr
                         column_expr
                           bigquery__literal
-                            bigquery__integer_literal	1
+                            integer_literal	1
                         as_alias
                           ident	col1
           query_expr
@@ -244,7 +244,7 @@
                             bigquery__select_expr
                               column_expr
                                 bigquery__literal
-                                  bigquery__integer_literal	1
+                                  integer_literal	1
                 as_alias
                   ident	column2
           bigquery__select_from
@@ -388,7 +388,7 @@
               bigquery__select_expr
                 column_expr
                   bigquery__literal
-                    bigquery__integer_literal	1
+                    integer_literal	1
   
   '''
 # ---
@@ -524,7 +524,7 @@
                   bigquery__select_expr
                     column_expr
                       bigquery__literal
-                        bigquery__integer_literal	1
+                        integer_literal	1
   
   '''
 # ---
@@ -555,7 +555,7 @@
                                               bigquery__select_expr
                                                 column_expr
                                                   bigquery__literal
-                                                    bigquery__integer_literal	1
+                                                    integer_literal	1
   
   '''
 # ---

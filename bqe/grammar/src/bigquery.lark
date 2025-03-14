@@ -8,6 +8,7 @@
 ################################################################################
 
 _ARROW : "=>"
+_AT : "@"
 BACKTICK : "`"
 _COMMA : ","
 _DOT : "."
@@ -59,6 +60,8 @@ QUOTED_IDENT : BACKTICK /[^`]+/ BACKTICK
 ident : UNQUOTED_IDENT | QUOTED_IDENT
 
 path_expression : ident | path_expression _DOT ident
+
+parameter : _AT UNQUOTED_IDENT
 
 ################################################################################
 # Literals
@@ -122,6 +125,7 @@ INTEGER_LITERAL : /[\+\-]?(0[Xx][0-9A-Fa-f]+|[0-9]+)/
 column_expr : literal
     | subquery
     | function_call_expr
+    | parameter
     | ident
     | column_expr _DOT ident
     | subscript_expr

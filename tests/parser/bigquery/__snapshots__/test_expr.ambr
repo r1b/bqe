@@ -94,12 +94,12 @@
                       bigquery__pos_arg
                         column_expr
                           bigquery__literal
-                            bigquery__integer_literal	1
+                            integer_literal	1
                       bigquery__named_arg
                         ident	name2
                         column_expr
                           bigquery__literal
-                            bigquery__integer_literal	2
+                            integer_literal	2
   
   '''
 # ---
@@ -121,12 +121,12 @@
                         ident	name1
                         column_expr
                           bigquery__literal
-                            bigquery__integer_literal	1
+                            integer_literal	1
                       bigquery__named_arg
                         ident	name2
                         column_expr
                           bigquery__literal
-                            bigquery__integer_literal	2
+                            integer_literal	2
   
   '''
 # ---
@@ -148,7 +148,7 @@
                         ident	name1
                         column_expr
                           bigquery__literal
-                            bigquery__integer_literal	1
+                            integer_literal	1
   
   '''
 # ---
@@ -169,11 +169,11 @@
                       bigquery__pos_arg
                         column_expr
                           bigquery__literal
-                            bigquery__integer_literal	1
+                            integer_literal	1
                       bigquery__pos_arg
                         column_expr
                           bigquery__literal
-                            bigquery__integer_literal	2
+                            integer_literal	2
   
   '''
 # ---
@@ -210,7 +210,7 @@
                       bigquery__pos_arg
                         column_expr
                           bigquery__literal
-                            bigquery__integer_literal	1
+                            integer_literal	1
   
   '''
 # ---
@@ -231,10 +231,10 @@
                           ident	column1
                         column_expr
                           bigquery__literal
-                            bigquery__integer_literal	0
+                            integer_literal	0
                     column_expr
                       bigquery__literal
-                        bigquery__integer_literal	1
+                        integer_literal	1
   
   '''
 # ---
@@ -253,7 +253,7 @@
                       ident	column1
                     column_expr
                       bigquery__literal
-                        bigquery__integer_literal	0
+                        integer_literal	0
   
   '''
 # ---
@@ -278,7 +278,7 @@
                           bigquery__pos_arg
                             column_expr
                               bigquery__literal
-                                bigquery__integer_literal	2
+                                integer_literal	2
   
   '''
 # ---
@@ -301,10 +301,10 @@
                           ident	column2
                         column_expr
                           bigquery__literal
-                            bigquery__integer_literal	0
+                            integer_literal	0
                     column_expr
                       bigquery__literal
-                        bigquery__integer_literal	1
+                        integer_literal	1
   
   '''
 # ---

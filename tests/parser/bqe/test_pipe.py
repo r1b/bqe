@@ -73,3 +73,11 @@ def test_as_ok(sql, assert_parse_tree):
 ))
 def test_where_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> LIMIT 1", id="pipe_limit_integer_literal"),
+    pytest.param("FROM table1 |> LIMIT @limit", id="pipe_limit_param"),
+))
+def test_limit_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)

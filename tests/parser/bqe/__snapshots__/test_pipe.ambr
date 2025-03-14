@@ -18,6 +18,44 @@
   
   '''
 # ---
+# name: test_limit_ok[pipe_limit_integer_literal]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_limit
+                integer_literal	1
+  
+  '''
+# ---
+# name: test_limit_ok[pipe_limit_param]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_limit
+                parameter	limit
+  
+  '''
+# ---
 # name: test_pipe_drop_ok[pipe_drop_multi]
   '''
   start
@@ -111,7 +149,7 @@
                           bigquery__pos_arg
                             column_expr
                               bigquery__literal
-                                bigquery__integer_literal	2
+                                integer_literal	2
                     as_alias
                       ident	col2
                   extend_item
@@ -126,7 +164,7 @@
                           bigquery__pos_arg
                             column_expr
                               bigquery__literal
-                                bigquery__integer_literal	2
+                                integer_literal	2
   
   '''
 # ---
@@ -158,7 +196,7 @@
                           bigquery__pos_arg
                             column_expr
                               bigquery__literal
-                                bigquery__integer_literal	2
+                                integer_literal	2
   
   '''
 # ---
@@ -190,7 +228,7 @@
                           bigquery__pos_arg
                             column_expr
                               bigquery__literal
-                                bigquery__integer_literal	2
+                                integer_literal	2
                     as_alias
                       ident	col2
   
@@ -224,7 +262,7 @@
                           bigquery__pos_arg
                             column_expr
                               bigquery__literal
-                                bigquery__integer_literal	2
+                                integer_literal	2
   
   '''
 # ---
@@ -426,7 +464,7 @@
                           bigquery__pos_arg
                             column_expr
                               bigquery__literal
-                                bigquery__integer_literal	2
+                                integer_literal	2
                   set_item
                     ident	col2
                     column_expr
@@ -440,7 +478,7 @@
                           bigquery__pos_arg
                             column_expr
                               bigquery__literal
-                                bigquery__integer_literal	2
+                                integer_literal	2
   
   '''
 # ---
@@ -473,7 +511,7 @@
                           bigquery__pos_arg
                             column_expr
                               bigquery__literal
-                                bigquery__integer_literal	2
+                                integer_literal	2
   
   '''
 # ---
@@ -506,7 +544,7 @@
                           bigquery__pos_arg
                             column_expr
                               bigquery__literal
-                                bigquery__integer_literal	2
+                                integer_literal	2
   
   '''
 # ---
