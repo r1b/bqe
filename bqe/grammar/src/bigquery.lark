@@ -76,7 +76,7 @@ literal : string_literal
 #   | bignumeric_literal
 #   | float_literal
 #   | array_literal
-#   | struct_literal
+    | struct_literal
 #   | date_literal
 #   | time_literal
 #   | datetime_literal
@@ -111,6 +111,13 @@ _STRING_LITERAL_INNER : /.*?/
 integer_literal : INTEGER_LITERAL
 
 INTEGER_LITERAL : /[\+\-]?(0[Xx][0-9A-Fa-f]+|[0-9]+)/
+
+# Structs
+# Struct literals are used in some common forms like:
+# - GROUP BY GROUPING SETS ((a,b), c)
+# - (foo, bar) IN subquery
+
+struct_literal : _LPAR column_expr _COMMA column_expr ( _COMMA column_expr )* _RPAR
 
 ################################################################################
 # Expressions

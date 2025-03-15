@@ -1,5 +1,5 @@
 %import common (WS)
-%import .bigquery (_AS, _COMMA, _EQ, _FROM, _SELECT, as_alias, column_expr, from_clause, ident, integer_literal, parameter, query_expr, query_statement, select, select_list, subquery, start)
+%import .bigquery (_AS, _COMMA, _EQ, _FROM, _LPAR, _RPAR, _SELECT, as_alias, column_expr, from_clause, ident, integer_literal, parameter, query_expr, query_statement, select, select_list, subquery, start)
 
 # TODO: See ZetaSQL for a more complete definition of WS
 %ignore WS
@@ -17,11 +17,18 @@ _SEMI : ";"
 
 # All keywords are case-insensitive
 
+_AGGREGATE : "AGGREGATE"i
+_BY : "BY"i
+_CUBE : "CUBE"i
 _DROP : "DROP"i
 _EXTEND : "EXTEND"i
+_GROUP : "GROUP"i
+_GROUPING : "GROUPING"i
 _LIMIT : "LIMIT"i
 _RENAME : "RENAME"i
+_ROLLUP : "ROLLUP"i
 _SET : "SET"i
+_SETS : "SETS"i
 _WHERE : "WHERE"i
 
 ################################################################################
@@ -58,7 +65,7 @@ pipe_operator : pipe_select
     | pipe_as
     | pipe_where
     | pipe_limit
-#   | pipe_agg
+    | pipe_agg
 #   | pipe_order_by
 #   | pipe_union
 #   | pipe_intersect
@@ -117,3 +124,40 @@ pipe_where : _WHERE column_expr
 # LIMIT
 
 pipe_limit : _LIMIT ( integer_literal | parameter )
+
+# AGGREGATE
+
+pipe_agg : _AGGREGATE agg_list group_by?
+
+agg_list : agg_item ( _COMMA agg_item )* _COMMA?
+
+agg_item : column_expr as_alias?
+
+# GROUP BY
+# Per zetasql, GROUP BY ALL is not supported in pipe syntax
+# No trailing commas allowed in GROUP BY forms
+# TODO: Omitting ORDER BY for now because it is unnecessary
+
+group_by : _GROUP _BY grouping_items
+
+grouping_items :  grouping_item ( _COMMA grouping_item )*
+
+# FIXME: Make a rule for as_alias_as_required
+grouping_item : grouping_item_empty
+    | column_expr ( _AS ident )?
+    | rollup_list _RPAR
+    | cube_list _RPAR
+    | grouping_set_list _RPAR
+
+grouping_item_empty : _LPAR _RPAR
+
+rollup_list : _ROLLUP _LPAR column_expr | rollup_list _COMMA column_expr
+
+cube_list : _CUBE _LPAR column_expr | cube_list _COMMA column_expr
+
+grouping_set_list : _GROUPING _SETS _LPAR grouping_set | grouping_set_list _COMMA grouping_set
+
+grouping_set : grouping_item_empty
+    | column_expr
+    | rollup_list _RPAR
+    | cube_list _RPAR
