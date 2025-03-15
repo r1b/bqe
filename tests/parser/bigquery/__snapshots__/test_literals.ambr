@@ -376,3 +376,48 @@
   
   '''
 # ---
+# name: test_struct_literal_ok[literal_struct]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                column_expr
+                  bigquery__literal
+                    bigquery__struct_literal
+                      column_expr
+                        bigquery__literal
+                          integer_literal	1
+                      column_expr
+                        bigquery__literal
+                          integer_literal	2
+  
+  '''
+# ---
+# name: test_struct_literal_ok[literal_struct_multi]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                column_expr
+                  bigquery__literal
+                    bigquery__struct_literal
+                      column_expr
+                        bigquery__literal
+                          integer_literal	1
+                      column_expr
+                        bigquery__literal
+                          integer_literal	2
+                      column_expr
+                        bigquery__literal
+                          integer_literal	3
+  
+  '''
+# ---

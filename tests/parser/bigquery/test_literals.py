@@ -69,3 +69,11 @@ def test_integer_literal_ok(sql, assert_parse_tree):
 ))
 def test_integer_literal_error(sql, assert_parse_tree_error):
     assert_parse_tree_error(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param('SELECT (1,2)', id="literal_struct"),
+    pytest.param('SELECT (1,2,3)', id="literal_struct_multi"),
+))
+def test_struct_literal_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
