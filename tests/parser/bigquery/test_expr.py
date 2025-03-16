@@ -29,6 +29,7 @@ def test_subscript_expr_ok(sql, assert_parse_tree):
     pytest.param("SELECT FUNC(name1 => 1)", id="fcall_named_arg_single"),
     pytest.param("SELECT FUNC(name1 => 1, name2 => 2)", id="fcall_named_arg_multi"),
     pytest.param("SELECT FUNC(1, name2 => 2)", id="fcall_kitchen_sink"),
+    pytest.param("SELECT NET.IPV4_FROM_INT64(42)", id="fcall_path_expr"),
 ))
 def test_function_call_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
@@ -46,3 +47,17 @@ def test_function_call_ok(sql, assert_parse_tree):
 ))
 def test_function_call_error(sql, assert_parse_tree_error):
     assert_parse_tree_error(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("SELECT x OR y AND NOT z", id="expr_and_or_not"),
+))
+def test_and_or_not_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("SELECT x BETWEEN a AND b AND c", id="expr_between"),
+))
+def test_between(sql, assert_parse_tree):
+    assert_parse_tree(sql)

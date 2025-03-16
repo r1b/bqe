@@ -16,14 +16,11 @@
               pipe_agg
                 agg_list
                   agg_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	SUM
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
+                    bigquery__function_call_expr
+                      ident	SUM
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
                     as_alias
                       ident	col2
                 group_by
@@ -31,15 +28,11 @@
                     grouping_item
                       cube_list
                         cube_list
-                          column_expr
-                            ident	col3
-                        column_expr
-                          bigquery__literal
-                            bigquery__struct_literal
-                              column_expr
-                                ident	col4
-                              column_expr
-                                ident	col5
+                          ident	col3
+                        bigquery__literal
+                          bigquery__struct_literal
+                            ident	col4
+                            ident	col5
   
   '''
 # ---
@@ -60,14 +53,11 @@
               pipe_agg
                 agg_list
                   agg_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	SUM
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
+                    bigquery__function_call_expr
+                      ident	SUM
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
                     as_alias
                       ident	col2
                 group_by
@@ -94,14 +84,11 @@
               pipe_agg
                 agg_list
                   agg_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	SUM
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
+                    bigquery__function_call_expr
+                      ident	SUM
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
                     as_alias
                       ident	col2
                 group_by
@@ -111,19 +98,14 @@
                         grouping_set_list
                           grouping_set_list
                             grouping_set
-                              column_expr
-                                ident	col3
+                              ident	col3
                           grouping_set
-                            column_expr
-                              bigquery__literal
-                                bigquery__struct_literal
-                                  column_expr
-                                    ident	col4
-                                  column_expr
-                                    ident	col5
+                            bigquery__literal
+                              bigquery__struct_literal
+                                ident	col4
+                                ident	col5
                         grouping_set
-                          column_expr
-                            ident	col6
+                          ident	col6
   
   '''
 # ---
@@ -144,25 +126,20 @@
               pipe_agg
                 agg_list
                   agg_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	SUM
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
+                    bigquery__function_call_expr
+                      ident	SUM
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
                     as_alias
                       ident	col2
                 group_by
                   grouping_items
                     grouping_item
-                      column_expr
-                        ident	col3
+                      ident	col3
                       ident	col4
                     grouping_item
-                      column_expr
-                        ident	col5
+                      ident	col5
                       ident	col6
   
   '''
@@ -184,14 +161,11 @@
               pipe_agg
                 agg_list
                   agg_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	SUM
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
+                    bigquery__function_call_expr
+                      ident	SUM
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
                     as_alias
                       ident	col2
                 group_by
@@ -199,10 +173,8 @@
                     grouping_item
                       rollup_list
                         rollup_list
-                          column_expr
-                            ident	col3
-                        column_expr
-                          ident	col4
+                          ident	col3
+                        ident	col4
   
   '''
 # ---
@@ -223,21 +195,17 @@
               pipe_agg
                 agg_list
                   agg_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	SUM
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
+                    bigquery__function_call_expr
+                      ident	SUM
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
                     as_alias
                       ident	col2
                 group_by
                   grouping_items
                     grouping_item
-                      column_expr
-                        ident	col3
+                      ident	col3
   
   '''
 # ---
@@ -258,21 +226,17 @@
               pipe_agg
                 agg_list
                   agg_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	SUM
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
+                    bigquery__function_call_expr
+                      ident	SUM
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
                     as_alias
                       ident	col2
                 group_by
                   grouping_items
                     grouping_item
-                      column_expr
-                        ident	col3
+                      ident	col3
                       ident	col4
   
   '''
@@ -294,25 +258,19 @@
               pipe_agg
                 agg_list
                   agg_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	SUM
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
+                    bigquery__function_call_expr
+                      ident	SUM
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
                     as_alias
                       ident	col2
                   agg_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	SUM
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col3
+                    bigquery__function_call_expr
+                      ident	SUM
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col3
                     as_alias
                       ident	col4
   
@@ -335,14 +293,11 @@
               pipe_agg
                 agg_list
                   agg_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	SUM
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
+                    bigquery__function_call_expr
+                      ident	SUM
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
   
   '''
 # ---
@@ -363,14 +318,11 @@
               pipe_agg
                 agg_list
                   agg_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	SUM
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
+                    bigquery__function_call_expr
+                      ident	SUM
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
                     as_alias
                       ident	col2
   
@@ -515,33 +467,25 @@
               pipe_extend
                 extend_list
                   extend_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	POW
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
-                          bigquery__pos_arg
-                            column_expr
-                              bigquery__literal
-                                integer_literal	2
+                    bigquery__function_call_expr
+                      ident	POW
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
+                        bigquery__pos_arg
+                          bigquery__literal
+                            integer_literal	2
                     as_alias
                       ident	col2
                   extend_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	EXP
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
-                          bigquery__pos_arg
-                            column_expr
-                              bigquery__literal
-                                integer_literal	2
+                    bigquery__function_call_expr
+                      ident	EXP
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
+                        bigquery__pos_arg
+                          bigquery__literal
+                            integer_literal	2
   
   '''
 # ---
@@ -562,18 +506,14 @@
               pipe_extend
                 extend_list
                   extend_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	POW
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
-                          bigquery__pos_arg
-                            column_expr
-                              bigquery__literal
-                                integer_literal	2
+                    bigquery__function_call_expr
+                      ident	POW
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
+                        bigquery__pos_arg
+                          bigquery__literal
+                            integer_literal	2
   
   '''
 # ---
@@ -594,18 +534,14 @@
               pipe_extend
                 extend_list
                   extend_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	POW
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
-                          bigquery__pos_arg
-                            column_expr
-                              bigquery__literal
-                                integer_literal	2
+                    bigquery__function_call_expr
+                      ident	POW
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
+                        bigquery__pos_arg
+                          bigquery__literal
+                            integer_literal	2
                     as_alias
                       ident	col2
   
@@ -628,18 +564,14 @@
               pipe_extend
                 extend_list
                   extend_item
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	POW
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
-                          bigquery__pos_arg
-                            column_expr
-                              bigquery__literal
-                                integer_literal	2
+                    bigquery__function_call_expr
+                      ident	POW
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
+                        bigquery__pos_arg
+                          bigquery__literal
+                            integer_literal	2
   
   '''
 # ---
@@ -674,8 +606,7 @@
                 select_list
                   bigquery__select_item
                     bigquery__select_expr
-                      column_expr
-                        ident	col1
+                      ident	col1
   
   '''
 # ---
@@ -690,8 +621,7 @@
               select_list
                 bigquery__select_item
                   bigquery__select_expr
-                    column_expr
-                      ident	col1
+                    ident	col1
               bigquery__select_from
                 from_clause
                   bigquery__from_item_table
@@ -703,8 +633,7 @@
                 select_list
                   bigquery__select_item
                     bigquery__select_expr
-                      column_expr
-                        ident	col1
+                      ident	col1
   
   '''
 # ---
@@ -721,8 +650,7 @@
                   select_list
                     bigquery__select_item
                       bigquery__select_expr
-                        column_expr
-                          ident	col1
+                        ident	col1
                   bigquery__select_from
                     from_clause
                       bigquery__from_item_table
@@ -734,8 +662,7 @@
                 select_list
                   bigquery__select_item
                     bigquery__select_expr
-                      column_expr
-                        ident	col1
+                      ident	col1
   
   '''
 # ---
@@ -830,32 +757,24 @@
                 set_list
                   set_item
                     ident	col1
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	POW
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
-                          bigquery__pos_arg
-                            column_expr
-                              bigquery__literal
-                                integer_literal	2
+                    bigquery__function_call_expr
+                      ident	POW
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
+                        bigquery__pos_arg
+                          bigquery__literal
+                            integer_literal	2
                   set_item
                     ident	col2
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	EXP
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
-                          bigquery__pos_arg
-                            column_expr
-                              bigquery__literal
-                                integer_literal	2
+                    bigquery__function_call_expr
+                      ident	EXP
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
+                        bigquery__pos_arg
+                          bigquery__literal
+                            integer_literal	2
   
   '''
 # ---
@@ -877,18 +796,14 @@
                 set_list
                   set_item
                     ident	col1
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	POW
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
-                          bigquery__pos_arg
-                            column_expr
-                              bigquery__literal
-                                integer_literal	2
+                    bigquery__function_call_expr
+                      ident	POW
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
+                        bigquery__pos_arg
+                          bigquery__literal
+                            integer_literal	2
   
   '''
 # ---
@@ -910,18 +825,14 @@
                 set_list
                   set_item
                     ident	col1
-                    column_expr
-                      bigquery__function_call_expr
-                        column_expr
-                          ident	POW
-                        bigquery__function_args
-                          bigquery__pos_arg
-                            column_expr
-                              ident	col1
-                          bigquery__pos_arg
-                            column_expr
-                              bigquery__literal
-                                integer_literal	2
+                    bigquery__function_call_expr
+                      ident	POW
+                      bigquery__function_args
+                        bigquery__pos_arg
+                          ident	col1
+                        bigquery__pos_arg
+                          bigquery__literal
+                            integer_literal	2
   
   '''
 # ---
@@ -940,8 +851,7 @@
           pipe_item
             pipe_operator
               pipe_where
-                column_expr
-                  ident	col1
+                ident	col1
   
   '''
 # ---

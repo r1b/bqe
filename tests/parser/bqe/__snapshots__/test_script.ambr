@@ -10,8 +10,7 @@
               select_list
                 bigquery__select_item
                   bigquery__select_expr
-                    column_expr
-                      ident	col1
+                    ident	col1
               bigquery__select_from
                 from_clause
                   bigquery__from_item_table
@@ -24,8 +23,7 @@
                 select_list
                   bigquery__select_item
                     bigquery__select_expr
-                      column_expr
-                        ident	col2
+                      ident	col2
                 bigquery__select_from
                   from_clause
                     bigquery__from_item_table
@@ -45,8 +43,7 @@
               select_list
                 bigquery__select_item
                   bigquery__select_expr
-                    column_expr
-                      ident	col1
+                    ident	col1
               bigquery__select_from
                 from_clause
                   bigquery__from_item_table
@@ -61,8 +58,7 @@
                     select_list
                       bigquery__select_item
                         bigquery__select_expr
-                          column_expr
-                            ident	col2
+                          ident	col2
                     bigquery__select_from
                       from_clause
                         bigquery__from_item_table
@@ -83,8 +79,7 @@
               select_list
                 bigquery__select_item
                   bigquery__select_expr
-                    column_expr
-                      ident	col1
+                    ident	col1
               bigquery__select_from
                 from_clause
                   bigquery__from_item_table
