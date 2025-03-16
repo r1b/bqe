@@ -51,6 +51,7 @@ def test_function_call_error(sql, assert_parse_tree_error):
 
 @pytest.mark.parametrize("sql", (
     pytest.param("SELECT x OR y AND NOT z", id="expr_and_or_not"),
+    pytest.param("SELECT (x OR y) AND NOT z", id="expr_and_or_not_parens"),
 ))
 def test_and_or_not_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)

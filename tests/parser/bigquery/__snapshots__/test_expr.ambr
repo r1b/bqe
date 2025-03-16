@@ -17,6 +17,25 @@
   
   '''
 # ---
+# name: test_and_or_not_ok[expr_and_or_not_parens]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__and_expr
+                  bigquery__parenthesized_not_a_query_expr
+                    bigquery__or_expr
+                      ident	x
+                      ident	y
+                  bigquery__not_expr
+                    ident	z
+  
+  '''
+# ---
 # name: test_between[expr_between]
   '''
   start

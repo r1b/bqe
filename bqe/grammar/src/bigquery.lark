@@ -156,7 +156,8 @@ struct_literal : _LPAR column_expr _COMMA column_expr ( _COMMA column_expr )* _R
 # We force precedence with only one alternative per rule, in a big chain that
 # runs from lowest to highest precedence
 # We pull out a separate rule for all operators w / higher precedence than AND
-# to deal with semantic ambiguity in `BETWEEN`
+# to deal with semantic ambiguity in `BETWEEN` and disambiguate different flavors
+# of parenthesized forms
 # This structure closely follows the expression tree in ZetaSQL
 
 ?column_expr: prec_higher_than_and_expr | binary_boolean_expr
@@ -166,7 +167,20 @@ struct_literal : _LPAR column_expr _COMMA column_expr ( _COMMA column_expr )* _R
 ?and_expr : and_expr _AND prec_higher_than_and_expr
     | prec_higher_than_and_expr _AND prec_higher_than_and_expr
 
-?prec_higher_than_and_expr : is_distinct_from_expr | _NOT prec_higher_than_and_expr -> not_expr
+?prec_higher_than_and_expr : unparenthesized_prec_higher_than_and_expr
+    | parenthesized_not_a_query_expr
+    | subquery
+
+# In other words, parens used for grouping expressions, but not subqueries
+parenthesized_not_a_query_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPAR
+
+?maybe_parenthesized_not_a_query_expr : parenthesized_not_a_query_expr
+    | unparenthesized_prec_higher_than_and_expr
+    | binary_boolean_expr
+
+# This begins the chain of operators / atoms
+?unparenthesized_prec_higher_than_and_expr : is_distinct_from_expr
+    | _NOT prec_higher_than_and_expr -> not_expr
 
 ?is_distinct_from_expr : is_not_expr
     | prec_higher_than_and_expr _IS _DISTINCT _FROM prec_higher_than_and_expr
@@ -249,7 +263,6 @@ struct_literal : _LPAR column_expr _COMMA column_expr ( _COMMA column_expr )* _R
 # Now we don't really care about precedence anymore
 # TODO: Handle EXISTS(...)
 ?atom_expr : literal
-    | subquery
     | function_call_expr
     | parameter
     | ident
