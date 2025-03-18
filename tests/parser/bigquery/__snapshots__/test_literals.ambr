@@ -1,4 +1,18 @@
 # serializer version: 1
+# name: test_bignumeric_literal_ok[literal_bignumeric]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bignumeric_literal	'42'
+  
+  '''
+# ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_empty]
   '''
   start
@@ -237,6 +251,62 @@
   
   '''
 # ---
+# name: test_float_literal_ok[literal_float_dig_dot]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__float_literal	58.
+  
+  '''
+# ---
+# name: test_float_literal_ok[literal_float_dig_dot_dig_lowere_minus_dig]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__float_literal	123.456e-67
+  
+  '''
+# ---
+# name: test_float_literal_ok[literal_float_dig_lowere_dig]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__float_literal	4e2
+  
+  '''
+# ---
+# name: test_float_literal_ok[literal_float_dot_dig_cape_dig]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__float_literal	.1E4
+  
+  '''
+# ---
 # name: test_integer_literal_ok[literal_integer_decimal]
   '''
   start
@@ -348,6 +418,20 @@
                   integer_literal	1
                 as_alias
                   ident	`alias`
+  
+  '''
+# ---
+# name: test_numeric_literal_ok[literal_numeric]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__numeric_literal	'42'
   
   '''
 # ---

@@ -52,6 +52,7 @@ ANY : "ANY"i
 ALL : "ALL"i
 _AS : "AS"i
 _BETWEEN : "BETWEEN"i
+_BIGNUMERIC : "BIGNUMERIC"i
 _DISTINCT : "DISTINCT"i
 FALSE : "FALSE"i
 _FOR : "FOR"i
@@ -63,6 +64,7 @@ _OR : "OR"i
 _OFFSET : "OFFSET"i
 _NOT : "NOT"i
 NULL : "NULL"i
+_NUMERIC : "NUMERIC"i
 _SELECT : "SELECT"i
 SOME : "SOME"i
 STRUCT : "STRUCT"i
@@ -102,9 +104,9 @@ parameter : _AT UNQUOTED_IDENT
 literal : string_literal
     | bytes_literal
     | integer_literal
-#   | numeric_literal
-#   | bignumeric_literal
-#   | float_literal
+    | numeric_literal
+    | bignumeric_literal
+    | float_literal
 #   | array_literal
     | struct_literal
 #   | date_literal
@@ -164,6 +166,20 @@ _BYTES_LITERAL_INNER : /.*?/
 integer_literal : INTEGER_LITERAL
 
 INTEGER_LITERAL : /[\+\-]?(0[Xx][0-9A-Fa-f]+|[0-9]+)/
+
+# Numeric
+
+numeric_literal : _NUMERIC STRING_LITERAL
+
+bignumeric_literal : _BIGNUMERIC STRING_LITERAL
+
+# Floats
+
+float_literal : FLOAT_LITERAL
+
+FLOAT_LITERAL : /[\+\-]?[0-9]+\.[0-9]*([Ee][\+\-]?[0-9]+)?/
+    | /[\+\-]?[0-9]*\.[0-9]+([Ee][\+\-]?[0-9]+)?/
+    | /[0-9]+[Ee][\+\-]?[0-9]+/
 
 # Structs
 # Struct literals are used in some common forms like:

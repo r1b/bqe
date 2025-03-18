@@ -109,6 +109,28 @@ def test_integer_literal_error(sql, assert_parse_tree_error):
 
 
 @pytest.mark.parametrize("sql", (
+    pytest.param("SELECT NUMERIC '42'", id="literal_numeric"),
+))
+def test_numeric_literal_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+@pytest.mark.parametrize("sql", (
+        pytest.param("SELECT BIGNUMERIC '42'", id="literal_bignumeric"),
+))
+def test_bignumeric_literal_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+@pytest.mark.parametrize("sql", (
+    pytest.param('SELECT 123.456e-67', id="literal_float_dig_dot_dig_lowere_minus_dig"),
+    pytest.param('SELECT .1E4', id="literal_float_dot_dig_cape_dig"),
+    pytest.param('SELECT 58.', id="literal_float_dig_dot"),
+    pytest.param('SELECT 4e2', id="literal_float_dig_lowere_dig"),
+))
+def test_float_literal_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
     pytest.param('SELECT (1,2)', id="literal_struct"),
     pytest.param('SELECT (1,2,3)', id="literal_struct_multi"),
 ))
