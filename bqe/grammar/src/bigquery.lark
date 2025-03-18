@@ -100,7 +100,7 @@ parameter : _AT UNQUOTED_IDENT
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#literals
 
 literal : string_literal
-#   | bytes_literal
+    | bytes_literal
     | integer_literal
 #   | numeric_literal
 #   | bignumeric_literal
@@ -121,10 +121,12 @@ literal : string_literal
 
 string_literal : STRING_LITERAL
 
-STRING_LITERAL : ("R" | "r")? _DQUOT_STRING_LITERAL
-    | ("R" | "r")? _DQUOT3_STRING_LITERAL
-    | ("R" | "r")? _SQUOT_STRING_LITERAL
-    | ("R" | "r")? _SQUOT3_STRING_LITERAL
+STRING_LITERAL : _STRING_LITERAL_PREFIX? _DQUOT_STRING_LITERAL
+    | _STRING_LITERAL_PREFIX? _DQUOT3_STRING_LITERAL
+    | _STRING_LITERAL_PREFIX? _SQUOT_STRING_LITERAL
+    | _STRING_LITERAL_PREFIX? _SQUOT3_STRING_LITERAL
+
+_STRING_LITERAL_PREFIX : "r"i
 
 _DQUOT_STRING_LITERAL : DQUOT _STRING_LITERAL_INNER DQUOT
 
@@ -135,6 +137,27 @@ _SQUOT_STRING_LITERAL : SQUOT _STRING_LITERAL_INNER SQUOT
 _SQUOT3_STRING_LITERAL : SQUOT SQUOT SQUOT _STRING_LITERAL_INNER SQUOT SQUOT SQUOT
 
 _STRING_LITERAL_INNER : /.*?/
+
+# Bytes
+
+bytes_literal : BYTES_LITERAL
+
+BYTES_LITERAL : _BYTES_LITERAL_PREFIX _DQUOT_BYTES_LITERAL
+    | _BYTES_LITERAL_PREFIX _DQUOT3_BYTES_LITERAL
+    | _BYTES_LITERAL_PREFIX _SQUOT_BYTES_LITERAL
+    | _BYTES_LITERAL_PREFIX _SQUOT3_BYTES_LITERAL
+
+_BYTES_LITERAL_PREFIX : "rb"i | "br"i | "b"i
+
+_DQUOT_BYTES_LITERAL : DQUOT _BYTES_LITERAL_INNER DQUOT
+
+_DQUOT3_BYTES_LITERAL : DQUOT DQUOT DQUOT _BYTES_LITERAL_INNER DQUOT DQUOT DQUOT
+
+_SQUOT_BYTES_LITERAL : SQUOT _BYTES_LITERAL_INNER SQUOT
+
+_SQUOT3_BYTES_LITERAL : SQUOT SQUOT SQUOT _BYTES_LITERAL_INNER SQUOT SQUOT SQUOT
+
+_BYTES_LITERAL_INNER : /.*?/
 
 # Integers
 
@@ -264,7 +287,7 @@ parenthesized_not_a_query_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPA
 # TODO: Handle EXISTS(...)
 ?atom_expr : literal
     | function_call_expr
-    | parameter
+    | parameter # TODO: I don't think we need this - its just an ident
     | ident
 
 # Functions

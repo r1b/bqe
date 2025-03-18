@@ -42,6 +42,43 @@ def test_string_literal_ok(sql, assert_parse_tree):
 def test_string_literal_error(sql, assert_parse_tree_error):
     assert_parse_tree_error(sql)
 
+@pytest.mark.parametrize("sql", (
+        pytest.param('SELECT b""', id="literal_bytes_dquot_empty"),
+        pytest.param('SELECT b"bytes"', id="literal_bytes_dquot_nonempty"),
+        pytest.param("SELECT b''", id="literal_bytes_squot_empty"),
+        pytest.param("SELECT b'bytes'", id="literal_bytes_squot_nonempty"),
+        pytest.param('SELECT b""""""', id="literal_bytes_tdquot_empty"),
+        pytest.param('SELECT b"""We say: "hello"."""', id="literal_bytes_tdquot_nonempty"),
+        pytest.param("SELECT b''''''", id="literal_bytes_tsquot_empty"),
+        pytest.param("SELECT b'''We say: 'hello'.'''", id="literal_bytes_tsquot_nonempty"),
+        pytest.param('SELECT br""', id="literal_bytes_dquot_raw_empty"),
+        pytest.param('SELECT rb"bytes"', id="literal_bytes_dquot_raw_nonempty"),
+        pytest.param('SELECT BR"bytes"', id="literal_bytes_dquot_raw_cap"),
+        pytest.param("SELECT br''", id="literal_bytes_squot_raw_empty"),
+        pytest.param("SELECT br'bytes'", id="literal_bytes_squot_raw_nonempty"),
+        pytest.param('SELECT br""""""', id="literal_bytes_tdquot_raw_empty"),
+        pytest.param('SELECT br"""We say: "hello"."""', id="literal_bytes_tdquot_raw_nonempty"),
+        pytest.param("SELECT br''''''", id="literal_bytes_tsquot_raw_empty"),
+        pytest.param("SELECT br'''We say: 'hello'.'''", id="literal_bytes_tsquot_raw_nonempty"),
+))
+def test_bytes_literal_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+        pytest.param('SELECT b"bytes', id="literal_bytes_dquot_unclosed"),
+        pytest.param("SELECT b'bytes", id="literal_bytes_squot_unclosed"),
+        pytest.param('SELECT b"""bytes', id="literal_bytes_tdquot_unclosed"),
+        pytest.param("SELECT b'''bytes", id="literal_bytes_tsquot_unclosed"),
+        pytest.param('SELECT br"bytes', id="literal_bytes_dquot_raw_unclosed"),
+        pytest.param("SELECT br'bytes", id="literal_bytes_squot_raw_unclosed"),
+        pytest.param('SELECT br"""bytes', id="literal_bytes_tdquot_raw_unclosed"),
+        pytest.param("SELECT br'''bytes", id="literal_bytes_tsquot_raw_unclosed"),
+        pytest.param('SELECT b"""We say: "hello""""', id="literal_bytes_tdquot_trailing_quot"),
+))
+def test_bytes_literal_error(sql, assert_parse_tree_error):
+    assert_parse_tree_error(sql)
+
 
 @pytest.mark.parametrize("sql", (
     pytest.param('SELECT 1', id="literal_integer_decimal"),

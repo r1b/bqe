@@ -1,4 +1,242 @@
 # serializer version: 1
+# name: test_bytes_literal_ok[literal_bytes_dquot_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	b""
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_dquot_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	b"bytes"
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_dquot_raw_cap]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	BR"bytes"
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_dquot_raw_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	br""
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_dquot_raw_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	rb"bytes"
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_squot_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	b''
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_squot_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	b'bytes'
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_squot_raw_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	br''
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_squot_raw_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	br'bytes'
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tdquot_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	b""""""
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tdquot_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	b"""We say: "hello"."""
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tdquot_raw_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	br""""""
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tdquot_raw_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	br"""We say: "hello"."""
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tsquot_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	b''''''
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tsquot_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	b'''We say: 'hello'.'''
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tsquot_raw_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	br''''''
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tsquot_raw_nonempty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__bytes_literal	br'''We say: 'hello'.'''
+  
+  '''
+# ---
 # name: test_integer_literal_ok[literal_integer_decimal]
   '''
   start
