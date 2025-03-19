@@ -1,4 +1,98 @@
 # serializer version: 1
+# name: test_array_literal_ok[literal_array_empty]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__array_literal
+  
+  '''
+# ---
+# name: test_array_literal_ok[literal_array_multi]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__array_literal
+                    bigquery__literal
+                      integer_literal	1
+                    bigquery__literal
+                      integer_literal	2
+                    bigquery__literal
+                      integer_literal	3
+  
+  '''
+# ---
+# name: test_array_literal_ok[literal_array_prefix]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__array_literal
+                    bigquery__array_prefix
+                    bigquery__literal
+                      integer_literal	1
+                    bigquery__literal
+                      integer_literal	2
+                    bigquery__literal
+                      integer_literal	3
+  
+  '''
+# ---
+# name: test_array_literal_ok[literal_array_prefix_type]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__array_literal
+                    bigquery__array_prefix
+                      bigquery__array_type
+                        ident	INT64
+                    bigquery__literal
+                      integer_literal	1
+                    bigquery__literal
+                      integer_literal	2
+                    bigquery__literal
+                      integer_literal	3
+  
+  '''
+# ---
+# name: test_array_literal_ok[literal_array_single]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__array_literal
+                    bigquery__literal
+                      integer_literal	1
+  
+  '''
+# ---
 # name: test_bignumeric_literal_ok[literal_bignumeric]
   '''
   start

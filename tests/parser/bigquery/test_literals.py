@@ -131,6 +131,17 @@ def test_float_literal_ok(sql, assert_parse_tree):
 
 
 @pytest.mark.parametrize("sql", (
+    pytest.param('SELECT []', id="literal_array_empty"),
+    pytest.param('SELECT [1]', id="literal_array_single"),
+    pytest.param('SELECT [1,2,3]', id="literal_array_multi"),
+    pytest.param('SELECT ARRAY [1,2,3]', id="literal_array_prefix"),
+    pytest.param('SELECT ARRAY<INT64>[1,2,3]', id="literal_array_prefix_type"),
+))
+def test_array_literal_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
     pytest.param('SELECT (1,2)', id="literal_struct"),
     pytest.param('SELECT (1,2,3)', id="literal_struct_multi"),
 ))
