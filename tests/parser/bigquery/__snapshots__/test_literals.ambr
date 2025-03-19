@@ -587,6 +587,20 @@
   
   '''
 # ---
+# name: test_json_literal_ok[literal_json]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__json_literal	'{}'
+  
+  '''
+# ---
 # name: test_numeric_literal_ok[literal_numeric]
   '''
   start
