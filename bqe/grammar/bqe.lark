@@ -18,13 +18,19 @@ _SEMI : ";"
 # All keywords are case-insensitive
 
 _AGGREGATE : "AGGREGATE"i
+ASC : "ASC"i
 _BY : "BY"i
 _CUBE : "CUBE"i
+DESC : "DESC"i
 _DROP : "DROP"i
 _EXTEND : "EXTEND"i
+FIRST : "FIRST"i
 _GROUP : "GROUP"i
 _GROUPING : "GROUPING"i
+LAST : "LAST"i
 _LIMIT : "LIMIT"i
+_NULLS : "NULLS"i
+_ORDER : "ORDER"i
 _RENAME : "RENAME"i
 _ROLLUP : "ROLLUP"i
 _SET : "SET"i
@@ -66,7 +72,7 @@ pipe_operator : pipe_select
     | pipe_where
     | pipe_limit
     | pipe_agg
-#   | pipe_order_by
+    | pipe_order_by
 #   | pipe_union
 #   | pipe_intersect
 #   | pipe_except
@@ -161,3 +167,15 @@ grouping_set : grouping_item_empty
     | column_expr
     | rollup_list _RPAR
     | cube_list _RPAR
+
+# ORDER BY
+
+pipe_order_by : _ORDER _BY order_by_items
+
+order_by_items : order_by_item ( _COMMA order_by_item )*
+
+order_by_item : column_expr order_by_item_sort? order_by_item_nulls?
+
+order_by_item_sort : ASC | DESC
+
+order_by_item_nulls : _NULLS ( FIRST | LAST )

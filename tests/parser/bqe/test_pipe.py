@@ -102,3 +102,14 @@ def test_limit_ok(sql, assert_parse_tree):
 ))
 def test_agg_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> ORDER BY col1", id="order_by_single"),
+    pytest.param("FROM table1 |> ORDER BY col1, col2", id="order_by_multi"),
+    pytest.param("FROM table1 |> ORDER BY col1 ASC, col2 DESC", id="order_by_multi_sort"),
+    pytest.param("FROM table1 |> ORDER BY col1 NULLS FIRST, col2 NULLS LAST", id="order_by_multi_nulls"),
+    pytest.param("FROM table1 |> ORDER BY col1 ASC NULLS FIRST, col2 DESC NULLS LAST", id="order_by_multi_kitchen_sink"),
+))
+def test_order_by_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
