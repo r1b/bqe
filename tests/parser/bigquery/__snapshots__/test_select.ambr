@@ -536,7 +536,7 @@
                 ident	column1
           bigquery__select_from
             from_clause
-              bigquery__from_item
+              from_item
                 bigquery__from_item_unnest
                   bigquery__unnest_expression
                     ident	array1
@@ -555,7 +555,7 @@
                 ident	column1
           bigquery__select_from
             from_clause
-              bigquery__from_item
+              from_item
                 bigquery__from_item_unnest
                   bigquery__unnest_expression
                     ident	array1
@@ -580,7 +580,7 @@
                 bigquery__from_item_table
                   bigquery__path_expression
                     ident	table1
-              bigquery__from_item
+              from_item
                 bigquery__from_item_unnest
                   bigquery__unnest_expression
                     ident	array1
@@ -603,7 +603,7 @@
                 bigquery__from_item_table
                   bigquery__path_expression
                     ident	table1
-              bigquery__from_item
+              from_item
                 bigquery__from_item_unnest
                   bigquery__unnest_expression
                     ident	array1
@@ -631,7 +631,7 @@
                 bigquery__from_item_table
                   bigquery__path_expression
                     ident	table1
-              bigquery__from_item
+              from_item
                 bigquery__from_item_unnest
                   bigquery__unnest_expression
                     ident	array1
@@ -655,7 +655,7 @@
                 bigquery__from_item_table
                   bigquery__path_expression
                     ident	table1
-              bigquery__from_item
+              from_item
                 bigquery__from_item_unnest
                   bigquery__unnest_expression
                     ident	array1

@@ -1,5 +1,5 @@
 %import common (WS)
-%import .bigquery (ALL, _AS, _COMMA, DISTINCT, _EQ, _FROM, _LPAR, _RPAR, _SELECT, as_alias, column_expr, from_clause, ident, integer_literal, parameter, query_expr, query_statement, select, select_list, subquery, start)
+%import .bigquery (ALL, _AS, _COMMA, DISTINCT, _EQ, _FROM, _LPAR, _RPAR, _SELECT, as_alias, column_expr, from_clause, from_item, ident, integer_literal, parameter, query_expr, query_statement, select, select_list, subquery, start)
 
 # TODO: See ZetaSQL for a more complete definition of WS
 %ignore WS
@@ -21,6 +21,7 @@ _AGGREGATE : "AGGREGATE"i
 ASC : "ASC"i
 _BY : "BY"i
 _CORRESPONDING : "CORRESPONDING"i
+CROSS : "CROSS"i
 _CUBE : "CUBE"i
 DESC : "DESC"i
 _DROP : "DROP"i
@@ -32,6 +33,7 @@ _GROUP : "GROUP"i
 _GROUPING : "GROUPING"i
 INNER : "INNER"i
 INTERSECT : "INTERSECT"i
+_JOIN : "JOIN"i
 LAST : "LAST"i
 LEFT : "LEFT"i
 _LIMIT : "LIMIT"i
@@ -41,11 +43,13 @@ _ON : "ON"i
 _ORDER : "ORDER"i
 OUTER : "OUTER"i
 _RENAME : "RENAME"i
+RIGHT : "RIGHT"i
 _ROLLUP : "ROLLUP"i
 _SET : "SET"i
 _SETS : "SETS"i
 _STRICT : "STRICT"i
 UNION : "UNION"i
+_USING : "USING"i
 _WHERE : "WHERE"i
 
 ################################################################################
@@ -85,7 +89,7 @@ pipe_operator : pipe_select
     | pipe_agg
     | pipe_order_by
     | pipe_set_operation
-#   | pipe_join
+    | pipe_join
 #   | pipe_call
 #   | pipe_window
 #   | pipe_tablesample
@@ -192,8 +196,7 @@ order_by_item_nulls : _NULLS ( FIRST | LAST )
 
 # Set operations
 
-pipe_set_operation : set_operation
-    | set_operation_with_criteria
+pipe_set_operation : set_operation | set_operation_with_criteria
 
 set_operation : set_operation_kind set_operation_mode set_operation_modifier? set_operation_list
 
@@ -218,3 +221,17 @@ set_operation_modifier_strict_corresponding : _STRICT _CORRESPONDING ( _BY set_o
 set_operation_columns : _LPAR ident ( _COMMA ident )* _RPAR
 
 set_operation_criteria : INNER | ( FULL | LEFT ) OUTER?
+
+pipe_join : join | join_with_criteria
+
+join : _JOIN from_item ( on_clause | using_clause )
+
+on_clause : _ON column_expr
+
+using_clause : _USING using_columns
+
+using_columns : _LPAR ident ( _COMMA ident )* _RPAR
+
+join_with_criteria : join_criteria _JOIN from_item ( on_clause | using_clause )
+
+join_criteria : CROSS | INNER | ( FULL | LEFT | RIGHT ) OUTER?

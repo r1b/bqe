@@ -136,3 +136,21 @@ def test_order_by_ok(sql, assert_parse_tree):
 ))
 def test_set_operation_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> JOIN table2 USING (col1)", id="join_using_single"),
+    pytest.param("FROM table1 |> JOIN table2 USING (col1, col2)", id="join_using_multi"),
+    pytest.param("FROM table1 |> JOIN table2 ON col1 = col2", id="join_on_single_expr"),
+    pytest.param("FROM table1 |> JOIN table2 ON col1 = col2 AND col3 != col4", id="join_on_compound_expr"),
+    pytest.param("FROM table1 |> INNER JOIN table2 USING (col1)", id="join_inner"),
+    pytest.param("FROM table1 |> LEFT JOIN table2 USING (col1)", id="join_left"),
+    pytest.param("FROM table1 |> LEFT OUTER JOIN table2 USING (col1)", id="join_left_outer"),
+    pytest.param("FROM table1 |> FULL JOIN table2 USING (col1)", id="join_full"),
+    pytest.param("FROM table1 |> FULL OUTER JOIN table2 USING (col1)", id="join_full_outer"),
+    pytest.param("FROM table1 |> RIGHT JOIN table2 USING (col1)", id="join_right"),
+    pytest.param("FROM table1 |> RIGHT OUTER JOIN table2 USING (col1)", id="join_right_outer"),
+    pytest.param("FROM table1 |> CROSS JOIN table2 USING (col1)", id="join_cross"),
+))
+def test_join_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)

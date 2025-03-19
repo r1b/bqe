@@ -347,6 +347,327 @@
   
   '''
 # ---
+# name: test_join_ok[join_cross]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_join
+                join_with_criteria
+                  join_criteria	CROSS
+                  bigquery__from_item_table
+                    bigquery__path_expression
+                      ident	table2
+                  using_clause
+                    using_columns
+                      ident	col1
+  
+  '''
+# ---
+# name: test_join_ok[join_full]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_join
+                join_with_criteria
+                  join_criteria	FULL
+                  bigquery__from_item_table
+                    bigquery__path_expression
+                      ident	table2
+                  using_clause
+                    using_columns
+                      ident	col1
+  
+  '''
+# ---
+# name: test_join_ok[join_full_outer]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_join
+                join_with_criteria
+                  join_criteria
+                    FULL
+                    OUTER
+                  bigquery__from_item_table
+                    bigquery__path_expression
+                      ident	table2
+                  using_clause
+                    using_columns
+                      ident	col1
+  
+  '''
+# ---
+# name: test_join_ok[join_inner]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_join
+                join_with_criteria
+                  join_criteria	INNER
+                  bigquery__from_item_table
+                    bigquery__path_expression
+                      ident	table2
+                  using_clause
+                    using_columns
+                      ident	col1
+  
+  '''
+# ---
+# name: test_join_ok[join_left]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_join
+                join_with_criteria
+                  join_criteria	LEFT
+                  bigquery__from_item_table
+                    bigquery__path_expression
+                      ident	table2
+                  using_clause
+                    using_columns
+                      ident	col1
+  
+  '''
+# ---
+# name: test_join_ok[join_left_outer]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_join
+                join_with_criteria
+                  join_criteria
+                    LEFT
+                    OUTER
+                  bigquery__from_item_table
+                    bigquery__path_expression
+                      ident	table2
+                  using_clause
+                    using_columns
+                      ident	col1
+  
+  '''
+# ---
+# name: test_join_ok[join_on_compound_expr]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_join
+                join
+                  bigquery__from_item_table
+                    bigquery__path_expression
+                      ident	table2
+                  on_clause
+                    bigquery__and_expr
+                      bigquery__eq_expr
+                        ident	col1
+                        ident	col2
+                      bigquery__ne_expr
+                        ident	col3
+                        ident	col4
+  
+  '''
+# ---
+# name: test_join_ok[join_on_single_expr]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_join
+                join
+                  bigquery__from_item_table
+                    bigquery__path_expression
+                      ident	table2
+                  on_clause
+                    bigquery__eq_expr
+                      ident	col1
+                      ident	col2
+  
+  '''
+# ---
+# name: test_join_ok[join_right]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_join
+                join_with_criteria
+                  join_criteria	RIGHT
+                  bigquery__from_item_table
+                    bigquery__path_expression
+                      ident	table2
+                  using_clause
+                    using_columns
+                      ident	col1
+  
+  '''
+# ---
+# name: test_join_ok[join_right_outer]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_join
+                join_with_criteria
+                  join_criteria
+                    RIGHT
+                    OUTER
+                  bigquery__from_item_table
+                    bigquery__path_expression
+                      ident	table2
+                  using_clause
+                    using_columns
+                      ident	col1
+  
+  '''
+# ---
+# name: test_join_ok[join_using_multi]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_join
+                join
+                  bigquery__from_item_table
+                    bigquery__path_expression
+                      ident	table2
+                  using_clause
+                    using_columns
+                      ident	col1
+                      ident	col2
+  
+  '''
+# ---
+# name: test_join_ok[join_using_single]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_join
+                join
+                  bigquery__from_item_table
+                    bigquery__path_expression
+                      ident	table2
+                  using_clause
+                    using_columns
+                      ident	col1
+  
+  '''
+# ---
 # name: test_limit_ok[pipe_limit_integer_literal]
   '''
   start
