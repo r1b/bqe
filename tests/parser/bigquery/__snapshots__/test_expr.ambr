@@ -137,7 +137,7 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__function_call_expr
+                function_call_expr
                   ident	FUNC
                   bigquery__function_args
                     bigquery__pos_arg
@@ -159,7 +159,7 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__function_call_expr
+                function_call_expr
                   ident	FUNC
                   bigquery__function_args
                     bigquery__named_arg
@@ -182,7 +182,7 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__function_call_expr
+                function_call_expr
                   ident	FUNC
                   bigquery__function_args
                     bigquery__named_arg
@@ -201,7 +201,7 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__function_call_expr
+                function_call_expr
                   bigquery__field_access_expr
                     ident	NET
                     ident	IPV4_FROM_INT64
@@ -221,7 +221,7 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__function_call_expr
+                function_call_expr
                   ident	FUNC
                   bigquery__function_args
                     bigquery__pos_arg
@@ -242,7 +242,7 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__function_call_expr
+                function_call_expr
                   ident	FUNC
   
   '''
@@ -256,7 +256,7 @@
           select_list
             bigquery__select_item
               bigquery__select_expr
-                bigquery__function_call_expr
+                function_call_expr
                   ident	FUNC
                   bigquery__function_args
                     bigquery__pos_arg
@@ -311,7 +311,7 @@
               bigquery__select_expr
                 bigquery__subscript_expr
                   ident	column1
-                  bigquery__function_call_expr
+                  function_call_expr
                     ident	OFFSET
                     bigquery__function_args
                       bigquery__pos_arg

@@ -154,3 +154,12 @@ def test_set_operation_ok(sql, assert_parse_tree):
 ))
 def test_join_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> CALL APPENDS('1970-01-01')", id="call"),
+    pytest.param("FROM table1 |> CALL APPENDS('1970-01-01') AS table2", id="call_alias_explicit"),
+    pytest.param("FROM table1 |> CALL APPENDS('1970-01-01') table2", id="call_alias_implicit"),
+))
+def test_call_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
