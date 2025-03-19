@@ -54,6 +54,8 @@ _ARRAY : "ARRAY"i
 _AS : "AS"i
 _BETWEEN : "BETWEEN"i
 _BIGNUMERIC : "BIGNUMERIC"i
+_DATE : "DATE"i
+_DATETIME : "DATETIME"i
 _DISTINCT : "DISTINCT"i
 FALSE : "FALSE"i
 _FOR : "FOR"i
@@ -71,6 +73,7 @@ SOME : "SOME"i
 STRUCT : "STRUCT"i
 _SYSTEM : "SYSTEM"i
 _TIME : "TIME"i
+_TIMESTAMP : "TIMESTAMP"i
 TRUE : "TRUE"i
 _UNNEST : "UNNEST"i
 VALUE : "VALUE"i
@@ -110,9 +113,10 @@ literal : string_literal
     | float_literal
     | array_literal
     | struct_literal
-#   | date_literal
-#   | time_literal
-#   | datetime_literal
+    | date_literal
+    | time_literal
+    | datetime_literal
+    | timestamp_literal
 #   | range_literal
 #   | interval_literal
 #   | json_literal
@@ -190,6 +194,16 @@ array_prefix : _ARRAY array_type?
 
 # FIXME: Not really an ident
 array_type : _LT ident _GT
+
+# Date / time
+
+date_literal : _DATE STRING_LITERAL
+
+time_literal : _TIME STRING_LITERAL
+
+datetime_literal : _DATETIME STRING_LITERAL
+
+timestamp_literal : _TIMESTAMP STRING_LITERAL
 
 # Structs
 # Struct literals are used in some common forms like:

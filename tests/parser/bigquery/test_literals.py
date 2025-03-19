@@ -142,6 +142,16 @@ def test_array_literal_ok(sql, assert_parse_tree):
 
 
 @pytest.mark.parametrize("sql", (
+    pytest.param("SELECT DATE '1970-01-01'", id="literal_date"),
+    pytest.param("SELECT DATE '12:00:00.01'", id="literal_time"),
+    pytest.param("SELECT DATETIME '1970-01-01 12:00:00.01'", id="literal_datetime"),
+    pytest.param("SELECT TIMESTAMP '1970-01-01 12:00:00.01-08'", id="literal_timestamp"),
+))
+def test_date_time_literal_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
     pytest.param('SELECT (1,2)', id="literal_struct"),
     pytest.param('SELECT (1,2,3)', id="literal_struct_multi"),
 ))
