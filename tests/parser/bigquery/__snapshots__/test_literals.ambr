@@ -585,6 +585,23 @@
   
   '''
 # ---
+# name: test_range_literal_ok[literal_range]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__literal
+                  bigquery__range_literal
+                    bigquery__range_type
+                      ident	DATE
+                    '[1970-01-01, 1970-01-02)'
+  
+  '''
+# ---
 # name: test_string_literal_ok[literal_string_dquot_empty]
   '''
   start

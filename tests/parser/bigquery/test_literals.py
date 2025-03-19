@@ -152,6 +152,13 @@ def test_date_time_literal_ok(sql, assert_parse_tree):
 
 
 @pytest.mark.parametrize("sql", (
+    pytest.param("SELECT RANGE<DATE> '[1970-01-01, 1970-01-02)'", id="literal_range"),
+))
+def test_range_literal_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
     pytest.param('SELECT (1,2)', id="literal_struct"),
     pytest.param('SELECT (1,2,3)', id="literal_struct_multi"),
 ))

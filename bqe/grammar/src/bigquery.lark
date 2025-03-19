@@ -68,6 +68,7 @@ _OFFSET : "OFFSET"i
 _NOT : "NOT"i
 NULL : "NULL"i
 _NUMERIC : "NUMERIC"i
+_RANGE : "RANGE"i
 _SELECT : "SELECT"i
 SOME : "SOME"i
 STRUCT : "STRUCT"i
@@ -117,7 +118,7 @@ literal : string_literal
     | time_literal
     | datetime_literal
     | timestamp_literal
-#   | range_literal
+    | range_literal
 #   | interval_literal
 #   | json_literal
 
@@ -204,6 +205,13 @@ time_literal : _TIME STRING_LITERAL
 datetime_literal : _DATETIME STRING_LITERAL
 
 timestamp_literal : _TIMESTAMP STRING_LITERAL
+
+# Range
+
+range_literal : _RANGE range_type STRING_LITERAL
+
+# FIXME: Not really an ident
+range_type : _LT ident _GT
 
 # Structs
 # Struct literals are used in some common forms like:
