@@ -116,9 +116,23 @@ def test_order_by_ok(sql, assert_parse_tree):
 
 
 @pytest.mark.parametrize("sql", (
-    pytest.param("FROM table1 |> UNION ALL (SELECT 1)", id="union_all_single"),
-    pytest.param("FROM table1 |> UNION DISTINCT (SELECT 1), (SELECT 2)", id="union_distinct_multi"),
-    pytest.param("FROM table1 |> UNION ALL BY NAME (SELECT 1)", id="union_all_by_name"),
+    pytest.param("FROM table1 |> UNION ALL (SELECT 1)", id="set_operation_all_single"),
+    pytest.param("FROM table1 |> INTERSECT DISTINCT (SELECT 1), (SELECT 2)", id="set_operation_distinct_multi"),
+    pytest.param("FROM table1 |> EXCEPT ALL BY NAME (SELECT 1 as col1)", id="set_operation_by_name"),
+    pytest.param("FROM table1 |> UNION ALL CORRESPONDING (SELECT 1 as col1)", id="set_operation_corresponding"),
+    pytest.param("FROM table1 |> UNION ALL STRICT CORRESPONDING (SELECT 1 as col1)", id="set_operation_strict_corresponding"),
+    pytest.param("FROM table1 |> EXCEPT ALL BY NAME ON (col1) (SELECT 1 as col1)", id="set_operation_by_name_on_single"),
+    pytest.param("FROM table1 |> EXCEPT ALL BY NAME ON (col1,col2) (SELECT 1 as col1)",
+                 id="set_operation_by_name_on_multi"),
+    pytest.param("FROM table1 |> EXCEPT ALL STRICT CORRESPONDING BY (col1) (SELECT 1 as col1)", id="set_operation_strict_corresponding_by"),
+    pytest.param("FROM table1 |> FULL UNION ALL BY NAME (SELECT 1 as col1)",
+                 id="set_operation_with_criteria_full"),
+    pytest.param("FROM table1 |> LEFT UNION ALL BY NAME (SELECT 1 as col1)",
+                 id="set_operation_with_criteria_left"),
+    pytest.param("FROM table1 |> LEFT OUTER UNION ALL BY NAME (SELECT 1 as col1)",
+                 id="set_operation_with_criteria_left_outer"),
+    pytest.param("FROM table1 |> INNER UNION ALL BY NAME (SELECT 1 as col1)",
+                 id="set_operation_with_criteria_inner"),
 ))
-def test_union_ok(sql, assert_parse_tree):
+def test_set_operation_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)

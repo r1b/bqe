@@ -20,23 +20,32 @@ _SEMI : ";"
 _AGGREGATE : "AGGREGATE"i
 ASC : "ASC"i
 _BY : "BY"i
+_CORRESPONDING : "CORRESPONDING"i
 _CUBE : "CUBE"i
 DESC : "DESC"i
 _DROP : "DROP"i
+EXCEPT : "EXCEPT"i
 _EXTEND : "EXTEND"i
 FIRST : "FIRST"i
+FULL : "FULL"i
 _GROUP : "GROUP"i
 _GROUPING : "GROUPING"i
+INNER : "INNER"i
+INTERSECT : "INTERSECT"i
 LAST : "LAST"i
+LEFT : "LEFT"i
 _LIMIT : "LIMIT"i
 _NAME : "NAME"i
 _NULLS : "NULLS"i
+_ON : "ON"i
 _ORDER : "ORDER"i
+OUTER : "OUTER"i
 _RENAME : "RENAME"i
 _ROLLUP : "ROLLUP"i
 _SET : "SET"i
 _SETS : "SETS"i
-_UNION : "UNION"i
+_STRICT : "STRICT"i
+UNION : "UNION"i
 _WHERE : "WHERE"i
 
 ################################################################################
@@ -75,9 +84,7 @@ pipe_operator : pipe_select
     | pipe_limit
     | pipe_agg
     | pipe_order_by
-    | pipe_union
-#   | pipe_intersect
-#   | pipe_except
+    | pipe_set_operation
 #   | pipe_join
 #   | pipe_call
 #   | pipe_window
@@ -131,6 +138,7 @@ pipe_where : _WHERE column_expr
 
 # LIMIT
 
+# TODO: Add offset
 pipe_limit : _LIMIT ( integer_literal | parameter )
 
 # AGGREGATE
@@ -184,10 +192,29 @@ order_by_item_nulls : _NULLS ( FIRST | LAST )
 
 # Set operations
 
-pipe_union : _UNION union_mode union_by_name? union_list
+pipe_set_operation : set_operation
+    | set_operation_with_criteria
 
-union_mode : ALL | DISTINCT
+set_operation : set_operation_kind set_operation_mode set_operation_modifier? set_operation_list
 
-union_by_name : _BY _NAME
+set_operation_with_criteria : set_operation_criteria set_operation_kind set_operation_mode set_operation_modifier set_operation_list
 
-union_list : subquery ( _COMMA subquery )*
+set_operation_kind : UNION | INTERSECT | EXCEPT
+
+set_operation_mode : ALL | DISTINCT
+
+set_operation_list : subquery ( _COMMA subquery )*
+
+?set_operation_modifier : set_operation_modifier_by_name
+    | set_operation_modifier_corresponding
+    | set_operation_modifier_strict_corresponding
+
+set_operation_modifier_by_name : _BY _NAME ( _ON set_operation_columns )?
+
+set_operation_modifier_corresponding : _CORRESPONDING ( _BY set_operation_columns )?
+
+set_operation_modifier_strict_corresponding : _STRICT _CORRESPONDING ( _BY set_operation_columns )?
+
+set_operation_columns : _LPAR ident ( _COMMA ident )* _RPAR
+
+set_operation_criteria : INNER | ( FULL | LEFT ) OUTER?
