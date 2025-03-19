@@ -113,3 +113,12 @@ def test_agg_ok(sql, assert_parse_tree):
 ))
 def test_order_by_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> UNION ALL (SELECT 1)", id="union_all_single"),
+    pytest.param("FROM table1 |> UNION DISTINCT (SELECT 1), (SELECT 2)", id="union_distinct_multi"),
+    pytest.param("FROM table1 |> UNION ALL BY NAME (SELECT 1)", id="union_all_by_name"),
+))
+def test_union_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
