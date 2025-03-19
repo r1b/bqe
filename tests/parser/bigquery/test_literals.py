@@ -159,6 +159,13 @@ def test_range_literal_ok(sql, assert_parse_tree):
 
 
 @pytest.mark.parametrize("sql", (
+    pytest.param('SELECT INTERVAL 1 MONTH', id="literal_interval"),
+))
+def test_interval_literal_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
     pytest.param('SELECT (1,2)', id="literal_struct"),
     pytest.param('SELECT (1,2,3)', id="literal_struct_multi"),
 ))

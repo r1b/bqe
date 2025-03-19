@@ -61,6 +61,7 @@ FALSE : "FALSE"i
 _FOR : "FOR"i
 _FROM : "FROM"i
 _IN : "IN"i
+_INTERVAL : "INTERVAL"i
 _IS : "IS"i
 _OF : "OF"i
 _OR : "OR"i
@@ -119,7 +120,7 @@ literal : string_literal
     | datetime_literal
     | timestamp_literal
     | range_literal
-#   | interval_literal
+    | interval_literal
 #   | json_literal
 
 # Strings
@@ -193,8 +194,7 @@ array_literal : array_prefix? _LBRACK ( column_expr ( _COMMA column_expr )* )? _
 
 array_prefix : _ARRAY array_type?
 
-# FIXME: Not really an ident
-array_type : _LT ident _GT
+array_type : _LT UNQUOTED_IDENT _GT
 
 # Date / time
 
@@ -210,8 +210,13 @@ timestamp_literal : _TIMESTAMP STRING_LITERAL
 
 range_literal : _RANGE range_type STRING_LITERAL
 
-# FIXME: Not really an ident
-range_type : _LT ident _GT
+range_type : _LT UNQUOTED_IDENT _GT
+
+# Interval
+
+interval_literal : _INTERVAL column_expr datetime_part
+
+datetime_part : UNQUOTED_IDENT
 
 # Structs
 # Struct literals are used in some common forms like:
