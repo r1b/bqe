@@ -1,5 +1,5 @@
 %import common (WS)
-%import .bigquery (ALL, _AS, _COMMA, DISTINCT, _EQ, _FROM, _LPAR, _RPAR, _SELECT, as_alias, column_expr, from_clause, from_item, function_call_expr, ident, integer_literal, parameter, query_expr, query_statement, select, select_list, subquery, start)
+%import .bigquery (ALL, _AND, _AS, _BETWEEN, _COMMA, DISTINCT, _EQ, _FROM, _LPAR, _RPAR, _SELECT, as_alias, column_expr, from_clause, from_item, function_call_expr, ident, integer_literal, parameter, query_expr, query_statement, select, select_list, subquery, start)
 
 # TODO: See ZetaSQL for a more complete definition of WS
 %ignore WS
@@ -24,11 +24,13 @@ _CALL : "CALL"i
 _CORRESPONDING : "CORRESPONDING"i
 CROSS : "CROSS"i
 _CUBE : "CUBE"i
+_CURRENT : "CURRENT"i
 DESC : "DESC"i
 _DROP : "DROP"i
 EXCEPT : "EXCEPT"i
 _EXTEND : "EXTEND"i
 FIRST : "FIRST"i
+_FOLLOWING : "FOLLOWING"i
 FULL : "FULL"i
 _GROUP : "GROUP"i
 _GROUPING : "GROUPING"i
@@ -43,15 +45,23 @@ _NULLS : "NULLS"i
 _ON : "ON"i
 _ORDER : "ORDER"i
 OUTER : "OUTER"i
+_OVER : "OVER"i
+_PARTITION : "PARTITION"i
+_PRECEDING : "PRECEDING"i
+RANGE : "RANGE"i
 _RENAME : "RENAME"i
 RIGHT : "RIGHT"i
 _ROLLUP : "ROLLUP"i
+_ROW : "ROW"i
+ROWS : "ROWS"i
 _SET : "SET"i
 _SETS : "SETS"i
 _STRICT : "STRICT"i
 UNION : "UNION"i
+_UNBOUNDED : "UNBOUNDED"i
 _USING : "USING"i
 _WHERE : "WHERE"i
+_WINDOW : "WINDOW"i
 
 ################################################################################
 # Procedural
@@ -92,7 +102,7 @@ pipe_operator : pipe_select
     | pipe_set_operation
     | pipe_join
     | pipe_call
-#   | pipe_window
+    | pipe_window
 #   | pipe_tablesample
 #   | pipe_pivot
 #   | pipe_unpivot
@@ -223,6 +233,8 @@ set_operation_columns : _LPAR ident ( _COMMA ident )* _RPAR
 
 set_operation_criteria : INNER | ( FULL | LEFT ) OUTER?
 
+# JOIN
+
 pipe_join : join | join_with_criteria
 
 join : _JOIN from_item ( on_clause | using_clause )
@@ -237,4 +249,64 @@ join_with_criteria : join_criteria _JOIN from_item ( on_clause | using_clause )
 
 join_criteria : CROSS | INNER | ( FULL | LEFT | RIGHT ) OUTER?
 
+# CALL
+
 pipe_call : _CALL function_call_expr as_alias?
+
+# WINDOW
+
+# TODO: https://cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-function-calls
+# TODO: https://cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions
+
+pipe_window : _WINDOW window_expr_list
+
+window_expr_list : window_expr ( _COMMA window_expr )*
+
+window_expr : function_call_expr _OVER _LPAR window_spec _RPAR as_alias?
+
+window_spec : window_partition_by? window_order_by? window_frame?
+
+window_partition_by : _PARTITION _BY column_expr ( _COMMA column_expr )*
+
+window_order_by : _ORDER _BY order_by_items
+
+window_frame : ( ROWS | RANGE ) ( window_frame_start | _BETWEEN window_frame_between )
+
+window_frame_start : window_frame_unbounded_preceding
+    | window_frame_numeric_preceding
+    | window_frame_current_row
+
+window_frame_unbounded_preceding : _UNBOUNDED _PRECEDING
+
+window_frame_numeric_preceding : column_expr _PRECEDING
+
+window_frame_current_row : _CURRENT _ROW
+
+window_frame_between : window_frame_between_unbounded_preceding
+    | window_frame_between_numeric_preceding
+    | window_frame_between_current_row
+    | window_frame_between_numeric_following
+
+window_frame_between_unbounded_preceding : window_frame_unbounded_preceding _AND window_frame_between_end_a
+
+window_frame_between_numeric_preceding : window_frame_numeric_preceding _AND window_frame_between_end_a
+
+window_frame_between_current_row : window_frame_current_row _AND window_frame_between_end_b
+
+window_frame_between_numeric_following : window_frame_numeric_following _AND window_frame_between_end_c
+
+window_frame_numeric_following : column_expr _FOLLOWING
+
+window_frame_between_end_a : window_frame_numeric_preceding
+    | window_frame_current_row
+    | window_frame_numeric_following
+    | window_frame_unbounded_following
+
+window_frame_unbounded_following : _UNBOUNDED _FOLLOWING
+
+window_frame_between_end_b : window_frame_current_row
+    | window_frame_numeric_following
+    | window_frame_unbounded_following
+
+window_frame_between_end_c : window_frame_numeric_following
+    | window_frame_unbounded_following

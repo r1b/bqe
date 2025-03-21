@@ -163,3 +163,18 @@ def test_join_ok(sql, assert_parse_tree):
 ))
 def test_call_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> WINDOW SUM(col1) OVER ()", id="window_simple"),
+    pytest.param("FROM table1 |> WINDOW SUM(col1) OVER (PARTITION BY col2)", id="window_partition_by_single"),
+    pytest.param("FROM table1 |> WINDOW SUM(col1) OVER (PARTITION BY col2, col3)", id="window_partition_by_multi"),
+    pytest.param("FROM table1 |> WINDOW SUM(col1) OVER (ORDER BY col2)", id="window_order_by_single"),
+    pytest.param("FROM table1 |> WINDOW SUM(col1) OVER (ORDER BY col2, col3)", id="window_order_by_multi"),
+    pytest.param("FROM table1 |> WINDOW SUM(col1) OVER (PARTITION BY col2 ORDER BY col3)", id="window_parition_and_order_by"),
+    pytest.param("FROM table1 |> WINDOW SUM(col1) OVER (ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)",
+                 id="window_frame_rows"),
+    pytest.param("FROM table1 |> WINDOW SUM(col1) OVER (RANGE BETWEEN 1 PRECEDING AND 1 FOLLOWING)",
+                 id="window_frame_range"),
+))
+def test_window_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
