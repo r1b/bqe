@@ -239,9 +239,6 @@ pipe_call : _CALL function_call_expr as_alias?
 
 # WINDOW
 
-# TODO: https://cloud.google.com/bigquery/docs/reference/standard-sql/aggregate-function-calls
-# TODO: https://cloud.google.com/bigquery/docs/reference/standard-sql/navigation_functions
-
 pipe_window : _WINDOW window_expr_list
 
 window_expr_list : window_expr ( _COMMA window_expr )*

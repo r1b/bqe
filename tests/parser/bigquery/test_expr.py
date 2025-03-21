@@ -75,3 +75,11 @@ def test_and_or_not_ok(sql, assert_parse_tree):
 ))
 def test_between(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("SELECT ARRAY(SELECT 1)", id="keyword_subquery_array"),
+    pytest.param("SELECT EXISTS(SELECT 1)", id="keyword_subquery_exists"),
+))
+def test_keyword_subquery_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)

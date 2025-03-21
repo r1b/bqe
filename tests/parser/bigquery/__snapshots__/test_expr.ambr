@@ -406,6 +406,46 @@
   
   '''
 # ---
+# name: test_keyword_subquery_ok[keyword_subquery_array]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__array_subquery_expr
+                  query_expr
+                    select
+                      select_list
+                        bigquery__select_item
+                          bigquery__select_expr
+                            bigquery__literal
+                              integer_literal	1
+  
+  '''
+# ---
+# name: test_keyword_subquery_ok[keyword_subquery_exists]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                bigquery__exists_subquery_expr
+                  query_expr
+                    select
+                      select_list
+                        bigquery__select_item
+                          bigquery__select_expr
+                            bigquery__literal
+                              integer_literal	1
+  
+  '''
+# ---
 # name: test_subscript_expr_ok[subscript_expr_integer_literal_multi]
   '''
   start

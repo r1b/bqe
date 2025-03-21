@@ -61,6 +61,7 @@ _DATETIME : "DATETIME"i
 DESC : "DESC"i
 _DISTINCT : "DISTINCT"i
 DISTINCT : "DISTINCT"i
+_EXISTS : "EXISTS"i
 FALSE : "FALSE"i
 FIRST : "FIRST"i
 _FOR : "FOR"i
@@ -104,9 +105,6 @@ _WITH : "WITH"i
 # Ref: https://github.com/google/zetasql/blob/master/zetasql/parser/zetasql.tm
 # Ref: https://github.com/google/zetasql/blob/master/zetasql/parser/flex_tokenizer.l
 
-# TODO: Support escape sequences
-# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#escape_sequences
-
 UNQUOTED_IDENT : CNAME
 QUOTED_IDENT : BACKTICK /[^`]+/ BACKTICK
 
@@ -141,7 +139,6 @@ literal : string_literal
 # Strings
 
 # TODO: This requires transformer cleanup
-# TODO: Handle escape characters
 
 string_literal : STRING_LITERAL
 
@@ -356,9 +353,9 @@ parenthesized_not_a_query_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPA
 ?field_access_expr : atom_expr | prec_higher_than_and_expr _DOT ident
 
 # Now we don't really care about precedence anymore
-# TODO: Handle EXISTS(...)
 ?atom_expr : literal
     | function_call_expr
+    | keyword_subquery_expr
     | parameter # TODO: I don't think we need this - its just an ident
     | ident
 
@@ -366,7 +363,6 @@ parenthesized_not_a_query_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPA
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-reference
 # Ref: https://github.com/lark-parser/lark/blob/master/lark/grammars/python.lark#L145-L146
-# TODO: Transformer cleanup for column_expr -> function name
 function_call_expr : field_access_expr _LPAR function_distinct? function_args? function_modifiers? _RPAR
 
 function_distinct : _DISTINCT
@@ -395,6 +391,9 @@ order_by_item_nulls : _NULLS ( FIRST | LAST )
 
 # TODO: Add offset
 limit_modifier : _LIMIT ( integer_literal | parameter )
+
+keyword_subquery_expr : _ARRAY _LPAR query_expr _RPAR -> array_subquery_expr
+    | _EXISTS _LPAR query_expr _RPAR -> exists_subquery_expr
 
 ################################################################################
 # Entry point
