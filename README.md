@@ -28,8 +28,7 @@ Metaprogramming in `bqe` is inspired by the macro system in `sqlmesh`.
 The most common use cases we've seen for metaprogramming include:
 
 - Injection of externally generated expressions (especially predicates)
-- Conditional rendering of statements and query expressions
-- Conditional rendering of column expressions
+- Conditional rendering of statements, clauses and column expressions
 
 Remember that metaprogramming rewrites the query _before_ compilation to Pipe SQL.
 
@@ -43,84 +42,53 @@ Expressions are generated with the expression API. It should feel familiar for u
 # TODO: Flesh this out
 from bqe.builtins import search
 from bqe.compiler import compile
-from bqe.query import column, func, table, text
+from bqe.query import column, func, null, param, table, text
 
 query = "FROM @(table) |> WHERE @(dsl) |> SELECT d"
-dsl = (search(column("a"), text_analyzer=text("NOOP_ANALYZER")) & column("b") != 2) | column("c").is(None)
-sql = compile(path_or_str, context={"dsl": dsl, "table": table("table1")}, options={"paramstyle": "bigquery"})
-
-# FROM table1
-#   |> WHERE (SEARCH(a, @param1, text_analyzer => 'NOOP_ANALYZER') AND b != @param2) OR c IS NULL
+dsl = (search(column("a"), param("foobar"), text_analyzer=text("NOOP_ANALYZER")) & column("b") != param(2)) | column("c").is(null())
+sql, params = compile(path_or_str, context={"dsl": dsl, "table": table("table1")}, options={"paramstyle": "at"})
+print(sql, params)
 ```
 
-#### conditional rendering: statements and pipe operators
+```sql
+FROM table1
+    |> WHERE (
+        SEARCH(a, @param1, text_analyzer => 'NOOP_ANALYZER')
+        AND b != @param2
+    ) OR c IS NULL
+```
 
-FIXME: haha I think I have fallen victim to the classic "if then else" ambiguity
+To interpolate a column list, use the syntax @@(expr):
 
-I think we can fix this by doing everything with @WHEN([NOT] condition, expr), which is better anyways.
+```sql
+FROM table1
+    |> SELECT a, @@(table1_extra_columns)
+```
+
+If you provide no context value for an expression, it will be omitted
+
+#### conditional rendering: statements and clauses
 
 `bqe` extends Pipe SQL with a conditional pipe operator:
 
 The operator can be used at the top level to conditionally render statements:
 
 ```sql
-WHEN @(condition)
-FROM table1
-    |> TO TEMP TABLE table2;
+|? WHEN @(condition) THEN
+    FROM table1
+        |> TO TEMP TABLE table2
+|? END
 ```
 
 Or within a pipeline to conditionally render individual pipeline steps:
 
 ```sql
 FROM table1
-    |? WHEN @(condition)
-        SELECT a
+    |? WHEN NOT @(condition) THEN
+        |> SELECT a
     |? ELSE
-        SELECT b
-```
-
-#### conditional rendering: column expressions
-
-We've observed situations where you want a query to select or aggregate a particular set of columns most of the time, but include or exclude columns in the set for a special case.
-
-For this, use the `@WHEN` form:
-
-```sql
-@WHEN([NOT] cond, then, [else])
-```
-
-Typical usage:
-
-```sql
-FROM table1
-    |> SELECT a, b, c
-    |> AGGREGATE SUM(c) AS total
-       GROUP BY
-           a, @WHEN(condition1, b)
-```
-
-To interpolate nothing when a condition is true, use the `@WHEN(NOT cond)` form:
-
-```sql
-FROM table1
-    |> SELECT a, b, c
-    |> AGGREGATE
-           @WHEN(NOT condition1, ANY_VALUE(b) AS b), @WHEN(NOT condition1, ANY_VALUE(c) AS c)
-       GROUP BY
-           a, @WHEN(condition1, b), @WHEN(condition1, c)
-```
-
-#### kitchen sink example
-
-```sql
-    FROM @(table1)
-        |> WHERE @(expr)
-        |? WHEN @(condition1)
-            SELECT a, b
-        |? WHEN @(condition2)
-            SELECT a, @WHEN(NOT condition3, b)
-        |? ELSE
-            SELECT b;
+        |> SELECT b
+    |? END
 ```
 
 ### procedural extensions
