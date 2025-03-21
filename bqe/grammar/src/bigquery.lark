@@ -1,6 +1,5 @@
 %import common (CNAME, INT, WS)
 
-# TODO: See ZetaSQL for a more complete definition of WS
 %ignore WS
 
 ################################################################################
@@ -101,7 +100,6 @@ _WITH : "WITH"i
 # Identifiers
 ################################################################################
 
-# TODO: Flesh this out with context from ZetaSQL
 # Ref: https://github.com/google/zetasql/blob/master/zetasql/parser/zetasql.tm
 # Ref: https://github.com/google/zetasql/blob/master/zetasql/parser/flex_tokenizer.l
 
@@ -137,8 +135,6 @@ literal : string_literal
     | json_literal
 
 # Strings
-
-# TODO: This requires transformer cleanup
 
 string_literal : STRING_LITERAL
 

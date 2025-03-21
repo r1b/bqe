@@ -1,6 +1,6 @@
 # bqe
 
-A query language for BigQuery that compiles to Pipe SQL.
+A query language for BigQuery
 
 ## goals
 
@@ -15,15 +15,35 @@ A query language for BigQuery that compiles to Pipe SQL.
 
 ## why
 
-`bqe` is designed to be used on the read side of big data workloads. By cleaving off the data definition and mutation parts of SQL, it becomes feasible to write a small parser that enables and extends the transformation part of SQL. 
+`bqe` is designed to be used on the read side of big data workloads. By cleaving off the data definition and mutation parts of SQL, it becomes feasible to write a small parser that enables and extends the transformation part of SQL. This alone is not a new idea (see the motivation for PRQL), so why yet another query language?
+
+We've found that in real analytic applications, a small but meaningful subset of SQL is _generated_, not written. These applications are _parameterized_ in a number of ways:
+
+- They accept user input
+- They run queries in multiple application contexts
+- Their underlying data sources change and evolve across runtime environments
+
+There are already many excellent tools for working with SQL, but there is no tool that supports _both_ writing and generating SQL in an application context.
 
 ## usage
 
 For the most part, `bqe` is just Pipe SQL with some extensions.
 
-### metaprogramming
+### no pipes
 
-Metaprogramming in `bqe` is inspired by the macro system in `sqlmesh`.
+TODO: Can we do this? IMO the worst part of pipe SQL is that this pipe character breaks formatting
+Looks like we shouldn't, alas
+
+Also, TIL this works:
+
+```sql
+SELECT 1 AS a
+  |> SELECT a+1 AS b
+```
+
+Pipes (`|>`) are not used to delimit operations in `bqe`.
+
+### metaprogramming
 
 The most common use cases we've seen for metaprogramming include:
 
@@ -33,6 +53,21 @@ The most common use cases we've seen for metaprogramming include:
 Remember that metaprogramming rewrites the query _before_ compilation to Pipe SQL.
 
 #### expression interpolation
+
+TODO: I still like my "css selector" idea for applying rewrites. Like what if entire pipe operators were placeholders?
+
+```sql
+@(maybe_create_temp_table);
+ 
+@(foobar_table)
+ |> SELECT a;
+
+FROM table1
+    |> @(select_table_1_columns);
+
+FROM table1
+    |> WHERE date >= 42 AND @(dsl)
+```
 
 AST nodes or python expressions can be injected into the generated query with the syntax `@(expr)`. In general, nodes can be interpolated into any position of the query where an expression or identifier is expected. Python values are automatically rendered as query parameters.
 
@@ -118,14 +153,7 @@ CREATE TEMP TABLE table2 AS (
 
 #### variable definition
 
-In most cases, variables can be substituted with query parameters. However, there are some rare situations where a large value needs to be available at statement analysis time. For example, it is possible to get pruning from clustering with a query like:
-
-```sql
-FROM table
-    |> WHERE column1 IN UNNEST(<array>)
-```
-
-Where `<array>` has up to 1,000 values and can be statically analyzed (i.e: not the result of a query). Depending on the size and provenance of the values, it may be cumbersome to pass the array as a query parameter.
+In most cases, variables can be substituted with query parameters. However, there are some rare situations where a large value needs to be available at statement analysis time. Depending on the size and provenance of this value, it may be cumbersome to pass it as a query parameter.
 
 To support this use case, `bqe` extends Pipe SQL with the `TO VARIABLE` form, which writes the results of a scalar table to a named variable.
 
