@@ -50,6 +50,19 @@ def test_function_call_error(sql, assert_parse_tree_error):
 
 
 @pytest.mark.parametrize("sql", (
+    pytest.param("SELECT FUNC(DISTINCT col1)", id="agg_fcall_distinct"),
+    pytest.param("SELECT FUNC(col1 IGNORE NULLS)", id="agg_fcall_ignore_nulls"),
+    pytest.param("SELECT FUNC(col1 RESPECT NULLS)", id="agg_fcall_respect_nulls"),
+    pytest.param("SELECT FUNC(col1 HAVING MIN col2)", id="agg_fcall_having_min"),
+    pytest.param("SELECT FUNC(col1 HAVING MAX col2)", id="agg_fcall_having_max"),
+    pytest.param("SELECT FUNC(col1 ORDER BY col2 DESC)", id="agg_fcall_order_by"),
+    pytest.param("SELECT FUNC(col1 LIMIT 1)", id="agg_fcall_limit"),
+))
+def test_aggregate_function_call_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
     pytest.param("SELECT x OR y AND NOT z", id="expr_and_or_not"),
     pytest.param("SELECT (x OR y) AND NOT z", id="expr_and_or_not_parens"),
 ))

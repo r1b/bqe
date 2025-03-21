@@ -798,9 +798,9 @@
             pipe_operator
               pipe_order_by
                 order_by_items
-                  order_by_item
+                  bigquery__order_by_item
                     ident	col1
-                  order_by_item
+                  bigquery__order_by_item
                     ident	col2
   
   '''
@@ -821,14 +821,14 @@
             pipe_operator
               pipe_order_by
                 order_by_items
-                  order_by_item
+                  bigquery__order_by_item
                     ident	col1
-                    order_by_item_sort	ASC
-                    order_by_item_nulls	FIRST
-                  order_by_item
+                    bigquery__order_by_item_sort	ASC
+                    bigquery__order_by_item_nulls	FIRST
+                  bigquery__order_by_item
                     ident	col2
-                    order_by_item_sort	DESC
-                    order_by_item_nulls	LAST
+                    bigquery__order_by_item_sort	DESC
+                    bigquery__order_by_item_nulls	LAST
   
   '''
 # ---
@@ -848,12 +848,12 @@
             pipe_operator
               pipe_order_by
                 order_by_items
-                  order_by_item
+                  bigquery__order_by_item
                     ident	col1
-                    order_by_item_nulls	FIRST
-                  order_by_item
+                    bigquery__order_by_item_nulls	FIRST
+                  bigquery__order_by_item
                     ident	col2
-                    order_by_item_nulls	LAST
+                    bigquery__order_by_item_nulls	LAST
   
   '''
 # ---
@@ -873,12 +873,12 @@
             pipe_operator
               pipe_order_by
                 order_by_items
-                  order_by_item
+                  bigquery__order_by_item
                     ident	col1
-                    order_by_item_sort	ASC
-                  order_by_item
+                    bigquery__order_by_item_sort	ASC
+                  bigquery__order_by_item
                     ident	col2
-                    order_by_item_sort	DESC
+                    bigquery__order_by_item_sort	DESC
   
   '''
 # ---
@@ -898,7 +898,7 @@
             pipe_operator
               pipe_order_by
                 order_by_items
-                  order_by_item
+                  bigquery__order_by_item
                     ident	col1
   
   '''
@@ -1879,9 +1879,9 @@
                     window_spec
                       window_order_by
                         order_by_items
-                          order_by_item
+                          bigquery__order_by_item
                             ident	col2
-                          order_by_item
+                          bigquery__order_by_item
                             ident	col3
   
   '''
@@ -1911,7 +1911,7 @@
                     window_spec
                       window_order_by
                         order_by_items
-                          order_by_item
+                          bigquery__order_by_item
                             ident	col2
   
   '''
@@ -1943,7 +1943,7 @@
                         ident	col2
                       window_order_by
                         order_by_items
-                          order_by_item
+                          bigquery__order_by_item
                             ident	col3
   
   '''

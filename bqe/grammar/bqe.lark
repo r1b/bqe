@@ -1,5 +1,5 @@
 %import common (WS)
-%import .bigquery (ALL, _AND, _AS, _BETWEEN, _COMMA, DISTINCT, _EQ, _FROM, _LPAR, _RPAR, _SELECT, as_alias, column_expr, from_clause, from_item, function_call_expr, ident, integer_literal, parameter, query_expr, query_statement, select, select_list, subquery, start)
+%import .bigquery (ALL, _AND, _AS, ASC, _BETWEEN, _BY, _COMMA, DESC, DISTINCT, _EQ, FIRST, _FROM, LAST, _LIMIT, _LPAR, _NULLS, _ORDER, _RPAR, _SELECT, as_alias, column_expr, from_clause, from_item, function_call_expr, ident, integer_literal, order_by_items, parameter, query_expr, query_statement, select, select_list, subquery, start)
 
 # TODO: See ZetaSQL for a more complete definition of WS
 %ignore WS
@@ -18,18 +18,14 @@ _SEMI : ";"
 # All keywords are case-insensitive
 
 _AGGREGATE : "AGGREGATE"i
-ASC : "ASC"i
-_BY : "BY"i
 _CALL : "CALL"i
 _CORRESPONDING : "CORRESPONDING"i
 CROSS : "CROSS"i
 _CUBE : "CUBE"i
 _CURRENT : "CURRENT"i
-DESC : "DESC"i
 _DROP : "DROP"i
 EXCEPT : "EXCEPT"i
 _EXTEND : "EXTEND"i
-FIRST : "FIRST"i
 _FOLLOWING : "FOLLOWING"i
 FULL : "FULL"i
 _GROUP : "GROUP"i
@@ -37,13 +33,9 @@ _GROUPING : "GROUPING"i
 INNER : "INNER"i
 INTERSECT : "INTERSECT"i
 _JOIN : "JOIN"i
-LAST : "LAST"i
 LEFT : "LEFT"i
-_LIMIT : "LIMIT"i
 _NAME : "NAME"i
-_NULLS : "NULLS"i
 _ON : "ON"i
-_ORDER : "ORDER"i
 OUTER : "OUTER"i
 _OVER : "OVER"i
 _PARTITION : "PARTITION"i
@@ -196,14 +188,6 @@ grouping_set : grouping_item_empty
 # ORDER BY
 
 pipe_order_by : _ORDER _BY order_by_items
-
-order_by_items : order_by_item ( _COMMA order_by_item )*
-
-order_by_item : column_expr order_by_item_sort? order_by_item_nulls?
-
-order_by_item_sort : ASC | DESC
-
-order_by_item_nulls : _NULLS ( FIRST | LAST )
 
 # Set operations
 

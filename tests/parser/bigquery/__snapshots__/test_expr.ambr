@@ -1,4 +1,145 @@
 # serializer version: 1
+# name: test_aggregate_function_call_ok[agg_fcall_distinct]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                function_call_expr
+                  ident	FUNC
+                  bigquery__function_distinct
+                  bigquery__function_args
+                    bigquery__pos_arg
+                      ident	col1
+  
+  '''
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_having_max]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                function_call_expr
+                  ident	FUNC
+                  bigquery__function_args
+                    bigquery__pos_arg
+                      ident	col1
+                  bigquery__function_modifiers
+                    bigquery__having_modifier
+                      MAX
+                      ident	col2
+  
+  '''
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_having_min]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                function_call_expr
+                  ident	FUNC
+                  bigquery__function_args
+                    bigquery__pos_arg
+                      ident	col1
+                  bigquery__function_modifiers
+                    bigquery__having_modifier
+                      MIN
+                      ident	col2
+  
+  '''
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_ignore_nulls]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                function_call_expr
+                  ident	FUNC
+                  bigquery__function_args
+                    bigquery__pos_arg
+                      ident	col1
+                  bigquery__function_modifiers
+                    bigquery__nulls_modifier	IGNORE
+  
+  '''
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_limit]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                function_call_expr
+                  ident	FUNC
+                  bigquery__function_args
+                    bigquery__pos_arg
+                      ident	col1
+                  bigquery__function_modifiers
+                    bigquery__limit_modifier
+                      integer_literal	1
+  
+  '''
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_order_by]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                function_call_expr
+                  ident	FUNC
+                  bigquery__function_args
+                    bigquery__pos_arg
+                      ident	col1
+                  bigquery__function_modifiers
+                    bigquery__order_by_modifier
+                      order_by_items
+                        bigquery__order_by_item
+                          ident	col2
+                          bigquery__order_by_item_sort	DESC
+  
+  '''
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_respect_nulls]
+  '''
+  start
+    query_statement
+      query_expr
+        select
+          select_list
+            bigquery__select_item
+              bigquery__select_expr
+                function_call_expr
+                  ident	FUNC
+                  bigquery__function_args
+                    bigquery__pos_arg
+                      ident	col1
+                  bigquery__function_modifiers
+                    bigquery__nulls_modifier	RESPECT
+  
+  '''
+# ---
 # name: test_and_or_not_ok[expr_and_or_not]
   '''
   start

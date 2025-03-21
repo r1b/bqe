@@ -50,28 +50,41 @@ _USCORE : "_"
 _AND : "AND"i
 ANY : "ANY"i
 ALL : "ALL"i
+ASC : "ASC"i
 _ARRAY : "ARRAY"i
 _AS : "AS"i
 _BETWEEN : "BETWEEN"i
 _BIGNUMERIC : "BIGNUMERIC"i
+_BY : "BY"i
 _DATE : "DATE"i
 _DATETIME : "DATETIME"i
+DESC : "DESC"i
 _DISTINCT : "DISTINCT"i
 DISTINCT : "DISTINCT"i
 FALSE : "FALSE"i
+FIRST : "FIRST"i
 _FOR : "FOR"i
 _FROM : "FROM"i
+_HAVING : "HAVING"i
+IGNORE : "IGNORE"i
 _IN : "IN"i
 _INTERVAL : "INTERVAL"i
 _IS : "IS"i
 _JSON : "JSON"i
 _OF : "OF"i
-_OR : "OR"i
 _OFFSET : "OFFSET"i
+_OR : "OR"i
+_ORDER : "ORDER"i
+LAST : "LAST"i
+_LIMIT : "LIMIT"i
+MAX : "MAX"i
+MIN : "MIN"i
 _NOT : "NOT"i
 NULL : "NULL"i
+_NULLS : "NULLS"i
 _NUMERIC : "NUMERIC"i
 _RANGE : "RANGE"i
+RESPECT : "RESPECT"i
 _SELECT : "SELECT"i
 SOME : "SOME"i
 STRUCT : "STRUCT"i
@@ -354,13 +367,34 @@ parenthesized_not_a_query_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPA
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-reference
 # Ref: https://github.com/lark-parser/lark/blob/master/lark/grammars/python.lark#L145-L146
 # TODO: Transformer cleanup for column_expr -> function name
-function_call_expr : field_access_expr _LPAR function_args? _RPAR
+function_call_expr : field_access_expr _LPAR function_distinct? function_args? function_modifiers? _RPAR
+
+function_distinct : _DISTINCT
 
 function_args : pos_arg ( _COMMA pos_arg )* ( _COMMA named_arg )* | named_arg ( _COMMA named_arg )*
 
 pos_arg : column_expr
 
 named_arg : ident _ARROW column_expr
+
+function_modifiers : nulls_modifier? having_modifier? order_by_modifier? limit_modifier?
+
+nulls_modifier : ( IGNORE | RESPECT ) _NULLS
+
+having_modifier : _HAVING ( MIN | MAX ) column_expr
+
+order_by_modifier : _ORDER _BY order_by_items
+
+order_by_items : order_by_item ( _COMMA order_by_item )*
+
+order_by_item : column_expr order_by_item_sort? order_by_item_nulls?
+
+order_by_item_sort : ASC | DESC
+
+order_by_item_nulls : _NULLS ( FIRST | LAST )
+
+# TODO: Add offset
+limit_modifier : _LIMIT ( integer_literal | parameter )
 
 ################################################################################
 # Entry point
