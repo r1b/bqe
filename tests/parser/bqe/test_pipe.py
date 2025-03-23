@@ -185,3 +185,19 @@ def test_window_ok(sql, assert_parse_tree):
 ))
 def test_tablesample_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> PIVOT (SUM(col1) FOR quarter in ('Q1', 'Q2'))", id="pivot"),
+    pytest.param("FROM table1 |> PIVOT (SUM(col1) FOR quarter in ('Q1', 'Q2')) AS col2", id="pivot_aliased"),
+))
+def test_pivot_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> UNPIVOT (col1 FOR quarter IN (q1, q2))", id="unpivot"),
+    pytest.param("FROM table1 |> UNPIVOT (col1 FOR quarter IN (q1, q2)) AS col2", id="unpivot_aliased"),
+))
+def test_unpivot_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)

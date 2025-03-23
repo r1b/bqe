@@ -879,7 +879,7 @@
             bigquery__select_item
               bigquery__select_expr
                 bigquery__literal
-                  bigquery__struct_literal
+                  struct_literal
                     bigquery__literal
                       integer_literal	1
                     bigquery__literal
@@ -897,7 +897,7 @@
             bigquery__select_item
               bigquery__select_expr
                 bigquery__literal
-                  bigquery__struct_literal
+                  struct_literal
                     bigquery__literal
                       integer_literal	1
                     bigquery__literal

@@ -1,5 +1,5 @@
 %import common (WS)
-%import .bigquery (ALL, _AND, _AS, ASC, _BETWEEN, _BY, _COMMA, DESC, DISTINCT, _EQ, FIRST, _FROM, LAST, _LIMIT, _LPAR, _NULLS, _ORDER, _RPAR, _SELECT, as_alias, column_expr, from_clause, from_item, function_call_expr, ident, integer_literal, order_by_items, parameter, query_expr, query_statement, select, select_list, subquery, start)
+%import .bigquery (ALL, _AND, _AS, ASC, _BETWEEN, _BY, _COMMA, DESC, DISTINCT, _EQ, FIRST, _FOR, _FROM, _IN, LAST, _LIMIT, _LPAR, _NULLS, _ORDER, _RPAR, _SELECT, as_alias, column_expr, from_clause, from_item, function_call_expr, ident, integer_literal, order_by_items, parameter, query_expr, query_statement, select, select_list, struct_literal, subquery, start)
 
 # TODO: See ZetaSQL for a more complete definition of WS
 %ignore WS
@@ -40,6 +40,7 @@ OUTER : "OUTER"i
 _OVER : "OVER"i
 _PARTITION : "PARTITION"i
 _PERCENT : "PERCENT"i
+_PIVOT : "PIVOT"i
 _PRECEDING : "PRECEDING"i
 RANGE : "RANGE"i
 _RENAME : "RENAME"i
@@ -54,6 +55,7 @@ _SYSTEM : "SYSTEM"i
 _TABLESAMPLE : "TABLESAMPLE"i
 UNION : "UNION"i
 _UNBOUNDED : "UNBOUNDED"i
+_UNPIVOT : "UNPIVOT"i
 _USING : "USING"i
 _WHERE : "WHERE"i
 _WINDOW : "WINDOW"i
@@ -99,8 +101,8 @@ pipe_operator : pipe_select
     | pipe_call
     | pipe_window
     | pipe_tablesample
-#   | pipe_pivot
-#   | pipe_unpivot
+    | pipe_pivot
+    | pipe_unpivot
 
 # SELECT
 
@@ -297,4 +299,24 @@ window_frame_between_end_c : window_frame_numeric_following
 
 # TABLESAMPLE
 
-pipe_tablesample : _TABLESAMPLE _SYSTEM _LPAR ( integer_literal | parameter ) _PERCENT _RPAR
+pipe_tablesample : _TABLESAMPLE _SYSTEM _LPAR tablesample_perc _RPAR
+
+tablesample_perc : ( integer_literal | parameter ) _PERCENT
+
+# PIVOT
+
+pipe_pivot : _PIVOT _LPAR pivot_clause _RPAR as_alias?
+
+pivot_clause : function_call_expr _FOR ident _IN struct_literal
+
+# UNPIVOT
+
+pipe_unpivot : _UNPIVOT _LPAR unpivot_clause _RPAR as_alias?
+
+unpivot_clause : unpivot_values_column _FOR unpivot_name_column _IN unpivot_column_list
+
+unpivot_values_column : ident
+
+unpivot_name_column : ident
+
+unpivot_column_list : _LPAR ident ( _COMMA ident )* _RPAR

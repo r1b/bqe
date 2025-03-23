@@ -30,7 +30,7 @@
                         cube_list
                           ident	col3
                         bigquery__literal
-                          bigquery__struct_literal
+                          struct_literal
                             ident	col4
                             ident	col5
   
@@ -101,7 +101,7 @@
                               ident	col3
                           grouping_set
                             bigquery__literal
-                              bigquery__struct_literal
+                              struct_literal
                                 ident	col4
                                 ident	col5
                         grouping_set
@@ -1354,6 +1354,68 @@
   
   '''
 # ---
+# name: test_pivot_ok[pivot]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_pivot
+                pivot_clause
+                  function_call_expr
+                    ident	SUM
+                    bigquery__function_args
+                      bigquery__pos_arg
+                        ident	col1
+                  ident	quarter
+                  struct_literal
+                    bigquery__literal
+                      bigquery__string_literal	'Q1'
+                    bigquery__literal
+                      bigquery__string_literal	'Q2'
+  
+  '''
+# ---
+# name: test_pivot_ok[pivot_aliased]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_pivot
+                pivot_clause
+                  function_call_expr
+                    ident	SUM
+                    bigquery__function_args
+                      bigquery__pos_arg
+                        ident	col1
+                  ident	quarter
+                  struct_literal
+                    bigquery__literal
+                      bigquery__string_literal	'Q1'
+                    bigquery__literal
+                      bigquery__string_literal	'Q2'
+                as_alias
+                  ident	col2
+  
+  '''
+# ---
 # name: test_set_operation_ok[set_operation_all_single]
   '''
   start
@@ -1780,7 +1842,62 @@
           pipe_item
             pipe_operator
               pipe_tablesample
-                integer_literal	10
+                tablesample_perc
+                  integer_literal	10
+  
+  '''
+# ---
+# name: test_unpivot_ok[unpivot]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_unpivot
+                unpivot_clause
+                  unpivot_values_column
+                    ident	col1
+                  unpivot_name_column
+                    ident	quarter
+                  unpivot_column_list
+                    ident	q1
+                    ident	q2
+  
+  '''
+# ---
+# name: test_unpivot_ok[unpivot_aliased]
+  '''
+  start
+    query_statement
+      query_expr
+        pipe_expr
+          pipe_start
+            pipe_from
+              from_clause
+                bigquery__from_item_table
+                  bigquery__path_expression
+                    ident	table1
+          pipe_item
+            pipe_operator
+              pipe_unpivot
+                unpivot_clause
+                  unpivot_values_column
+                    ident	col1
+                  unpivot_name_column
+                    ident	quarter
+                  unpivot_column_list
+                    ident	q1
+                    ident	q2
+                as_alias
+                  ident	col2
   
   '''
 # ---
