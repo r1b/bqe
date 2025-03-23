@@ -1,909 +1,583 @@
 # serializer version: 1
 # name: test_array_literal_ok[literal_array_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  array_literal
+  select
+    select_list
+      select_expr
+        array_literal
   
   '''
 # ---
 # name: test_array_literal_ok[literal_array_multi]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  array_literal
-                    literal
-                      integer_literal	1
-                    literal
-                      integer_literal	2
-                    literal
-                      integer_literal	3
+  select
+    select_list
+      select_expr
+        array_literal
+          integer_literal	1
+          integer_literal	2
+          integer_literal	3
   
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  array_literal
-                    array_prefix
-                    literal
-                      integer_literal	1
-                    literal
-                      integer_literal	2
-                    literal
-                      integer_literal	3
+  select
+    select_list
+      select_expr
+        array_literal
+          array_prefix
+          integer_literal	1
+          integer_literal	2
+          integer_literal	3
   
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix_type]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  array_literal
-                    array_prefix
-                      array_type	INT64
-                    literal
-                      integer_literal	1
-                    literal
-                      integer_literal	2
-                    literal
-                      integer_literal	3
+  select
+    select_list
+      select_expr
+        array_literal
+          array_prefix
+            array_type	INT64
+          integer_literal	1
+          integer_literal	2
+          integer_literal	3
   
   '''
 # ---
 # name: test_array_literal_ok[literal_array_single]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  array_literal
-                    literal
-                      integer_literal	1
+  select
+    select_list
+      select_expr
+        array_literal
+          integer_literal	1
   
   '''
 # ---
 # name: test_bignumeric_literal_ok[literal_bignumeric]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bignumeric_literal	'42'
+  select
+    select_list
+      select_expr
+        bignumeric_literal	'42'
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	b""
+  select
+    select_list
+      select_expr
+        bytes_literal	b""
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	b"bytes"
+  select
+    select_list
+      select_expr
+        bytes_literal	b"bytes"
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_raw_cap]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	BR"bytes"
+  select
+    select_list
+      select_expr
+        bytes_literal	BR"bytes"
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_raw_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	br""
+  select
+    select_list
+      select_expr
+        bytes_literal	br""
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_raw_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	rb"bytes"
+  select
+    select_list
+      select_expr
+        bytes_literal	rb"bytes"
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_squot_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	b''
+  select
+    select_list
+      select_expr
+        bytes_literal	b''
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_squot_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	b'bytes'
+  select
+    select_list
+      select_expr
+        bytes_literal	b'bytes'
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_squot_raw_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	br''
+  select
+    select_list
+      select_expr
+        bytes_literal	br''
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_squot_raw_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	br'bytes'
+  select
+    select_list
+      select_expr
+        bytes_literal	br'bytes'
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tdquot_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	b""""""
+  select
+    select_list
+      select_expr
+        bytes_literal	b""""""
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tdquot_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	b"""We say: "hello"."""
+  select
+    select_list
+      select_expr
+        bytes_literal	b"""We say: "hello"."""
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tdquot_raw_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	br""""""
+  select
+    select_list
+      select_expr
+        bytes_literal	br""""""
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tdquot_raw_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	br"""We say: "hello"."""
+  select
+    select_list
+      select_expr
+        bytes_literal	br"""We say: "hello"."""
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tsquot_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	b''''''
+  select
+    select_list
+      select_expr
+        bytes_literal	b''''''
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tsquot_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	b'''We say: 'hello'.'''
+  select
+    select_list
+      select_expr
+        bytes_literal	b'''We say: 'hello'.'''
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tsquot_raw_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	br''''''
+  select
+    select_list
+      select_expr
+        bytes_literal	br''''''
   
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tsquot_raw_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  bytes_literal	br'''We say: 'hello'.'''
+  select
+    select_list
+      select_expr
+        bytes_literal	br'''We say: 'hello'.'''
   
   '''
 # ---
 # name: test_date_time_literal_ok[literal_date]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  date_literal	'1970-01-01'
+  select
+    select_list
+      select_expr
+        date_literal	'1970-01-01'
   
   '''
 # ---
 # name: test_date_time_literal_ok[literal_datetime]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  datetime_literal	'1970-01-01 12:00:00.01'
+  select
+    select_list
+      select_expr
+        datetime_literal	'1970-01-01 12:00:00.01'
   
   '''
 # ---
 # name: test_date_time_literal_ok[literal_time]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  date_literal	'12:00:00.01'
+  select
+    select_list
+      select_expr
+        date_literal	'12:00:00.01'
   
   '''
 # ---
 # name: test_date_time_literal_ok[literal_timestamp]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  timestamp_literal	'1970-01-01 12:00:00.01-08'
+  select
+    select_list
+      select_expr
+        timestamp_literal	'1970-01-01 12:00:00.01-08'
   
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dig_dot]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  float_literal	58.
+  select
+    select_list
+      select_expr
+        float_literal	58.
   
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dig_dot_dig_lowere_minus_dig]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  float_literal	123.456e-67
+  select
+    select_list
+      select_expr
+        float_literal	123.456e-67
   
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dig_lowere_dig]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  float_literal	4e2
+  select
+    select_list
+      select_expr
+        float_literal	4e2
   
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dot_dig_cape_dig]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  float_literal	.1E4
+  select
+    select_list
+      select_expr
+        float_literal	.1E4
   
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_decimal]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  integer_literal	1
+  select
+    select_list
+      select_expr
+        integer_literal	1
   
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_decimal_minus]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  integer_literal	-1
+  select
+    select_list
+      select_expr
+        integer_literal	-1
   
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_decimal_plus]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  integer_literal	+1
+  select
+    select_list
+      select_expr
+        integer_literal	+1
   
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_hex]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  integer_literal	0xff
+  select
+    select_list
+      select_expr
+        integer_literal	0xff
   
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_hex_cap]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  integer_literal	0XFF
+  select
+    select_list
+      select_expr
+        integer_literal	0XFF
   
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_hex_minus]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  integer_literal	-0xff
+  select
+    select_list
+      select_expr
+        integer_literal	-0xff
   
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_hex_plus]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  integer_literal	+0xff
+  select
+    select_list
+      select_expr
+        integer_literal	+0xff
   
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_quoted_alias_adjacent]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  integer_literal	1
-                as_alias
-                  ident	`alias`
+  select
+    select_list
+      select_expr
+        integer_literal	1
+        as_alias
+          ident	`alias`
   
   '''
 # ---
 # name: test_interval_literal_ok[literal_interval]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  interval_literal
-                    literal
-                      integer_literal	1
-                    datetime_part	MONTH
+  select
+    select_list
+      select_expr
+        interval_literal
+          integer_literal	1
+          datetime_part	MONTH
   
   '''
 # ---
 # name: test_json_literal_ok[literal_json]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  json_literal	'{}'
+  select
+    select_list
+      select_expr
+        json_literal	'{}'
   
   '''
 # ---
 # name: test_numeric_literal_ok[literal_numeric]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  numeric_literal	'42'
+  select
+    select_list
+      select_expr
+        numeric_literal	'42'
   
   '''
 # ---
 # name: test_range_literal_ok[literal_range]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  range_literal
-                    range_type	DATE
-                    '[1970-01-01, 1970-01-02)'
+  select
+    select_list
+      select_expr
+        range_literal
+          range_type	DATE
+          range_value	'[1970-01-01, 1970-01-02)'
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	""
+  select
+    select_list
+      select_expr
+        string_literal	""
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	"string"
+  select
+    select_list
+      select_expr
+        string_literal	"string"
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_raw_cap]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	R"string"
+  select
+    select_list
+      select_expr
+        string_literal	R"string"
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_raw_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	r""
+  select
+    select_list
+      select_expr
+        string_literal	r""
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_raw_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	r"string"
+  select
+    select_list
+      select_expr
+        string_literal	r"string"
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_squot_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	''
+  select
+    select_list
+      select_expr
+        string_literal	''
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_squot_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	'string'
+  select
+    select_list
+      select_expr
+        string_literal	'string'
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_squot_raw_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	r''
+  select
+    select_list
+      select_expr
+        string_literal	r''
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_squot_raw_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	r'string'
+  select
+    select_list
+      select_expr
+        string_literal	r'string'
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tdquot_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	""""""
+  select
+    select_list
+      select_expr
+        string_literal	""""""
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tdquot_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	"""We say: "hello"."""
+  select
+    select_list
+      select_expr
+        string_literal	"""We say: "hello"."""
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tdquot_raw_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	r""""""
+  select
+    select_list
+      select_expr
+        string_literal	r""""""
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tdquot_raw_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	r"""We say: "hello"."""
+  select
+    select_list
+      select_expr
+        string_literal	r"""We say: "hello"."""
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tsquot_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	''''''
+  select
+    select_list
+      select_expr
+        string_literal	''''''
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tsquot_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	'''We say: 'hello'.'''
+  select
+    select_list
+      select_expr
+        string_literal	'''We say: 'hello'.'''
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tsquot_raw_empty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	r''''''
+  select
+    select_list
+      select_expr
+        string_literal	r''''''
   
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tsquot_raw_nonempty]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  string_literal	r'''We say: 'hello'.'''
+  select
+    select_list
+      select_expr
+        string_literal	r'''We say: 'hello'.'''
   
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  struct_literal
-                    literal
-                      integer_literal	1
-                    literal
-                      integer_literal	2
+  select
+    select_list
+      select_expr
+        struct_literal
+          integer_literal	1
+          integer_literal	2
   
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_multi]
   '''
-  start
-    query_statement
-      query_expr
-        select
-          select_list
-            select_item
-              select_expr
-                literal
-                  struct_literal
-                    literal
-                      integer_literal	1
-                    literal
-                      integer_literal	2
-                    literal
-                      integer_literal	3
+  select
+    select_list
+      select_expr
+        struct_literal
+          integer_literal	1
+          integer_literal	2
+          integer_literal	3
   
   '''
 # ---

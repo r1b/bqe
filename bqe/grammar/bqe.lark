@@ -6,7 +6,6 @@
 # Punctuation
 ################################################################################
 
-BACKTICK : "`"
 DQUOT : "\""
 MINUS : "-"
 PLUS : "+"
@@ -14,6 +13,7 @@ SQUOT : "'"
 _AMP : "&"
 _ARROW : "=>"
 _AT : "@"
+_BACKTICK : "`"
 _CARET : "^"
 _COMMA : ","
 _CONCAT : "||"
@@ -58,17 +58,13 @@ EXCEPT : "EXCEPT"i
 FALSE : "FALSE"i
 FIRST : "FIRST"i
 FULL : "FULL"i
-IGNORE : "IGNORE"i
 INNER : "INNER"i
 INTERSECT : "INTERSECT"i
 LAST : "LAST"i
 LEFT : "LEFT"i
-MAX : "MAX"i
-MIN : "MIN"i
 NULL : "NULL"i
 OUTER : "OUTER"i
 RANGE : "RANGE"i
-RESPECT : "RESPECT"i
 RIGHT : "RIGHT"i
 ROWS : "ROWS"i
 SOME : "SOME"i
@@ -99,12 +95,15 @@ _FROM : "FROM"i
 _GROUP : "GROUP"i
 _GROUPING : "GROUPING"i
 _HAVING : "HAVING"i
+_IGNORE : "IGNORE"i
 _IN : "IN"i
 _INTERVAL : "INTERVAL"i
 _IS : "IS"i
 _JOIN : "JOIN"i
 _JSON : "JSON"i
 _LIMIT : "LIMIT"i
+_MAX : "MAX"i
+_MIN : "MIN"i
 _NAME : "NAME"i
 _NOT : "NOT"i
 _NULLS : "NULLS"i
@@ -121,6 +120,7 @@ _PIVOT : "PIVOT"i
 _PRECEDING : "PRECEDING"i
 _RANGE : "RANGE"i
 _RENAME : "RENAME"i
+_RESPECT : "RESPECT"i
 _ROLLUP : "ROLLUP"i
 _ROW : "ROW"i
 _SELECT : "SELECT"i
@@ -147,7 +147,7 @@ _WITH : "WITH"i
 # Ref: https://github.com/google/zetasql/blob/master/zetasql/parser/flex_tokenizer.l
 
 UNQUOTED_IDENT : CNAME
-QUOTED_IDENT : BACKTICK /[^`]+/ BACKTICK
+QUOTED_IDENT : _BACKTICK /[^`]+/ _BACKTICK
 
 ident : UNQUOTED_IDENT | QUOTED_IDENT
 
@@ -161,7 +161,7 @@ parameter : _AT UNQUOTED_IDENT
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#literals
 
-literal : string_literal
+?literal : string_literal
     | bytes_literal
     | integer_literal
     | numeric_literal
@@ -259,9 +259,11 @@ timestamp_literal : _TIMESTAMP STRING_LITERAL
 
 # Range
 
-range_literal : _RANGE range_type STRING_LITERAL
+range_literal : _RANGE range_type range_value
 
 range_type : _LT UNQUOTED_IDENT _GT
+
+range_value : STRING_LITERAL
 
 # Interval
 
@@ -299,13 +301,13 @@ struct_literal : _LPAR column_expr _COMMA column_expr ( _COMMA column_expr )* _R
     | prec_higher_than_and_expr _AND prec_higher_than_and_expr
 
 ?prec_higher_than_and_expr : unparenthesized_prec_higher_than_and_expr
-    | parenthesized_not_a_query_expr
+    | parenthesized_expr
     | subquery
 
 # In other words, parens used for grouping expressions, but not subqueries
-parenthesized_not_a_query_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPAR
+parenthesized_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPAR
 
-?maybe_parenthesized_not_a_query_expr : parenthesized_not_a_query_expr
+?maybe_parenthesized_not_a_query_expr : parenthesized_expr
     | unparenthesized_prec_higher_than_and_expr
     | binary_boolean_expr
 
@@ -402,7 +404,9 @@ parenthesized_not_a_query_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPA
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-reference
 # Ref: https://github.com/lark-parser/lark/blob/master/lark/grammars/python.lark#L145-L146
-function_call_expr : field_access_expr _LPAR function_distinct? function_args? function_modifiers? _RPAR
+function_call_expr : function_name _LPAR function_distinct? function_args? function_modifiers? _RPAR
+
+function_name : field_access_expr
 
 function_distinct : _DISTINCT
 
@@ -414,9 +418,13 @@ named_arg : ident _ARROW column_expr
 
 function_modifiers : nulls_modifier? having_modifier? order_by_modifier? limit_modifier?
 
-nulls_modifier : ( IGNORE | RESPECT ) _NULLS
+nulls_modifier : nulls_modifier_kind _NULLS
 
-having_modifier : _HAVING ( MIN | MAX ) column_expr
+nulls_modifier_kind : _IGNORE -> ignore_nulls | _RESPECT -> respect_nulls
+
+having_modifier : _HAVING having_modifier_kind column_expr
+
+having_modifier_kind : _MIN -> having_min | _MAX -> having_max
 
 order_by_modifier : _ORDER _BY order_by_items
 
@@ -438,7 +446,7 @@ keyword_subquery_expr : _ARRAY _LPAR query_expr _RPAR -> array_subquery_expr
 # Entry point
 ################################################################################
 
-start : query_statement
+?start : query_statement
 
 ################################################################################
 # Query
@@ -446,9 +454,9 @@ start : query_statement
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#sql_syntax
 
-query_statement : query_expr | script
+?query_statement : query_expr | script
 
-query_expr : select | subquery | cte | pipe_from | pipe_expr
+?query_expr : select | subquery | cte | pipe_from | pipe_expr
 
 subquery : _LPAR query_expr _RPAR
 
@@ -481,7 +489,7 @@ select_shape : _AS ( STRUCT | VALUE )
 # See https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#trailing_commas
 select_list : select_item ( _COMMA select_item )* _COMMA?
 
-select_item : select_star | select_dot_star | select_expr
+?select_item : select_star | select_dot_star | select_expr
 
 select_star : _STAR
 
@@ -499,11 +507,11 @@ as_alias : [ _AS ] ident
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#from_clause
 
-select_from : _FROM from_clause
+?select_from : _FROM from_clause
 
-from_clause : from_item | from_clause _COMMA from_item
+from_clause : from_item ( _COMMA from_item )*
 
-from_item : path_expression as_alias? time_travel? -> from_item_table
+?from_item : path_expression as_alias? time_travel? -> from_item_table
     | subquery as_alias? -> from_item_subquery
     | from_item_unnest
 
@@ -547,6 +555,7 @@ pipe_operator : pipe_select
 
 # SELECT
 
+# TODO: Still need select_shape
 pipe_select : _SELECT select_list
 
 # EXTEND
