@@ -8,8 +8,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -18,8 +18,8 @@
                   agg_item
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     as_alias
                       ident	col2
@@ -29,7 +29,7 @@
                       cube_list
                         cube_list
                           ident	col3
-                        bigquery__literal
+                        literal
                           struct_literal
                             ident	col4
                             ident	col5
@@ -45,8 +45,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -55,8 +55,8 @@
                   agg_item
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     as_alias
                       ident	col2
@@ -76,8 +76,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -86,8 +86,8 @@
                   agg_item
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     as_alias
                       ident	col2
@@ -100,7 +100,7 @@
                             grouping_set
                               ident	col3
                           grouping_set
-                            bigquery__literal
+                            literal
                               struct_literal
                                 ident	col4
                                 ident	col5
@@ -118,8 +118,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -128,8 +128,8 @@
                   agg_item
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     as_alias
                       ident	col2
@@ -153,8 +153,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -163,8 +163,8 @@
                   agg_item
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     as_alias
                       ident	col2
@@ -187,8 +187,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -197,8 +197,8 @@
                   agg_item
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     as_alias
                       ident	col2
@@ -218,8 +218,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -228,8 +228,8 @@
                   agg_item
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     as_alias
                       ident	col2
@@ -250,8 +250,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -260,16 +260,16 @@
                   agg_item
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     as_alias
                       ident	col2
                   agg_item
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col3
                     as_alias
                       ident	col4
@@ -285,8 +285,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -295,8 +295,8 @@
                   agg_item
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
   
   '''
@@ -310,8 +310,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -320,8 +320,8 @@
                   agg_item
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     as_alias
                       ident	col2
@@ -337,8 +337,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -356,18 +356,18 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_call
                 function_call_expr
                   ident	APPENDS
-                  bigquery__function_args
-                    bigquery__pos_arg
-                      bigquery__literal
-                        bigquery__string_literal	'1970-01-01'
+                  function_args
+                    pos_arg
+                      literal
+                        string_literal	'1970-01-01'
   
   '''
 # ---
@@ -380,18 +380,18 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_call
                 function_call_expr
                   ident	APPENDS
-                  bigquery__function_args
-                    bigquery__pos_arg
-                      bigquery__literal
-                        bigquery__string_literal	'1970-01-01'
+                  function_args
+                    pos_arg
+                      literal
+                        string_literal	'1970-01-01'
                 as_alias
                   ident	table2
   
@@ -406,18 +406,18 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_call
                 function_call_expr
                   ident	APPENDS
-                  bigquery__function_args
-                    bigquery__pos_arg
-                      bigquery__literal
-                        bigquery__string_literal	'1970-01-01'
+                  function_args
+                    pos_arg
+                      literal
+                        string_literal	'1970-01-01'
                 as_alias
                   ident	table2
   
@@ -432,16 +432,16 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_join
                 join_with_criteria
                   join_criteria	CROSS
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table2
                   using_clause
                     using_columns
@@ -458,16 +458,16 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_join
                 join_with_criteria
                   join_criteria	FULL
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table2
                   using_clause
                     using_columns
@@ -484,8 +484,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -494,8 +494,8 @@
                   join_criteria
                     FULL
                     OUTER
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table2
                   using_clause
                     using_columns
@@ -512,16 +512,16 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_join
                 join_with_criteria
                   join_criteria	INNER
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table2
                   using_clause
                     using_columns
@@ -538,16 +538,16 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_join
                 join_with_criteria
                   join_criteria	LEFT
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table2
                   using_clause
                     using_columns
@@ -564,8 +564,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -574,8 +574,8 @@
                   join_criteria
                     LEFT
                     OUTER
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table2
                   using_clause
                     using_columns
@@ -592,22 +592,22 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_join
                 join
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table2
                   on_clause
-                    bigquery__and_expr
-                      bigquery__eq_expr
+                    and_expr
+                      eq_expr
                         ident	col1
                         ident	col2
-                      bigquery__ne_expr
+                      ne_expr
                         ident	col3
                         ident	col4
   
@@ -622,18 +622,18 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_join
                 join
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table2
                   on_clause
-                    bigquery__eq_expr
+                    eq_expr
                       ident	col1
                       ident	col2
   
@@ -648,16 +648,16 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_join
                 join_with_criteria
                   join_criteria	RIGHT
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table2
                   using_clause
                     using_columns
@@ -674,8 +674,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -684,8 +684,8 @@
                   join_criteria
                     RIGHT
                     OUTER
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table2
                   using_clause
                     using_columns
@@ -702,15 +702,15 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_join
                 join
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table2
                   using_clause
                     using_columns
@@ -728,15 +728,15 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_join
                 join
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table2
                   using_clause
                     using_columns
@@ -753,8 +753,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -772,8 +772,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -791,16 +791,16 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_order_by
                 order_by_items
-                  bigquery__order_by_item
+                  order_by_item
                     ident	col1
-                  bigquery__order_by_item
+                  order_by_item
                     ident	col2
   
   '''
@@ -814,21 +814,21 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_order_by
                 order_by_items
-                  bigquery__order_by_item
+                  order_by_item
                     ident	col1
-                    bigquery__order_by_item_sort	ASC
-                    bigquery__order_by_item_nulls	FIRST
-                  bigquery__order_by_item
+                    order_by_item_sort	ASC
+                    order_by_item_nulls	FIRST
+                  order_by_item
                     ident	col2
-                    bigquery__order_by_item_sort	DESC
-                    bigquery__order_by_item_nulls	LAST
+                    order_by_item_sort	DESC
+                    order_by_item_nulls	LAST
   
   '''
 # ---
@@ -841,19 +841,19 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_order_by
                 order_by_items
-                  bigquery__order_by_item
+                  order_by_item
                     ident	col1
-                    bigquery__order_by_item_nulls	FIRST
-                  bigquery__order_by_item
+                    order_by_item_nulls	FIRST
+                  order_by_item
                     ident	col2
-                    bigquery__order_by_item_nulls	LAST
+                    order_by_item_nulls	LAST
   
   '''
 # ---
@@ -866,19 +866,19 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_order_by
                 order_by_items
-                  bigquery__order_by_item
+                  order_by_item
                     ident	col1
-                    bigquery__order_by_item_sort	ASC
-                  bigquery__order_by_item
+                    order_by_item_sort	ASC
+                  order_by_item
                     ident	col2
-                    bigquery__order_by_item_sort	DESC
+                    order_by_item_sort	DESC
   
   '''
 # ---
@@ -891,14 +891,14 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_order_by
                 order_by_items
-                  bigquery__order_by_item
+                  order_by_item
                     ident	col1
   
   '''
@@ -912,8 +912,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -935,8 +935,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -956,8 +956,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -977,8 +977,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -987,22 +987,22 @@
                   extend_item
                     function_call_expr
                       ident	POW
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
-                        bigquery__pos_arg
-                          bigquery__literal
+                        pos_arg
+                          literal
                             integer_literal	2
                     as_alias
                       ident	col2
                   extend_item
                     function_call_expr
                       ident	EXP
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
-                        bigquery__pos_arg
-                          bigquery__literal
+                        pos_arg
+                          literal
                             integer_literal	2
   
   '''
@@ -1016,8 +1016,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1026,11 +1026,11 @@
                   extend_item
                     function_call_expr
                       ident	POW
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
-                        bigquery__pos_arg
-                          bigquery__literal
+                        pos_arg
+                          literal
                             integer_literal	2
   
   '''
@@ -1044,8 +1044,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1054,11 +1054,11 @@
                   extend_item
                     function_call_expr
                       ident	POW
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
-                        bigquery__pos_arg
-                          bigquery__literal
+                        pos_arg
+                          literal
                             integer_literal	2
                     as_alias
                       ident	col2
@@ -1074,8 +1074,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1084,11 +1084,11 @@
                   extend_item
                     function_call_expr
                       ident	POW
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
-                        bigquery__pos_arg
-                          bigquery__literal
+                        pos_arg
+                          literal
                             integer_literal	2
   
   '''
@@ -1100,8 +1100,8 @@
       query_expr
         pipe_from
           from_clause
-            bigquery__from_item_table
-              bigquery__path_expression
+            from_item_table
+              path_expression
                 ident	table1
   
   '''
@@ -1115,15 +1115,15 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
               pipe_select
                 select_list
-                  bigquery__select_item
-                    bigquery__select_expr
+                  select_item
+                    select_expr
                       ident	col1
   
   '''
@@ -1137,20 +1137,20 @@
           pipe_start
             select
               select_list
-                bigquery__select_item
-                  bigquery__select_expr
+                select_item
+                  select_expr
                     ident	col1
-              bigquery__select_from
+              select_from
                 from_clause
-                  bigquery__from_item_table
-                    bigquery__path_expression
+                  from_item_table
+                    path_expression
                       ident	table1
           pipe_item
             pipe_operator
               pipe_select
                 select_list
-                  bigquery__select_item
-                    bigquery__select_expr
+                  select_item
+                    select_expr
                       ident	col1
   
   '''
@@ -1166,20 +1166,20 @@
               query_expr
                 select
                   select_list
-                    bigquery__select_item
-                      bigquery__select_expr
+                    select_item
+                      select_expr
                         ident	col1
-                  bigquery__select_from
+                  select_from
                     from_clause
-                      bigquery__from_item_table
-                        bigquery__path_expression
+                      from_item_table
+                        path_expression
                           ident	table1
           pipe_item
             pipe_operator
               pipe_select
                 select_list
-                  bigquery__select_item
-                    bigquery__select_expr
+                  select_item
+                    select_expr
                       ident	col1
   
   '''
@@ -1193,8 +1193,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1220,8 +1220,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1243,8 +1243,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1266,8 +1266,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1277,21 +1277,21 @@
                     ident	col1
                     function_call_expr
                       ident	POW
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
-                        bigquery__pos_arg
-                          bigquery__literal
+                        pos_arg
+                          literal
                             integer_literal	2
                   set_item
                     ident	col2
                     function_call_expr
                       ident	EXP
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
-                        bigquery__pos_arg
-                          bigquery__literal
+                        pos_arg
+                          literal
                             integer_literal	2
   
   '''
@@ -1305,8 +1305,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1316,11 +1316,11 @@
                     ident	col1
                     function_call_expr
                       ident	POW
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
-                        bigquery__pos_arg
-                          bigquery__literal
+                        pos_arg
+                          literal
                             integer_literal	2
   
   '''
@@ -1334,8 +1334,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1345,11 +1345,11 @@
                     ident	col1
                     function_call_expr
                       ident	POW
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
-                        bigquery__pos_arg
-                          bigquery__literal
+                        pos_arg
+                          literal
                             integer_literal	2
   
   '''
@@ -1363,8 +1363,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1372,15 +1372,15 @@
                 pivot_clause
                   function_call_expr
                     ident	SUM
-                    bigquery__function_args
-                      bigquery__pos_arg
+                    function_args
+                      pos_arg
                         ident	col1
                   ident	quarter
                   struct_literal
-                    bigquery__literal
-                      bigquery__string_literal	'Q1'
-                    bigquery__literal
-                      bigquery__string_literal	'Q2'
+                    literal
+                      string_literal	'Q1'
+                    literal
+                      string_literal	'Q2'
   
   '''
 # ---
@@ -1393,8 +1393,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1402,15 +1402,15 @@
                 pivot_clause
                   function_call_expr
                     ident	SUM
-                    bigquery__function_args
-                      bigquery__pos_arg
+                    function_args
+                      pos_arg
                         ident	col1
                   ident	quarter
                   struct_literal
-                    bigquery__literal
-                      bigquery__string_literal	'Q1'
-                    bigquery__literal
-                      bigquery__string_literal	'Q2'
+                    literal
+                      string_literal	'Q1'
+                    literal
+                      string_literal	'Q2'
                 as_alias
                   ident	col2
   
@@ -1425,8 +1425,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1439,9 +1439,9 @@
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	1
   
   '''
@@ -1455,8 +1455,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1470,9 +1470,9 @@
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	1
                                 as_alias
                                   ident	col1
@@ -1488,8 +1488,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1506,9 +1506,9 @@
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	1
                                 as_alias
                                   ident	col1
@@ -1524,8 +1524,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1541,9 +1541,9 @@
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	1
                                 as_alias
                                   ident	col1
@@ -1559,8 +1559,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1574,9 +1574,9 @@
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	1
                                 as_alias
                                   ident	col1
@@ -1592,8 +1592,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1606,17 +1606,17 @@
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	1
                     subquery
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	2
   
   '''
@@ -1630,8 +1630,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1645,9 +1645,9 @@
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	1
                                 as_alias
                                   ident	col1
@@ -1663,8 +1663,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1680,9 +1680,9 @@
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	1
                                 as_alias
                                   ident	col1
@@ -1698,8 +1698,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1714,9 +1714,9 @@
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	1
                                 as_alias
                                   ident	col1
@@ -1732,8 +1732,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1748,9 +1748,9 @@
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	1
                                 as_alias
                                   ident	col1
@@ -1766,8 +1766,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1782,9 +1782,9 @@
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	1
                                 as_alias
                                   ident	col1
@@ -1800,8 +1800,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1818,9 +1818,9 @@
                       query_expr
                         select
                           select_list
-                            bigquery__select_item
-                              bigquery__select_expr
-                                bigquery__literal
+                            select_item
+                              select_expr
+                                literal
                                   integer_literal	1
                                 as_alias
                                   ident	col1
@@ -1836,8 +1836,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1856,8 +1856,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1882,8 +1882,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1910,8 +1910,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1929,8 +1929,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1939,8 +1939,8 @@
                   window_expr
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     window_spec
                       window_frame
@@ -1948,11 +1948,11 @@
                         window_frame_between
                           window_frame_between_numeric_preceding
                             window_frame_numeric_preceding
-                              bigquery__literal
+                              literal
                                 integer_literal	1
                             window_frame_between_end_a
                               window_frame_numeric_following
-                                bigquery__literal
+                                literal
                                   integer_literal	1
   
   '''
@@ -1966,8 +1966,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -1976,8 +1976,8 @@
                   window_expr
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     window_spec
                       window_frame
@@ -1999,8 +1999,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -2009,15 +2009,15 @@
                   window_expr
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     window_spec
                       window_order_by
                         order_by_items
-                          bigquery__order_by_item
+                          order_by_item
                             ident	col2
-                          bigquery__order_by_item
+                          order_by_item
                             ident	col3
   
   '''
@@ -2031,8 +2031,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -2041,13 +2041,13 @@
                   window_expr
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     window_spec
                       window_order_by
                         order_by_items
-                          bigquery__order_by_item
+                          order_by_item
                             ident	col2
   
   '''
@@ -2061,8 +2061,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -2071,15 +2071,15 @@
                   window_expr
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     window_spec
                       window_partition_by
                         ident	col2
                       window_order_by
                         order_by_items
-                          bigquery__order_by_item
+                          order_by_item
                             ident	col3
   
   '''
@@ -2093,8 +2093,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -2103,8 +2103,8 @@
                   window_expr
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     window_spec
                       window_partition_by
@@ -2122,8 +2122,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -2132,8 +2132,8 @@
                   window_expr
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     window_spec
                       window_partition_by
@@ -2150,8 +2150,8 @@
           pipe_start
             pipe_from
               from_clause
-                bigquery__from_item_table
-                  bigquery__path_expression
+                from_item_table
+                  path_expression
                     ident	table1
           pipe_item
             pipe_operator
@@ -2160,8 +2160,8 @@
                   window_expr
                     function_call_expr
                       ident	SUM
-                      bigquery__function_args
-                        bigquery__pos_arg
+                      function_args
+                        pos_arg
                           ident	col1
                     window_spec
   

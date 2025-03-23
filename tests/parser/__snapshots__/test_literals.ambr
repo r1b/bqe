@@ -6,10 +6,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__array_literal
+            select_item
+              select_expr
+                literal
+                  array_literal
   
   '''
 # ---
@@ -20,15 +20,15 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__array_literal
-                    bigquery__literal
+            select_item
+              select_expr
+                literal
+                  array_literal
+                    literal
                       integer_literal	1
-                    bigquery__literal
+                    literal
                       integer_literal	2
-                    bigquery__literal
+                    literal
                       integer_literal	3
   
   '''
@@ -40,16 +40,16 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__array_literal
-                    bigquery__array_prefix
-                    bigquery__literal
+            select_item
+              select_expr
+                literal
+                  array_literal
+                    array_prefix
+                    literal
                       integer_literal	1
-                    bigquery__literal
+                    literal
                       integer_literal	2
-                    bigquery__literal
+                    literal
                       integer_literal	3
   
   '''
@@ -61,17 +61,17 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__array_literal
-                    bigquery__array_prefix
-                      bigquery__array_type	INT64
-                    bigquery__literal
+            select_item
+              select_expr
+                literal
+                  array_literal
+                    array_prefix
+                      array_type	INT64
+                    literal
                       integer_literal	1
-                    bigquery__literal
+                    literal
                       integer_literal	2
-                    bigquery__literal
+                    literal
                       integer_literal	3
   
   '''
@@ -83,11 +83,11 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__array_literal
-                    bigquery__literal
+            select_item
+              select_expr
+                literal
+                  array_literal
+                    literal
                       integer_literal	1
   
   '''
@@ -99,10 +99,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bignumeric_literal	'42'
+            select_item
+              select_expr
+                literal
+                  bignumeric_literal	'42'
   
   '''
 # ---
@@ -113,10 +113,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	b""
+            select_item
+              select_expr
+                literal
+                  bytes_literal	b""
   
   '''
 # ---
@@ -127,10 +127,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	b"bytes"
+            select_item
+              select_expr
+                literal
+                  bytes_literal	b"bytes"
   
   '''
 # ---
@@ -141,10 +141,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	BR"bytes"
+            select_item
+              select_expr
+                literal
+                  bytes_literal	BR"bytes"
   
   '''
 # ---
@@ -155,10 +155,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	br""
+            select_item
+              select_expr
+                literal
+                  bytes_literal	br""
   
   '''
 # ---
@@ -169,10 +169,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	rb"bytes"
+            select_item
+              select_expr
+                literal
+                  bytes_literal	rb"bytes"
   
   '''
 # ---
@@ -183,10 +183,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	b''
+            select_item
+              select_expr
+                literal
+                  bytes_literal	b''
   
   '''
 # ---
@@ -197,10 +197,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	b'bytes'
+            select_item
+              select_expr
+                literal
+                  bytes_literal	b'bytes'
   
   '''
 # ---
@@ -211,10 +211,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	br''
+            select_item
+              select_expr
+                literal
+                  bytes_literal	br''
   
   '''
 # ---
@@ -225,10 +225,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	br'bytes'
+            select_item
+              select_expr
+                literal
+                  bytes_literal	br'bytes'
   
   '''
 # ---
@@ -239,10 +239,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	b""""""
+            select_item
+              select_expr
+                literal
+                  bytes_literal	b""""""
   
   '''
 # ---
@@ -253,10 +253,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	b"""We say: "hello"."""
+            select_item
+              select_expr
+                literal
+                  bytes_literal	b"""We say: "hello"."""
   
   '''
 # ---
@@ -267,10 +267,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	br""""""
+            select_item
+              select_expr
+                literal
+                  bytes_literal	br""""""
   
   '''
 # ---
@@ -281,10 +281,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	br"""We say: "hello"."""
+            select_item
+              select_expr
+                literal
+                  bytes_literal	br"""We say: "hello"."""
   
   '''
 # ---
@@ -295,10 +295,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	b''''''
+            select_item
+              select_expr
+                literal
+                  bytes_literal	b''''''
   
   '''
 # ---
@@ -309,10 +309,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	b'''We say: 'hello'.'''
+            select_item
+              select_expr
+                literal
+                  bytes_literal	b'''We say: 'hello'.'''
   
   '''
 # ---
@@ -323,10 +323,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	br''''''
+            select_item
+              select_expr
+                literal
+                  bytes_literal	br''''''
   
   '''
 # ---
@@ -337,10 +337,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__bytes_literal	br'''We say: 'hello'.'''
+            select_item
+              select_expr
+                literal
+                  bytes_literal	br'''We say: 'hello'.'''
   
   '''
 # ---
@@ -351,10 +351,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__date_literal	'1970-01-01'
+            select_item
+              select_expr
+                literal
+                  date_literal	'1970-01-01'
   
   '''
 # ---
@@ -365,10 +365,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__datetime_literal	'1970-01-01 12:00:00.01'
+            select_item
+              select_expr
+                literal
+                  datetime_literal	'1970-01-01 12:00:00.01'
   
   '''
 # ---
@@ -379,10 +379,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__date_literal	'12:00:00.01'
+            select_item
+              select_expr
+                literal
+                  date_literal	'12:00:00.01'
   
   '''
 # ---
@@ -393,10 +393,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__timestamp_literal	'1970-01-01 12:00:00.01-08'
+            select_item
+              select_expr
+                literal
+                  timestamp_literal	'1970-01-01 12:00:00.01-08'
   
   '''
 # ---
@@ -407,10 +407,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__float_literal	58.
+            select_item
+              select_expr
+                literal
+                  float_literal	58.
   
   '''
 # ---
@@ -421,10 +421,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__float_literal	123.456e-67
+            select_item
+              select_expr
+                literal
+                  float_literal	123.456e-67
   
   '''
 # ---
@@ -435,10 +435,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__float_literal	4e2
+            select_item
+              select_expr
+                literal
+                  float_literal	4e2
   
   '''
 # ---
@@ -449,10 +449,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__float_literal	.1E4
+            select_item
+              select_expr
+                literal
+                  float_literal	.1E4
   
   '''
 # ---
@@ -463,9 +463,9 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
+            select_item
+              select_expr
+                literal
                   integer_literal	1
   
   '''
@@ -477,9 +477,9 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
+            select_item
+              select_expr
+                literal
                   integer_literal	-1
   
   '''
@@ -491,9 +491,9 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
+            select_item
+              select_expr
+                literal
                   integer_literal	+1
   
   '''
@@ -505,9 +505,9 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
+            select_item
+              select_expr
+                literal
                   integer_literal	0xff
   
   '''
@@ -519,9 +519,9 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
+            select_item
+              select_expr
+                literal
                   integer_literal	0XFF
   
   '''
@@ -533,9 +533,9 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
+            select_item
+              select_expr
+                literal
                   integer_literal	-0xff
   
   '''
@@ -547,9 +547,9 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
+            select_item
+              select_expr
+                literal
                   integer_literal	+0xff
   
   '''
@@ -561,9 +561,9 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
+            select_item
+              select_expr
+                literal
                   integer_literal	1
                 as_alias
                   ident	`alias`
@@ -577,13 +577,13 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__interval_literal
-                    bigquery__literal
+            select_item
+              select_expr
+                literal
+                  interval_literal
+                    literal
                       integer_literal	1
-                    bigquery__datetime_part	MONTH
+                    datetime_part	MONTH
   
   '''
 # ---
@@ -594,10 +594,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__json_literal	'{}'
+            select_item
+              select_expr
+                literal
+                  json_literal	'{}'
   
   '''
 # ---
@@ -608,10 +608,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__numeric_literal	'42'
+            select_item
+              select_expr
+                literal
+                  numeric_literal	'42'
   
   '''
 # ---
@@ -622,11 +622,11 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__range_literal
-                    bigquery__range_type	DATE
+            select_item
+              select_expr
+                literal
+                  range_literal
+                    range_type	DATE
                     '[1970-01-01, 1970-01-02)'
   
   '''
@@ -638,10 +638,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	""
+            select_item
+              select_expr
+                literal
+                  string_literal	""
   
   '''
 # ---
@@ -652,10 +652,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	"string"
+            select_item
+              select_expr
+                literal
+                  string_literal	"string"
   
   '''
 # ---
@@ -666,10 +666,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	R"string"
+            select_item
+              select_expr
+                literal
+                  string_literal	R"string"
   
   '''
 # ---
@@ -680,10 +680,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	r""
+            select_item
+              select_expr
+                literal
+                  string_literal	r""
   
   '''
 # ---
@@ -694,10 +694,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	r"string"
+            select_item
+              select_expr
+                literal
+                  string_literal	r"string"
   
   '''
 # ---
@@ -708,10 +708,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	''
+            select_item
+              select_expr
+                literal
+                  string_literal	''
   
   '''
 # ---
@@ -722,10 +722,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	'string'
+            select_item
+              select_expr
+                literal
+                  string_literal	'string'
   
   '''
 # ---
@@ -736,10 +736,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	r''
+            select_item
+              select_expr
+                literal
+                  string_literal	r''
   
   '''
 # ---
@@ -750,10 +750,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	r'string'
+            select_item
+              select_expr
+                literal
+                  string_literal	r'string'
   
   '''
 # ---
@@ -764,10 +764,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	""""""
+            select_item
+              select_expr
+                literal
+                  string_literal	""""""
   
   '''
 # ---
@@ -778,10 +778,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	"""We say: "hello"."""
+            select_item
+              select_expr
+                literal
+                  string_literal	"""We say: "hello"."""
   
   '''
 # ---
@@ -792,10 +792,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	r""""""
+            select_item
+              select_expr
+                literal
+                  string_literal	r""""""
   
   '''
 # ---
@@ -806,10 +806,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	r"""We say: "hello"."""
+            select_item
+              select_expr
+                literal
+                  string_literal	r"""We say: "hello"."""
   
   '''
 # ---
@@ -820,10 +820,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	''''''
+            select_item
+              select_expr
+                literal
+                  string_literal	''''''
   
   '''
 # ---
@@ -834,10 +834,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	'''We say: 'hello'.'''
+            select_item
+              select_expr
+                literal
+                  string_literal	'''We say: 'hello'.'''
   
   '''
 # ---
@@ -848,10 +848,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	r''''''
+            select_item
+              select_expr
+                literal
+                  string_literal	r''''''
   
   '''
 # ---
@@ -862,10 +862,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
-                  bigquery__string_literal	r'''We say: 'hello'.'''
+            select_item
+              select_expr
+                literal
+                  string_literal	r'''We say: 'hello'.'''
   
   '''
 # ---
@@ -876,13 +876,13 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
+            select_item
+              select_expr
+                literal
                   struct_literal
-                    bigquery__literal
+                    literal
                       integer_literal	1
-                    bigquery__literal
+                    literal
                       integer_literal	2
   
   '''
@@ -894,15 +894,15 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__literal
+            select_item
+              select_expr
+                literal
                   struct_literal
-                    bigquery__literal
+                    literal
                       integer_literal	1
-                    bigquery__literal
+                    literal
                       integer_literal	2
-                    bigquery__literal
+                    literal
                       integer_literal	3
   
   '''

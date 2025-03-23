@@ -6,13 +6,13 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
-                  bigquery__function_distinct
-                  bigquery__function_args
-                    bigquery__pos_arg
+                  function_distinct
+                  function_args
+                    pos_arg
                       ident	col1
   
   '''
@@ -24,15 +24,15 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
-                  bigquery__function_args
-                    bigquery__pos_arg
+                  function_args
+                    pos_arg
                       ident	col1
-                  bigquery__function_modifiers
-                    bigquery__having_modifier
+                  function_modifiers
+                    having_modifier
                       MAX
                       ident	col2
   
@@ -45,15 +45,15 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
-                  bigquery__function_args
-                    bigquery__pos_arg
+                  function_args
+                    pos_arg
                       ident	col1
-                  bigquery__function_modifiers
-                    bigquery__having_modifier
+                  function_modifiers
+                    having_modifier
                       MIN
                       ident	col2
   
@@ -66,15 +66,15 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
-                  bigquery__function_args
-                    bigquery__pos_arg
+                  function_args
+                    pos_arg
                       ident	col1
-                  bigquery__function_modifiers
-                    bigquery__nulls_modifier	IGNORE
+                  function_modifiers
+                    nulls_modifier	IGNORE
   
   '''
 # ---
@@ -85,15 +85,15 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
-                  bigquery__function_args
-                    bigquery__pos_arg
+                  function_args
+                    pos_arg
                       ident	col1
-                  bigquery__function_modifiers
-                    bigquery__limit_modifier
+                  function_modifiers
+                    limit_modifier
                       integer_literal	1
   
   '''
@@ -105,19 +105,19 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
-                  bigquery__function_args
-                    bigquery__pos_arg
+                  function_args
+                    pos_arg
                       ident	col1
-                  bigquery__function_modifiers
-                    bigquery__order_by_modifier
+                  function_modifiers
+                    order_by_modifier
                       order_by_items
-                        bigquery__order_by_item
+                        order_by_item
                           ident	col2
-                          bigquery__order_by_item_sort	DESC
+                          order_by_item_sort	DESC
   
   '''
 # ---
@@ -128,15 +128,15 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
-                  bigquery__function_args
-                    bigquery__pos_arg
+                  function_args
+                    pos_arg
                       ident	col1
-                  bigquery__function_modifiers
-                    bigquery__nulls_modifier	RESPECT
+                  function_modifiers
+                    nulls_modifier	RESPECT
   
   '''
 # ---
@@ -147,13 +147,13 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__or_expr
+            select_item
+              select_expr
+                or_expr
                   ident	x
-                  bigquery__and_expr
+                  and_expr
                     ident	y
-                    bigquery__not_expr
+                    not_expr
                       ident	z
   
   '''
@@ -165,14 +165,14 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__and_expr
-                  bigquery__parenthesized_not_a_query_expr
-                    bigquery__or_expr
+            select_item
+              select_expr
+                and_expr
+                  parenthesized_not_a_query_expr
+                    or_expr
                       ident	x
                       ident	y
-                  bigquery__not_expr
+                  not_expr
                     ident	z
   
   '''
@@ -184,10 +184,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__and_expr
-                  bigquery__between_expr
+            select_item
+              select_expr
+                and_expr
+                  between_expr
                     ident	x
                     ident	a
                     ident	b
@@ -202,10 +202,10 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__field_access_expr
-                  bigquery__field_access_expr
+            select_item
+              select_expr
+                field_access_expr
+                  field_access_expr
                     ident	column1
                     ident	column2
                   ident	column3
@@ -219,9 +219,9 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__field_access_expr
+            select_item
+              select_expr
+                field_access_expr
                   ident	column1
                   ident	column2
   
@@ -234,15 +234,15 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 ident	column1
-          bigquery__select_from
+          select_from
             from_clause
-              bigquery__from_item_table
-                bigquery__path_expression
-                  bigquery__path_expression
-                    bigquery__path_expression
+              from_item_table
+                path_expression
+                  path_expression
+                    path_expression
                       ident	`project1`
                     ident	dataset1
                   ident	table1
@@ -256,14 +256,14 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 ident	column1
-          bigquery__select_from
+          select_from
             from_clause
-              bigquery__from_item_table
-                bigquery__path_expression
-                  bigquery__path_expression
+              from_item_table
+                path_expression
+                  path_expression
                     ident	dataset1
                   ident	table1
   
@@ -276,17 +276,17 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
-                  bigquery__function_args
-                    bigquery__pos_arg
-                      bigquery__literal
+                  function_args
+                    pos_arg
+                      literal
                         integer_literal	1
-                    bigquery__named_arg
+                    named_arg
                       ident	name2
-                      bigquery__literal
+                      literal
                         integer_literal	2
   
   '''
@@ -298,18 +298,18 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
-                  bigquery__function_args
-                    bigquery__named_arg
+                  function_args
+                    named_arg
                       ident	name1
-                      bigquery__literal
+                      literal
                         integer_literal	1
-                    bigquery__named_arg
+                    named_arg
                       ident	name2
-                      bigquery__literal
+                      literal
                         integer_literal	2
   
   '''
@@ -321,14 +321,14 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
-                  bigquery__function_args
-                    bigquery__named_arg
+                  function_args
+                    named_arg
                       ident	name1
-                      bigquery__literal
+                      literal
                         integer_literal	1
   
   '''
@@ -340,15 +340,15 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
-                  bigquery__field_access_expr
+                  field_access_expr
                     ident	NET
                     ident	IPV4_FROM_INT64
-                  bigquery__function_args
-                    bigquery__pos_arg
-                      bigquery__literal
+                  function_args
+                    pos_arg
+                      literal
                         integer_literal	42
   
   '''
@@ -360,16 +360,16 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
-                  bigquery__function_args
-                    bigquery__pos_arg
-                      bigquery__literal
+                  function_args
+                    pos_arg
+                      literal
                         integer_literal	1
-                    bigquery__pos_arg
-                      bigquery__literal
+                    pos_arg
+                      literal
                         integer_literal	2
   
   '''
@@ -381,8 +381,8 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
   
@@ -395,13 +395,13 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
+            select_item
+              select_expr
                 function_call_expr
                   ident	FUNC
-                  bigquery__function_args
-                    bigquery__pos_arg
-                      bigquery__literal
+                  function_args
+                    pos_arg
+                      literal
                         integer_literal	1
   
   '''
@@ -413,15 +413,15 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__array_subquery_expr
+            select_item
+              select_expr
+                array_subquery_expr
                   query_expr
                     select
                       select_list
-                        bigquery__select_item
-                          bigquery__select_expr
-                            bigquery__literal
+                        select_item
+                          select_expr
+                            literal
                               integer_literal	1
   
   '''
@@ -433,15 +433,15 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__exists_subquery_expr
+            select_item
+              select_expr
+                exists_subquery_expr
                   query_expr
                     select
                       select_list
-                        bigquery__select_item
-                          bigquery__select_expr
-                            bigquery__literal
+                        select_item
+                          select_expr
+                            literal
                               integer_literal	1
   
   '''
@@ -453,14 +453,14 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__subscript_expr
-                  bigquery__subscript_expr
+            select_item
+              select_expr
+                subscript_expr
+                  subscript_expr
                     ident	column1
-                    bigquery__literal
+                    literal
                       integer_literal	0
-                  bigquery__literal
+                  literal
                     integer_literal	1
   
   '''
@@ -472,11 +472,11 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__subscript_expr
+            select_item
+              select_expr
+                subscript_expr
                   ident	column1
-                  bigquery__literal
+                  literal
                     integer_literal	0
   
   '''
@@ -488,15 +488,15 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__subscript_expr
+            select_item
+              select_expr
+                subscript_expr
                   ident	column1
                   function_call_expr
                     ident	OFFSET
-                    bigquery__function_args
-                      bigquery__pos_arg
-                        bigquery__literal
+                    function_args
+                      pos_arg
+                        literal
                           integer_literal	2
   
   '''
@@ -508,16 +508,16 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__subscript_expr
-                  bigquery__subscript_expr
-                    bigquery__field_access_expr
+            select_item
+              select_expr
+                subscript_expr
+                  subscript_expr
+                    field_access_expr
                       ident	column1
                       ident	column2
-                    bigquery__literal
+                    literal
                       integer_literal	0
-                  bigquery__literal
+                  literal
                     integer_literal	1
   
   '''
@@ -529,12 +529,12 @@
       query_expr
         select
           select_list
-            bigquery__select_item
-              bigquery__select_expr
-                bigquery__subscript_expr
+            select_item
+              select_expr
+                subscript_expr
                   ident	column1
-                  bigquery__literal
-                    bigquery__string_literal	'key1'
+                  literal
+                    string_literal	'key1'
   
   '''
 # ---
