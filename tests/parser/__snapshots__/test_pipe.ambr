@@ -363,8 +363,7 @@
           path_expression
             ident	table2
         using_clause
-          using_columns
-            ident	col1
+          ident	col1
   
   '''
 # ---
@@ -383,8 +382,7 @@
           path_expression
             ident	table2
         using_clause
-          using_columns
-            ident	col1
+          ident	col1
   
   '''
 # ---
@@ -405,8 +403,7 @@
           path_expression
             ident	table2
         using_clause
-          using_columns
-            ident	col1
+          ident	col1
   
   '''
 # ---
@@ -425,8 +422,7 @@
           path_expression
             ident	table2
         using_clause
-          using_columns
-            ident	col1
+          ident	col1
   
   '''
 # ---
@@ -445,8 +441,7 @@
           path_expression
             ident	table2
         using_clause
-          using_columns
-            ident	col1
+          ident	col1
   
   '''
 # ---
@@ -467,8 +462,7 @@
           path_expression
             ident	table2
         using_clause
-          using_columns
-            ident	col1
+          ident	col1
   
   '''
 # ---
@@ -531,8 +525,7 @@
           path_expression
             ident	table2
         using_clause
-          using_columns
-            ident	col1
+          ident	col1
   
   '''
 # ---
@@ -553,8 +546,7 @@
           path_expression
             ident	table2
         using_clause
-          using_columns
-            ident	col1
+          ident	col1
   
   '''
 # ---
@@ -572,9 +564,8 @@
           path_expression
             ident	table2
         using_clause
-          using_columns
-            ident	col1
-            ident	col2
+          ident	col1
+          ident	col2
   
   '''
 # ---
@@ -592,8 +583,7 @@
           path_expression
             ident	table2
         using_clause
-          using_columns
-            ident	col1
+          ident	col1
   
   '''
 # ---
@@ -1494,14 +1484,13 @@
                 ident	col1
           window_spec
             window_frame
-              RANGE
+              window_frame_kind	RANGE
               window_frame_between
                 window_frame_between_numeric_preceding
                   window_frame_numeric_preceding
                     integer_literal	1
-                  window_frame_between_end_a
-                    window_frame_numeric_following
-                      integer_literal	1
+                  window_frame_numeric_following
+                    integer_literal	1
   
   '''
 # ---
@@ -1524,12 +1513,11 @@
                 ident	col1
           window_spec
             window_frame
-              ROWS
+              window_frame_kind	ROWS
               window_frame_between
                 window_frame_between_unbounded_preceding
                   window_frame_unbounded_preceding
-                  window_frame_between_end_a
-                    window_frame_unbounded_following
+                  window_frame_unbounded_following
   
   '''
 # ---

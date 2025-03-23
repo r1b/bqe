@@ -676,9 +676,7 @@ join : _JOIN from_item ( on_clause | using_clause )
 
 on_clause : _ON column_expr
 
-using_clause : _USING using_columns
-
-using_columns : _LPAR ident ( _COMMA ident )* _RPAR
+using_clause : _USING _LPAR ident ( _COMMA ident )* _RPAR
 
 join_with_criteria : join_criteria _JOIN from_item ( on_clause | using_clause )
 
@@ -702,7 +700,9 @@ window_partition_by : _PARTITION _BY column_expr ( _COMMA column_expr )*
 
 window_order_by : _ORDER _BY order_by_items
 
-window_frame : ( ROWS | RANGE ) ( window_frame_start | _BETWEEN window_frame_between )
+window_frame : window_frame_kind ( window_frame_start | _BETWEEN window_frame_between )
+
+window_frame_kind : ROWS | RANGE
 
 window_frame_start : window_frame_unbounded_preceding
     | window_frame_numeric_preceding
@@ -729,18 +729,18 @@ window_frame_between_numeric_following : window_frame_numeric_following _AND win
 
 window_frame_numeric_following : column_expr _FOLLOWING
 
-window_frame_between_end_a : window_frame_numeric_preceding
+?window_frame_between_end_a : window_frame_numeric_preceding
     | window_frame_current_row
     | window_frame_numeric_following
     | window_frame_unbounded_following
 
 window_frame_unbounded_following : _UNBOUNDED _FOLLOWING
 
-window_frame_between_end_b : window_frame_current_row
+?window_frame_between_end_b : window_frame_current_row
     | window_frame_numeric_following
     | window_frame_unbounded_following
 
-window_frame_between_end_c : window_frame_numeric_following
+?window_frame_between_end_c : window_frame_numeric_following
     | window_frame_unbounded_following
 
 # TABLESAMPLE
