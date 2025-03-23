@@ -596,7 +596,24 @@
           path_expression
             ident	table1
     pipe_limit
-      integer_literal	1
+      limit_value
+        integer_literal	1
+  
+  '''
+# ---
+# name: test_limit_ok[pipe_limit_offset]
+  '''
+  pipe_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_limit
+      limit_value
+        integer_literal	1
+      offset_value
+        integer_literal	2
   
   '''
 # ---
@@ -609,7 +626,8 @@
           path_expression
             ident	table1
     pipe_limit
-      parameter	limit
+      limit_value
+        parameter	limit
   
   '''
 # ---

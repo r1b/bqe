@@ -436,7 +436,6 @@ order_by_item_sort : ASC | DESC
 
 order_by_item_nulls : _NULLS ( FIRST | LAST )
 
-# TODO: Add offset
 limit_modifier : _LIMIT ( integer_literal | parameter )
 
 keyword_subquery_expr : _ARRAY _LPAR query_expr _RPAR -> array_subquery_expr
@@ -596,8 +595,11 @@ pipe_where : _WHERE column_expr
 
 # LIMIT
 
-# TODO: Add offset
-pipe_limit : _LIMIT ( integer_literal | parameter )
+pipe_limit : _LIMIT limit_value ( _OFFSET offset_value )?
+
+limit_value : integer_literal | parameter
+
+offset_value : integer_literal | parameter
 
 # AGGREGATE
 
