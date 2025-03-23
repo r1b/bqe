@@ -446,7 +446,7 @@ keyword_subquery_expr : _ARRAY _LPAR query_expr _RPAR -> array_subquery_expr
 # Entry point
 ################################################################################
 
-?start : query_statement
+?start : query
 
 ################################################################################
 # Query
@@ -454,7 +454,7 @@ keyword_subquery_expr : _ARRAY _LPAR query_expr _RPAR -> array_subquery_expr
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#sql_syntax
 
-?query_statement : query_expr | script
+?query : query_expr ( _SEMI query_expr )* _SEMI?
 
 ?query_expr : select | subquery | cte | pipe_from | pipe_expr
 
@@ -471,10 +471,6 @@ pipe_expr : pipe_start pipe_item+
 pipe_from : _FROM from_clause
 
 ?pipe_item : _PIPE_OP pipe_operator
-
-script : query_statement script_item
-
-script_item : _SEMI query_statement?
 
 ################################################################################
 # SELECT
