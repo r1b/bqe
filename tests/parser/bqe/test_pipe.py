@@ -178,3 +178,10 @@ def test_call_ok(sql, assert_parse_tree):
 ))
 def test_window_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("FROM table1 |> TABLESAMPLE SYSTEM (10 percent)", id="tablesample"),
+))
+def test_tablesample_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
