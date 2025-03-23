@@ -397,7 +397,7 @@ parenthesized_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPAR
 ?atom_expr : literal
     | function_call_expr
     | keyword_subquery_expr
-    | parameter # TODO: I don't think we need this - its just an ident
+    | parameter
     | ident
 
 # Functions
@@ -491,8 +491,6 @@ select_star : _STAR
 select_dot_star : prec_higher_than_and_expr _DOT _STAR
 
 select_expr : column_expr as_alias?
-
-alias_expr : column_expr _AS ident
 
 as_alias : [ _AS ] ident
 
@@ -607,25 +605,25 @@ pipe_agg : _AGGREGATE agg_list group_by?
 
 agg_list : agg_item ( _COMMA agg_item )* _COMMA?
 
-agg_item : column_expr as_alias?
+agg_item : column_expr as_alias? order_by_item_sort? order_by_item_nulls?
 
 # GROUP BY
-# Per zetasql, GROUP BY ALL is not supported in pipe syntax
-# No trailing commas allowed in GROUP BY forms
-# TODO: Omitting ORDER BY for now because it is unnecessary
 
-group_by : _GROUP _BY grouping_items
+group_by : _GROUP group_by_and_order_by? _BY grouping_items
+
+group_by_and_order_by : _AND _ORDER
 
 grouping_items :  grouping_item ( _COMMA grouping_item )*
 
-# FIXME: Make a rule for as_alias_as_required
 grouping_item : grouping_item_empty
-    | column_expr ( _AS ident )?
+    | column_expr as_alias_as_required? order_by_item_sort? order_by_item_nulls?
     | rollup_list _RPAR
     | cube_list _RPAR
     | grouping_set_list _RPAR
 
 grouping_item_empty : _LPAR _RPAR
+
+as_alias_as_required : _AS ident
 
 rollup_list : _ROLLUP _LPAR column_expr | rollup_list _COMMA column_expr
 

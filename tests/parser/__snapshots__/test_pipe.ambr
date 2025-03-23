@@ -1,4 +1,31 @@
 # serializer version: 1
+# name: test_agg_ok[pipe_agg_group_and_order_by]
+  '''
+  pipe_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
+      group_by
+        group_by_and_order_by
+        grouping_items
+          grouping_item
+            ident	col3
+  
+  '''
+# ---
 # name: test_agg_ok[pipe_agg_group_by_cube]
   '''
   pipe_expr
@@ -115,10 +142,47 @@
         grouping_items
           grouping_item
             ident	col3
-            ident	col4
+            as_alias_as_required
+              ident	col4
           grouping_item
             ident	col5
-            ident	col6
+            as_alias_as_required
+              ident	col6
+  
+  '''
+# ---
+# name: test_agg_ok[pipe_agg_group_by_order_by]
+  '''
+  pipe_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
+      group_by
+        grouping_items
+          grouping_item
+            ident	col3
+            as_alias_as_required
+              ident	col4
+            order_by_item_sort	DESC
+          grouping_item
+            ident	col5
+            as_alias_as_required
+              ident	col6
+            order_by_item_sort	ASC
+            order_by_item_nulls	LAST
   
   '''
 # ---
@@ -200,7 +264,8 @@
         grouping_items
           grouping_item
             ident	col3
-            ident	col4
+            as_alias_as_required
+              ident	col4
   
   '''
 # ---
@@ -232,6 +297,40 @@
                 ident	col3
           as_alias
             ident	col4
+  
+  '''
+# ---
+# name: test_agg_ok[pipe_agg_order_by]
+  '''
+  pipe_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
+          order_by_item_sort	DESC
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col3
+          as_alias
+            ident	col4
+          order_by_item_sort	ASC
+          order_by_item_nulls	LAST
   
   '''
 # ---
