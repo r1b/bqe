@@ -548,8 +548,7 @@ unnest_expression_with_offset : _WITH _OFFSET as_alias?
 
 # SELECT
 
-# TODO: Still need select_shape
-pipe_select : _SELECT select_list
+pipe_select : _SELECT select_shape? select_list
 
 # EXTEND
 
