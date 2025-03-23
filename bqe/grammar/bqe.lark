@@ -466,11 +466,11 @@ cte_item : ident _AS subquery ( _COMMA cte_item )?
 
 pipe_expr : pipe_start pipe_item+
 
-pipe_start : select | subquery | pipe_from
+?pipe_start : select | subquery | pipe_from
 
 pipe_from : _FROM from_clause
 
-pipe_item : _PIPE_OP pipe_operator
+?pipe_item : _PIPE_OP pipe_operator
 
 script : query_statement script_item
 
@@ -535,7 +535,7 @@ unnest_expression_with_offset : _WITH _OFFSET as_alias?
 # Pipe
 ################################################################################
 
-pipe_operator : pipe_select
+?pipe_operator : pipe_select
     | pipe_extend
     | pipe_set
     | pipe_drop

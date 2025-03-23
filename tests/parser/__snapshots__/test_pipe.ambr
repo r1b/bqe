@@ -2,983 +2,863 @@
 # name: test_agg_ok[pipe_agg_group_by_cube]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_agg
-          agg_list
-            agg_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              as_alias
-                ident	col2
-          group_by
-            grouping_items
-              grouping_item
-                cube_list
-                  cube_list
-                    ident	col3
-                  struct_literal
-                    ident	col4
-                    ident	col5
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
+      group_by
+        grouping_items
+          grouping_item
+            cube_list
+              cube_list
+                ident	col3
+              struct_literal
+                ident	col4
+                ident	col5
   
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_empty]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_agg
-          agg_list
-            agg_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              as_alias
-                ident	col2
-          group_by
-            grouping_items
-              grouping_item
-                grouping_item_empty
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
+      group_by
+        grouping_items
+          grouping_item
+            grouping_item_empty
   
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_grouping_sets]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_agg
-          agg_list
-            agg_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              as_alias
-                ident	col2
-          group_by
-            grouping_items
-              grouping_item
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
+      group_by
+        grouping_items
+          grouping_item
+            grouping_set_list
+              grouping_set_list
                 grouping_set_list
-                  grouping_set_list
-                    grouping_set_list
-                      grouping_set
-                        ident	col3
-                    grouping_set
-                      struct_literal
-                        ident	col4
-                        ident	col5
                   grouping_set
-                    ident	col6
+                    ident	col3
+                grouping_set
+                  struct_literal
+                    ident	col4
+                    ident	col5
+              grouping_set
+                ident	col6
   
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_multi_alias]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_agg
-          agg_list
-            agg_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              as_alias
-                ident	col2
-          group_by
-            grouping_items
-              grouping_item
-                ident	col3
-                ident	col4
-              grouping_item
-                ident	col5
-                ident	col6
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
+      group_by
+        grouping_items
+          grouping_item
+            ident	col3
+            ident	col4
+          grouping_item
+            ident	col5
+            ident	col6
   
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_rollup]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_agg
-          agg_list
-            agg_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              as_alias
-                ident	col2
-          group_by
-            grouping_items
-              grouping_item
-                rollup_list
-                  rollup_list
-                    ident	col3
-                  ident	col4
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
+      group_by
+        grouping_items
+          grouping_item
+            rollup_list
+              rollup_list
+                ident	col3
+              ident	col4
   
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_agg
-          agg_list
-            agg_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              as_alias
-                ident	col2
-          group_by
-            grouping_items
-              grouping_item
-                ident	col3
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
+      group_by
+        grouping_items
+          grouping_item
+            ident	col3
   
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_single_alias]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_agg
-          agg_list
-            agg_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              as_alias
-                ident	col2
-          group_by
-            grouping_items
-              grouping_item
-                ident	col3
-                ident	col4
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
+      group_by
+        grouping_items
+          grouping_item
+            ident	col3
+            ident	col4
   
   '''
 # ---
 # name: test_agg_ok[pipe_agg_multi_alias]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_agg
-          agg_list
-            agg_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              as_alias
-                ident	col2
-            agg_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col3
-              as_alias
-                ident	col4
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col3
+          as_alias
+            ident	col4
   
   '''
 # ---
 # name: test_agg_ok[pipe_agg_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_agg
-          agg_list
-            agg_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
   
   '''
 # ---
 # name: test_agg_ok[pipe_agg_single_alias]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_agg
-          agg_list
-            agg_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              as_alias
-                ident	col2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
   
   '''
 # ---
 # name: test_as_ok[pipe_as_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_as
-          ident	table2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_as
+      ident	table2
   
   '''
 # ---
 # name: test_call_ok[call]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_call
-          function_call_expr
-            function_name
-              ident	APPENDS
-            function_args
-              pos_arg
-                string_literal	'1970-01-01'
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_call
+      function_call_expr
+        function_name
+          ident	APPENDS
+        function_args
+          pos_arg
+            string_literal	'1970-01-01'
   
   '''
 # ---
 # name: test_call_ok[call_alias_explicit]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_call
-          function_call_expr
-            function_name
-              ident	APPENDS
-            function_args
-              pos_arg
-                string_literal	'1970-01-01'
-          as_alias
-            ident	table2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_call
+      function_call_expr
+        function_name
+          ident	APPENDS
+        function_args
+          pos_arg
+            string_literal	'1970-01-01'
+      as_alias
+        ident	table2
   
   '''
 # ---
 # name: test_call_ok[call_alias_implicit]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_call
-          function_call_expr
-            function_name
-              ident	APPENDS
-            function_args
-              pos_arg
-                string_literal	'1970-01-01'
-          as_alias
-            ident	table2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_call
+      function_call_expr
+        function_name
+          ident	APPENDS
+        function_args
+          pos_arg
+            string_literal	'1970-01-01'
+      as_alias
+        ident	table2
   
   '''
 # ---
 # name: test_join_ok[join_cross]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_join
-          join_with_criteria
-            join_criteria	CROSS
-            from_item_table
-              path_expression
-                ident	table2
-            using_clause
-              using_columns
-                ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_join
+      join_with_criteria
+        join_criteria	CROSS
+        from_item_table
+          path_expression
+            ident	table2
+        using_clause
+          using_columns
+            ident	col1
   
   '''
 # ---
 # name: test_join_ok[join_full]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_join
-          join_with_criteria
-            join_criteria	FULL
-            from_item_table
-              path_expression
-                ident	table2
-            using_clause
-              using_columns
-                ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_join
+      join_with_criteria
+        join_criteria	FULL
+        from_item_table
+          path_expression
+            ident	table2
+        using_clause
+          using_columns
+            ident	col1
   
   '''
 # ---
 # name: test_join_ok[join_full_outer]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_join
-          join_with_criteria
-            join_criteria
-              FULL
-              OUTER
-            from_item_table
-              path_expression
-                ident	table2
-            using_clause
-              using_columns
-                ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_join
+      join_with_criteria
+        join_criteria
+          FULL
+          OUTER
+        from_item_table
+          path_expression
+            ident	table2
+        using_clause
+          using_columns
+            ident	col1
   
   '''
 # ---
 # name: test_join_ok[join_inner]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_join
-          join_with_criteria
-            join_criteria	INNER
-            from_item_table
-              path_expression
-                ident	table2
-            using_clause
-              using_columns
-                ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_join
+      join_with_criteria
+        join_criteria	INNER
+        from_item_table
+          path_expression
+            ident	table2
+        using_clause
+          using_columns
+            ident	col1
   
   '''
 # ---
 # name: test_join_ok[join_left]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_join
-          join_with_criteria
-            join_criteria	LEFT
-            from_item_table
-              path_expression
-                ident	table2
-            using_clause
-              using_columns
-                ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_join
+      join_with_criteria
+        join_criteria	LEFT
+        from_item_table
+          path_expression
+            ident	table2
+        using_clause
+          using_columns
+            ident	col1
   
   '''
 # ---
 # name: test_join_ok[join_left_outer]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_join
-          join_with_criteria
-            join_criteria
-              LEFT
-              OUTER
-            from_item_table
-              path_expression
-                ident	table2
-            using_clause
-              using_columns
-                ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_join
+      join_with_criteria
+        join_criteria
+          LEFT
+          OUTER
+        from_item_table
+          path_expression
+            ident	table2
+        using_clause
+          using_columns
+            ident	col1
   
   '''
 # ---
 # name: test_join_ok[join_on_compound_expr]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_join
-          join
-            from_item_table
-              path_expression
-                ident	table2
-            on_clause
-              and_expr
-                eq_expr
-                  ident	col1
-                  ident	col2
-                ne_expr
-                  ident	col3
-                  ident	col4
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_join
+      join
+        from_item_table
+          path_expression
+            ident	table2
+        on_clause
+          and_expr
+            eq_expr
+              ident	col1
+              ident	col2
+            ne_expr
+              ident	col3
+              ident	col4
   
   '''
 # ---
 # name: test_join_ok[join_on_single_expr]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_join
-          join
-            from_item_table
-              path_expression
-                ident	table2
-            on_clause
-              eq_expr
-                ident	col1
-                ident	col2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_join
+      join
+        from_item_table
+          path_expression
+            ident	table2
+        on_clause
+          eq_expr
+            ident	col1
+            ident	col2
   
   '''
 # ---
 # name: test_join_ok[join_right]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_join
-          join_with_criteria
-            join_criteria	RIGHT
-            from_item_table
-              path_expression
-                ident	table2
-            using_clause
-              using_columns
-                ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_join
+      join_with_criteria
+        join_criteria	RIGHT
+        from_item_table
+          path_expression
+            ident	table2
+        using_clause
+          using_columns
+            ident	col1
   
   '''
 # ---
 # name: test_join_ok[join_right_outer]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_join
-          join_with_criteria
-            join_criteria
-              RIGHT
-              OUTER
-            from_item_table
-              path_expression
-                ident	table2
-            using_clause
-              using_columns
-                ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_join
+      join_with_criteria
+        join_criteria
+          RIGHT
+          OUTER
+        from_item_table
+          path_expression
+            ident	table2
+        using_clause
+          using_columns
+            ident	col1
   
   '''
 # ---
 # name: test_join_ok[join_using_multi]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_join
-          join
-            from_item_table
-              path_expression
-                ident	table2
-            using_clause
-              using_columns
-                ident	col1
-                ident	col2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_join
+      join
+        from_item_table
+          path_expression
+            ident	table2
+        using_clause
+          using_columns
+            ident	col1
+            ident	col2
   
   '''
 # ---
 # name: test_join_ok[join_using_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_join
-          join
-            from_item_table
-              path_expression
-                ident	table2
-            using_clause
-              using_columns
-                ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_join
+      join
+        from_item_table
+          path_expression
+            ident	table2
+        using_clause
+          using_columns
+            ident	col1
   
   '''
 # ---
 # name: test_limit_ok[pipe_limit_integer_literal]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_limit
-          integer_literal	1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_limit
+      integer_literal	1
   
   '''
 # ---
 # name: test_limit_ok[pipe_limit_param]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_limit
-          parameter	limit
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_limit
+      parameter	limit
   
   '''
 # ---
 # name: test_order_by_ok[order_by_multi]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_order_by
-          order_by_items
-            order_by_item
-              ident	col1
-            order_by_item
-              ident	col2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	col1
+        order_by_item
+          ident	col2
   
   '''
 # ---
 # name: test_order_by_ok[order_by_multi_kitchen_sink]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_order_by
-          order_by_items
-            order_by_item
-              ident	col1
-              order_by_item_sort	ASC
-              order_by_item_nulls	FIRST
-            order_by_item
-              ident	col2
-              order_by_item_sort	DESC
-              order_by_item_nulls	LAST
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	col1
+          order_by_item_sort	ASC
+          order_by_item_nulls	FIRST
+        order_by_item
+          ident	col2
+          order_by_item_sort	DESC
+          order_by_item_nulls	LAST
   
   '''
 # ---
 # name: test_order_by_ok[order_by_multi_nulls]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_order_by
-          order_by_items
-            order_by_item
-              ident	col1
-              order_by_item_nulls	FIRST
-            order_by_item
-              ident	col2
-              order_by_item_nulls	LAST
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	col1
+          order_by_item_nulls	FIRST
+        order_by_item
+          ident	col2
+          order_by_item_nulls	LAST
   
   '''
 # ---
 # name: test_order_by_ok[order_by_multi_sort]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_order_by
-          order_by_items
-            order_by_item
-              ident	col1
-              order_by_item_sort	ASC
-            order_by_item
-              ident	col2
-              order_by_item_sort	DESC
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	col1
+          order_by_item_sort	ASC
+        order_by_item
+          ident	col2
+          order_by_item_sort	DESC
   
   '''
 # ---
 # name: test_order_by_ok[order_by_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_order_by
-          order_by_items
-            order_by_item
-              ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	col1
   
   '''
 # ---
 # name: test_pipe_drop_ok[pipe_drop_multi]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_drop
-          drop_list
-            drop_item
-              ident	col1
-            drop_item
-              ident	col2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_drop
+      drop_list
+        drop_item
+          ident	col1
+        drop_item
+          ident	col2
   
   '''
 # ---
 # name: test_pipe_drop_ok[pipe_drop_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_drop
-          drop_list
-            drop_item
-              ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_drop
+      drop_list
+        drop_item
+          ident	col1
   
   '''
 # ---
 # name: test_pipe_drop_ok[pipe_drop_single_trailing_comma]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_drop
-          drop_list
-            drop_item
-              ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_drop
+      drop_list
+        drop_item
+          ident	col1
   
   '''
 # ---
 # name: test_pipe_extend_ok[pipe_extend_multi]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_extend
-          extend_list
-            extend_item
-              function_call_expr
-                function_name
-                  ident	POW
-                function_args
-                  pos_arg
-                    ident	col1
-                  pos_arg
-                    integer_literal	2
-              as_alias
-                ident	col2
-            extend_item
-              function_call_expr
-                function_name
-                  ident	EXP
-                function_args
-                  pos_arg
-                    ident	col1
-                  pos_arg
-                    integer_literal	2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_extend
+      extend_list
+        extend_item
+          function_call_expr
+            function_name
+              ident	POW
+            function_args
+              pos_arg
+                ident	col1
+              pos_arg
+                integer_literal	2
+          as_alias
+            ident	col2
+        extend_item
+          function_call_expr
+            function_name
+              ident	EXP
+            function_args
+              pos_arg
+                ident	col1
+              pos_arg
+                integer_literal	2
   
   '''
 # ---
 # name: test_pipe_extend_ok[pipe_extend_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_extend
-          extend_list
-            extend_item
-              function_call_expr
-                function_name
-                  ident	POW
-                function_args
-                  pos_arg
-                    ident	col1
-                  pos_arg
-                    integer_literal	2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_extend
+      extend_list
+        extend_item
+          function_call_expr
+            function_name
+              ident	POW
+            function_args
+              pos_arg
+                ident	col1
+              pos_arg
+                integer_literal	2
   
   '''
 # ---
 # name: test_pipe_extend_ok[pipe_extend_single_alias]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_extend
-          extend_list
-            extend_item
-              function_call_expr
-                function_name
-                  ident	POW
-                function_args
-                  pos_arg
-                    ident	col1
-                  pos_arg
-                    integer_literal	2
-              as_alias
-                ident	col2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_extend
+      extend_list
+        extend_item
+          function_call_expr
+            function_name
+              ident	POW
+            function_args
+              pos_arg
+                ident	col1
+              pos_arg
+                integer_literal	2
+          as_alias
+            ident	col2
   
   '''
 # ---
 # name: test_pipe_extend_ok[pipe_extend_single_trailing_comma]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_extend
-          extend_list
-            extend_item
-              function_call_expr
-                function_name
-                  ident	POW
-                function_args
-                  pos_arg
-                    ident	col1
-                  pos_arg
-                    integer_literal	2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_extend
+      extend_list
+        extend_item
+          function_call_expr
+            function_name
+              ident	POW
+            function_args
+              pos_arg
+                ident	col1
+              pos_arg
+                integer_literal	2
   
   '''
 # ---
@@ -995,25 +875,40 @@
 # name: test_pipe_ok[pipe_from_select]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_select
-          select_list
-            select_expr
-              ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_select
+      select_list
+        select_expr
+          ident	col1
   
   '''
 # ---
 # name: test_pipe_ok[pipe_select_select]
   '''
   pipe_expr
-    pipe_start
+    select
+      select_list
+        select_expr
+          ident	col1
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_select
+      select_list
+        select_expr
+          ident	col1
+  
+  '''
+# ---
+# name: test_pipe_ok[pipe_subquery_select]
+  '''
+  pipe_expr
+    subquery
       select
         select_list
           select_expr
@@ -1022,886 +917,766 @@
           from_item_table
             path_expression
               ident	table1
-    pipe_item
-      pipe_operator
-        pipe_select
-          select_list
-            select_expr
-              ident	col1
-  
-  '''
-# ---
-# name: test_pipe_ok[pipe_subquery_select]
-  '''
-  pipe_expr
-    pipe_start
-      subquery
-        select
-          select_list
-            select_expr
-              ident	col1
-          from_clause
-            from_item_table
-              path_expression
-                ident	table1
-    pipe_item
-      pipe_operator
-        pipe_select
-          select_list
-            select_expr
-              ident	col1
+    pipe_select
+      select_list
+        select_expr
+          ident	col1
   
   '''
 # ---
 # name: test_pipe_rename_ok[pipe_rename_multi]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_rename
-          rename_list
-            rename_item
-              ident	col1
-              as_alias
-                ident	col2
-            rename_item
-              ident	col3
-              as_alias
-                ident	col4
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_rename
+      rename_list
+        rename_item
+          ident	col1
+          as_alias
+            ident	col2
+        rename_item
+          ident	col3
+          as_alias
+            ident	col4
   
   '''
 # ---
 # name: test_pipe_rename_ok[pipe_rename_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_rename
-          rename_list
-            rename_item
-              ident	col1
-              as_alias
-                ident	col2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_rename
+      rename_list
+        rename_item
+          ident	col1
+          as_alias
+            ident	col2
   
   '''
 # ---
 # name: test_pipe_rename_ok[pipe_rename_single_trailing_comma]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_rename
-          rename_list
-            rename_item
-              ident	col1
-              as_alias
-                ident	col2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_rename
+      rename_list
+        rename_item
+          ident	col1
+          as_alias
+            ident	col2
   
   '''
 # ---
 # name: test_pipe_set_ok[pipe_set_multi]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set
-          set_list
-            set_item
-              ident	col1
-              function_call_expr
-                function_name
-                  ident	POW
-                function_args
-                  pos_arg
-                    ident	col1
-                  pos_arg
-                    integer_literal	2
-            set_item
-              ident	col2
-              function_call_expr
-                function_name
-                  ident	EXP
-                function_args
-                  pos_arg
-                    ident	col1
-                  pos_arg
-                    integer_literal	2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set
+      set_list
+        set_item
+          ident	col1
+          function_call_expr
+            function_name
+              ident	POW
+            function_args
+              pos_arg
+                ident	col1
+              pos_arg
+                integer_literal	2
+        set_item
+          ident	col2
+          function_call_expr
+            function_name
+              ident	EXP
+            function_args
+              pos_arg
+                ident	col1
+              pos_arg
+                integer_literal	2
   
   '''
 # ---
 # name: test_pipe_set_ok[pipe_set_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set
-          set_list
-            set_item
-              ident	col1
-              function_call_expr
-                function_name
-                  ident	POW
-                function_args
-                  pos_arg
-                    ident	col1
-                  pos_arg
-                    integer_literal	2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set
+      set_list
+        set_item
+          ident	col1
+          function_call_expr
+            function_name
+              ident	POW
+            function_args
+              pos_arg
+                ident	col1
+              pos_arg
+                integer_literal	2
   
   '''
 # ---
 # name: test_pipe_set_ok[pipe_set_single_trailing_comma]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set
-          set_list
-            set_item
-              ident	col1
-              function_call_expr
-                function_name
-                  ident	POW
-                function_args
-                  pos_arg
-                    ident	col1
-                  pos_arg
-                    integer_literal	2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set
+      set_list
+        set_item
+          ident	col1
+          function_call_expr
+            function_name
+              ident	POW
+            function_args
+              pos_arg
+                ident	col1
+              pos_arg
+                integer_literal	2
   
   '''
 # ---
 # name: test_pivot_ok[pivot]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_pivot
-          pivot_clause
-            function_call_expr
-              function_name
-                ident	SUM
-              function_args
-                pos_arg
-                  ident	col1
-            ident	quarter
-            struct_literal
-              string_literal	'Q1'
-              string_literal	'Q2'
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_pivot
+      pivot_clause
+        function_call_expr
+          function_name
+            ident	SUM
+          function_args
+            pos_arg
+              ident	col1
+        ident	quarter
+        struct_literal
+          string_literal	'Q1'
+          string_literal	'Q2'
   
   '''
 # ---
 # name: test_pivot_ok[pivot_aliased]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_pivot
-          pivot_clause
-            function_call_expr
-              function_name
-                ident	SUM
-              function_args
-                pos_arg
-                  ident	col1
-            ident	quarter
-            struct_literal
-              string_literal	'Q1'
-              string_literal	'Q2'
-          as_alias
-            ident	col2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_pivot
+      pivot_clause
+        function_call_expr
+          function_name
+            ident	SUM
+          function_args
+            pos_arg
+              ident	col1
+        ident	quarter
+        struct_literal
+          string_literal	'Q1'
+          string_literal	'Q2'
+      as_alias
+        ident	col2
   
   '''
 # ---
 # name: test_set_operation_ok[set_operation_all_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set_operation
-          set_operation
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-            set_operation_list
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	1
   
   '''
 # ---
 # name: test_set_operation_ok[set_operation_by_name]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set_operation
-          set_operation
-            set_operation_kind	EXCEPT
-            set_operation_mode	ALL
-            set_operation_modifier_by_name
-            set_operation_list
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
-                      as_alias
-                        ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set_operation
+      set_operation
+        set_operation_kind	EXCEPT
+        set_operation_mode	ALL
+        set_operation_modifier_by_name
+        set_operation_list
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	1
+                  as_alias
+                    ident	col1
   
   '''
 # ---
 # name: test_set_operation_ok[set_operation_by_name_on_multi]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set_operation
-          set_operation
-            set_operation_kind	EXCEPT
-            set_operation_mode	ALL
-            set_operation_modifier_by_name
-              set_operation_columns
-                ident	col1
-                ident	col2
-            set_operation_list
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
-                      as_alias
-                        ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set_operation
+      set_operation
+        set_operation_kind	EXCEPT
+        set_operation_mode	ALL
+        set_operation_modifier_by_name
+          set_operation_columns
+            ident	col1
+            ident	col2
+        set_operation_list
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	1
+                  as_alias
+                    ident	col1
   
   '''
 # ---
 # name: test_set_operation_ok[set_operation_by_name_on_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set_operation
-          set_operation
-            set_operation_kind	EXCEPT
-            set_operation_mode	ALL
-            set_operation_modifier_by_name
-              set_operation_columns
-                ident	col1
-            set_operation_list
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
-                      as_alias
-                        ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set_operation
+      set_operation
+        set_operation_kind	EXCEPT
+        set_operation_mode	ALL
+        set_operation_modifier_by_name
+          set_operation_columns
+            ident	col1
+        set_operation_list
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	1
+                  as_alias
+                    ident	col1
   
   '''
 # ---
 # name: test_set_operation_ok[set_operation_corresponding]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set_operation
-          set_operation
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-            set_operation_modifier_corresponding
-            set_operation_list
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
-                      as_alias
-                        ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_modifier_corresponding
+        set_operation_list
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	1
+                  as_alias
+                    ident	col1
   
   '''
 # ---
 # name: test_set_operation_ok[set_operation_distinct_multi]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set_operation
-          set_operation
-            set_operation_kind	INTERSECT
-            set_operation_mode	DISTINCT
-            set_operation_list
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set_operation
+      set_operation
+        set_operation_kind	INTERSECT
+        set_operation_mode	DISTINCT
+        set_operation_list
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	1
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	2
   
   '''
 # ---
 # name: test_set_operation_ok[set_operation_strict_corresponding]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set_operation
-          set_operation
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-            set_operation_modifier_strict_corresponding
-            set_operation_list
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
-                      as_alias
-                        ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_modifier_strict_corresponding
+        set_operation_list
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	1
+                  as_alias
+                    ident	col1
   
   '''
 # ---
 # name: test_set_operation_ok[set_operation_strict_corresponding_by]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set_operation
-          set_operation
-            set_operation_kind	EXCEPT
-            set_operation_mode	ALL
-            set_operation_modifier_strict_corresponding
-              set_operation_columns
-                ident	col1
-            set_operation_list
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
-                      as_alias
-                        ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set_operation
+      set_operation
+        set_operation_kind	EXCEPT
+        set_operation_mode	ALL
+        set_operation_modifier_strict_corresponding
+          set_operation_columns
+            ident	col1
+        set_operation_list
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	1
+                  as_alias
+                    ident	col1
   
   '''
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_full]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set_operation
-          set_operation_with_criteria
-            set_operation_criteria	FULL
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-            set_operation_modifier_by_name
-            set_operation_list
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
-                      as_alias
-                        ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set_operation
+      set_operation_with_criteria
+        set_operation_criteria	FULL
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_modifier_by_name
+        set_operation_list
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	1
+                  as_alias
+                    ident	col1
   
   '''
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_inner]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set_operation
-          set_operation_with_criteria
-            set_operation_criteria	INNER
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-            set_operation_modifier_by_name
-            set_operation_list
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
-                      as_alias
-                        ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set_operation
+      set_operation_with_criteria
+        set_operation_criteria	INNER
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_modifier_by_name
+        set_operation_list
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	1
+                  as_alias
+                    ident	col1
   
   '''
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_left]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set_operation
-          set_operation_with_criteria
-            set_operation_criteria	LEFT
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-            set_operation_modifier_by_name
-            set_operation_list
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
-                      as_alias
-                        ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set_operation
+      set_operation_with_criteria
+        set_operation_criteria	LEFT
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_modifier_by_name
+        set_operation_list
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	1
+                  as_alias
+                    ident	col1
   
   '''
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_left_outer]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_set_operation
-          set_operation_with_criteria
-            set_operation_criteria
-              LEFT
-              OUTER
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-            set_operation_modifier_by_name
-            set_operation_list
-              subquery
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
-                      as_alias
-                        ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_set_operation
+      set_operation_with_criteria
+        set_operation_criteria
+          LEFT
+          OUTER
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_modifier_by_name
+        set_operation_list
+          subquery
+            select
+              select_list
+                select_expr
+                  integer_literal	1
+                  as_alias
+                    ident	col1
   
   '''
 # ---
 # name: test_tablesample_ok[tablesample]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_tablesample
-          tablesample_perc
-            integer_literal	10
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_tablesample
+      tablesample_perc
+        integer_literal	10
   
   '''
 # ---
 # name: test_unpivot_ok[unpivot]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_unpivot
-          unpivot_clause
-            unpivot_values_column
-              ident	col1
-            unpivot_name_column
-              ident	quarter
-            unpivot_column_list
-              ident	q1
-              ident	q2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_unpivot
+      unpivot_clause
+        unpivot_values_column
+          ident	col1
+        unpivot_name_column
+          ident	quarter
+        unpivot_column_list
+          ident	q1
+          ident	q2
   
   '''
 # ---
 # name: test_unpivot_ok[unpivot_aliased]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_unpivot
-          unpivot_clause
-            unpivot_values_column
-              ident	col1
-            unpivot_name_column
-              ident	quarter
-            unpivot_column_list
-              ident	q1
-              ident	q2
-          as_alias
-            ident	col2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_unpivot
+      unpivot_clause
+        unpivot_values_column
+          ident	col1
+        unpivot_name_column
+          ident	quarter
+        unpivot_column_list
+          ident	q1
+          ident	q2
+      as_alias
+        ident	col2
   
   '''
 # ---
 # name: test_where_ok[pipe_where_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_where
-          ident	col1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_where
+      ident	col1
   
   '''
 # ---
 # name: test_window_ok[window_frame_range]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_window
-          window_expr_list
-            window_expr
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              window_spec
-                window_frame
-                  RANGE
-                  window_frame_between
-                    window_frame_between_numeric_preceding
-                      window_frame_numeric_preceding
-                        integer_literal	1
-                      window_frame_between_end_a
-                        window_frame_numeric_following
-                          integer_literal	1
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_window
+      window_expr_list
+        window_expr
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          window_spec
+            window_frame
+              RANGE
+              window_frame_between
+                window_frame_between_numeric_preceding
+                  window_frame_numeric_preceding
+                    integer_literal	1
+                  window_frame_between_end_a
+                    window_frame_numeric_following
+                      integer_literal	1
   
   '''
 # ---
 # name: test_window_ok[window_frame_rows]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_window
-          window_expr_list
-            window_expr
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              window_spec
-                window_frame
-                  ROWS
-                  window_frame_between
-                    window_frame_between_unbounded_preceding
-                      window_frame_unbounded_preceding
-                      window_frame_between_end_a
-                        window_frame_unbounded_following
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_window
+      window_expr_list
+        window_expr
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          window_spec
+            window_frame
+              ROWS
+              window_frame_between
+                window_frame_between_unbounded_preceding
+                  window_frame_unbounded_preceding
+                  window_frame_between_end_a
+                    window_frame_unbounded_following
   
   '''
 # ---
 # name: test_window_ok[window_order_by_multi]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_window
-          window_expr_list
-            window_expr
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              window_spec
-                window_order_by
-                  order_by_items
-                    order_by_item
-                      ident	col2
-                    order_by_item
-                      ident	col3
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_window
+      window_expr_list
+        window_expr
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          window_spec
+            window_order_by
+              order_by_items
+                order_by_item
+                  ident	col2
+                order_by_item
+                  ident	col3
   
   '''
 # ---
 # name: test_window_ok[window_order_by_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_window
-          window_expr_list
-            window_expr
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              window_spec
-                window_order_by
-                  order_by_items
-                    order_by_item
-                      ident	col2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_window
+      window_expr_list
+        window_expr
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          window_spec
+            window_order_by
+              order_by_items
+                order_by_item
+                  ident	col2
   
   '''
 # ---
 # name: test_window_ok[window_parition_and_order_by]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_window
-          window_expr_list
-            window_expr
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              window_spec
-                window_partition_by
-                  ident	col2
-                window_order_by
-                  order_by_items
-                    order_by_item
-                      ident	col3
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_window
+      window_expr_list
+        window_expr
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          window_spec
+            window_partition_by
+              ident	col2
+            window_order_by
+              order_by_items
+                order_by_item
+                  ident	col3
   
   '''
 # ---
 # name: test_window_ok[window_partition_by_multi]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_window
-          window_expr_list
-            window_expr
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              window_spec
-                window_partition_by
-                  ident	col2
-                  ident	col3
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_window
+      window_expr_list
+        window_expr
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          window_spec
+            window_partition_by
+              ident	col2
+              ident	col3
   
   '''
 # ---
 # name: test_window_ok[window_partition_by_single]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_window
-          window_expr_list
-            window_expr
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              window_spec
-                window_partition_by
-                  ident	col2
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_window
+      window_expr_list
+        window_expr
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          window_spec
+            window_partition_by
+              ident	col2
   
   '''
 # ---
 # name: test_window_ok[window_simple]
   '''
   pipe_expr
-    pipe_start
-      pipe_from
-        from_clause
-          from_item_table
-            path_expression
-              ident	table1
-    pipe_item
-      pipe_operator
-        pipe_window
-          window_expr_list
-            window_expr
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	col1
-              window_spec
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_window
+      window_expr_list
+        window_expr
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          window_spec
   
   '''
 # ---
