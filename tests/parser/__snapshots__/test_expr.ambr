@@ -150,7 +150,7 @@
   
   '''
 # ---
-# name: test_between[expr_between]
+# name: test_between_ok[expr_between]
   '''
   select
     select_list
@@ -161,6 +161,406 @@
             ident	a
             ident	b
           ident	c
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_add]
+  '''
+  select
+    select_list
+      select_expr
+        add_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_and]
+  '''
+  select
+    select_list
+      select_expr
+        and_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_between]
+  '''
+  select
+    select_list
+      select_expr
+        between_expr
+          ident	x
+          ident	y
+          ident	z
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_bitwise_and]
+  '''
+  select
+    select_list
+      select_expr
+        bitwise_and_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_bitwise_not]
+  '''
+  select
+    select_list
+      select_expr
+        bitwise_not_expr
+          ident	x
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_bitwise_or]
+  '''
+  select
+    select_list
+      select_expr
+        bitwise_or_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_bitwise_shr]
+  '''
+  select
+    select_list
+      select_expr
+        bitwise_shr_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_bitwise_xor]
+  '''
+  select
+    select_list
+      select_expr
+        bitwise_xor_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_div]
+  '''
+  select
+    select_list
+      select_expr
+        div_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_eq]
+  '''
+  select
+    select_list
+      select_expr
+        eq_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_field_access]
+  '''
+  select
+    select_list
+      select_expr
+        field_access_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_gt]
+  '''
+  select
+    select_list
+      select_expr
+        gt_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_gte]
+  '''
+  select
+    select_list
+      select_expr
+        gte_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_in]
+  '''
+  select
+    select_list
+      select_expr
+        in_expr
+          ident	x
+          parenthesized_list
+            integer_literal	1
+            integer_literal	2
+            integer_literal	3
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_is]
+  '''
+  select
+    select_list
+      select_expr
+        is_expr
+          ident	x
+          boolean_literal	TRUE
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_is_distinct_from]
+  '''
+  select
+    select_list
+      select_expr
+        is_distinct_from_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_is_not]
+  '''
+  select
+    select_list
+      select_expr
+        is_not_expr
+          ident	x
+          null_literal	NULL
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_like]
+  '''
+  select
+    select_list
+      select_expr
+        like_expr
+          ident	x
+          string_literal	'a%'
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_lt]
+  '''
+  select
+    select_list
+      select_expr
+        lt_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_lte]
+  '''
+  select
+    select_list
+      select_expr
+        lte_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_mul]
+  '''
+  select
+    select_list
+      select_expr
+        mul_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_ne]
+  '''
+  select
+    select_list
+      select_expr
+        ne_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_ne_var]
+  '''
+  select
+    select_list
+      select_expr
+        ne_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_not]
+  '''
+  select
+    select_list
+      select_expr
+        not_expr
+          ident	x
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_not_between]
+  '''
+  select
+    select_list
+      select_expr
+        not_between_expr
+          ident	x
+          ident	y
+          ident	z
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_not_in]
+  '''
+  select
+    select_list
+      select_expr
+        not_in_expr
+          ident	x
+          unnest_expr
+            array_literal
+              integer_literal	1
+              integer_literal	2
+              integer_literal	3
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_not_like]
+  '''
+  select
+    select_list
+      select_expr
+        not_like_expr
+          ident	x
+          string_literal	'a%'
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_not_qlike]
+  '''
+  select
+    select_list
+      select_expr
+        not_qlike_expr
+          ident	x
+          qlike_quantifier	ALL
+          parenthesized_list
+            string_literal	'a%'
+            string_literal	'%b'
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_or]
+  '''
+  select
+    select_list
+      select_expr
+        or_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_parens]
+  '''
+  select
+    select_list
+      select_expr
+        or_expr
+          parenthesized_expr
+            or_expr
+              ident	x
+              ident	y
+          ident	z
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_qlike]
+  '''
+  select
+    select_list
+      select_expr
+        qlike_expr
+          ident	x
+          qlike_quantifier	ANY
+          unnest_expr
+            array_literal
+              string_literal	'a%'
+              string_literal	'%b'
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_sub]
+  '''
+  select
+    select_list
+      select_expr
+        sub_expr
+          ident	x
+          ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_subscript]
+  '''
+  select
+    select_list
+      select_expr
+        subscript_expr
+          ident	x
+          integer_literal	0
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_uminus]
+  '''
+  select
+    select_list
+      select_expr
+        uminus_expr
+          ident	x
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_uplus]
+  '''
+  select
+    select_list
+      select_expr
+        uplus_expr
+          ident	x
   
   '''
 # ---

@@ -101,6 +101,7 @@ _INTERVAL : "INTERVAL"i
 _IS : "IS"i
 _JOIN : "JOIN"i
 _JSON : "JSON"i
+_LIKE : "LIKE"i
 _LIMIT : "LIMIT"i
 _MAX : "MAX"i
 _MIN : "MIN"i
@@ -176,6 +177,8 @@ parameter : _AT UNQUOTED_IDENT
     | range_literal
     | interval_literal
     | json_literal
+    | boolean_literal
+    | null_literal
 
 # Strings
 
@@ -276,11 +279,16 @@ datetime_part : UNQUOTED_IDENT
 json_literal : _JSON STRING_LITERAL
 
 # Structs
-# Struct literals are used in some common forms like:
-# - GROUP BY GROUPING SETS ((a,b), c)
-# - (foo, bar) IN subquery
 
 struct_literal : _LPAR column_expr _COMMA column_expr ( _COMMA column_expr )* _RPAR
+
+# Boolean
+
+boolean_literal : TRUE | FALSE
+
+# Null
+
+null_literal : NULL
 
 ################################################################################
 # Expressions
@@ -319,31 +327,40 @@ parenthesized_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPAR
     | prec_higher_than_and_expr _IS _DISTINCT _FROM prec_higher_than_and_expr
 
 ?is_not_expr : is_expr
-    | prec_higher_than_and_expr _IS _NOT ( TRUE | FALSE | NULL )
+    | prec_higher_than_and_expr _IS _NOT ( boolean_literal | null_literal )
 
 ?is_expr : not_in_expr
-    | prec_higher_than_and_expr _IS ( TRUE | FALSE | NULL )
+    | prec_higher_than_and_expr _IS ( boolean_literal | null_literal )
 
 ?not_in_expr : in_expr
-    | prec_higher_than_and_expr _NOT _IN prec_higher_than_and_expr
+    | prec_higher_than_and_expr _NOT _IN ( parenthesized_in_rhs | subquery | unnest_expr )
+
+?parenthesized_in_rhs : parenthesized_expr | parenthesized_list
+
+parenthesized_list : _LPAR column_expr _COMMA column_expr ( _COMMA column_expr )* _RPAR
 
 ?in_expr : not_between_expr
-    | prec_higher_than_and_expr _IN prec_higher_than_and_expr
+    | prec_higher_than_and_expr _IN ( parenthesized_in_rhs | subquery | unnest_expr )
 
 ?not_between_expr : between_expr
     | prec_higher_than_and_expr _NOT _BETWEEN prec_higher_than_and_expr _AND prec_higher_than_and_expr
 
-?between_expr : qlike_expr
+?between_expr : not_qlike_expr
     | prec_higher_than_and_expr _BETWEEN prec_higher_than_and_expr _AND prec_higher_than_and_expr
 
+?not_qlike_expr : qlike_expr
+    | prec_higher_than_and_expr _NOT _LIKE qlike_quantifier ( parenthesized_list | unnest_expr )
+
+qlike_quantifier : ANY | SOME | ALL
+
 ?qlike_expr : not_like_expr
-    | prec_higher_than_and_expr _PERC ( ANY | SOME | ALL ) prec_higher_than_and_expr
+    | prec_higher_than_and_expr _LIKE qlike_quantifier ( parenthesized_list | unnest_expr )
 
 ?not_like_expr : like_expr
-    | prec_higher_than_and_expr _NOT _PERC prec_higher_than_and_expr
+    | prec_higher_than_and_expr _NOT _LIKE prec_higher_than_and_expr
 
 ?like_expr : ne_expr
-    | prec_higher_than_and_expr _PERC prec_higher_than_and_expr
+    | prec_higher_than_and_expr _LIKE prec_higher_than_and_expr
 
 ?ne_expr : gte_expr
     | prec_higher_than_and_expr ( _NE | _NE_VAR ) prec_higher_than_and_expr
@@ -381,13 +398,13 @@ parenthesized_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPAR
 
 ?div_expr : mul_expr | prec_higher_than_and_expr _FSLASH prec_higher_than_and_expr
 
-?mul_expr : bitwise_not_expr | prec_higher_than_and_expr _STAR prec_higher_than_and_expr
+?mul_expr : bitwise_not_expr_ | prec_higher_than_and_expr _STAR prec_higher_than_and_expr
 
-?bitwise_not_expr : uminus_expr | _TILDE prec_higher_than_and_expr
+?bitwise_not_expr_ : uminus_expr_ | _TILDE prec_higher_than_and_expr -> bitwise_not_expr
 
-?uminus_expr : uplus_expr | _MINUS prec_higher_than_and_expr
+?uminus_expr_ : uplus_expr_ | _MINUS prec_higher_than_and_expr -> uminus_expr
 
-?uplus_expr : subscript_expr | _PLUS prec_higher_than_and_expr
+?uplus_expr_ : subscript_expr | _PLUS prec_higher_than_and_expr -> uplus_expr
 
 ?subscript_expr : field_access_expr | prec_higher_than_and_expr _LBRACK column_expr _RBRACK
 
@@ -518,11 +535,13 @@ time_travel : _FOR _SYSTEM _USCORE _TIME _AS _OF column_expr
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#unnest_operator
 
-from_item_unnest : unnest_expression unnest_expression_with_offset?
+from_item_unnest : from_unnest_expr from_unnest_offset_expr?
 
-unnest_expression : _UNNEST _LPAR column_expr _RPAR as_alias?
+from_unnest_expr : unnest_expr as_alias?
 
-unnest_expression_with_offset : _WITH _OFFSET as_alias?
+unnest_expr : _UNNEST _LPAR column_expr _RPAR
+
+from_unnest_offset_expr : _WITH _OFFSET as_alias?
 
 ################################################################################
 # Pipe
@@ -752,7 +771,9 @@ tablesample_perc : ( integer_literal | parameter ) _PERCENT
 
 pipe_pivot : _PIVOT _LPAR pivot_clause _RPAR as_alias?
 
-pivot_clause : function_call_expr _FOR ident _IN struct_literal
+pivot_clause : function_call_expr _FOR ident _IN _LPAR pivot_value_list _RPAR
+
+pivot_value_list : column_expr ( _COMMA column_expr )+
 
 # UNPIVOT
 

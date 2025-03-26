@@ -1220,7 +1220,7 @@
             pos_arg
               ident	col1
         ident	quarter
-        struct_literal
+        pivot_value_list
           string_literal	'Q1'
           string_literal	'Q2'
   
@@ -1243,7 +1243,7 @@
             pos_arg
               ident	col1
         ident	quarter
-        struct_literal
+        pivot_value_list
           string_literal	'Q1'
           string_literal	'Q2'
       as_alias

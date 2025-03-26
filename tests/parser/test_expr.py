@@ -63,6 +63,47 @@ def test_aggregate_function_call_ok(sql, assert_parse_tree):
 
 
 @pytest.mark.parametrize("sql", (
+    pytest.param("SELECT x OR y", id="expr_or"),
+    pytest.param("SELECT x AND y", id="expr_and"),
+    pytest.param("SELECT (x OR y) OR z", id="expr_parens"),
+    pytest.param("SELECT NOT x", id="expr_not"),
+    pytest.param("SELECT x IS DISTINCT FROM y", id="expr_is_distinct_from"),
+    pytest.param("SELECT x IS TRUE", id="expr_is"),
+    pytest.param("SELECT x IS NOT NULL", id="expr_is_not"),
+    pytest.param("SELECT x NOT IN UNNEST([1,2,3])", id="expr_not_in"),
+    pytest.param("SELECT x IN (1,2,3)", id="expr_in"),
+    pytest.param("SELECT x NOT BETWEEN y AND z", id="expr_not_between"),
+    pytest.param("SELECT x BETWEEN y AND z", id="expr_between"),
+    pytest.param("SELECT x NOT LIKE ALL ('a%','%b')", id="expr_not_qlike"),
+    pytest.param("SELECT x LIKE ANY UNNEST(['a%','%b'])", id="expr_qlike"),
+    pytest.param("SELECT x NOT LIKE 'a%'", id="expr_not_like"),
+    pytest.param("SELECT x LIKE 'a%'", id="expr_like"),
+    pytest.param("SELECT x != y", id="expr_ne"),
+    pytest.param("SELECT x <> y", id="expr_ne_var"),
+    pytest.param("SELECT x >= y", id="expr_gte"),
+    pytest.param("SELECT x <= y", id="expr_lte"),
+    pytest.param("SELECT x > y", id="expr_gt"),
+    pytest.param("SELECT x < y", id="expr_lt"),
+    pytest.param("SELECT x = y", id="expr_eq"),
+    pytest.param("SELECT x | y", id="expr_bitwise_or"),
+    pytest.param("SELECT x ^ y", id="expr_bitwise_xor"),
+    pytest.param("SELECT x & y", id="expr_bitwise_and"),
+    pytest.param("SELECT x >> y", id="expr_bitwise_shr"),
+    pytest.param("SELECT x - y", id="expr_sub"),
+    pytest.param("SELECT x + y", id="expr_add"),
+    pytest.param("SELECT x / y", id="expr_div"),
+    pytest.param("SELECT x * y", id="expr_mul"),
+    pytest.param("SELECT ~x", id="expr_bitwise_not"),
+    pytest.param("SELECT -x", id="expr_uminus"),
+    pytest.param("SELECT +x", id="expr_uplus"),
+    pytest.param("SELECT x[0]", id="expr_subscript"),
+    pytest.param("SELECT x.y", id="expr_field_access"),
+))
+def test_column_expr_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
     pytest.param("SELECT x OR y AND NOT z", id="expr_and_or_not"),
     pytest.param("SELECT (x OR y) AND NOT z", id="expr_and_or_not_parens"),
 ))
@@ -73,7 +114,7 @@ def test_and_or_not_ok(sql, assert_parse_tree):
 @pytest.mark.parametrize("sql", (
     pytest.param("SELECT x BETWEEN a AND b AND c", id="expr_between"),
 ))
-def test_between(sql, assert_parse_tree):
+def test_between_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
 
 

@@ -384,8 +384,9 @@
         ident	column1
     from_clause
       from_item_unnest
-        unnest_expression
-          ident	array1
+        from_unnest_expr
+          unnest_expr
+            ident	array1
   
   '''
 # ---
@@ -397,8 +398,9 @@
         ident	column1
     from_clause
       from_item_unnest
-        unnest_expression
-          ident	array1
+        from_unnest_expr
+          unnest_expr
+            ident	array1
           as_alias
             ident	alias1
   
@@ -415,8 +417,9 @@
         path_expression
           ident	table1
       from_item_unnest
-        unnest_expression
-          ident	array1
+        from_unnest_expr
+          unnest_expr
+            ident	array1
   
   '''
 # ---
@@ -431,11 +434,12 @@
         path_expression
           ident	table1
       from_item_unnest
-        unnest_expression
-          ident	array1
+        from_unnest_expr
+          unnest_expr
+            ident	array1
           as_alias
             ident	alias1
-        unnest_expression_with_offset
+        from_unnest_offset_expr
           as_alias
             ident	alias2
   
@@ -452,9 +456,10 @@
         path_expression
           ident	table1
       from_item_unnest
-        unnest_expression
-          ident	array1
-        unnest_expression_with_offset
+        from_unnest_expr
+          unnest_expr
+            ident	array1
+        from_unnest_offset_expr
   
   '''
 # ---
@@ -469,9 +474,10 @@
         path_expression
           ident	table1
       from_item_unnest
-        unnest_expression
-          ident	array1
-        unnest_expression_with_offset
+        from_unnest_expr
+          unnest_expr
+            ident	array1
+        from_unnest_offset_expr
           as_alias
             ident	alias1
   
