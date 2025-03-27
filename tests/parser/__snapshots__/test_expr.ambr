@@ -164,6 +164,97 @@
   
   '''
 # ---
+# name: test_case_ok[case_match_multi]
+  '''
+  select
+    select_list
+      select_expr
+        case_match_expr
+          ident	col1
+          when_then_expr
+            integer_literal	1
+            integer_literal	1
+          when_then_expr
+            integer_literal	2
+            integer_literal	2
+  
+  '''
+# ---
+# name: test_case_ok[case_match_multi_else]
+  '''
+  select
+    select_list
+      select_expr
+        case_match_expr
+          ident	col1
+          when_then_expr
+            integer_literal	1
+            integer_literal	1
+          when_then_expr
+            integer_literal	2
+            integer_literal	2
+          else_expr
+            integer_literal	3
+  
+  '''
+# ---
+# name: test_case_ok[case_match_single]
+  '''
+  select
+    select_list
+      select_expr
+        case_match_expr
+          ident	col1
+          when_then_expr
+            integer_literal	1
+            integer_literal	1
+  
+  '''
+# ---
+# name: test_case_ok[case_multi]
+  '''
+  select
+    select_list
+      select_expr
+        case_expr
+          when_then_expr
+            integer_literal	1
+            integer_literal	1
+          when_then_expr
+            integer_literal	2
+            integer_literal	2
+  
+  '''
+# ---
+# name: test_case_ok[case_multi_else]
+  '''
+  select
+    select_list
+      select_expr
+        case_expr
+          when_then_expr
+            integer_literal	1
+            integer_literal	1
+          when_then_expr
+            integer_literal	2
+            integer_literal	2
+          else_expr
+            integer_literal	3
+  
+  '''
+# ---
+# name: test_case_ok[case_single]
+  '''
+  select
+    select_list
+      select_expr
+        case_expr
+          when_then_expr
+            integer_literal	1
+            integer_literal	1
+  
+  '''
+# ---
 # name: test_column_expr_ok[expr_add]
   '''
   select

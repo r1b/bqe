@@ -80,6 +80,7 @@ _BETWEEN : "BETWEEN"i
 _BIGNUMERIC : "BIGNUMERIC"i
 _BY : "BY"i
 _CALL : "CALL"i
+_CASE : "CASE"i
 _CORRESPONDING : "CORRESPONDING"i
 _CUBE : "CUBE"i
 _CURRENT : "CURRENT"i
@@ -87,6 +88,8 @@ _DATE : "DATE"i
 _DATETIME : "DATETIME"i
 _DISTINCT : "DISTINCT"i
 _DROP : "DROP"i
+_ELSE : "ELSE"i
+_END : "END"i
 _EXISTS : "EXISTS"i
 _EXTEND : "EXTEND"i
 _FOLLOWING : "FOLLOWING"i
@@ -130,12 +133,14 @@ _SETS : "SETS"i
 _STRICT : "STRICT"i
 _SYSTEM : "SYSTEM"i
 _TABLESAMPLE : "TABLESAMPLE"i
+_THEN : "THEN"i
 _TIME : "TIME"i
 _TIMESTAMP : "TIMESTAMP"i
 _UNBOUNDED : "UNBOUNDED"i
 _UNNEST : "UNNEST"i
 _UNPIVOT : "UNPIVOT"i
 _USING : "USING"i
+_WHEN : "WHEN"i
 _WHERE : "WHERE"i
 _WINDOW : "WINDOW"i
 _WITH : "WITH"i
@@ -412,10 +417,23 @@ qlike_quantifier : ANY | SOME | ALL
 
 # Now we don't really care about precedence anymore
 ?atom_expr : literal
+    | conditional_expr
     | function_call_expr
     | keyword_subquery_expr
     | parameter
     | ident
+
+# CASE
+
+?conditional_expr : case_match_expr | case_expr
+
+case_match_expr : _CASE column_expr when_then_expr+ else_expr? _END
+
+case_expr : _CASE when_then_expr+ else_expr? _END
+
+when_then_expr : _WHEN column_expr _THEN column_expr
+
+else_expr : _ELSE column_expr
 
 # Functions
 

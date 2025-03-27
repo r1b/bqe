@@ -125,3 +125,15 @@ def test_between_ok(sql, assert_parse_tree):
 ))
 def test_keyword_subquery_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize("sql", (
+    pytest.param("SELECT CASE WHEN 1 THEN 1 END", id="case_single"),
+    pytest.param("SELECT CASE WHEN 1 THEN 1 WHEN 2 THEN 2 END", id="case_multi"),
+    pytest.param("SELECT CASE WHEN 1 THEN 1 WHEN 2 THEN 2 ELSE 3 END", id="case_multi_else"),
+    pytest.param("SELECT CASE col1 WHEN 1 THEN 1 END", id="case_match_single"),
+    pytest.param("SELECT CASE col1 WHEN 1 THEN 1 WHEN 2 THEN 2 END", id="case_match_multi"),
+    pytest.param("SELECT CASE col1 WHEN 1 THEN 1 WHEN 2 THEN 2 ELSE 3 END", id="case_match_multi_else"),
+))
+def test_case_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
