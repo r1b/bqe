@@ -727,6 +727,19 @@
   
   '''
 # ---
+# name: test_function_call_ok[fcall_star_expr]
+  '''
+  select
+    select_list
+      select_expr
+        function_call_expr
+          function_name
+            ident	FUNC
+          function_args
+            star_arg
+  
+  '''
+# ---
 # name: test_keyword_subquery_ok[keyword_subquery_array]
   '''
   select

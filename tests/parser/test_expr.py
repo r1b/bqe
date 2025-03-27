@@ -30,6 +30,7 @@ def test_subscript_expr_ok(sql, assert_parse_tree):
     pytest.param("SELECT FUNC(name1 => 1, name2 => 2)", id="fcall_named_arg_multi"),
     pytest.param("SELECT FUNC(1, name2 => 2)", id="fcall_kitchen_sink"),
     pytest.param("SELECT NET.IPV4_FROM_INT64(42)", id="fcall_path_expr"),
+    pytest.param("SELECT FUNC(*)", id="fcall_star_expr"),
 ))
 def test_function_call_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)

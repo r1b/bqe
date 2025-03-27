@@ -427,7 +427,9 @@ function_name : field_access_expr
 
 function_distinct : _DISTINCT
 
-function_args : pos_arg ( _COMMA pos_arg )* ( _COMMA named_arg )* | named_arg ( _COMMA named_arg )*
+function_args : star_arg | pos_arg ( _COMMA pos_arg )* ( _COMMA named_arg )* | named_arg ( _COMMA named_arg )*
+
+star_arg : _STAR
 
 pos_arg : column_expr
 
