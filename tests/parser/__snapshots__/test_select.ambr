@@ -28,11 +28,9 @@
           ident	col2
       from_clause
         from_item_table
-          path_expression
-            ident	table1
+          ident	table1
         from_item_table
-          path_expression
-            ident	table2
+          ident	table2
   
   '''
 # ---
@@ -54,8 +52,7 @@
           ident	col1
       from_clause
         from_item_table
-          path_expression
-            ident	table1
+          ident	table1
   
   '''
 # ---
@@ -68,8 +65,7 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
   
   '''
 # ---
@@ -82,8 +78,7 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
   
   '''
 # ---
@@ -95,8 +90,7 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
         as_alias
           ident	alias1
   
@@ -110,8 +104,7 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
         as_alias
           ident	alias1
   
@@ -127,11 +120,9 @@
         ident	column2
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
       from_item_table
-        path_expression
-          ident	table2
+        ident	table2
   
   '''
 # ---
@@ -143,8 +134,7 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
         time_travel
           string_literal	'1970-01-01'
   
@@ -167,8 +157,7 @@
           ident	column2
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
         as_alias
           ident	alias1
       from_item_subquery
@@ -179,8 +168,7 @@
                 ident	column7
             from_clause
               from_item_table
-                path_expression
-                  ident	table2
+                ident	table2
         as_alias
           ident	alias2
   
@@ -196,8 +184,7 @@
           ident	alias1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
   
   '''
 # ---
@@ -211,8 +198,7 @@
           ident	alias1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
   
   '''
 # ---
@@ -226,8 +212,7 @@
         ident	column2
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
   
   '''
 # ---
@@ -239,8 +224,7 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
   
   '''
 # ---
@@ -252,8 +236,7 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          ident	table2
+        ident	table2
   
   '''
 # ---
@@ -273,8 +256,7 @@
       select_star
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
   
   '''
 # ---
@@ -286,8 +268,7 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
   
   '''
 # ---
@@ -301,8 +282,7 @@
           column2
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
   
   '''
 # ---
@@ -321,8 +301,7 @@
                 ident	column1
             from_clause
               from_item_table
-                path_expression
-                  ident	table1
+                ident	table1
   
   '''
 # ---
@@ -341,8 +320,7 @@
                 ident	column1
             from_clause
               from_item_table
-                path_expression
-                  ident	table1
+                ident	table1
         as_alias
           ident	table2
   
@@ -414,8 +392,7 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
       from_item_unnest
         from_unnest_expr
           unnest_expr
@@ -431,8 +408,7 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
       from_item_unnest
         from_unnest_expr
           unnest_expr
@@ -453,8 +429,7 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
       from_item_unnest
         from_unnest_expr
           unnest_expr
@@ -471,8 +446,7 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
       from_item_unnest
         from_unnest_expr
           unnest_expr

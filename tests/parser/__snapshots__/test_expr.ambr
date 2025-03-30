@@ -686,12 +686,10 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          path_expression
-            path_expression
-              ident	`project1`
-            ident	dataset1
-          ident	table1
+        ident
+          `project1`
+          dataset1
+          table1
   
   '''
 # ---
@@ -703,10 +701,9 @@
         ident	column1
     from_clause
       from_item_table
-        path_expression
-          path_expression
-            ident	dataset1
-          ident	table1
+        ident
+          dataset1
+          table1
   
   '''
 # ---

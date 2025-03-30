@@ -8,16 +8,14 @@
           ident	col1
       from_clause
         from_item_table
-          path_expression
-            ident	table1
+          ident	table1
     select
       select_list
         select_expr
           ident	col2
       from_clause
         from_item_table
-          path_expression
-            ident	table2
+          ident	table2
   
   '''
 # ---
@@ -30,16 +28,14 @@
           ident	col1
       from_clause
         from_item_table
-          path_expression
-            ident	table1
+          ident	table1
     select
       select_list
         select_expr
           ident	col2
       from_clause
         from_item_table
-          path_expression
-            ident	table2
+          ident	table2
   
   '''
 # ---
@@ -51,8 +47,7 @@
         ident	col1
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
   
   '''
 # ---
@@ -61,8 +56,7 @@
   pipe_from
     from_clause
       from_item_table
-        path_expression
-          ident	table1
+        ident	table1
   
   '''
 # ---
