@@ -5,6 +5,9 @@ build-backend = "hatchling.build"
 [project]
 name = "bqe"
 version = "1.0.0"
+dependencies = [
+  "lark",
+]
 
 [tool.pytest.ini_options]
 pythonpath = [

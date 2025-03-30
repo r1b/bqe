@@ -5,7 +5,7 @@ from .transformer import BqeTransformer
 
 GRAMMAR_PATH = PACKAGE_ROOT / "grammar" / "bqe.lark"
 
-parser = Lark(GRAMMAR_PATH.read_text(), parser='lalr')
+parser = Lark(GRAMMAR_PATH.read_text(), parser="lalr")
 transformer = BqeTransformer()
 
 

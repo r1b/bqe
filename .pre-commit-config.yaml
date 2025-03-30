@@ -1,0 +1,22 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-lint
+        name: ruff-lint
+        description: lint
+        entry: ruff check
+          --force-exclude
+          --fix
+        language: python
+        types_or: [python]
+        require_serial: true
+        files: ^(bqe/|tests/)
+      - id: ruff-format
+        name: ruff-format
+        description: format
+        entry: ruff format
+          --force-exclude
+          --line-length 100
+        language: python
+        types_or: [python]
+        require_serial: true
