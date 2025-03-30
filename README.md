@@ -4,7 +4,7 @@ A query construction toolkit for [Pipe SQL](https://storage.googleapis.com/gweb-
 
 ## devlog
 
-- [x] Parser
+- [ ] Parser
 - [ ] AST
 - [ ] Expression API
 - [ ] Tools: Expression generator

@@ -555,9 +555,7 @@ time_travel : _FOR _SYSTEM _USCORE _TIME _AS _OF column_expr
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#unnest_operator
 
-from_item_unnest : from_unnest_expr from_unnest_offset_expr?
-
-from_unnest_expr : unnest_expr as_alias?
+from_item_unnest : unnest_expr as_alias? from_unnest_offset_expr?
 
 unnest_expr : _UNNEST _LPAR column_expr _RPAR
 
