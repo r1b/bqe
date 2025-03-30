@@ -1,8 +1,11 @@
 # bqe
 
-A query construction toolkit for BigQuery SQL
+A query construction toolkit for [Pipe SQL](https://storage.googleapis.com/gweb-research2023-media/pubtools/1004848.pdf)
 
-## goals
+## devlog
 
-- Replace `python-bigquery-sqlalchemy` for read-side use cases
-- Support both handwritten and generated SQL
+- [x] Parser
+- [ ] AST
+- [ ] Expression API
+- [ ] Tools: Expression generator
+- [ ] Schema, type API
