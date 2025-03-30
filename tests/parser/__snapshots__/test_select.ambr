@@ -2,15 +2,16 @@
 # name: test_cte_ok[cte_multi]
   '''
   cte
-    cte_item
-      ident	table1
-      subquery
-        select
-          select_list
-            select_expr
-              integer_literal	1
-              as_alias
-                ident	col1
+    cte_item_list
+      cte_item
+        ident	table1
+        subquery
+          select
+            select_list
+              select_expr
+                integer_literal	1
+                as_alias
+                  ident	col1
       cte_item
         ident	table2
         subquery
@@ -37,15 +38,16 @@
 # name: test_cte_ok[cte_single]
   '''
   cte
-    cte_item
-      ident	table1
-      subquery
-        select
-          select_list
-            select_expr
-              integer_literal	1
-              as_alias
-                ident	col1
+    cte_item_list
+      cte_item
+        ident	table1
+        subquery
+          select
+            select_list
+              select_expr
+                integer_literal	1
+                as_alias
+                  ident	col1
     select
       select_list
         select_expr

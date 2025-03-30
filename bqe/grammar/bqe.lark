@@ -496,9 +496,11 @@ keyword_subquery_expr : _ARRAY _LPAR query_expr _RPAR -> array_subquery_expr
 
 subquery : _LPAR query_expr _RPAR
 
-cte : _WITH cte_item query_expr
+cte : _WITH cte_item_list query_expr
 
-cte_item : ident _AS subquery ( _COMMA cte_item )?
+cte_item_list : cte_item ( _COMMA cte_item )*
+
+cte_item : ident _AS subquery
 
 pipe_expr : pipe_start pipe_item+
 
