@@ -47,11 +47,9 @@
         grouping_items
           grouping_item
             cube_list
-              cube_list
-                ident	col3
-              struct_literal
-                ident	col4
-                ident	col5
+              col3
+              ident	col4
+              ident	col5
   
   '''
 # ---
@@ -102,16 +100,11 @@
         grouping_items
           grouping_item
             grouping_set_list
-              grouping_set_list
-                grouping_set_list
-                  grouping_set
-                    ident	col3
-                grouping_set
-                  struct_literal
-                    ident	col4
-                    ident	col5
-              grouping_set
-                ident	col6
+              ident	col3
+              struct_literal
+                ident	col4
+                ident	col5
+              ident	col6
   
   '''
 # ---
@@ -202,9 +195,8 @@
         grouping_items
           grouping_item
             rollup_list
-              rollup_list
-                ident	col3
-              ident	col4
+              col3
+              col4
   
   '''
 # ---
