@@ -370,9 +370,9 @@
   select
     select_list
       select_expr
-        field_access_expr
-          ident	x
-          ident	y
+        ident
+          x
+          y
   
   '''
 # ---
@@ -660,11 +660,10 @@
   select
     select_list
       select_expr
-        field_access_expr
-          field_access_expr
-            ident	column1
-            ident	column2
-          ident	column3
+        ident
+          column1
+          column2
+          column3
   
   '''
 # ---
@@ -673,9 +672,9 @@
   select
     select_list
       select_expr
-        field_access_expr
-          ident	column1
-          ident	column2
+        ident
+          column1
+          column2
   
   '''
 # ---
@@ -768,9 +767,9 @@
       select_expr
         function_call_expr
           function_name
-            field_access_expr
-              ident	NET
-              ident	IPV4_FROM_INT64
+            ident
+              NET
+              IPV4_FROM_INT64
           function_args
             pos_arg
               integer_literal	42
@@ -904,9 +903,9 @@
       select_expr
         subscript_expr
           subscript_expr
-            field_access_expr
-              ident	column1
-              ident	column2
+            ident
+              column1
+              column2
             integer_literal	0
           integer_literal	1
   
