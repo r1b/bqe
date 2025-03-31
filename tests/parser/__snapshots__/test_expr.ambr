@@ -255,6 +255,47 @@
   
   '''
 # ---
+# name: test_cast_ok[cast]
+  '''
+  select
+    select_list
+      select_expr
+        cast_expr
+          cast_expr_kind_cast
+          cast_expr_target
+            string_literal	'1'
+            ident	INT64
+  
+  '''
+# ---
+# name: test_cast_ok[cast_format]
+  '''
+  select
+    select_list
+      select_expr
+        cast_expr
+          cast_expr_kind_cast
+          cast_expr_target
+            bytes_literal	b'\x48\x65\x6c\x6c\x6f'
+            ident	STRING
+          cast_expr_format
+            string_literal	'ASCII'
+  
+  '''
+# ---
+# name: test_cast_ok[cast_safe]
+  '''
+  select
+    select_list
+      select_expr
+        cast_expr
+          cast_expr_kind_safe_cast
+          cast_expr_target
+            string_literal	'1'
+            ident	INT64
+  
+  '''
+# ---
 # name: test_column_expr_ok[expr_add]
   '''
   select

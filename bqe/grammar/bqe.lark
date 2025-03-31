@@ -84,6 +84,7 @@ _BIGNUMERIC : "BIGNUMERIC"i
 _BY : "BY"i
 _CALL : "CALL"i
 _CASE : "CASE"i
+_CAST : "CAST"i
 _CORRESPONDING : "CORRESPONDING"i
 _CUBE : "CUBE"i
 _CURRENT : "CURRENT"i
@@ -97,6 +98,7 @@ _EXISTS : "EXISTS"i
 _EXTEND : "EXTEND"i
 _FOLLOWING : "FOLLOWING"i
 _FOR : "FOR"i
+_FORMAT : "FORMAT"i
 _FROM : "FROM"i
 _GROUP : "GROUP"i
 _GROUPING : "GROUPING"i
@@ -130,6 +132,7 @@ _RENAME : "RENAME"i
 _RESPECT : "RESPECT"i
 _ROLLUP : "ROLLUP"i
 _ROW : "ROW"i
+_SAFE_CAST : "SAFE_CAST"i
 _SELECT : "SELECT"i
 _SET : "SET"i
 _SETS : "SETS"i
@@ -436,11 +439,22 @@ qlike_quantifier : ANY | SOME | ALL
 
 # Now we don't really care about precedence anymore
 ?atom_expr : literal
+    | cast_expr
     | conditional_expr
     | function_call_expr
     | keyword_subquery_expr
     | parameter
     | ident
+
+# CAST / SAFE_CAST
+
+cast_expr : cast_expr_kind _LPAR cast_expr_target cast_expr_format? _RPAR
+
+cast_expr_kind : _CAST -> cast_expr_kind_cast | _SAFE_CAST -> cast_expr_kind_safe_cast
+
+cast_expr_target : column_expr _AS ident
+
+cast_expr_format : _FORMAT string_literal
 
 # CASE
 

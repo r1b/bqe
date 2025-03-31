@@ -168,3 +168,17 @@ def test_keyword_subquery_ok(sql, assert_parse_tree):
 )
 def test_case_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param("SELECT CAST('1' AS INT64)", id="cast"),
+        pytest.param("SELECT SAFE_CAST('1' AS INT64)", id="cast_safe"),
+        pytest.param(
+            "SELECT CAST(b'\\x48\\x65\\x6c\\x6c\\x6f' AS STRING FORMAT 'ASCII')", id="cast_format"
+        ),
+    ),
+)
+def test_cast_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)
