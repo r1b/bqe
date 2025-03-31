@@ -663,9 +663,13 @@ grouping_item_empty : _LPAR _RPAR
 
 as_alias_as_required : _AS ident
 
-rollup_list : _ROLLUP _LPAR column_expr | rollup_list _COMMA column_expr
+rollup_list : _ROLLUP _LPAR rollup_item | rollup_list _COMMA rollup_item
 
-cube_list : _CUBE _LPAR column_expr | cube_list _COMMA column_expr
+rollup_item : column_expr
+
+cube_list : _CUBE _LPAR cube_item | cube_list _COMMA cube_item
+
+cube_item : column_expr
 
 grouping_set_list : _GROUPING _SETS _LPAR grouping_set | grouping_set_list _COMMA grouping_set
 

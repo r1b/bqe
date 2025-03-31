@@ -47,9 +47,10 @@
         grouping_items
           grouping_item
             cube_list
-              col3
-              ident	col4
-              ident	col5
+              ident	col3
+              struct_literal
+                ident	col4
+                ident	col5
   
   '''
 # ---
@@ -105,6 +106,38 @@
                 ident	col4
                 ident	col5
               ident	col6
+  
+  '''
+# ---
+# name: test_agg_ok[pipe_agg_group_by_grouping_sets_rollup_cube]
+  '''
+  pipe_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	table1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+          as_alias
+            ident	col2
+      group_by
+        grouping_items
+          grouping_item
+            grouping_set_list
+              ident	col3
+              rollup_list
+                ident	col4
+                ident	col5
+              cube_list
+                ident	col6
+                ident	col7
   
   '''
 # ---
@@ -195,8 +228,8 @@
         grouping_items
           grouping_item
             rollup_list
-              col3
-              col4
+              ident	col3
+              ident	col4
   
   '''
 # ---

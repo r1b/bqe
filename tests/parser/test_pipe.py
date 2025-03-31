@@ -161,6 +161,10 @@ def test_limit_ok(sql, assert_parse_tree):
             "FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY GROUPING SETS (col3, (col4, col5), col6)",
             id="pipe_agg_group_by_grouping_sets",
         ),
+        pytest.param(
+            "FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY GROUPING SETS (col3, ROLLUP(col4, col5), CUBE(col6, col7))",
+            id="pipe_agg_group_by_grouping_sets_rollup_cube",
+        ),
     ),
 )
 def test_agg_ok(sql, assert_parse_tree):
