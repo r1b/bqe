@@ -1,5 +1,8 @@
-%import common (CNAME, INT, WS)
+%import common (C_COMMENT, CNAME, INT, SH_COMMENT, SQL_COMMENT, WS)
 
+%ignore C_COMMENT
+%ignore SH_COMMENT
+%ignore SQL_COMMENT
 %ignore WS
 
 ################################################################################
