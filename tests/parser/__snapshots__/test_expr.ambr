@@ -7,7 +7,7 @@
         function_call_expr
           function_name
             ident	FUNC
-          function_distinct
+            function_distinct
           function_args
             pos_arg
               ident	col1

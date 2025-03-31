@@ -472,9 +472,9 @@ else_expr : _ELSE column_expr
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-reference
 # Ref: https://github.com/lark-parser/lark/blob/master/lark/grammars/python.lark#L145-L146
-function_call_expr : function_name _LPAR function_distinct? function_args? function_modifiers? _RPAR
+function_call_expr : function_name function_args? function_modifiers? _RPAR
 
-function_name : field_access_expr
+function_name : field_access_expr _LPAR function_distinct?
 
 function_distinct : _DISTINCT
 
