@@ -131,6 +131,7 @@ _SELECT : "SELECT"i
 _SET : "SET"i
 _SETS : "SETS"i
 _STRICT : "STRICT"i
+_STRUCT : "STRUCT"i
 _SYSTEM : "SYSTEM"i
 _TABLESAMPLE : "TABLESAMPLE"i
 _THEN : "THEN"i
@@ -175,6 +176,7 @@ parameter : _AT UNQUOTED_IDENT
     | float_literal
     | array_literal
     | struct_literal
+    | named_struct_literal
     | date_literal
     | time_literal
     | datetime_literal
@@ -251,9 +253,17 @@ FLOAT_LITERAL : /[\+\-]?[0-9]+\.[0-9]*([Ee][\+\-]?[0-9]+)?/
 
 array_literal : array_prefix? _LBRACK ( column_expr ( _COMMA column_expr )* )? _RBRACK
 
-array_prefix : _ARRAY array_type?
+?array_prefix : _ARRAY scalar_type_decl?
 
-array_type : _LT UNQUOTED_IDENT _GT
+scalar_type_decl : _LT scalar_type _GT
+
+scalar_type : UNQUOTED_IDENT compound_type_decl?
+
+compound_type_decl : _LT compound_type ( _COMMA compound_type )* _GT
+
+compound_type : compound_type_column_name? UNQUOTED_IDENT
+
+compound_type_column_name : UNQUOTED_IDENT
 
 # Date / time
 
@@ -286,6 +296,13 @@ json_literal : _JSON STRING_LITERAL
 # Structs
 
 struct_literal : _LPAR column_expr _COMMA column_expr ( _COMMA column_expr )* _RPAR
+
+named_struct_literal : _STRUCT compound_type_decl? named_struct_literal_item_list _RPAR
+
+named_struct_literal_item_list : _LPAR named_struct_literal_item
+    | named_struct_literal_item_list _COMMA named_struct_literal_item
+
+named_struct_literal_item : column_expr as_alias?
 
 # Boolean
 

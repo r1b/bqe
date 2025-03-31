@@ -159,7 +159,10 @@ def test_float_literal_ok(sql, assert_parse_tree):
         pytest.param("SELECT [1]", id="literal_array_single"),
         pytest.param("SELECT [1,2,3]", id="literal_array_multi"),
         pytest.param("SELECT ARRAY [1,2,3]", id="literal_array_prefix"),
-        pytest.param("SELECT ARRAY<INT64>[1,2,3]", id="literal_array_prefix_type"),
+        pytest.param("SELECT ARRAY<INT64>[1,2,3]", id="literal_array_prefix_scalar_type"),
+        pytest.param(
+            "SELECT ARRAY<STRUCT<a INT64>>[STRUCT(1)]", id="literal_array_prefix_compound_type"
+        ),
     ),
 )
 def test_array_literal_ok(sql, assert_parse_tree):
@@ -199,8 +202,18 @@ def test_json_literal_ok(sql, assert_parse_tree):
 @pytest.mark.parametrize(
     "sql",
     (
-        pytest.param("SELECT (1,2)", id="literal_struct"),
-        pytest.param("SELECT (1,2,3)", id="literal_struct_multi"),
+        pytest.param("SELECT (1, 2)", id="literal_struct"),
+        pytest.param("SELECT (1, 2, 3)", id="literal_struct_multi"),
+        pytest.param("SELECT STRUCT(1, 2, 3)", id="literal_struct_named"),
+        pytest.param("SELECT STRUCT(1 AS a, 2 AS b, 3 AS c)", id="literal_struct_named_alias"),
+        pytest.param(
+            "SELECT STRUCT<INT64, INT64, INT64>(1, 2, 3)",
+            id="literal_struct_named_compound_type_decl",
+        ),
+        pytest.param(
+            "SELECT STRUCT<a INT64, b INT64, c INT64>(1, 2, 3)",
+            id="literal_struct_named_compound_type_decl_column",
+        ),
     ),
 )
 def test_struct_literal_ok(sql, assert_parse_tree):
