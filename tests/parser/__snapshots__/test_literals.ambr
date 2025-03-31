@@ -41,10 +41,10 @@
         array_literal
           scalar_type_decl
             scalar_type
-              STRUCT
+              ident	STRUCT
               compound_type_decl
                 compound_type
-                  compound_type_column_name	a
+                  ident	a
                   INT64
           named_struct_literal
             named_struct_literal_item_list
@@ -60,7 +60,8 @@
       select_expr
         array_literal
           scalar_type_decl
-            scalar_type	INT64
+            scalar_type
+              ident	INT64
           integer_literal	1
           integer_literal	2
           integer_literal	3
@@ -667,13 +668,13 @@
         named_struct_literal
           compound_type_decl
             compound_type
-              compound_type_column_name	a
+              ident	a
               INT64
             compound_type
-              compound_type_column_name	b
+              ident	b
               INT64
             compound_type
-              compound_type_column_name	c
+              ident	c
               INT64
           named_struct_literal_item_list
             named_struct_literal_item

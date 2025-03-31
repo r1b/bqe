@@ -257,13 +257,12 @@ array_literal : array_prefix? _LBRACK ( column_expr ( _COMMA column_expr )* )? _
 
 scalar_type_decl : _LT scalar_type _GT
 
-scalar_type : UNQUOTED_IDENT compound_type_decl?
+scalar_type : ident compound_type_decl?
 
 compound_type_decl : _LT compound_type ( _COMMA compound_type )* _GT
 
-compound_type : compound_type_column_name? UNQUOTED_IDENT
-
-compound_type_column_name : UNQUOTED_IDENT
+# XXX: We have to inline `ident` here to prevent the tokenizer from reading SHR
+compound_type : ident? ( UNQUOTED_IDENT | QUOTED_IDENT )
 
 # Date / time
 
