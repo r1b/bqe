@@ -17,10 +17,6 @@ def coerce_binary(args: list[Tree]) -> list[Tree]:
 
 
 class BqeTransformer(Transformer):
-    def field_access_expr(self, args: list[Tree]):
-        """Rewrite left-recursive field_access_expr to ident"""
-        return fixup_lrec_rule(args, "ident")
-
     def path_expression(self, args: list[Tree]):
         """Rewrite left-recursive path_expression to ident"""
         return fixup_lrec_rule(coerce_binary(args), "ident")

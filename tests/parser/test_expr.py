@@ -24,6 +24,9 @@ def test_dotted_expr_ok(sql, assert_parse_tree):
         pytest.param("SELECT column1.column2[0][1]", id="subscript_expr_path_expr_nested"),
         pytest.param("SELECT column1[OFFSET(2)]", id="subscript_expr_offset"),
         pytest.param("SELECT column1['key1']", id="subscript_expr_string_literal"),
+        pytest.param(
+            "SELECT column1[0].column2[OFFSET(0)].column3['key1']", id="subscript_expr_kitchen_sink"
+        ),
     ),
 )
 def test_subscript_expr_ok(sql, assert_parse_tree):

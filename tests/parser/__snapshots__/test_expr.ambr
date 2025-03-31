@@ -411,9 +411,9 @@
   select
     select_list
       select_expr
-        ident
-          x
-          y
+        field_access_expr
+          ident	x
+          ident	y
   
   '''
 # ---
@@ -701,10 +701,11 @@
   select
     select_list
       select_expr
-        ident
-          column1
-          column2
-          column3
+        field_access_expr
+          field_access_expr
+            ident	column1
+            ident	column2
+          ident	column3
   
   '''
 # ---
@@ -713,9 +714,9 @@
   select
     select_list
       select_expr
-        ident
-          column1
-          column2
+        field_access_expr
+          ident	column1
+          ident	column2
   
   '''
 # ---
@@ -805,9 +806,9 @@
       select_expr
         function_call_expr
           function_name
-            ident
-              NET
-              IPV4_FROM_INT64
+            field_access_expr
+              ident	NET
+              ident	IPV4_FROM_INT64
           function_args
             pos_arg
               integer_literal	42
@@ -918,6 +919,30 @@
   
   '''
 # ---
+# name: test_subscript_expr_ok[subscript_expr_kitchen_sink]
+  '''
+  select
+    select_list
+      select_expr
+        subscript_expr
+          field_access_expr
+            subscript_expr
+              field_access_expr
+                subscript_expr
+                  ident	column1
+                  integer_literal	0
+                ident	column2
+              function_call_expr
+                function_name
+                  ident	OFFSET
+                function_args
+                  pos_arg
+                    integer_literal	0
+            ident	column3
+          string_literal	'key1'
+  
+  '''
+# ---
 # name: test_subscript_expr_ok[subscript_expr_offset]
   '''
   select
@@ -941,9 +966,9 @@
       select_expr
         subscript_expr
           subscript_expr
-            ident
-              column1
-              column2
+            field_access_expr
+              ident	column1
+              ident	column2
             integer_literal	0
           integer_literal	1
   
