@@ -608,12 +608,10 @@
       select_expr
         named_struct_literal
           named_struct_literal_item_list
-            named_struct_literal_item_list
-              named_struct_literal_item_list
-                named_struct_literal_item
-                  integer_literal	1
-              named_struct_literal_item
-                integer_literal	2
+            named_struct_literal_item
+              integer_literal	1
+            named_struct_literal_item
+              integer_literal	2
             named_struct_literal_item
               integer_literal	3
   
@@ -626,16 +624,14 @@
       select_expr
         named_struct_literal
           named_struct_literal_item_list
-            named_struct_literal_item_list
-              named_struct_literal_item_list
-                named_struct_literal_item
-                  integer_literal	1
-                  as_alias
-                    ident	a
-              named_struct_literal_item
-                integer_literal	2
-                as_alias
-                  ident	b
+            named_struct_literal_item
+              integer_literal	1
+              as_alias
+                ident	a
+            named_struct_literal_item
+              integer_literal	2
+              as_alias
+                ident	b
             named_struct_literal_item
               integer_literal	3
               as_alias
@@ -654,12 +650,10 @@
             compound_type	INT64
             compound_type	INT64
           named_struct_literal_item_list
-            named_struct_literal_item_list
-              named_struct_literal_item_list
-                named_struct_literal_item
-                  integer_literal	1
-              named_struct_literal_item
-                integer_literal	2
+            named_struct_literal_item
+              integer_literal	1
+            named_struct_literal_item
+              integer_literal	2
             named_struct_literal_item
               integer_literal	3
   
@@ -682,12 +676,10 @@
               compound_type_column_name	c
               INT64
           named_struct_literal_item_list
-            named_struct_literal_item_list
-              named_struct_literal_item_list
-                named_struct_literal_item
-                  integer_literal	1
-              named_struct_literal_item
-                integer_literal	2
+            named_struct_literal_item
+              integer_literal	1
+            named_struct_literal_item
+              integer_literal	2
             named_struct_literal_item
               integer_literal	3
   
