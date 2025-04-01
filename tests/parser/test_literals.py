@@ -163,6 +163,10 @@ def test_float_literal_ok(sql, assert_parse_tree):
         pytest.param(
             "SELECT ARRAY<STRUCT<a INT64>>[STRUCT(1)]", id="literal_array_prefix_compound_type"
         ),
+        pytest.param(
+            "SELECT ARRAY<STRUCT<a STRUCT<b INT64>>>[STRUCT(STRUCT(1))]",
+            id="literal_array_prefix_nested_compound_type",
+        ),
     ),
 )
 def test_array_literal_ok(sql, assert_parse_tree):
@@ -213,6 +217,10 @@ def test_json_literal_ok(sql, assert_parse_tree):
         pytest.param(
             "SELECT STRUCT<a INT64, b INT64, c INT64>(1, 2, 3)",
             id="literal_struct_named_compound_type_decl_column",
+        ),
+        pytest.param(
+            "SELECT STRUCT<a INT64, STRUCT<b INT64, c INT64>>(1, STRUCT(2, 3))",
+            id="literal_struct_named_compound_type_decl_nested",
         ),
     ),
 )

@@ -26,7 +26,7 @@
     select_list
       select_expr
         array_literal
-          array_prefix
+          array_literal_prefix
           integer_literal	1
           integer_literal	2
           integer_literal	3
@@ -39,18 +39,54 @@
     select_list
       select_expr
         array_literal
-          array_prefix
-            scalar_type_decl
-              scalar_type
-                ident	STRUCT
-                compound_type_decl
-                  compound_type
-                    ident	a
-                    INT64
+          array_literal_prefix
+            array_type
+              type
+                struct_type
+                  struct_type_list
+                    struct_field
+                      ident	a
+                      type
+                        type_name
+                          ident	INT64
           named_struct_literal
+            named_struct_literal_prefix
             named_struct_literal_item_list
               named_struct_literal_item
                 integer_literal	1
+  
+  '''
+# ---
+# name: test_array_literal_ok[literal_array_prefix_nested_compound_type]
+  '''
+  select
+    select_list
+      select_expr
+        array_literal
+          array_literal_prefix
+            array_type
+              type
+                struct_type
+                  struct_type_list
+                    struct_field
+                      ident	a
+                      type
+                        struct_type
+                          struct_type_list
+                            struct_field
+                              ident	b
+                              type
+                                type_name
+                                  ident	INT64
+          named_struct_literal
+            named_struct_literal_prefix
+            named_struct_literal_item_list
+              named_struct_literal_item
+                named_struct_literal
+                  named_struct_literal_prefix
+                  named_struct_literal_item_list
+                    named_struct_literal_item
+                      integer_literal	1
   
   '''
 # ---
@@ -60,10 +96,11 @@
     select_list
       select_expr
         array_literal
-          array_prefix
-            scalar_type_decl
-              scalar_type
-                ident	INT64
+          array_literal_prefix
+            array_type
+              type
+                type_name
+                  ident	INT64
           integer_literal	1
           integer_literal	2
           integer_literal	3
@@ -423,7 +460,10 @@
     select_list
       select_expr
         range_literal
-          range_type	DATE
+          range_type
+            type
+              type_name
+                ident	DATE
           range_value	'[1970-01-01, 1970-01-02)'
   
   '''
@@ -610,6 +650,7 @@
     select_list
       select_expr
         named_struct_literal
+          named_struct_literal_prefix
           named_struct_literal_item_list
             named_struct_literal_item
               integer_literal	1
@@ -626,6 +667,7 @@
     select_list
       select_expr
         named_struct_literal
+          named_struct_literal_prefix
           named_struct_literal_item_list
             named_struct_literal_item
               integer_literal	1
@@ -648,10 +690,23 @@
     select_list
       select_expr
         named_struct_literal
-          compound_type_decl
-            compound_type	INT64
-            compound_type	INT64
-            compound_type	INT64
+          named_struct_literal_prefix
+            struct_type
+              struct_type_list
+                struct_type_list
+                  struct_type_list
+                    struct_field
+                      type
+                        type_name
+                          ident	INT64
+                  struct_field
+                    type
+                      type_name
+                        ident	INT64
+                struct_field
+                  type
+                    type_name
+                      ident	INT64
           named_struct_literal_item_list
             named_struct_literal_item
               integer_literal	1
@@ -668,16 +723,26 @@
     select_list
       select_expr
         named_struct_literal
-          compound_type_decl
-            compound_type
-              ident	a
-              INT64
-            compound_type
-              ident	b
-              INT64
-            compound_type
-              ident	c
-              INT64
+          named_struct_literal_prefix
+            struct_type
+              struct_type_list
+                struct_type_list
+                  struct_type_list
+                    struct_field
+                      ident	a
+                      type
+                        type_name
+                          ident	INT64
+                  struct_field
+                    ident	b
+                    type
+                      type_name
+                        ident	INT64
+                struct_field
+                  ident	c
+                  type
+                    type_name
+                      ident	INT64
           named_struct_literal_item_list
             named_struct_literal_item
               integer_literal	1
@@ -685,6 +750,50 @@
               integer_literal	2
             named_struct_literal_item
               integer_literal	3
+  
+  '''
+# ---
+# name: test_struct_literal_ok[literal_struct_named_compound_type_decl_nested]
+  '''
+  select
+    select_list
+      select_expr
+        named_struct_literal
+          named_struct_literal_prefix
+            struct_type
+              struct_type_list
+                struct_type_list
+                  struct_field
+                    ident	a
+                    type
+                      type_name
+                        ident	INT64
+                struct_field
+                  type
+                    struct_type
+                      struct_type_list
+                        struct_type_list
+                          struct_field
+                            ident	b
+                            type
+                              type_name
+                                ident	INT64
+                        struct_field
+                          ident	c
+                          type
+                            type_name
+                              ident	INT64
+          named_struct_literal_item_list
+            named_struct_literal_item
+              integer_literal	1
+            named_struct_literal_item
+              named_struct_literal
+                named_struct_literal_prefix
+                named_struct_literal_item_list
+                  named_struct_literal_item
+                    integer_literal	2
+                  named_struct_literal_item
+                    integer_literal	3
   
   '''
 # ---
