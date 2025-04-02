@@ -873,6 +873,77 @@
   
   '''
 # ---
+# name: test_pipe_extend_ok[pipe_extend_named_window_multi]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	table1
+    pipe_extend
+      extend_list
+        extend_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+            window_spec
+              ident	w1
+        extend_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col2
+            window_spec
+              ident	w2
+      window_clause
+        window_item
+          ident	w1
+          window_expr
+            window_spec
+              window_partition_by
+                ident	col3
+        window_item
+          ident	w2
+          window_expr
+            window_spec
+              window_partition_by
+                ident	col4
+  
+  '''
+# ---
+# name: test_pipe_extend_ok[pipe_extend_named_window_single]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	table1
+    pipe_extend
+      extend_list
+        extend_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+            window_spec
+              ident	w
+      window_clause
+        window_item
+          ident	w
+          window_expr
+            window_spec
+              window_partition_by
+                ident	col2
+  
+  '''
+# ---
 # name: test_pipe_extend_ok[pipe_extend_single]
   '''
   query_expr
@@ -959,6 +1030,77 @@
       select_list
         select_expr
           ident	col1
+  
+  '''
+# ---
+# name: test_pipe_ok[pipe_select_named_window_multi]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	table1
+    pipe_select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+            window_spec
+              ident	w1
+        select_expr
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col2
+            window_spec
+              ident	w2
+      window_clause
+        window_item
+          ident	w1
+          window_expr
+            window_spec
+              window_partition_by
+                ident	col3
+        window_item
+          ident	w2
+          window_expr
+            window_spec
+              window_partition_by
+                ident	col4
+  
+  '''
+# ---
+# name: test_pipe_ok[pipe_select_named_window_single]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	table1
+    pipe_select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+            window_spec
+              ident	w
+      window_clause
+        window_item
+          ident	w
+          window_expr
+            window_spec
+              window_partition_by
+                ident	col2
   
   '''
 # ---
@@ -1581,24 +1723,24 @@
       from_clause
         from_item_table
           ident	table1
-    pipe_window
-      window_expr_list
-        window_expr
+    pipe_select
+      select_list
+        select_expr
           function_call_expr
             function_name
               ident	SUM
             function_args
               pos_arg
                 ident	col1
-          window_spec
-            window_frame
-              window_frame_kind	RANGE
-              window_frame_between
-                window_frame_between_numeric_preceding
-                  window_frame_numeric_preceding
-                    integer_literal	1
-                  window_frame_numeric_following
-                    integer_literal	1
+            window_spec
+              window_frame
+                window_frame_kind	RANGE
+                window_frame_between
+                  window_frame_between_numeric_preceding
+                    window_frame_numeric_preceding
+                      integer_literal	1
+                    window_frame_numeric_following
+                      integer_literal	1
   
   '''
 # ---
@@ -1609,22 +1751,22 @@
       from_clause
         from_item_table
           ident	table1
-    pipe_window
-      window_expr_list
-        window_expr
+    pipe_select
+      select_list
+        select_expr
           function_call_expr
             function_name
               ident	SUM
             function_args
               pos_arg
                 ident	col1
-          window_spec
-            window_frame
-              window_frame_kind	ROWS
-              window_frame_between
-                window_frame_between_unbounded_preceding
-                  window_frame_unbounded_preceding
-                  window_frame_unbounded_following
+            window_spec
+              window_frame
+                window_frame_kind	ROWS
+                window_frame_between
+                  window_frame_between_unbounded_preceding
+                    window_frame_unbounded_preceding
+                    window_frame_unbounded_following
   
   '''
 # ---
@@ -1635,22 +1777,22 @@
       from_clause
         from_item_table
           ident	table1
-    pipe_window
-      window_expr_list
-        window_expr
+    pipe_select
+      select_list
+        select_expr
           function_call_expr
             function_name
               ident	SUM
             function_args
               pos_arg
                 ident	col1
-          window_spec
-            window_order_by
-              order_by_items
-                order_by_item
-                  ident	col2
-                order_by_item
-                  ident	col3
+            window_spec
+              window_order_by
+                order_by_items
+                  order_by_item
+                    ident	col2
+                  order_by_item
+                    ident	col3
   
   '''
 # ---
@@ -1661,20 +1803,20 @@
       from_clause
         from_item_table
           ident	table1
-    pipe_window
-      window_expr_list
-        window_expr
+    pipe_select
+      select_list
+        select_expr
           function_call_expr
             function_name
               ident	SUM
             function_args
               pos_arg
                 ident	col1
-          window_spec
-            window_order_by
-              order_by_items
-                order_by_item
-                  ident	col2
+            window_spec
+              window_order_by
+                order_by_items
+                  order_by_item
+                    ident	col2
   
   '''
 # ---
@@ -1685,22 +1827,22 @@
       from_clause
         from_item_table
           ident	table1
-    pipe_window
-      window_expr_list
-        window_expr
+    pipe_select
+      select_list
+        select_expr
           function_call_expr
             function_name
               ident	SUM
             function_args
               pos_arg
                 ident	col1
-          window_spec
-            window_partition_by
-              ident	col2
-            window_order_by
-              order_by_items
-                order_by_item
-                  ident	col3
+            window_spec
+              window_partition_by
+                ident	col2
+              window_order_by
+                order_by_items
+                  order_by_item
+                    ident	col3
   
   '''
 # ---
@@ -1711,19 +1853,19 @@
       from_clause
         from_item_table
           ident	table1
-    pipe_window
-      window_expr_list
-        window_expr
+    pipe_select
+      select_list
+        select_expr
           function_call_expr
             function_name
               ident	SUM
             function_args
               pos_arg
                 ident	col1
-          window_spec
-            window_partition_by
-              ident	col2
-              ident	col3
+            window_spec
+              window_partition_by
+                ident	col2
+                ident	col3
   
   '''
 # ---
@@ -1734,18 +1876,18 @@
       from_clause
         from_item_table
           ident	table1
-    pipe_window
-      window_expr_list
-        window_expr
+    pipe_select
+      select_list
+        select_expr
           function_call_expr
             function_name
               ident	SUM
             function_args
               pos_arg
                 ident	col1
-          window_spec
-            window_partition_by
-              ident	col2
+            window_spec
+              window_partition_by
+                ident	col2
   
   '''
 # ---
@@ -1756,16 +1898,16 @@
       from_clause
         from_item_table
           ident	table1
-    pipe_window
-      window_expr_list
-        window_expr
+    pipe_select
+      select_list
+        select_expr
           function_call_expr
             function_name
               ident	SUM
             function_args
               pos_arg
                 ident	col1
-          window_spec
+            window_spec
   
   '''
 # ---

@@ -14,6 +14,20 @@ import pytest
             "SELECT col1 FROM table1 |> SELECT AS VALUE col1", id="pipe_select_select_as_value"
         ),
         pytest.param("(SELECT col1 FROM table1) |> SELECT col1", id="pipe_subquery_select"),
+        pytest.param(
+            "FROM table1 |> SELECT SUM(col1) OVER (w) WINDOW w AS (PARTITION BY col2)",
+            id="pipe_select_named_window_single",
+        ),
+        # This is a problem in a lot of other places, too
+        pytest.param(
+            "FROM table1 |> SELECT SUM(col1) OVER (w) WINDOW w AS (PARTITION BY date)",
+            id="pipe_select_named_window_reserved_conflict",
+            marks=pytest.mark.xfail,
+        ),
+        pytest.param(
+            "FROM table1 |> SELECT SUM(col1) OVER (w1), SUM(col2) OVER (w2) WINDOW w1 AS (PARTITION BY col3), w2 AS (PARTITION BY col4)",
+            id="pipe_select_named_window_multi",
+        ),
     ),
 )
 def test_pipe_ok(sql, assert_parse_tree):
@@ -35,6 +49,14 @@ def test_pipe_error(sql, assert_parse_tree_error):
         pytest.param("FROM table1 |> EXTEND POW(col1, 2) AS col2", id="pipe_extend_single_alias"),
         pytest.param(
             "FROM table1 |> EXTEND POW(col1, 2) AS col2, EXP(col1, 2)", id="pipe_extend_multi"
+        ),
+        pytest.param(
+            "FROM table1 |> EXTEND SUM(col1) OVER (w) WINDOW w AS (PARTITION BY col2)",
+            id="pipe_extend_named_window_single",
+        ),
+        pytest.param(
+            "FROM table1 |> EXTEND SUM(col1) OVER (w1), SUM(col2) OVER (w2) WINDOW w1 AS (PARTITION BY col3), w2 AS (PARTITION BY col4)",
+            id="pipe_extend_named_window_multi",
         ),
     ),
 )
@@ -283,31 +305,31 @@ def test_call_ok(sql, assert_parse_tree):
 @pytest.mark.parametrize(
     "sql",
     (
-        pytest.param("FROM table1 |> WINDOW SUM(col1) OVER ()", id="window_simple"),
+        pytest.param("FROM table1 |> SELECT SUM(col1) OVER ()", id="window_simple"),
         pytest.param(
-            "FROM table1 |> WINDOW SUM(col1) OVER (PARTITION BY col2)",
+            "FROM table1 |> SELECT SUM(col1) OVER (PARTITION BY col2)",
             id="window_partition_by_single",
         ),
         pytest.param(
-            "FROM table1 |> WINDOW SUM(col1) OVER (PARTITION BY col2, col3)",
+            "FROM table1 |> SELECT SUM(col1) OVER (PARTITION BY col2, col3)",
             id="window_partition_by_multi",
         ),
         pytest.param(
-            "FROM table1 |> WINDOW SUM(col1) OVER (ORDER BY col2)", id="window_order_by_single"
+            "FROM table1 |> SELECT SUM(col1) OVER (ORDER BY col2)", id="window_order_by_single"
         ),
         pytest.param(
-            "FROM table1 |> WINDOW SUM(col1) OVER (ORDER BY col2, col3)", id="window_order_by_multi"
+            "FROM table1 |> SELECT SUM(col1) OVER (ORDER BY col2, col3)", id="window_order_by_multi"
         ),
         pytest.param(
-            "FROM table1 |> WINDOW SUM(col1) OVER (PARTITION BY col2 ORDER BY col3)",
+            "FROM table1 |> SELECT SUM(col1) OVER (PARTITION BY col2 ORDER BY col3)",
             id="window_parition_and_order_by",
         ),
         pytest.param(
-            "FROM table1 |> WINDOW SUM(col1) OVER (ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)",
+            "FROM table1 |> SELECT SUM(col1) OVER (ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)",
             id="window_frame_rows",
         ),
         pytest.param(
-            "FROM table1 |> WINDOW SUM(col1) OVER (RANGE BETWEEN 1 PRECEDING AND 1 FOLLOWING)",
+            "FROM table1 |> SELECT SUM(col1) OVER (RANGE BETWEEN 1 PRECEDING AND 1 FOLLOWING)",
             id="window_frame_range",
         ),
     ),

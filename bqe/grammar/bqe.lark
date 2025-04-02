@@ -490,7 +490,7 @@ else_expr : _ELSE column_expr
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-reference
 # Ref: https://github.com/lark-parser/lark/blob/master/lark/grammars/python.lark#L145-L146
-function_call_expr : function_name function_args? function_modifiers? _RPAR
+function_call_expr : function_name function_args? function_modifiers? _RPAR ( _OVER window_spec )?
 
 function_name : field_access_expr _LPAR function_distinct?
 
@@ -528,6 +528,57 @@ limit_modifier : _LIMIT ( integer_literal | parameter )
 
 keyword_subquery_expr : _ARRAY _LPAR query_expr _RPAR -> array_subquery_expr
     | _EXISTS _LPAR query_expr _RPAR -> exists_subquery_expr
+
+# Window specification
+
+window_spec : _LPAR ident? window_partition_by? window_order_by? window_frame? _RPAR
+
+window_partition_by : _PARTITION _BY column_expr ( _COMMA column_expr )*
+
+window_order_by : _ORDER _BY order_by_items
+
+window_frame : window_frame_kind ( window_frame_start | _BETWEEN window_frame_between )
+
+window_frame_kind : ROWS | RANGE
+
+window_frame_start : window_frame_unbounded_preceding
+    | window_frame_numeric_preceding
+    | window_frame_current_row
+
+window_frame_unbounded_preceding : _UNBOUNDED _PRECEDING
+
+window_frame_numeric_preceding : column_expr _PRECEDING
+
+window_frame_current_row : _CURRENT _ROW
+
+window_frame_between : window_frame_between_unbounded_preceding
+    | window_frame_between_numeric_preceding
+    | window_frame_between_current_row
+    | window_frame_between_numeric_following
+
+window_frame_between_unbounded_preceding : window_frame_unbounded_preceding _AND window_frame_between_end_a
+
+window_frame_between_numeric_preceding : window_frame_numeric_preceding _AND window_frame_between_end_a
+
+window_frame_between_current_row : window_frame_current_row _AND window_frame_between_end_b
+
+window_frame_between_numeric_following : window_frame_numeric_following _AND window_frame_between_end_c
+
+window_frame_numeric_following : column_expr _FOLLOWING
+
+?window_frame_between_end_a : window_frame_numeric_preceding
+    | window_frame_current_row
+    | window_frame_numeric_following
+    | window_frame_unbounded_following
+
+window_frame_unbounded_following : _UNBOUNDED _FOLLOWING
+
+?window_frame_between_end_b : window_frame_current_row
+    | window_frame_numeric_following
+    | window_frame_unbounded_following
+
+?window_frame_between_end_c : window_frame_numeric_following
+    | window_frame_unbounded_following
 
 ################################################################################
 # Entry point
@@ -627,22 +678,29 @@ from_unnest_offset_expr : _WITH _OFFSET as_alias?
     | pipe_set_operation
     | pipe_join
     | pipe_call
-    | pipe_window
     | pipe_tablesample
     | pipe_pivot
     | pipe_unpivot
 
 # SELECT
 
-pipe_select : _SELECT select_shape? select_list
+pipe_select : _SELECT select_shape? select_list window_clause?
 
 # EXTEND
 
-pipe_extend : _EXTEND extend_list
+pipe_extend : _EXTEND extend_list window_clause?
 
 extend_list : extend_item ( _COMMA extend_item )* _COMMA?
 
 extend_item : column_expr as_alias?
+
+# WINDOW
+
+window_clause : _WINDOW window_item ( _COMMA window_item )*
+
+window_item : ident _AS window_expr
+
+window_expr : ident -> named_window | window_spec
 
 # SET
 
@@ -774,63 +832,6 @@ join_criteria : CROSS | INNER | ( FULL | LEFT | RIGHT ) OUTER?
 # CALL
 
 pipe_call : _CALL function_call_expr as_alias?
-
-# WINDOW
-
-pipe_window : _WINDOW window_expr_list
-
-window_expr_list : window_expr ( _COMMA window_expr )*
-
-window_expr : function_call_expr _OVER _LPAR window_spec _RPAR as_alias?
-
-window_spec : window_partition_by? window_order_by? window_frame?
-
-window_partition_by : _PARTITION _BY column_expr ( _COMMA column_expr )*
-
-window_order_by : _ORDER _BY order_by_items
-
-window_frame : window_frame_kind ( window_frame_start | _BETWEEN window_frame_between )
-
-window_frame_kind : ROWS | RANGE
-
-window_frame_start : window_frame_unbounded_preceding
-    | window_frame_numeric_preceding
-    | window_frame_current_row
-
-window_frame_unbounded_preceding : _UNBOUNDED _PRECEDING
-
-window_frame_numeric_preceding : column_expr _PRECEDING
-
-window_frame_current_row : _CURRENT _ROW
-
-window_frame_between : window_frame_between_unbounded_preceding
-    | window_frame_between_numeric_preceding
-    | window_frame_between_current_row
-    | window_frame_between_numeric_following
-
-window_frame_between_unbounded_preceding : window_frame_unbounded_preceding _AND window_frame_between_end_a
-
-window_frame_between_numeric_preceding : window_frame_numeric_preceding _AND window_frame_between_end_a
-
-window_frame_between_current_row : window_frame_current_row _AND window_frame_between_end_b
-
-window_frame_between_numeric_following : window_frame_numeric_following _AND window_frame_between_end_c
-
-window_frame_numeric_following : column_expr _FOLLOWING
-
-?window_frame_between_end_a : window_frame_numeric_preceding
-    | window_frame_current_row
-    | window_frame_numeric_following
-    | window_frame_unbounded_following
-
-window_frame_unbounded_following : _UNBOUNDED _FOLLOWING
-
-?window_frame_between_end_b : window_frame_current_row
-    | window_frame_numeric_following
-    | window_frame_unbounded_following
-
-?window_frame_between_end_c : window_frame_numeric_following
-    | window_frame_unbounded_following
 
 # TABLESAMPLE
 
