@@ -1,88 +1,97 @@
 # serializer version: 1
 # name: test_comment_ok[comment_c_expr]
   '''
-  select
-    select_list
-      select_expr
-        integer_literal	1
-      select_expr
-        integer_literal	2
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+        select_expr
+          integer_literal	2
   
   '''
 # ---
 # name: test_comment_ok[comment_c_leading]
   '''
-  select
-    select_list
-      select_expr
-        integer_literal	1
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
   
   '''
 # ---
 # name: test_comment_ok[comment_c_trailing]
   '''
-  select
-    select_list
-      select_expr
-        integer_literal	1
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
   
   '''
 # ---
 # name: test_comment_ok[comment_sh_expr]
   '''
-  select
-    select_list
-      select_expr
-        integer_literal	1
-      select_expr
-        integer_literal	2
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+        select_expr
+          integer_literal	2
   
   '''
 # ---
 # name: test_comment_ok[comment_sh_leading]
   '''
-  select
-    select_list
-      select_expr
-        integer_literal	1
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
   
   '''
 # ---
 # name: test_comment_ok[comment_sh_trailing]
   '''
-  select
-    select_list
-      select_expr
-        integer_literal	1
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
   
   '''
 # ---
 # name: test_comment_ok[comment_sql_expr]
   '''
-  select
-    select_list
-      select_expr
-        integer_literal	1
-      select_expr
-        integer_literal	2
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+        select_expr
+          integer_literal	2
   
   '''
 # ---
 # name: test_comment_ok[comment_sql_leading]
   '''
-  select
-    select_list
-      select_expr
-        integer_literal	1
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
   
   '''
 # ---
 # name: test_comment_ok[comment_sql_trailing]
   '''
-  select
-    select_list
-      select_expr
-        integer_literal	1
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
   
   '''
 # ---

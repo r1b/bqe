@@ -17,6 +17,10 @@ def coerce_binary(args: list[Tree]) -> list[Tree]:
 
 
 class BqeTransformer(Transformer):
+    def query_expr(self, args: list[Tree]):
+        """Collapse left-recursive query_expr"""
+        return fixup_lrec_rule(coerce_binary(args), "query_expr", spread=False)
+
     def path_expression(self, args: list[Tree]):
         """Rewrite left-recursive path_expression to ident"""
         return fixup_lrec_rule(coerce_binary(args), "ident")

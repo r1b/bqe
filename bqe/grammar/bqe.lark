@@ -543,7 +543,7 @@ keyword_subquery_expr : _ARRAY _LPAR query_expr _RPAR -> array_subquery_expr
 
 ?query : query_expr ( _SEMI query_expr )* _SEMI?
 
-?query_expr : ( select | subquery | pipe_from | placeholder ) | ( query_expr pipe_expr )
+query_expr : ( select | subquery | pipe_from | placeholder ) | ( query_expr pipe_expr )
 
 subquery : _LPAR query_expr _RPAR
 

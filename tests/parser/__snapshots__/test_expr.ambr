@@ -1,987 +1,1063 @@
 # serializer version: 1
 # name: test_aggregate_function_call_ok[agg_fcall_distinct]
   '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-            function_distinct
-          function_args
-            pos_arg
-              ident	col1
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+              function_distinct
+            function_args
+              pos_arg
+                ident	col1
   
   '''
 # ---
 # name: test_aggregate_function_call_ok[agg_fcall_having_max]
   '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-          function_args
-            pos_arg
-              ident	col1
-          function_modifiers
-            having_modifier
-              having_max
-              ident	col2
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+            function_args
+              pos_arg
+                ident	col1
+            function_modifiers
+              having_modifier
+                having_max
+                ident	col2
   
   '''
 # ---
 # name: test_aggregate_function_call_ok[agg_fcall_having_min]
   '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-          function_args
-            pos_arg
-              ident	col1
-          function_modifiers
-            having_modifier
-              having_min
-              ident	col2
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+            function_args
+              pos_arg
+                ident	col1
+            function_modifiers
+              having_modifier
+                having_min
+                ident	col2
   
   '''
 # ---
 # name: test_aggregate_function_call_ok[agg_fcall_ignore_nulls]
   '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-          function_args
-            pos_arg
-              ident	col1
-          function_modifiers
-            nulls_modifier
-              ignore_nulls
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+            function_args
+              pos_arg
+                ident	col1
+            function_modifiers
+              nulls_modifier
+                ignore_nulls
   
   '''
 # ---
 # name: test_aggregate_function_call_ok[agg_fcall_limit]
   '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-          function_args
-            pos_arg
-              ident	col1
-          function_modifiers
-            limit_modifier
-              integer_literal	1
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+            function_args
+              pos_arg
+                ident	col1
+            function_modifiers
+              limit_modifier
+                integer_literal	1
   
   '''
 # ---
 # name: test_aggregate_function_call_ok[agg_fcall_order_by]
   '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-          function_args
-            pos_arg
-              ident	col1
-          function_modifiers
-            order_by_modifier
-              order_by_items
-                order_by_item
-                  ident	col2
-                  order_by_item_sort	DESC
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+            function_args
+              pos_arg
+                ident	col1
+            function_modifiers
+              order_by_modifier
+                order_by_items
+                  order_by_item
+                    ident	col2
+                    order_by_item_sort	DESC
   
   '''
 # ---
 # name: test_aggregate_function_call_ok[agg_fcall_respect_nulls]
   '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-          function_args
-            pos_arg
-              ident	col1
-          function_modifiers
-            nulls_modifier
-              respect_nulls
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+            function_args
+              pos_arg
+                ident	col1
+            function_modifiers
+              nulls_modifier
+                respect_nulls
   
   '''
 # ---
 # name: test_and_or_not_ok[expr_and_or_not]
   '''
-  select
-    select_list
-      select_expr
-        or_expr
-          ident	x
-          and_expr
-            ident	y
-            not_expr
-              ident	z
+  query_expr
+    select
+      select_list
+        select_expr
+          or_expr
+            ident	x
+            and_expr
+              ident	y
+              not_expr
+                ident	z
   
   '''
 # ---
 # name: test_and_or_not_ok[expr_and_or_not_parens]
   '''
-  select
-    select_list
-      select_expr
-        and_expr
-          parenthesized_expr
-            or_expr
-              ident	x
-              ident	y
-          not_expr
-            ident	z
+  query_expr
+    select
+      select_list
+        select_expr
+          and_expr
+            parenthesized_expr
+              or_expr
+                ident	x
+                ident	y
+            not_expr
+              ident	z
   
   '''
 # ---
 # name: test_between_ok[expr_between]
   '''
-  select
-    select_list
-      select_expr
-        and_expr
-          between_expr
-            ident	x
-            ident	a
-            ident	b
-          ident	c
+  query_expr
+    select
+      select_list
+        select_expr
+          and_expr
+            between_expr
+              ident	x
+              ident	a
+              ident	b
+            ident	c
   
   '''
 # ---
 # name: test_case_ok[case_match_multi]
   '''
-  select
-    select_list
-      select_expr
-        case_match_expr
-          ident	col1
-          when_then_expr
-            integer_literal	1
-            integer_literal	1
-          when_then_expr
-            integer_literal	2
-            integer_literal	2
+  query_expr
+    select
+      select_list
+        select_expr
+          case_match_expr
+            ident	col1
+            when_then_expr
+              integer_literal	1
+              integer_literal	1
+            when_then_expr
+              integer_literal	2
+              integer_literal	2
   
   '''
 # ---
 # name: test_case_ok[case_match_multi_else]
   '''
-  select
-    select_list
-      select_expr
-        case_match_expr
-          ident	col1
-          when_then_expr
-            integer_literal	1
-            integer_literal	1
-          when_then_expr
-            integer_literal	2
-            integer_literal	2
-          else_expr
-            integer_literal	3
+  query_expr
+    select
+      select_list
+        select_expr
+          case_match_expr
+            ident	col1
+            when_then_expr
+              integer_literal	1
+              integer_literal	1
+            when_then_expr
+              integer_literal	2
+              integer_literal	2
+            else_expr
+              integer_literal	3
   
   '''
 # ---
 # name: test_case_ok[case_match_single]
   '''
-  select
-    select_list
-      select_expr
-        case_match_expr
-          ident	col1
-          when_then_expr
-            integer_literal	1
-            integer_literal	1
+  query_expr
+    select
+      select_list
+        select_expr
+          case_match_expr
+            ident	col1
+            when_then_expr
+              integer_literal	1
+              integer_literal	1
   
   '''
 # ---
 # name: test_case_ok[case_multi]
   '''
-  select
-    select_list
-      select_expr
-        case_expr
-          when_then_expr
-            integer_literal	1
-            integer_literal	1
-          when_then_expr
-            integer_literal	2
-            integer_literal	2
+  query_expr
+    select
+      select_list
+        select_expr
+          case_expr
+            when_then_expr
+              integer_literal	1
+              integer_literal	1
+            when_then_expr
+              integer_literal	2
+              integer_literal	2
   
   '''
 # ---
 # name: test_case_ok[case_multi_else]
   '''
-  select
-    select_list
-      select_expr
-        case_expr
-          when_then_expr
-            integer_literal	1
-            integer_literal	1
-          when_then_expr
-            integer_literal	2
-            integer_literal	2
-          else_expr
-            integer_literal	3
+  query_expr
+    select
+      select_list
+        select_expr
+          case_expr
+            when_then_expr
+              integer_literal	1
+              integer_literal	1
+            when_then_expr
+              integer_literal	2
+              integer_literal	2
+            else_expr
+              integer_literal	3
   
   '''
 # ---
 # name: test_case_ok[case_single]
   '''
-  select
-    select_list
-      select_expr
-        case_expr
-          when_then_expr
-            integer_literal	1
-            integer_literal	1
+  query_expr
+    select
+      select_list
+        select_expr
+          case_expr
+            when_then_expr
+              integer_literal	1
+              integer_literal	1
   
   '''
 # ---
 # name: test_cast_ok[cast]
   '''
-  select
-    select_list
-      select_expr
-        cast_expr
-          cast_expr_kind_cast
-          cast_expr_target
-            string_literal	'1'
-            ident	INT64
+  query_expr
+    select
+      select_list
+        select_expr
+          cast_expr
+            cast_expr_kind_cast
+            cast_expr_target
+              string_literal	'1'
+              ident	INT64
   
   '''
 # ---
 # name: test_cast_ok[cast_format]
   '''
-  select
-    select_list
-      select_expr
-        cast_expr
-          cast_expr_kind_cast
-          cast_expr_target
-            bytes_literal	b'\x48\x65\x6c\x6c\x6f'
-            ident	STRING
-          cast_expr_format
-            string_literal	'ASCII'
+  query_expr
+    select
+      select_list
+        select_expr
+          cast_expr
+            cast_expr_kind_cast
+            cast_expr_target
+              bytes_literal	b'\x48\x65\x6c\x6c\x6f'
+              ident	STRING
+            cast_expr_format
+              string_literal	'ASCII'
   
   '''
 # ---
 # name: test_cast_ok[cast_safe]
   '''
-  select
-    select_list
-      select_expr
-        cast_expr
-          cast_expr_kind_safe_cast
-          cast_expr_target
-            string_literal	'1'
-            ident	INT64
+  query_expr
+    select
+      select_list
+        select_expr
+          cast_expr
+            cast_expr_kind_safe_cast
+            cast_expr_target
+              string_literal	'1'
+              ident	INT64
   
   '''
 # ---
 # name: test_column_expr_ok[expr_add]
   '''
-  select
-    select_list
-      select_expr
-        add_expr
-          ident	x
-          ident	y
+  query_expr
+    select
+      select_list
+        select_expr
+          add_expr
+            ident	x
+            ident	y
   
   '''
 # ---
 # name: test_column_expr_ok[expr_and]
   '''
-  select
-    select_list
-      select_expr
-        and_expr
-          ident	x
-          ident	y
+  query_expr
+    select
+      select_list
+        select_expr
+          and_expr
+            ident	x
+            ident	y
   
   '''
 # ---
 # name: test_column_expr_ok[expr_between]
   '''
-  select
-    select_list
-      select_expr
-        between_expr
-          ident	x
-          ident	y
-          ident	z
+  query_expr
+    select
+      select_list
+        select_expr
+          between_expr
+            ident	x
+            ident	y
+            ident	z
   
   '''
 # ---
 # name: test_column_expr_ok[expr_bitwise_and]
   '''
-  select
-    select_list
-      select_expr
-        bitwise_and_expr
-          ident	x
-          ident	y
+  query_expr
+    select
+      select_list
+        select_expr
+          bitwise_and_expr
+            ident	x
+            ident	y
   
   '''
 # ---
 # name: test_column_expr_ok[expr_bitwise_not]
   '''
-  select
-    select_list
-      select_expr
-        bitwise_not_expr
-          ident	x
+  query_expr
+    select
+      select_list
+        select_expr
+          bitwise_not_expr
+            ident	x
   
   '''
 # ---
 # name: test_column_expr_ok[expr_bitwise_or]
   '''
-  select
-    select_list
-      select_expr
-        bitwise_or_expr
-          ident	x
-          ident	y
+  query_expr
+    select
+      select_list
+        select_expr
+          bitwise_or_expr
+            ident	x
+            ident	y
   
   '''
 # ---
 # name: test_column_expr_ok[expr_bitwise_shr]
   '''
-  select
-    select_list
-      select_expr
-        bitwise_shr_expr
-          ident	x
-          ident	y
+  query_expr
+    select
+      select_list
+        select_expr
+          bitwise_shr_expr
+            ident	x
+            ident	y
   
   '''
 # ---
 # name: test_column_expr_ok[expr_bitwise_xor]
   '''
-  select
-    select_list
-      select_expr
-        bitwise_xor_expr
-          ident	x
-          ident	y
+  query_expr
+    select
+      select_list
+        select_expr
+          bitwise_xor_expr
+            ident	x
+            ident	y
   
   '''
 # ---
 # name: test_column_expr_ok[expr_div]
   '''
-  select
-    select_list
-      select_expr
-        div_expr
-          ident	x
-          ident	y
+  query_expr
+    select
+      select_list
+        select_expr
+          div_expr
+            ident	x
+            ident	y
   
   '''
 # ---
 # name: test_column_expr_ok[expr_eq]
   '''
-  select
-    select_list
-      select_expr
-        eq_expr
-          ident	x
-          ident	y
+  query_expr
+    select
+      select_list
+        select_expr
+          eq_expr
+            ident	x
+            ident	y
   
   '''
 # ---
 # name: test_column_expr_ok[expr_field_access]
   '''
-  select
-    select_list
-      select_expr
-        field_access_expr
-          ident	x
-          ident	y
+  query_expr
+    select
+      select_list
+        select_expr
+          field_access_expr
+            ident	x
+            ident	y
   
   '''
 # ---
 # name: test_column_expr_ok[expr_gt]
   '''
-  select
-    select_list
-      select_expr
-        gt_expr
-          ident	x
-          ident	y
+  query_expr
+    select
+      select_list
+        select_expr
+          gt_expr
+            ident	x
+            ident	y
   
   '''
 # ---
 # name: test_column_expr_ok[expr_gte]
   '''
-  select
-    select_list
-      select_expr
-        gte_expr
-          ident	x
-          ident	y
+  query_expr
+    select
+      select_list
+        select_expr
+          gte_expr
+            ident	x
+            ident	y
   
   '''
 # ---
 # name: test_column_expr_ok[expr_in]
   '''
-  select
-    select_list
-      select_expr
-        in_expr
-          ident	x
-          parenthesized_list
-            integer_literal	1
-            integer_literal	2
-            integer_literal	3
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_is]
-  '''
-  select
-    select_list
-      select_expr
-        is_expr
-          ident	x
-          boolean_literal	TRUE
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_is_distinct_from]
-  '''
-  select
-    select_list
-      select_expr
-        is_distinct_from_expr
-          ident	x
-          ident	y
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_is_not]
-  '''
-  select
-    select_list
-      select_expr
-        is_not_expr
-          ident	x
-          null_literal	NULL
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_like]
-  '''
-  select
-    select_list
-      select_expr
-        like_expr
-          ident	x
-          string_literal	'a%'
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_lt]
-  '''
-  select
-    select_list
-      select_expr
-        lt_expr
-          ident	x
-          ident	y
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_lte]
-  '''
-  select
-    select_list
-      select_expr
-        lte_expr
-          ident	x
-          ident	y
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_mul]
-  '''
-  select
-    select_list
-      select_expr
-        mul_expr
-          ident	x
-          ident	y
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_ne]
-  '''
-  select
-    select_list
-      select_expr
-        ne_expr
-          ident	x
-          ident	y
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_ne_var]
-  '''
-  select
-    select_list
-      select_expr
-        ne_expr
-          ident	x
-          ident	y
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_not]
-  '''
-  select
-    select_list
-      select_expr
-        not_expr
-          ident	x
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_not_between]
-  '''
-  select
-    select_list
-      select_expr
-        not_between_expr
-          ident	x
-          ident	y
-          ident	z
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_not_in]
-  '''
-  select
-    select_list
-      select_expr
-        not_in_expr
-          ident	x
-          unnest_expr
-            array_literal
+  query_expr
+    select
+      select_list
+        select_expr
+          in_expr
+            ident	x
+            parenthesized_list
               integer_literal	1
               integer_literal	2
               integer_literal	3
   
   '''
 # ---
+# name: test_column_expr_ok[expr_is]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          is_expr
+            ident	x
+            boolean_literal	TRUE
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_is_distinct_from]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          is_distinct_from_expr
+            ident	x
+            ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_is_not]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          is_not_expr
+            ident	x
+            null_literal	NULL
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_like]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          like_expr
+            ident	x
+            string_literal	'a%'
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_lt]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          lt_expr
+            ident	x
+            ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_lte]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          lte_expr
+            ident	x
+            ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_mul]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          mul_expr
+            ident	x
+            ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_ne]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ne_expr
+            ident	x
+            ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_ne_var]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ne_expr
+            ident	x
+            ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_not]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          not_expr
+            ident	x
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_not_between]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          not_between_expr
+            ident	x
+            ident	y
+            ident	z
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_not_in]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          not_in_expr
+            ident	x
+            unnest_expr
+              array_literal
+                integer_literal	1
+                integer_literal	2
+                integer_literal	3
+  
+  '''
+# ---
 # name: test_column_expr_ok[expr_not_like]
   '''
-  select
-    select_list
-      select_expr
-        not_like_expr
-          ident	x
-          string_literal	'a%'
+  query_expr
+    select
+      select_list
+        select_expr
+          not_like_expr
+            ident	x
+            string_literal	'a%'
   
   '''
 # ---
 # name: test_column_expr_ok[expr_not_qlike]
   '''
-  select
-    select_list
-      select_expr
-        not_qlike_expr
-          ident	x
-          qlike_quantifier	ALL
-          parenthesized_list
-            string_literal	'a%'
-            string_literal	'%b'
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_or]
-  '''
-  select
-    select_list
-      select_expr
-        or_expr
-          ident	x
-          ident	y
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_parens]
-  '''
-  select
-    select_list
-      select_expr
-        or_expr
-          parenthesized_expr
-            or_expr
-              ident	x
-              ident	y
-          ident	z
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_qlike]
-  '''
-  select
-    select_list
-      select_expr
-        qlike_expr
-          ident	x
-          qlike_quantifier	ANY
-          unnest_expr
-            array_literal
+  query_expr
+    select
+      select_list
+        select_expr
+          not_qlike_expr
+            ident	x
+            qlike_quantifier	ALL
+            parenthesized_list
               string_literal	'a%'
               string_literal	'%b'
   
   '''
 # ---
+# name: test_column_expr_ok[expr_or]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          or_expr
+            ident	x
+            ident	y
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_parens]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          or_expr
+            parenthesized_expr
+              or_expr
+                ident	x
+                ident	y
+            ident	z
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_qlike]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          qlike_expr
+            ident	x
+            qlike_quantifier	ANY
+            unnest_expr
+              array_literal
+                string_literal	'a%'
+                string_literal	'%b'
+  
+  '''
+# ---
 # name: test_column_expr_ok[expr_sub]
   '''
-  select
-    select_list
-      select_expr
-        sub_expr
-          ident	x
-          ident	y
+  query_expr
+    select
+      select_list
+        select_expr
+          sub_expr
+            ident	x
+            ident	y
   
   '''
 # ---
 # name: test_column_expr_ok[expr_subscript]
   '''
-  select
-    select_list
-      select_expr
-        subscript_expr
-          ident	x
-          integer_literal	0
+  query_expr
+    select
+      select_list
+        select_expr
+          subscript_expr
+            ident	x
+            integer_literal	0
   
   '''
 # ---
 # name: test_column_expr_ok[expr_uminus]
   '''
-  select
-    select_list
-      select_expr
-        uminus_expr
-          ident	x
+  query_expr
+    select
+      select_list
+        select_expr
+          uminus_expr
+            ident	x
   
   '''
 # ---
 # name: test_column_expr_ok[expr_uplus]
   '''
-  select
-    select_list
-      select_expr
-        uplus_expr
-          ident	x
+  query_expr
+    select
+      select_list
+        select_expr
+          uplus_expr
+            ident	x
   
   '''
 # ---
 # name: test_dotted_expr_ok[dotted_column_expr_multi]
   '''
-  select
-    select_list
-      select_expr
-        field_access_expr
+  query_expr
+    select
+      select_list
+        select_expr
           field_access_expr
-            ident	column1
-            ident	column2
-          ident	column3
+            field_access_expr
+              ident	column1
+              ident	column2
+            ident	column3
   
   '''
 # ---
 # name: test_dotted_expr_ok[dotted_column_expr_single]
   '''
-  select
-    select_list
-      select_expr
-        field_access_expr
-          ident	column1
-          ident	column2
+  query_expr
+    select
+      select_list
+        select_expr
+          field_access_expr
+            ident	column1
+            ident	column2
   
   '''
 # ---
 # name: test_dotted_expr_ok[dotted_table_expr_multi]
   '''
-  select
-    select_list
-      select_expr
-        ident	column1
-    from_clause
-      from_item_table
-        ident
-          `project1`
-          dataset1
-          table1
+  query_expr
+    select
+      select_list
+        select_expr
+          ident	column1
+      from_clause
+        from_item_table
+          ident
+            `project1`
+            dataset1
+            table1
   
   '''
 # ---
 # name: test_dotted_expr_ok[dotted_table_expr_single]
   '''
-  select
-    select_list
-      select_expr
-        ident	column1
-    from_clause
-      from_item_table
-        ident
-          dataset1
-          table1
+  query_expr
+    select
+      select_list
+        select_expr
+          ident	column1
+      from_clause
+        from_item_table
+          ident
+            dataset1
+            table1
   
   '''
 # ---
 # name: test_function_call_ok[fcall_kitchen_sink]
   '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-          function_args
-            pos_arg
-              integer_literal	1
-            named_arg
-              ident	name2
-              integer_literal	2
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+            function_args
+              pos_arg
+                integer_literal	1
+              named_arg
+                ident	name2
+                integer_literal	2
   
   '''
 # ---
 # name: test_function_call_ok[fcall_named_arg_multi]
   '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-          function_args
-            named_arg
-              ident	name1
-              integer_literal	1
-            named_arg
-              ident	name2
-              integer_literal	2
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+            function_args
+              named_arg
+                ident	name1
+                integer_literal	1
+              named_arg
+                ident	name2
+                integer_literal	2
   
   '''
 # ---
 # name: test_function_call_ok[fcall_named_arg_single]
   '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-          function_args
-            named_arg
-              ident	name1
-              integer_literal	1
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+            function_args
+              named_arg
+                ident	name1
+                integer_literal	1
   
   '''
 # ---
 # name: test_function_call_ok[fcall_path_expr]
   '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            field_access_expr
-              ident	NET
-              ident	IPV4_FROM_INT64
-          function_args
-            pos_arg
-              integer_literal	42
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              field_access_expr
+                ident	NET
+                ident	IPV4_FROM_INT64
+            function_args
+              pos_arg
+                integer_literal	42
   
   '''
 # ---
 # name: test_function_call_ok[fcall_pos_arg_multi]
   '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-          function_args
-            pos_arg
-              integer_literal	1
-            pos_arg
-              integer_literal	2
-  
-  '''
-# ---
-# name: test_function_call_ok[fcall_pos_arg_none]
-  '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-  
-  '''
-# ---
-# name: test_function_call_ok[fcall_pos_arg_single]
-  '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-          function_args
-            pos_arg
-              integer_literal	1
-  
-  '''
-# ---
-# name: test_function_call_ok[fcall_star_expr]
-  '''
-  select
-    select_list
-      select_expr
-        function_call_expr
-          function_name
-            ident	FUNC
-          function_args
-            star_arg
-  
-  '''
-# ---
-# name: test_keyword_subquery_ok[keyword_subquery_array]
-  '''
-  select
-    select_list
-      select_expr
-        array_subquery_expr
-          select
-            select_list
-              select_expr
-                integer_literal	1
-  
-  '''
-# ---
-# name: test_keyword_subquery_ok[keyword_subquery_exists]
-  '''
-  select
-    select_list
-      select_expr
-        exists_subquery_expr
-          select
-            select_list
-              select_expr
-                integer_literal	1
-  
-  '''
-# ---
-# name: test_subscript_expr_ok[subscript_expr_integer_literal_multi]
-  '''
-  select
-    select_list
-      select_expr
-        subscript_expr
-          subscript_expr
-            ident	column1
-            integer_literal	0
-          integer_literal	1
-  
-  '''
-# ---
-# name: test_subscript_expr_ok[subscript_expr_integer_literal_single]
-  '''
-  select
-    select_list
-      select_expr
-        subscript_expr
-          ident	column1
-          integer_literal	0
-  
-  '''
-# ---
-# name: test_subscript_expr_ok[subscript_expr_kitchen_sink]
-  '''
-  select
-    select_list
-      select_expr
-        subscript_expr
-          field_access_expr
-            subscript_expr
-              field_access_expr
-                subscript_expr
-                  ident	column1
-                  integer_literal	0
-                ident	column2
-              function_call_expr
-                function_name
-                  ident	OFFSET
-                function_args
-                  pos_arg
-                    integer_literal	0
-            ident	column3
-          string_literal	'key1'
-  
-  '''
-# ---
-# name: test_subscript_expr_ok[subscript_expr_offset]
-  '''
-  select
-    select_list
-      select_expr
-        subscript_expr
-          ident	column1
+  query_expr
+    select
+      select_list
+        select_expr
           function_call_expr
             function_name
-              ident	OFFSET
+              ident	FUNC
             function_args
+              pos_arg
+                integer_literal	1
               pos_arg
                 integer_literal	2
   
   '''
 # ---
-# name: test_subscript_expr_ok[subscript_expr_path_expr_nested]
+# name: test_function_call_ok[fcall_pos_arg_none]
   '''
-  select
-    select_list
-      select_expr
-        subscript_expr
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+  
+  '''
+# ---
+# name: test_function_call_ok[fcall_pos_arg_single]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+            function_args
+              pos_arg
+                integer_literal	1
+  
+  '''
+# ---
+# name: test_function_call_ok[fcall_star_expr]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	FUNC
+            function_args
+              star_arg
+  
+  '''
+# ---
+# name: test_keyword_subquery_ok[keyword_subquery_array]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          array_subquery_expr
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+  
+  '''
+# ---
+# name: test_keyword_subquery_ok[keyword_subquery_exists]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          exists_subquery_expr
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+  
+  '''
+# ---
+# name: test_subscript_expr_ok[subscript_expr_integer_literal_multi]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          subscript_expr
+            subscript_expr
+              ident	column1
+              integer_literal	0
+            integer_literal	1
+  
+  '''
+# ---
+# name: test_subscript_expr_ok[subscript_expr_integer_literal_single]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          subscript_expr
+            ident	column1
+            integer_literal	0
+  
+  '''
+# ---
+# name: test_subscript_expr_ok[subscript_expr_kitchen_sink]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
           subscript_expr
             field_access_expr
-              ident	column1
-              ident	column2
-            integer_literal	0
-          integer_literal	1
+              subscript_expr
+                field_access_expr
+                  subscript_expr
+                    ident	column1
+                    integer_literal	0
+                  ident	column2
+                function_call_expr
+                  function_name
+                    ident	OFFSET
+                  function_args
+                    pos_arg
+                      integer_literal	0
+              ident	column3
+            string_literal	'key1'
+  
+  '''
+# ---
+# name: test_subscript_expr_ok[subscript_expr_offset]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          subscript_expr
+            ident	column1
+            function_call_expr
+              function_name
+                ident	OFFSET
+              function_args
+                pos_arg
+                  integer_literal	2
+  
+  '''
+# ---
+# name: test_subscript_expr_ok[subscript_expr_path_expr_nested]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          subscript_expr
+            subscript_expr
+              field_access_expr
+                ident	column1
+                ident	column2
+              integer_literal	0
+            integer_literal	1
   
   '''
 # ---
 # name: test_subscript_expr_ok[subscript_expr_string_literal]
   '''
-  select
-    select_list
-      select_expr
-        subscript_expr
-          ident	column1
-          string_literal	'key1'
+  query_expr
+    select
+      select_list
+        select_expr
+          subscript_expr
+            ident	column1
+            string_literal	'key1'
   
   '''
 # ---

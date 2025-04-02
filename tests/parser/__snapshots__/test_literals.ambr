@@ -1,799 +1,868 @@
 # serializer version: 1
 # name: test_array_literal_ok[literal_array_empty]
   '''
-  select
-    select_list
-      select_expr
-        array_literal
+  query_expr
+    select
+      select_list
+        select_expr
+          array_literal
   
   '''
 # ---
 # name: test_array_literal_ok[literal_array_multi]
   '''
-  select
-    select_list
-      select_expr
-        array_literal
-          integer_literal	1
-          integer_literal	2
-          integer_literal	3
+  query_expr
+    select
+      select_list
+        select_expr
+          array_literal
+            integer_literal	1
+            integer_literal	2
+            integer_literal	3
   
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix]
   '''
-  select
-    select_list
-      select_expr
-        array_literal
-          array_literal_prefix
-          integer_literal	1
-          integer_literal	2
-          integer_literal	3
+  query_expr
+    select
+      select_list
+        select_expr
+          array_literal
+            array_literal_prefix
+            integer_literal	1
+            integer_literal	2
+            integer_literal	3
   
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix_compound_type]
   '''
-  select
-    select_list
-      select_expr
-        array_literal
-          array_literal_prefix
-            array_type
+  query_expr
+    select
+      select_list
+        select_expr
+          array_literal
+            array_literal_prefix
+              array_type
+                type
+                  struct_type
+                    struct_type_list
+                      struct_field
+                        ident	a
+                        type
+                          type_name
+                            ident	INT64
+            named_struct_literal
+              named_struct_literal_prefix
+              named_struct_literal_item_list
+                named_struct_literal_item
+                  integer_literal	1
+  
+  '''
+# ---
+# name: test_array_literal_ok[literal_array_prefix_nested_compound_type]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          array_literal
+            array_literal_prefix
+              array_type
+                type
+                  struct_type
+                    struct_type_list
+                      struct_field
+                        ident	a
+                        type
+                          struct_type
+                            struct_type_list
+                              struct_field
+                                ident	b
+                                type
+                                  type_name
+                                    ident	INT64
+            named_struct_literal
+              named_struct_literal_prefix
+              named_struct_literal_item_list
+                named_struct_literal_item
+                  named_struct_literal
+                    named_struct_literal_prefix
+                    named_struct_literal_item_list
+                      named_struct_literal_item
+                        integer_literal	1
+  
+  '''
+# ---
+# name: test_array_literal_ok[literal_array_prefix_scalar_type]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          array_literal
+            array_literal_prefix
+              array_type
+                type
+                  type_name
+                    ident	INT64
+            integer_literal	1
+            integer_literal	2
+            integer_literal	3
+  
+  '''
+# ---
+# name: test_array_literal_ok[literal_array_single]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          array_literal
+            integer_literal	1
+  
+  '''
+# ---
+# name: test_bignumeric_literal_ok[literal_bignumeric]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bignumeric_literal	'42'
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_dquot_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	b""
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_dquot_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	b"bytes"
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_dquot_raw_cap]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	BR"bytes"
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_dquot_raw_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	br""
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_dquot_raw_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	rb"bytes"
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_squot_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	b''
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_squot_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	b'bytes'
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_squot_raw_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	br''
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_squot_raw_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	br'bytes'
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tdquot_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	b""""""
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tdquot_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	b"""We say: "hello"."""
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tdquot_raw_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	br""""""
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tdquot_raw_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	br"""We say: "hello"."""
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tsquot_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	b''''''
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tsquot_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	b'''We say: 'hello'.'''
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tsquot_raw_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	br''''''
+  
+  '''
+# ---
+# name: test_bytes_literal_ok[literal_bytes_tsquot_raw_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          bytes_literal	br'''We say: 'hello'.'''
+  
+  '''
+# ---
+# name: test_date_time_literal_ok[literal_date]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          date_literal	'1970-01-01'
+  
+  '''
+# ---
+# name: test_date_time_literal_ok[literal_datetime]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          datetime_literal	'1970-01-01 12:00:00.01'
+  
+  '''
+# ---
+# name: test_date_time_literal_ok[literal_time]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          date_literal	'12:00:00.01'
+  
+  '''
+# ---
+# name: test_date_time_literal_ok[literal_timestamp]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          timestamp_literal	'1970-01-01 12:00:00.01-08'
+  
+  '''
+# ---
+# name: test_float_literal_ok[literal_float_dig_dot]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          float_literal	58.
+  
+  '''
+# ---
+# name: test_float_literal_ok[literal_float_dig_dot_dig_lowere_minus_dig]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          float_literal	123.456e-67
+  
+  '''
+# ---
+# name: test_float_literal_ok[literal_float_dig_lowere_dig]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          float_literal	4e2
+  
+  '''
+# ---
+# name: test_float_literal_ok[literal_float_dot_dig_cape_dig]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          float_literal	.1E4
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_decimal]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_decimal_minus]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	-1
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_decimal_plus]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	+1
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_hex]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	0xff
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_hex_cap]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	0XFF
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_hex_minus]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	-0xff
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_hex_plus]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	+0xff
+  
+  '''
+# ---
+# name: test_integer_literal_ok[literal_integer_quoted_alias_adjacent]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	`alias`
+  
+  '''
+# ---
+# name: test_interval_literal_ok[literal_interval]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          interval_literal
+            integer_literal	1
+            datetime_part	MONTH
+  
+  '''
+# ---
+# name: test_json_literal_ok[literal_json]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          json_literal	'{}'
+  
+  '''
+# ---
+# name: test_numeric_literal_ok[literal_numeric]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          numeric_literal	'42'
+  
+  '''
+# ---
+# name: test_range_literal_ok[literal_range]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          range_literal
+            range_type
               type
-                struct_type
+                type_name
+                  ident	DATE
+            range_value	'[1970-01-01, 1970-01-02)'
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	"string"
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_raw_cap]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	R"string"
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_raw_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	r""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_dquot_raw_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	r"string"
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_squot_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_squot_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	'string'
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_squot_raw_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	r''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_squot_raw_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	r'string'
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tdquot_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	""""""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tdquot_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	"""We say: "hello"."""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tdquot_raw_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	r""""""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tdquot_raw_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	r"""We say: "hello"."""
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tsquot_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	''''''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tsquot_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	'''We say: 'hello'.'''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tsquot_raw_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	r''''''
+  
+  '''
+# ---
+# name: test_string_literal_ok[literal_string_tsquot_raw_nonempty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	r'''We say: 'hello'.'''
+  
+  '''
+# ---
+# name: test_struct_literal_ok[literal_struct]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          struct_literal
+            integer_literal	1
+            integer_literal	2
+  
+  '''
+# ---
+# name: test_struct_literal_ok[literal_struct_multi]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          struct_literal
+            integer_literal	1
+            integer_literal	2
+            integer_literal	3
+  
+  '''
+# ---
+# name: test_struct_literal_ok[literal_struct_named]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          named_struct_literal
+            named_struct_literal_prefix
+            named_struct_literal_item_list
+              named_struct_literal_item
+                integer_literal	1
+              named_struct_literal_item
+                integer_literal	2
+              named_struct_literal_item
+                integer_literal	3
+  
+  '''
+# ---
+# name: test_struct_literal_ok[literal_struct_named_alias]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          named_struct_literal
+            named_struct_literal_prefix
+            named_struct_literal_item_list
+              named_struct_literal_item
+                integer_literal	1
+                as_alias
+                  ident	a
+              named_struct_literal_item
+                integer_literal	2
+                as_alias
+                  ident	b
+              named_struct_literal_item
+                integer_literal	3
+                as_alias
+                  ident	c
+  
+  '''
+# ---
+# name: test_struct_literal_ok[literal_struct_named_compound_type_decl]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          named_struct_literal
+            named_struct_literal_prefix
+              struct_type
+                struct_type_list
+                  struct_type_list
+                    struct_type_list
+                      struct_field
+                        type
+                          type_name
+                            ident	INT64
+                    struct_field
+                      type
+                        type_name
+                          ident	INT64
+                  struct_field
+                    type
+                      type_name
+                        ident	INT64
+            named_struct_literal_item_list
+              named_struct_literal_item
+                integer_literal	1
+              named_struct_literal_item
+                integer_literal	2
+              named_struct_literal_item
+                integer_literal	3
+  
+  '''
+# ---
+# name: test_struct_literal_ok[literal_struct_named_compound_type_decl_column]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          named_struct_literal
+            named_struct_literal_prefix
+              struct_type
+                struct_type_list
+                  struct_type_list
+                    struct_type_list
+                      struct_field
+                        ident	a
+                        type
+                          type_name
+                            ident	INT64
+                    struct_field
+                      ident	b
+                      type
+                        type_name
+                          ident	INT64
+                  struct_field
+                    ident	c
+                    type
+                      type_name
+                        ident	INT64
+            named_struct_literal_item_list
+              named_struct_literal_item
+                integer_literal	1
+              named_struct_literal_item
+                integer_literal	2
+              named_struct_literal_item
+                integer_literal	3
+  
+  '''
+# ---
+# name: test_struct_literal_ok[literal_struct_named_compound_type_decl_nested]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          named_struct_literal
+            named_struct_literal_prefix
+              struct_type
+                struct_type_list
                   struct_type_list
                     struct_field
                       ident	a
                       type
                         type_name
                           ident	INT64
-          named_struct_literal
-            named_struct_literal_prefix
-            named_struct_literal_item_list
-              named_struct_literal_item
-                integer_literal	1
-  
-  '''
-# ---
-# name: test_array_literal_ok[literal_array_prefix_nested_compound_type]
-  '''
-  select
-    select_list
-      select_expr
-        array_literal
-          array_literal_prefix
-            array_type
-              type
-                struct_type
-                  struct_type_list
-                    struct_field
-                      ident	a
-                      type
-                        struct_type
+                  struct_field
+                    type
+                      struct_type
+                        struct_type_list
                           struct_type_list
                             struct_field
                               ident	b
                               type
                                 type_name
                                   ident	INT64
-          named_struct_literal
-            named_struct_literal_prefix
+                          struct_field
+                            ident	c
+                            type
+                              type_name
+                                ident	INT64
             named_struct_literal_item_list
+              named_struct_literal_item
+                integer_literal	1
               named_struct_literal_item
                 named_struct_literal
                   named_struct_literal_prefix
                   named_struct_literal_item_list
                     named_struct_literal_item
-                      integer_literal	1
-  
-  '''
-# ---
-# name: test_array_literal_ok[literal_array_prefix_scalar_type]
-  '''
-  select
-    select_list
-      select_expr
-        array_literal
-          array_literal_prefix
-            array_type
-              type
-                type_name
-                  ident	INT64
-          integer_literal	1
-          integer_literal	2
-          integer_literal	3
-  
-  '''
-# ---
-# name: test_array_literal_ok[literal_array_single]
-  '''
-  select
-    select_list
-      select_expr
-        array_literal
-          integer_literal	1
-  
-  '''
-# ---
-# name: test_bignumeric_literal_ok[literal_bignumeric]
-  '''
-  select
-    select_list
-      select_expr
-        bignumeric_literal	'42'
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_empty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	b""
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	b"bytes"
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_raw_cap]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	BR"bytes"
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_raw_empty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	br""
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_raw_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	rb"bytes"
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_squot_empty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	b''
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_squot_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	b'bytes'
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_squot_raw_empty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	br''
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_squot_raw_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	br'bytes'
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tdquot_empty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	b""""""
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tdquot_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	b"""We say: "hello"."""
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tdquot_raw_empty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	br""""""
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tdquot_raw_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	br"""We say: "hello"."""
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tsquot_empty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	b''''''
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tsquot_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	b'''We say: 'hello'.'''
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tsquot_raw_empty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	br''''''
-  
-  '''
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tsquot_raw_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        bytes_literal	br'''We say: 'hello'.'''
-  
-  '''
-# ---
-# name: test_date_time_literal_ok[literal_date]
-  '''
-  select
-    select_list
-      select_expr
-        date_literal	'1970-01-01'
-  
-  '''
-# ---
-# name: test_date_time_literal_ok[literal_datetime]
-  '''
-  select
-    select_list
-      select_expr
-        datetime_literal	'1970-01-01 12:00:00.01'
-  
-  '''
-# ---
-# name: test_date_time_literal_ok[literal_time]
-  '''
-  select
-    select_list
-      select_expr
-        date_literal	'12:00:00.01'
-  
-  '''
-# ---
-# name: test_date_time_literal_ok[literal_timestamp]
-  '''
-  select
-    select_list
-      select_expr
-        timestamp_literal	'1970-01-01 12:00:00.01-08'
-  
-  '''
-# ---
-# name: test_float_literal_ok[literal_float_dig_dot]
-  '''
-  select
-    select_list
-      select_expr
-        float_literal	58.
-  
-  '''
-# ---
-# name: test_float_literal_ok[literal_float_dig_dot_dig_lowere_minus_dig]
-  '''
-  select
-    select_list
-      select_expr
-        float_literal	123.456e-67
-  
-  '''
-# ---
-# name: test_float_literal_ok[literal_float_dig_lowere_dig]
-  '''
-  select
-    select_list
-      select_expr
-        float_literal	4e2
-  
-  '''
-# ---
-# name: test_float_literal_ok[literal_float_dot_dig_cape_dig]
-  '''
-  select
-    select_list
-      select_expr
-        float_literal	.1E4
-  
-  '''
-# ---
-# name: test_integer_literal_ok[literal_integer_decimal]
-  '''
-  select
-    select_list
-      select_expr
-        integer_literal	1
-  
-  '''
-# ---
-# name: test_integer_literal_ok[literal_integer_decimal_minus]
-  '''
-  select
-    select_list
-      select_expr
-        integer_literal	-1
-  
-  '''
-# ---
-# name: test_integer_literal_ok[literal_integer_decimal_plus]
-  '''
-  select
-    select_list
-      select_expr
-        integer_literal	+1
-  
-  '''
-# ---
-# name: test_integer_literal_ok[literal_integer_hex]
-  '''
-  select
-    select_list
-      select_expr
-        integer_literal	0xff
-  
-  '''
-# ---
-# name: test_integer_literal_ok[literal_integer_hex_cap]
-  '''
-  select
-    select_list
-      select_expr
-        integer_literal	0XFF
-  
-  '''
-# ---
-# name: test_integer_literal_ok[literal_integer_hex_minus]
-  '''
-  select
-    select_list
-      select_expr
-        integer_literal	-0xff
-  
-  '''
-# ---
-# name: test_integer_literal_ok[literal_integer_hex_plus]
-  '''
-  select
-    select_list
-      select_expr
-        integer_literal	+0xff
-  
-  '''
-# ---
-# name: test_integer_literal_ok[literal_integer_quoted_alias_adjacent]
-  '''
-  select
-    select_list
-      select_expr
-        integer_literal	1
-        as_alias
-          ident	`alias`
-  
-  '''
-# ---
-# name: test_interval_literal_ok[literal_interval]
-  '''
-  select
-    select_list
-      select_expr
-        interval_literal
-          integer_literal	1
-          datetime_part	MONTH
-  
-  '''
-# ---
-# name: test_json_literal_ok[literal_json]
-  '''
-  select
-    select_list
-      select_expr
-        json_literal	'{}'
-  
-  '''
-# ---
-# name: test_numeric_literal_ok[literal_numeric]
-  '''
-  select
-    select_list
-      select_expr
-        numeric_literal	'42'
-  
-  '''
-# ---
-# name: test_range_literal_ok[literal_range]
-  '''
-  select
-    select_list
-      select_expr
-        range_literal
-          range_type
-            type
-              type_name
-                ident	DATE
-          range_value	'[1970-01-01, 1970-01-02)'
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_dquot_empty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	""
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_dquot_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	"string"
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_dquot_raw_cap]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	R"string"
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_dquot_raw_empty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	r""
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_dquot_raw_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	r"string"
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_squot_empty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	''
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_squot_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	'string'
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_squot_raw_empty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	r''
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_squot_raw_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	r'string'
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_tdquot_empty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	""""""
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_tdquot_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	"""We say: "hello"."""
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_tdquot_raw_empty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	r""""""
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_tdquot_raw_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	r"""We say: "hello"."""
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_tsquot_empty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	''''''
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_tsquot_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	'''We say: 'hello'.'''
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_tsquot_raw_empty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	r''''''
-  
-  '''
-# ---
-# name: test_string_literal_ok[literal_string_tsquot_raw_nonempty]
-  '''
-  select
-    select_list
-      select_expr
-        string_literal	r'''We say: 'hello'.'''
-  
-  '''
-# ---
-# name: test_struct_literal_ok[literal_struct]
-  '''
-  select
-    select_list
-      select_expr
-        struct_literal
-          integer_literal	1
-          integer_literal	2
-  
-  '''
-# ---
-# name: test_struct_literal_ok[literal_struct_multi]
-  '''
-  select
-    select_list
-      select_expr
-        struct_literal
-          integer_literal	1
-          integer_literal	2
-          integer_literal	3
-  
-  '''
-# ---
-# name: test_struct_literal_ok[literal_struct_named]
-  '''
-  select
-    select_list
-      select_expr
-        named_struct_literal
-          named_struct_literal_prefix
-          named_struct_literal_item_list
-            named_struct_literal_item
-              integer_literal	1
-            named_struct_literal_item
-              integer_literal	2
-            named_struct_literal_item
-              integer_literal	3
-  
-  '''
-# ---
-# name: test_struct_literal_ok[literal_struct_named_alias]
-  '''
-  select
-    select_list
-      select_expr
-        named_struct_literal
-          named_struct_literal_prefix
-          named_struct_literal_item_list
-            named_struct_literal_item
-              integer_literal	1
-              as_alias
-                ident	a
-            named_struct_literal_item
-              integer_literal	2
-              as_alias
-                ident	b
-            named_struct_literal_item
-              integer_literal	3
-              as_alias
-                ident	c
-  
-  '''
-# ---
-# name: test_struct_literal_ok[literal_struct_named_compound_type_decl]
-  '''
-  select
-    select_list
-      select_expr
-        named_struct_literal
-          named_struct_literal_prefix
-            struct_type
-              struct_type_list
-                struct_type_list
-                  struct_type_list
-                    struct_field
-                      type
-                        type_name
-                          ident	INT64
-                  struct_field
-                    type
-                      type_name
-                        ident	INT64
-                struct_field
-                  type
-                    type_name
-                      ident	INT64
-          named_struct_literal_item_list
-            named_struct_literal_item
-              integer_literal	1
-            named_struct_literal_item
-              integer_literal	2
-            named_struct_literal_item
-              integer_literal	3
-  
-  '''
-# ---
-# name: test_struct_literal_ok[literal_struct_named_compound_type_decl_column]
-  '''
-  select
-    select_list
-      select_expr
-        named_struct_literal
-          named_struct_literal_prefix
-            struct_type
-              struct_type_list
-                struct_type_list
-                  struct_type_list
-                    struct_field
-                      ident	a
-                      type
-                        type_name
-                          ident	INT64
-                  struct_field
-                    ident	b
-                    type
-                      type_name
-                        ident	INT64
-                struct_field
-                  ident	c
-                  type
-                    type_name
-                      ident	INT64
-          named_struct_literal_item_list
-            named_struct_literal_item
-              integer_literal	1
-            named_struct_literal_item
-              integer_literal	2
-            named_struct_literal_item
-              integer_literal	3
-  
-  '''
-# ---
-# name: test_struct_literal_ok[literal_struct_named_compound_type_decl_nested]
-  '''
-  select
-    select_list
-      select_expr
-        named_struct_literal
-          named_struct_literal_prefix
-            struct_type
-              struct_type_list
-                struct_type_list
-                  struct_field
-                    ident	a
-                    type
-                      type_name
-                        ident	INT64
-                struct_field
-                  type
-                    struct_type
-                      struct_type_list
-                        struct_type_list
-                          struct_field
-                            ident	b
-                            type
-                              type_name
-                                ident	INT64
-                        struct_field
-                          ident	c
-                          type
-                            type_name
-                              ident	INT64
-          named_struct_literal_item_list
-            named_struct_literal_item
-              integer_literal	1
-            named_struct_literal_item
-              named_struct_literal
-                named_struct_literal_prefix
-                named_struct_literal_item_list
-                  named_struct_literal_item
-                    integer_literal	2
-                  named_struct_literal_item
-                    integer_literal	3
+                      integer_literal	2
+                    named_struct_literal_item
+                      integer_literal	3
   
   '''
 # ---
