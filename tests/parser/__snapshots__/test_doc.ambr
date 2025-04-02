@@ -1,0 +1,158 @@
+# serializer version: 1
+# name: test_doc_ok[doc_extend]
+  '''
+  query_expr
+    query_expr
+      subquery
+        select
+          select_list
+            select_expr
+              string_literal	'apples'
+              as_alias
+                ident	item
+            select_expr
+              integer_literal	2
+              as_alias
+                ident	sales
+      pipe_set_operation
+        set_operation
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+          set_operation_list
+            subquery
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
+    pipe_extend
+      extend_list
+        extend_item
+          in_expr
+            ident	item
+            parenthesized_list
+              string_literal	'carrots'
+              string_literal	'oranges'
+          as_alias
+            ident	is_orange
+  
+  '''
+# ---
+# name: test_doc_ok[doc_from]
+  '''
+  query_expr
+    query_expr
+      query_expr
+        query_expr
+          pipe_from
+            from_clause
+              from_item_table
+                ident	Produce
+          pipe_as
+            ident	p1
+        pipe_join
+          join
+            from_item_table
+              ident	Produce
+              as_alias
+                ident	p2
+            using_clause
+              ident	item
+      pipe_where
+        eq_expr
+          ident	item
+          string_literal	'bananas'
+    pipe_select
+      select_list
+        select_expr
+          field_access_expr
+            ident	p1
+            ident	item
+        select_expr
+          field_access_expr
+            ident	p2
+            ident	sales
+  
+  '''
+# ---
+# name: test_doc_ok[doc_query_comparison]
+  '''
+  query_expr
+    query_expr
+      query_expr
+        pipe_from
+          from_clause
+            from_item_table
+              ident	Produce
+        pipe_where
+          and_expr
+            ne_expr
+              ident	item
+              string_literal	'bananas'
+            in_expr
+              ident	category
+              parenthesized_list
+                string_literal	'fruit'
+                string_literal	'nut'
+      pipe_agg
+        agg_list
+          agg_item
+            function_call_expr
+              function_name
+                ident	COUNT
+              function_args
+                star_arg
+            as_alias
+              ident	num_items
+          agg_item
+            function_call_expr
+              function_name
+                ident	SUM
+              function_args
+                pos_arg
+                  ident	sales
+            as_alias
+              ident	total_sales
+        group_by
+          grouping_items
+            grouping_item
+              ident	item
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	item
+          order_by_item_sort	DESC
+  
+  '''
+# ---
+# name: test_doc_ok[doc_select]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_subquery
+          subquery
+            select
+              select_list
+                select_expr
+                  string_literal	'apples'
+                  as_alias
+                    ident	item
+                select_expr
+                  integer_literal	2
+                  as_alias
+                    ident	sales
+    pipe_select
+      select_list
+        select_expr
+          ident	item
+          as_alias
+            ident	fruit_name
+  
+  '''
+# ---

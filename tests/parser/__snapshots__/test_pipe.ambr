@@ -1,7 +1,7 @@
 # serializer version: 1
 # name: test_agg_ok[pipe_agg_group_and_order_by]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -27,7 +27,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_group_by_cube]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -56,7 +56,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_group_by_empty]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -81,7 +81,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_group_by_grouping_sets]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -111,7 +111,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_group_by_grouping_sets_rollup_cube]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -143,7 +143,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_group_by_multi_alias]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -174,7 +174,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_group_by_order_by]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -208,7 +208,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_group_by_rollup]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -235,7 +235,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_group_by_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -260,7 +260,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_group_by_single_alias]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -287,7 +287,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_multi_alias]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -317,7 +317,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_order_by]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -350,7 +350,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -369,7 +369,7 @@
 # ---
 # name: test_agg_ok[pipe_agg_single_alias]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -390,7 +390,7 @@
 # ---
 # name: test_as_ok[pipe_as_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -402,7 +402,7 @@
 # ---
 # name: test_call_ok[call]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -419,7 +419,7 @@
 # ---
 # name: test_call_ok[call_alias_explicit]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -438,7 +438,7 @@
 # ---
 # name: test_call_ok[call_alias_implicit]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -457,7 +457,7 @@
 # ---
 # name: test_join_ok[join_cross]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -474,7 +474,7 @@
 # ---
 # name: test_join_ok[join_full]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -491,7 +491,7 @@
 # ---
 # name: test_join_ok[join_full_outer]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -510,7 +510,7 @@
 # ---
 # name: test_join_ok[join_inner]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -527,7 +527,7 @@
 # ---
 # name: test_join_ok[join_left]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -544,7 +544,7 @@
 # ---
 # name: test_join_ok[join_left_outer]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -563,7 +563,7 @@
 # ---
 # name: test_join_ok[join_on_compound_expr]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -585,7 +585,7 @@
 # ---
 # name: test_join_ok[join_on_single_expr]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -603,7 +603,7 @@
 # ---
 # name: test_join_ok[join_right]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -620,7 +620,7 @@
 # ---
 # name: test_join_ok[join_right_outer]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -639,7 +639,7 @@
 # ---
 # name: test_join_ok[join_using_multi]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -656,7 +656,7 @@
 # ---
 # name: test_join_ok[join_using_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -672,7 +672,7 @@
 # ---
 # name: test_limit_ok[pipe_limit_integer_literal]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -685,7 +685,7 @@
 # ---
 # name: test_limit_ok[pipe_limit_offset]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -700,7 +700,7 @@
 # ---
 # name: test_limit_ok[pipe_limit_param]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -713,7 +713,7 @@
 # ---
 # name: test_order_by_ok[order_by_multi]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -729,7 +729,7 @@
 # ---
 # name: test_order_by_ok[order_by_multi_kitchen_sink]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -749,7 +749,7 @@
 # ---
 # name: test_order_by_ok[order_by_multi_nulls]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -767,7 +767,7 @@
 # ---
 # name: test_order_by_ok[order_by_multi_sort]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -785,7 +785,7 @@
 # ---
 # name: test_order_by_ok[order_by_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -799,7 +799,7 @@
 # ---
 # name: test_pipe_drop_ok[pipe_drop_multi]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -815,7 +815,7 @@
 # ---
 # name: test_pipe_drop_ok[pipe_drop_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -829,7 +829,7 @@
 # ---
 # name: test_pipe_drop_ok[pipe_drop_single_trailing_comma]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -843,7 +843,7 @@
 # ---
 # name: test_pipe_extend_ok[pipe_extend_multi]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -875,7 +875,7 @@
 # ---
 # name: test_pipe_extend_ok[pipe_extend_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -896,7 +896,7 @@
 # ---
 # name: test_pipe_extend_ok[pipe_extend_single_alias]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -919,7 +919,7 @@
 # ---
 # name: test_pipe_extend_ok[pipe_extend_single_trailing_comma]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -949,7 +949,7 @@
 # ---
 # name: test_pipe_ok[pipe_from_select]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -963,7 +963,7 @@
 # ---
 # name: test_pipe_ok[pipe_select_select]
   '''
-  pipe_expr
+  query_expr
     select
       select_list
         select_expr
@@ -980,7 +980,7 @@
 # ---
 # name: test_pipe_ok[pipe_select_select_as_struct]
   '''
-  pipe_expr
+  query_expr
     select
       select_list
         select_expr
@@ -998,7 +998,7 @@
 # ---
 # name: test_pipe_ok[pipe_select_select_as_value]
   '''
-  pipe_expr
+  query_expr
     select
       select_list
         select_expr
@@ -1016,7 +1016,7 @@
 # ---
 # name: test_pipe_ok[pipe_subquery_select]
   '''
-  pipe_expr
+  query_expr
     subquery
       select
         select_list
@@ -1034,7 +1034,7 @@
 # ---
 # name: test_pipe_rename_ok[pipe_rename_multi]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1054,7 +1054,7 @@
 # ---
 # name: test_pipe_rename_ok[pipe_rename_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1070,7 +1070,7 @@
 # ---
 # name: test_pipe_rename_ok[pipe_rename_single_trailing_comma]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1086,7 +1086,7 @@
 # ---
 # name: test_pipe_set_ok[pipe_set_multi]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1118,7 +1118,7 @@
 # ---
 # name: test_pipe_set_ok[pipe_set_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1140,7 +1140,7 @@
 # ---
 # name: test_pipe_set_ok[pipe_set_single_trailing_comma]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1162,7 +1162,7 @@
 # ---
 # name: test_pivot_ok[pivot]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1184,7 +1184,7 @@
 # ---
 # name: test_pivot_ok[pivot_aliased]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1208,7 +1208,7 @@
 # ---
 # name: test_set_operation_ok[set_operation_all_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1228,7 +1228,7 @@
 # ---
 # name: test_set_operation_ok[set_operation_by_name]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1251,7 +1251,7 @@
 # ---
 # name: test_set_operation_ok[set_operation_by_name_on_multi]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1277,7 +1277,7 @@
 # ---
 # name: test_set_operation_ok[set_operation_by_name_on_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1302,7 +1302,7 @@
 # ---
 # name: test_set_operation_ok[set_operation_corresponding]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1325,7 +1325,7 @@
 # ---
 # name: test_set_operation_ok[set_operation_distinct_multi]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1350,7 +1350,7 @@
 # ---
 # name: test_set_operation_ok[set_operation_strict_corresponding]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1373,7 +1373,7 @@
 # ---
 # name: test_set_operation_ok[set_operation_strict_corresponding_by]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1398,7 +1398,7 @@
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_full]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1422,7 +1422,7 @@
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_inner]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1446,7 +1446,7 @@
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_left]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1470,7 +1470,7 @@
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_left_outer]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1496,7 +1496,7 @@
 # ---
 # name: test_tablesample_ok[tablesample]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1509,7 +1509,7 @@
 # ---
 # name: test_unpivot_ok[unpivot]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1528,7 +1528,7 @@
 # ---
 # name: test_unpivot_ok[unpivot_aliased]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1549,7 +1549,7 @@
 # ---
 # name: test_where_ok[pipe_where_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1561,7 +1561,7 @@
 # ---
 # name: test_window_ok[window_frame_range]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1589,7 +1589,7 @@
 # ---
 # name: test_window_ok[window_frame_rows]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1615,7 +1615,7 @@
 # ---
 # name: test_window_ok[window_order_by_multi]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1641,7 +1641,7 @@
 # ---
 # name: test_window_ok[window_order_by_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1665,7 +1665,7 @@
 # ---
 # name: test_window_ok[window_parition_and_order_by]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1691,7 +1691,7 @@
 # ---
 # name: test_window_ok[window_partition_by_multi]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1714,7 +1714,7 @@
 # ---
 # name: test_window_ok[window_partition_by_single]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
@@ -1736,7 +1736,7 @@
 # ---
 # name: test_window_ok[window_simple]
   '''
-  pipe_expr
+  query_expr
     pipe_from
       from_clause
         from_item_table
