@@ -18,11 +18,9 @@ import pytest
             "FROM table1 |> SELECT SUM(col1) OVER (w) WINDOW w AS (PARTITION BY col2)",
             id="pipe_select_named_window_single",
         ),
-        # This is a problem in a lot of other places, too
         pytest.param(
             "FROM table1 |> SELECT SUM(col1) OVER (w) WINDOW w AS (PARTITION BY date)",
             id="pipe_select_named_window_reserved_conflict",
-            marks=pytest.mark.xfail,
         ),
         pytest.param(
             "FROM table1 |> SELECT SUM(col1) OVER (w1), SUM(col2) OVER (w2) WINDOW w1 AS (PARTITION BY col3), w2 AS (PARTITION BY col4)",

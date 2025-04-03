@@ -508,7 +508,8 @@
             range_type
               type
                 type_name
-                  ident	DATE
+                  ident
+                    keyword_as_ident
             range_value	'[1970-01-01, 1970-01-02)'
   
   '''

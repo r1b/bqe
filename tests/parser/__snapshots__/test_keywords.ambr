@@ -1,0 +1,93 @@
+# serializer version: 1
+# name: test_nonreserved_keyword_ok[select_kw_date_alias]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ident	abc
+          as_alias
+            ident
+              keyword_as_ident
+  
+  '''
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_date_column]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ident
+            keyword_as_ident
+          as_alias
+            ident	abc
+  
+  '''
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_date_double]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ident
+            keyword_as_ident
+          as_alias
+            ident
+              keyword_as_ident
+  
+  '''
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_format_alias]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ident	abc
+          as_alias
+            ident
+              keyword_as_ident
+  
+  '''
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_format_column]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ident
+            keyword_as_ident
+          as_alias
+            ident	abc
+  
+  '''
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_percent_alias]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ident	abc
+          as_alias
+            ident
+              keyword_as_ident
+  
+  '''
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_percent_column]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ident
+            keyword_as_ident
+          as_alias
+            ident	abc
+  
+  '''
+# ---

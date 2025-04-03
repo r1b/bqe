@@ -1076,6 +1076,35 @@
   
   '''
 # ---
+# name: test_pipe_ok[pipe_select_named_window_reserved_conflict]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	table1
+    pipe_select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	col1
+            window_spec
+              ident	w
+      window_clause
+        window_item
+          ident	w
+          window_expr
+            window_spec
+              window_partition_by
+                ident
+                  keyword_as_ident
+  
+  '''
+# ---
 # name: test_pipe_ok[pipe_select_named_window_single]
   '''
   query_expr

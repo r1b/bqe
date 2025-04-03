@@ -277,8 +277,7 @@
     select
       select_list
         select_expr
-          cast_expr
-            cast_expr_kind_cast
+          cast_expr_kind_cast
             cast_expr_target
               string_literal	'1'
               ident	INT64
@@ -291,8 +290,7 @@
     select
       select_list
         select_expr
-          cast_expr
-            cast_expr_kind_cast
+          cast_expr_kind_cast
             cast_expr_target
               bytes_literal	b'\x48\x65\x6c\x6c\x6f'
               ident	STRING
@@ -307,8 +305,7 @@
     select
       select_list
         select_expr
-          cast_expr
-            cast_expr_kind_safe_cast
+          cast_expr_kind_safe_cast
             cast_expr_target
               string_literal	'1'
               ident	INT64
@@ -1007,7 +1004,8 @@
                   ident	column2
                 function_call_expr
                   function_name
-                    ident	OFFSET
+                    ident
+                      keyword_as_ident
                   function_args
                     pos_arg
                       integer_literal	0
@@ -1026,7 +1024,8 @@
             ident	column1
             function_call_expr
               function_name
-                ident	OFFSET
+                ident
+                  keyword_as_ident
               function_args
                 pos_arg
                   integer_literal	2

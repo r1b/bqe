@@ -136,6 +136,7 @@ _SETS : "SETS"i
 _STRICT : "STRICT"i
 _STRUCT : "STRUCT"i
 _SYSTEM : "SYSTEM"i
+_SYSTEM_TIME : "SYSTEM_TIME"i
 _TABLESAMPLE : "TABLESAMPLE"i
 _THEN : "THEN"i
 _TIME : "TIME"i
@@ -159,9 +160,43 @@ _WITH : "WITH"i
 UNQUOTED_IDENT : CNAME
 QUOTED_IDENT : _BACKTICK /[^`]+/ _BACKTICK
 
-ident : UNQUOTED_IDENT | QUOTED_IDENT
+ident : UNQUOTED_IDENT | QUOTED_IDENT | keyword_as_ident
 
 path_expression : ident | path_expression _DOT ident
+
+keyword_as_ident : "AGGREGATE"i
+    | "BIGNUMERIC"i
+    | "CALL"i
+    | "CORRESPONDING"i
+    | "DATE"i
+    | "DATETIME"i
+    | "DROP"i
+    | "EXTEND"i
+    | "FIRST"
+    | "FORMAT"i
+    | "JSON"i
+    | "LAST"
+    | "MAX"i
+    | "MIN"i
+    | "NAME"i
+    | "NUMERIC"i
+    | "OFFSET"i
+    | "PERCENT"i
+    | "PIVOT"i
+    | "RENAME"i
+    | "REPLACE"i
+    | "ROW"i
+    | "SAFE_CAST"i
+    | "SEARCH"i
+    | "SETS"i
+    | "STRICT"i
+    | "SYSTEM"i
+    | "SYSTEM_TIME"i
+    | "TABLE"i
+    | "TIME"i
+    | "TIMESTAMP"i
+    | "UNPIVOT"i
+    | "VALUE"i
 
 parameter : _AT UNQUOTED_IDENT
 
@@ -466,9 +501,8 @@ qlike_quantifier : ANY | SOME | ALL
 
 # CAST / SAFE_CAST
 
-cast_expr : cast_expr_kind _LPAR cast_expr_target cast_expr_format? _RPAR
-
-cast_expr_kind : _CAST -> cast_expr_kind_cast | _SAFE_CAST -> cast_expr_kind_safe_cast
+cast_expr : _CAST _LPAR cast_expr_target cast_expr_format? _RPAR -> cast_expr_kind_cast
+    | _SAFE_CAST _LPAR cast_expr_target cast_expr_format? _RPAR -> cast_expr_kind_safe_cast
 
 cast_expr_target : column_expr _AS ident
 
@@ -647,7 +681,7 @@ from_clause : from_item ( _COMMA from_item )*
 
 # Time travel
 
-time_travel : _FOR _SYSTEM _USCORE _TIME _AS _OF column_expr
+time_travel : _FOR _SYSTEM_TIME _AS _OF column_expr
 
 ################################################################################
 # UNNEST
