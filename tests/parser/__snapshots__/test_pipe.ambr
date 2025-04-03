@@ -1100,8 +1100,7 @@
           window_expr
             window_spec
               window_partition_by
-                ident
-                  keyword_as_ident
+                ident	date
   
   '''
 # ---

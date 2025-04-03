@@ -164,7 +164,8 @@ ident : UNQUOTED_IDENT | QUOTED_IDENT | keyword_as_ident
 
 path_expression : ident | path_expression _DOT ident
 
-keyword_as_ident : "AGGREGATE"i
+# This is the only case where we force inlining of terminals
+!keyword_as_ident : "AGGREGATE"i
     | "BIGNUMERIC"i
     | "CALL"i
     | "CORRESPONDING"i
@@ -172,10 +173,10 @@ keyword_as_ident : "AGGREGATE"i
     | "DATETIME"i
     | "DROP"i
     | "EXTEND"i
-    | "FIRST"
+    | "FIRST"i
     | "FORMAT"i
     | "JSON"i
-    | "LAST"
+    | "LAST"i
     | "MAX"i
     | "MIN"i
     | "NAME"i

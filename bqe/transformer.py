@@ -17,6 +17,13 @@ def coerce_binary(args: list[Tree]) -> list[Tree]:
 
 
 class BqeTransformer(Transformer):
+    def ident(self, args: list[Tree]):
+        """Rewrite keyword_as_ident to ident"""
+        child = args[0]
+        if isinstance(child, Tree) and child.data == "keyword_as_ident":
+            return Tree("ident", child.children)
+        return Tree("ident", args)
+
     def query_expr(self, args: list[Tree]):
         """Collapse left-recursive query_expr"""
         return fixup_lrec_rule(coerce_binary(args), "query_expr", spread=False)

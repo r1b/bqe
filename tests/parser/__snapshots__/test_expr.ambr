@@ -1004,8 +1004,7 @@
                   ident	column2
                 function_call_expr
                   function_name
-                    ident
-                      keyword_as_ident
+                    ident	OFFSET
                   function_args
                     pos_arg
                       integer_literal	0
@@ -1024,8 +1023,7 @@
             ident	column1
             function_call_expr
               function_name
-                ident
-                  keyword_as_ident
+                ident	OFFSET
               function_args
                 pos_arg
                   integer_literal	2
