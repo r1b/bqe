@@ -1,4 +1,67 @@
 # serializer version: 1
+# name: test_doc_ok[doc_drop]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          string_literal	'apples'
+          as_alias
+            ident	item
+        select_expr
+          integer_literal	2
+          as_alias
+            ident	sales
+        select_expr
+          string_literal	'fruit'
+          as_alias
+            ident	category
+    pipe_drop
+      drop_list
+        drop_item
+          ident	sales
+        drop_item
+          ident	category
+  
+  '''
+# ---
+# name: test_doc_ok[doc_drop_nested]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_subquery
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+                    as_alias
+                      ident	x
+                  select_expr
+                    integer_literal	2
+                    as_alias
+                      ident	y
+          as_alias
+            ident	t
+    pipe_drop
+      drop_list
+        drop_item
+          ident	x
+    pipe_select
+      select_list
+        select_expr
+          field_access_expr
+            ident	t
+            ident	x
+          as_alias
+            ident	original_x
+        select_expr
+          ident	y
+  
+  '''
+# ---
 # name: test_doc_ok[doc_extend]
   '''
   query_expr
@@ -221,6 +284,43 @@
   
   '''
 # ---
+# name: test_doc_ok[doc_rename]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+        select_expr
+          integer_literal	2
+          as_alias
+            ident	y
+        select_expr
+          integer_literal	3
+          as_alias
+            ident	z
+    pipe_as
+      ident	t
+    pipe_rename
+      rename_list
+        rename_item
+          ident	y
+          as_alias
+            ident	renamed_y
+    pipe_select
+      select_list
+        select_star
+        select_expr
+          field_access_expr
+            ident	t
+            ident	y
+          as_alias
+            ident	t_y
+  
+  '''
+# ---
 # name: test_doc_ok[doc_select]
   '''
   query_expr
@@ -245,6 +345,96 @@
           ident	item
           as_alias
             ident	fruit_name
+  
+  '''
+# ---
+# name: test_doc_ok[doc_set]
+  '''
+  query_expr
+    subquery
+      query_expr
+        select
+          select_list
+            select_expr
+              integer_literal	1
+              as_alias
+                ident	x
+            select_expr
+              integer_literal	11
+              as_alias
+                ident	y
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+                    as_alias
+                      ident	x
+                  select_expr
+                    integer_literal	22
+                    as_alias
+                      ident	y
+    pipe_set
+      set_list
+        set_item
+          ident	x
+          mul_expr
+            ident	x
+            ident	x
+        set_item
+          ident	y
+          integer_literal	3
+  
+  '''
+# ---
+# name: test_doc_ok[doc_set_nested]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_subquery
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+                    as_alias
+                      ident	x
+                  select_expr
+                    integer_literal	3
+                    as_alias
+                      ident	y
+          as_alias
+            ident	t
+    pipe_set
+      set_list
+        set_item
+          ident	x
+          mul_expr
+            ident	x
+            ident	x
+        set_item
+          ident	y
+          integer_literal	8
+    pipe_select
+      select_list
+        select_expr
+          field_access_expr
+            ident	t
+            ident	x
+          as_alias
+            ident	original_x
+        select_expr
+          ident	x
+        select_expr
+          ident	y
   
   '''
 # ---

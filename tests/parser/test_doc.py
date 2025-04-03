@@ -60,6 +60,46 @@ import pytest
             """,
             id="doc_extend_named_window",
         ),
+        pytest.param(
+            """
+            (SELECT 1 AS x, 11 AS y)
+            |> UNION ALL (SELECT 2 AS x, 22 AS y)
+            |> SET x = x * x, y = 3;
+            """,
+            id="doc_set",
+        ),
+        pytest.param(
+            """
+            FROM (SELECT 2 AS x, 3 AS y) AS t
+            |> SET x = x * x, y = 8
+            |> SELECT t.x AS original_x, x, y;
+            """,
+            id="doc_set_nested",
+        ),
+        pytest.param(
+            """
+            SELECT 'apples' AS item, 2 AS sales, 'fruit' AS category
+            |> DROP sales, category;
+            """,
+            id="doc_drop",
+        ),
+        pytest.param(
+            """
+            FROM (SELECT 1 AS x, 2 AS y) AS t
+            |> DROP x
+            |> SELECT t.x AS original_x, y;
+            """,
+            id="doc_drop_nested",
+        ),
+        pytest.param(
+            """
+            SELECT 1 AS x, 2 AS y, 3 AS z
+            |> AS t
+            |> RENAME y AS renamed_y
+            |> SELECT *, t.y AS t_y;
+            """,
+            id="doc_rename",
+        ),
     ),
 )
 def test_doc_ok(sql, assert_parse_tree):
