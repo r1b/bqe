@@ -525,7 +525,7 @@ else_expr : _ELSE column_expr
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-reference
 # Ref: https://github.com/lark-parser/lark/blob/master/lark/grammars/python.lark#L145-L146
-function_call_expr : function_name function_args? function_modifiers? _RPAR ( _OVER window_spec )?
+function_call_expr : function_name function_args? function_modifiers? _RPAR ( _OVER window_expr )?
 
 function_name : field_access_expr _LPAR function_distinct?
 

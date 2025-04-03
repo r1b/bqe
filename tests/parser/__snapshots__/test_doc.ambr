@@ -44,6 +44,101 @@
   
   '''
 # ---
+# name: test_doc_ok[doc_extend_named_window]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	Produce
+    pipe_extend
+      extend_list
+        extend_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	sales
+            named_window
+              ident	item_window
+          as_alias
+            ident	category_total
+      window_clause
+        window_item
+          ident	item_window
+          window_expr
+            window_spec
+              window_partition_by
+                ident	category
+  
+  '''
+# ---
+# name: test_doc_ok[doc_extend_window]
+  '''
+  query_expr
+    subquery
+      query_expr
+        select
+          select_list
+            select_expr
+              string_literal	'apples'
+              as_alias
+                ident	item
+            select_expr
+              integer_literal	2
+              as_alias
+                ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
+    pipe_extend
+      extend_list
+        extend_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	sales
+            window_expr
+              window_spec
+          as_alias
+            ident	total_sales
+  
+  '''
+# ---
 # name: test_doc_ok[doc_from]
   '''
   query_expr

@@ -43,6 +43,23 @@ import pytest
             """,
             id="doc_extend",
         ),
+        pytest.param(
+            """
+            (SELECT 'apples' AS item, 2 AS sales)
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
+            |> EXTEND SUM(sales) OVER() AS total_sales;
+            """,
+            id="doc_extend_window",
+        ),
+        pytest.param(
+            """
+            FROM Produce
+            |> EXTEND SUM(sales) OVER item_window AS category_total
+               WINDOW item_window AS (PARTITION BY category);
+            """,
+            id="doc_extend_named_window",
+        ),
     ),
 )
 def test_doc_ok(sql, assert_parse_tree):
