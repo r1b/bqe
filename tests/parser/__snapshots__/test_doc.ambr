@@ -1,4 +1,107 @@
 # serializer version: 1
+# name: test_doc_ok[doc_as]
+  '''
+  query_expr
+    aliased_subquery
+      subquery
+        query_expr
+          select
+            select_list
+              select_expr
+                string_literal	"000123"
+                as_alias
+                  ident	id
+              select_expr
+                string_literal	"apples"
+                as_alias
+                  ident	item
+              select_expr
+                integer_literal	2
+                as_alias
+                  ident	sales
+          pipe_set_operation
+            set_operation
+              set_operation_kind	UNION
+              set_operation_mode	ALL
+              set_operation_list
+                subquery
+                  query_expr
+                    select
+                      select_list
+                        select_expr
+                          string_literal	"000456"
+                          as_alias
+                            ident	id
+                        select_expr
+                          string_literal	"bananas"
+                          as_alias
+                            ident	item
+                        select_expr
+                          integer_literal	5
+                          as_alias
+                            ident	sales
+      as_alias_as_required
+        ident	sales_table
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	sales
+          as_alias
+            ident	total_sales
+      group_by
+        grouping_items
+          grouping_item
+            ident	id
+          grouping_item
+            ident	item
+    pipe_as
+      ident	t1
+    pipe_join
+      join
+        from_item_subquery
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	456
+                    as_alias
+                      ident	id
+                  select_expr
+                    string_literal	"yellow"
+                    as_alias
+                      ident	color
+          as_alias
+            ident	t2
+        on_clause
+          eq_expr
+            cast_expr_kind_cast
+              cast_expr_target
+                field_access_expr
+                  ident	t1
+                  ident	id
+                ident	INT64
+            field_access_expr
+              ident	t2
+              ident	id
+    pipe_select
+      select_list
+        select_expr
+          field_access_expr
+            ident	t2
+            ident	id
+        select_expr
+          ident	total_sales
+        select_expr
+          ident	color
+  
+  '''
+# ---
 # name: test_doc_ok[doc_drop]
   '''
   query_expr

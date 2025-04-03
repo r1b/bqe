@@ -100,6 +100,21 @@ import pytest
             """,
             id="doc_rename",
         ),
+        pytest.param(
+            """
+            (
+                SELECT "000123" AS id, "apples" AS item, 2 AS sales
+                |> UNION ALL (SELECT "000456" AS id, "bananas" AS item, 5 AS sales)
+            ) AS sales_table
+            |> AGGREGATE SUM(sales) AS total_sales GROUP BY id, item
+            -- The sales_table alias is now out of scope. We must introduce a new one.
+            |> AS t1
+            |> JOIN (SELECT 456 AS id, "yellow" AS color) AS t2
+               ON CAST(t1.id AS INT64) = t2.id
+            |> SELECT t2.id, total_sales, color;
+            """,
+            id="doc_as",
+        ),
     ),
 )
 def test_doc_ok(sql, assert_parse_tree):
