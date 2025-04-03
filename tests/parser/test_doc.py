@@ -115,6 +115,178 @@ import pytest
             """,
             id="doc_as",
         ),
+        pytest.param(
+            """
+            (SELECT 'apples' AS item, 2 AS sales)
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
+            |> WHERE sales >= 3;
+            """,
+            id="doc_where",
+        ),
+        pytest.param(
+            """
+            (SELECT 'apples' AS item, 2 AS sales)
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
+            |> ORDER BY item
+            |> LIMIT 1;
+            """,
+            id="doc_limit",
+        ),
+        pytest.param(
+            """
+            (SELECT 'apples' AS item, 2 AS sales)
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
+            |> ORDER BY item
+            |> LIMIT 1 OFFSET 2;
+            """,
+            id="doc_limit_offset",
+        ),
+        pytest.param(
+            """
+            (SELECT 'apples' AS item, 2 AS sales)
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
+            |> AGGREGATE COUNT(*) AS num_items, SUM(sales) AS total_sales;
+            """,
+            id="doc_agg",
+        ),
+        pytest.param(
+            """
+            (SELECT 'apples' AS item, 2 AS sales)
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
+            |> AGGREGATE COUNT(*) AS num_items, SUM(sales) AS total_sales
+               GROUP BY item;
+            """,
+            id="doc_agg_group_by",
+        ),
+        pytest.param(
+            """
+            FROM Produce
+            |> AGGREGATE SUM(sales) AS total_sales
+               GROUP AND ORDER BY category, item DESC;
+            """,
+            id="doc_agg_group_and_order_by",
+        ),
+        pytest.param(
+            """
+            FROM Produce
+            |> AGGREGATE SUM(sales) AS total_sales
+               GROUP BY category, item
+            |> ORDER BY category, item DESC;
+            """,
+            id="doc_agg_group_then_order_by",
+        ),
+        pytest.param(
+            """
+            FROM Produce
+            |> AGGREGATE SUM(sales) AS total_sales ASC
+               GROUP BY item, category DESC;
+            """,
+            id="doc_agg_group_implicit_order_by",
+        ),
+        pytest.param(
+            """
+            (SELECT 1 AS x)
+            |> UNION ALL (SELECT 3 AS x)
+            |> UNION ALL (SELECT 2 AS x)
+            |> ORDER BY x DESC;
+            """,
+            id="doc_order_by",
+        ),
+        pytest.param(
+            """
+            SELECT * FROM UNNEST(ARRAY<INT64>[1, 2, 3]) AS number
+            |> UNION ALL (SELECT 1);
+            """,
+            id="doc_union_all",
+        ),
+        pytest.param(
+            """
+            SELECT * FROM UNNEST(ARRAY<INT64>[1, 2, 3]) AS number
+            |> UNION DISTINCT (SELECT 1);
+            """,
+            id="doc_union_distinct_single",
+        ),
+        pytest.param(
+            """
+            SELECT * FROM UNNEST(ARRAY<INT64>[1, 2, 3]) AS number
+            |> UNION DISTINCT
+                (SELECT 1),
+                (SELECT 2);
+            """,
+            id="doc_union_distinct_multi",
+        ),
+        pytest.param(
+            """
+            SELECT 1 AS one_digit, 10 AS two_digit
+            |> UNION ALL BY NAME
+                (SELECT 20 AS two_digit, 2 AS one_digit);
+            """,
+            id="doc_union_all_by_name",
+        ),
+        pytest.param(
+            """
+            SELECT 1 AS one_digit, 10 AS two_digit
+            |> UNION ALL
+                (SELECT 20 AS two_digit, 2 AS one_digit);
+            """,
+            id="doc_union_all_not_by_name",
+        ),
+        pytest.param(
+            """
+            (SELECT 1 AS one_digit, 10 AS two_digit)
+            |> UNION ALL (SELECT 2, 20)
+            |> UNION ALL (SELECT 3, 30)
+            |> INTERSECT DISTINCT BY NAME
+                (SELECT 10 AS two_digit, 1 AS one_digit);
+            """,
+            id="doc_intersect_distinct",
+        ),
+        pytest.param(
+            """
+            SELECT * FROM UNNEST(ARRAY<INT64>[1, 2, 3, 3, 4]) AS number
+            |> EXCEPT DISTINCT
+            (
+              SELECT * FROM UNNEST(ARRAY<INT64>[1, 2]) AS number
+              |> EXCEPT DISTINCT
+                  (SELECT * FROM UNNEST(ARRAY<INT64>[1, 4]) AS number)
+            );
+            """,
+            id="doc_except_distinct_subquery",
+        ),
+        pytest.param(
+            """
+            (SELECT 'apples' AS item, 2 AS sales)
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> AS produce_sales
+            |> LEFT JOIN
+                 (
+                   SELECT "apples" AS item, 123 AS id
+                 ) AS produce_data
+               ON produce_sales.item = produce_data.item
+            |> SELECT produce_sales.item, sales, id;
+            """,
+            id="doc_join",
+        ),
+        pytest.param(
+            """
+            FROM input_table
+            |> CALL tvf1(arg1)
+            |> CALL tvf2(arg2, arg3);
+            """,
+            id="doc_call",
+        ),
+        pytest.param(
+            """
+            FROM LargeTable
+            |> TABLESAMPLE SYSTEM (1 PERCENT);
+            """,
+            id="doc_tablesample",
+        ),
     ),
 )
 def test_doc_ok(sql, assert_parse_tree):

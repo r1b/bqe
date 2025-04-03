@@ -1,4 +1,242 @@
 # serializer version: 1
+# name: test_doc_ok[doc_agg]
+  '''
+  query_expr
+    subquery
+      query_expr
+        select
+          select_list
+            select_expr
+              string_literal	'apples'
+              as_alias
+                ident	item
+            select_expr
+              integer_literal	2
+              as_alias
+                ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	COUNT
+            function_args
+              star_arg
+          as_alias
+            ident	num_items
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	sales
+          as_alias
+            ident	total_sales
+  
+  '''
+# ---
+# name: test_doc_ok[doc_agg_group_and_order_by]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	Produce
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	sales
+          as_alias
+            ident	total_sales
+      group_by
+        group_by_and_order_by
+        grouping_items
+          grouping_item
+            ident	category
+          grouping_item
+            ident	item
+            order_by_item_sort	DESC
+  
+  '''
+# ---
+# name: test_doc_ok[doc_agg_group_by]
+  '''
+  query_expr
+    subquery
+      query_expr
+        select
+          select_list
+            select_expr
+              string_literal	'apples'
+              as_alias
+                ident	item
+            select_expr
+              integer_literal	2
+              as_alias
+                ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	COUNT
+            function_args
+              star_arg
+          as_alias
+            ident	num_items
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	sales
+          as_alias
+            ident	total_sales
+      group_by
+        grouping_items
+          grouping_item
+            ident	item
+  
+  '''
+# ---
+# name: test_doc_ok[doc_agg_group_implicit_order_by]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	Produce
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	sales
+          as_alias
+            ident	total_sales
+          order_by_item_sort	ASC
+      group_by
+        grouping_items
+          grouping_item
+            ident	item
+          grouping_item
+            ident	category
+            order_by_item_sort	DESC
+  
+  '''
+# ---
+# name: test_doc_ok[doc_agg_group_then_order_by]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	Produce
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	SUM
+            function_args
+              pos_arg
+                ident	sales
+          as_alias
+            ident	total_sales
+      group_by
+        grouping_items
+          grouping_item
+            ident	category
+          grouping_item
+            ident	item
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	category
+        order_by_item
+          ident	item
+          order_by_item_sort	DESC
+  
+  '''
+# ---
 # name: test_doc_ok[doc_as]
   '''
   query_expr
@@ -102,6 +340,32 @@
   
   '''
 # ---
+# name: test_doc_ok[doc_call]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	input_table
+    pipe_call
+      function_call_expr
+        function_name
+          ident	tvf1
+        function_args
+          pos_arg
+            ident	arg1
+    pipe_call
+      function_call_expr
+        function_name
+          ident	tvf2
+        function_args
+          pos_arg
+            ident	arg2
+          pos_arg
+            ident	arg3
+  
+  '''
+# ---
 # name: test_doc_ok[doc_drop]
   '''
   query_expr
@@ -162,6 +426,77 @@
             ident	original_x
         select_expr
           ident	y
+  
+  '''
+# ---
+# name: test_doc_ok[doc_except_distinct_subquery]
+  '''
+  query_expr
+    select
+      select_list
+        select_star
+      from_clause
+        from_item_unnest
+          unnest_expr
+            array_literal
+              array_literal_prefix
+                array_type
+                  type
+                    type_name
+                      ident	INT64
+              integer_literal	1
+              integer_literal	2
+              integer_literal	3
+              integer_literal	3
+              integer_literal	4
+          as_alias
+            ident	number
+    pipe_set_operation
+      set_operation
+        set_operation_kind	EXCEPT
+        set_operation_mode	DISTINCT
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_star
+                from_clause
+                  from_item_unnest
+                    unnest_expr
+                      array_literal
+                        array_literal_prefix
+                          array_type
+                            type
+                              type_name
+                                ident	INT64
+                        integer_literal	1
+                        integer_literal	2
+                    as_alias
+                      ident	number
+              pipe_set_operation
+                set_operation
+                  set_operation_kind	EXCEPT
+                  set_operation_mode	DISTINCT
+                  set_operation_list
+                    subquery
+                      query_expr
+                        select
+                          select_list
+                            select_star
+                          from_clause
+                            from_item_unnest
+                              unnest_expr
+                                array_literal
+                                  array_literal_prefix
+                                    array_type
+                                      type
+                                        type_name
+                                          ident	INT64
+                                  integer_literal	1
+                                  integer_literal	4
+                              as_alias
+                                ident	number
   
   '''
 # ---
@@ -336,6 +671,306 @@
           field_access_expr
             ident	p2
             ident	sales
+  
+  '''
+# ---
+# name: test_doc_ok[doc_intersect_distinct]
+  '''
+  query_expr
+    subquery
+      query_expr
+        select
+          select_list
+            select_expr
+              integer_literal	1
+              as_alias
+                ident	one_digit
+            select_expr
+              integer_literal	10
+              as_alias
+                ident	two_digit
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+                  select_expr
+                    integer_literal	20
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	3
+                  select_expr
+                    integer_literal	30
+    pipe_set_operation
+      set_operation
+        set_operation_kind	INTERSECT
+        set_operation_mode	DISTINCT
+        set_operation_modifier_by_name
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	10
+                    as_alias
+                      ident	two_digit
+                  select_expr
+                    integer_literal	1
+                    as_alias
+                      ident	one_digit
+  
+  '''
+# ---
+# name: test_doc_ok[doc_join]
+  '''
+  query_expr
+    subquery
+      query_expr
+        select
+          select_list
+            select_expr
+              string_literal	'apples'
+              as_alias
+                ident	item
+            select_expr
+              integer_literal	2
+              as_alias
+                ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_as
+      ident	produce_sales
+    pipe_join
+      join_with_criteria
+        join_criteria	LEFT
+        from_item_subquery
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	"apples"
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	123
+                    as_alias
+                      ident	id
+          as_alias
+            ident	produce_data
+        on_clause
+          eq_expr
+            field_access_expr
+              ident	produce_sales
+              ident	item
+            field_access_expr
+              ident	produce_data
+              ident	item
+    pipe_select
+      select_list
+        select_expr
+          field_access_expr
+            ident	produce_sales
+            ident	item
+        select_expr
+          ident	sales
+        select_expr
+          ident	id
+  
+  '''
+# ---
+# name: test_doc_ok[doc_limit]
+  '''
+  query_expr
+    subquery
+      query_expr
+        select
+          select_list
+            select_expr
+              string_literal	'apples'
+              as_alias
+                ident	item
+            select_expr
+              integer_literal	2
+              as_alias
+                ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	item
+    pipe_limit
+      limit_value
+        integer_literal	1
+  
+  '''
+# ---
+# name: test_doc_ok[doc_limit_offset]
+  '''
+  query_expr
+    subquery
+      query_expr
+        select
+          select_list
+            select_expr
+              string_literal	'apples'
+              as_alias
+                ident	item
+            select_expr
+              integer_literal	2
+              as_alias
+                ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	item
+    pipe_limit
+      limit_value
+        integer_literal	1
+      offset_value
+        integer_literal	2
+  
+  '''
+# ---
+# name: test_doc_ok[doc_order_by]
+  '''
+  query_expr
+    subquery
+      query_expr
+        select
+          select_list
+            select_expr
+              integer_literal	1
+              as_alias
+                ident	x
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	3
+                    as_alias
+                      ident	x
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+                    as_alias
+                      ident	x
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	x
+          order_by_item_sort	DESC
   
   '''
 # ---
@@ -538,6 +1173,250 @@
           ident	x
         select_expr
           ident	y
+  
+  '''
+# ---
+# name: test_doc_ok[doc_tablesample]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	LargeTable
+    pipe_tablesample
+      tablesample_perc
+        integer_literal	1
+  
+  '''
+# ---
+# name: test_doc_ok[doc_union_all]
+  '''
+  query_expr
+    select
+      select_list
+        select_star
+      from_clause
+        from_item_unnest
+          unnest_expr
+            array_literal
+              array_literal_prefix
+                array_type
+                  type
+                    type_name
+                      ident	INT64
+              integer_literal	1
+              integer_literal	2
+              integer_literal	3
+          as_alias
+            ident	number
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+  
+  '''
+# ---
+# name: test_doc_ok[doc_union_all_by_name]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	one_digit
+        select_expr
+          integer_literal	10
+          as_alias
+            ident	two_digit
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_modifier_by_name
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	20
+                    as_alias
+                      ident	two_digit
+                  select_expr
+                    integer_literal	2
+                    as_alias
+                      ident	one_digit
+  
+  '''
+# ---
+# name: test_doc_ok[doc_union_all_not_by_name]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	one_digit
+        select_expr
+          integer_literal	10
+          as_alias
+            ident	two_digit
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	20
+                    as_alias
+                      ident	two_digit
+                  select_expr
+                    integer_literal	2
+                    as_alias
+                      ident	one_digit
+  
+  '''
+# ---
+# name: test_doc_ok[doc_union_distinct_multi]
+  '''
+  query_expr
+    select
+      select_list
+        select_star
+      from_clause
+        from_item_unnest
+          unnest_expr
+            array_literal
+              array_literal_prefix
+                array_type
+                  type
+                    type_name
+                      ident	INT64
+              integer_literal	1
+              integer_literal	2
+              integer_literal	3
+          as_alias
+            ident	number
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	DISTINCT
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
+# name: test_doc_ok[doc_union_distinct_single]
+  '''
+  query_expr
+    select
+      select_list
+        select_star
+      from_clause
+        from_item_unnest
+          unnest_expr
+            array_literal
+              array_literal_prefix
+                array_type
+                  type
+                    type_name
+                      ident	INT64
+              integer_literal	1
+              integer_literal	2
+              integer_literal	3
+          as_alias
+            ident	number
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	DISTINCT
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+  
+  '''
+# ---
+# name: test_doc_ok[doc_where]
+  '''
+  query_expr
+    subquery
+      query_expr
+        select
+          select_list
+            select_expr
+              string_literal	'apples'
+              as_alias
+                ident	item
+            select_expr
+              integer_literal	2
+              as_alias
+                ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
+    pipe_where
+      gte_expr
+        ident	sales
+        integer_literal	3
   
   '''
 # ---
