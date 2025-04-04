@@ -227,3 +227,22 @@ def test_pipe_as(sql, assert_parse_tree):
 )
 def test_pipe_call(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            select x
+            |> drop a
+            |> drop a,
+            |> drop a,b,c
+            |> drop a,b,c,
+            """,
+            id="zeta_pipe_drop",
+        ),
+    ),
+)
+def test_pipe_drop(sql, assert_parse_tree):
+    assert_parse_tree(sql)

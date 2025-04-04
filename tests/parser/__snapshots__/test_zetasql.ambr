@@ -765,3 +765,37 @@
   
   '''
 # ---
+# name: test_pipe_drop[zeta_pipe_drop]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ident	x
+    pipe_drop
+      drop_list
+        drop_item
+          ident	a
+    pipe_drop
+      drop_list
+        drop_item
+          ident	a
+    pipe_drop
+      drop_list
+        drop_item
+          ident	a
+        drop_item
+          ident	b
+        drop_item
+          ident	c
+    pipe_drop
+      drop_list
+        drop_item
+          ident	a
+        drop_item
+          ident	b
+        drop_item
+          ident	c
+  
+  '''
+# ---
