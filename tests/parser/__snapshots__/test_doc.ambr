@@ -80,7 +80,8 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	Produce
+          path_expression
+            ident	Produce
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -190,7 +191,8 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	Produce
+          path_expression
+            ident	Produce
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -221,7 +223,8 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	Produce
+          path_expression
+            ident	Produce
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -362,7 +365,8 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	input_table
+          path_expression
+            ident	input_table
     pipe_call
       function_call_expr
         function_name
@@ -459,7 +463,8 @@
                 array_type
                   type
                     type_name
-                      path_expression	INT64
+                      path_expression
+                        ident	INT64
               integer_literal	1
               integer_literal	2
               integer_literal	3
@@ -485,7 +490,8 @@
                           array_type
                             type
                               type_name
-                                path_expression	INT64
+                                path_expression
+                                  ident	INT64
                         integer_literal	1
                         integer_literal	2
                     as_alias
@@ -508,7 +514,8 @@
                                     array_type
                                       type
                                         type_name
-                                          path_expression	INT64
+                                          path_expression
+                                            ident	INT64
                                   integer_literal	1
                                   integer_literal	4
                               as_alias
@@ -568,7 +575,8 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	Produce
+          path_expression
+            ident	Produce
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -665,13 +673,15 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	Produce
+          path_expression
+            ident	Produce
     pipe_as
       ident	p1
     pipe_join
       join
         from_item_table
-          path_expression	Produce
+          path_expression
+            ident	Produce
           as_alias
             ident	p2
         using_clause
@@ -999,7 +1009,8 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	Produce
+          path_expression
+            ident	Produce
     pipe_where
       and_expr
         ne_expr
@@ -1205,7 +1216,8 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	LargeTable
+          path_expression
+            ident	LargeTable
     pipe_tablesample
       tablesample_perc
         integer_literal	1
@@ -1226,7 +1238,8 @@
                 array_type
                   type
                     type_name
-                      path_expression	INT64
+                      path_expression
+                        ident	INT64
               integer_literal	1
               integer_literal	2
               integer_literal	3
@@ -1327,7 +1340,8 @@
                 array_type
                   type
                     type_name
-                      path_expression	INT64
+                      path_expression
+                        ident	INT64
               integer_literal	1
               integer_literal	2
               integer_literal	3
@@ -1367,7 +1381,8 @@
                 array_type
                   type
                     type_name
-                      path_expression	INT64
+                      path_expression
+                        ident	INT64
               integer_literal	1
               integer_literal	2
               integer_literal	3

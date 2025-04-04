@@ -9,7 +9,8 @@
             ident	col1
         from_clause
           from_item_table
-            path_expression	table1
+            path_expression
+              ident	table1
     query_expr
       select
         select_list
@@ -17,7 +18,8 @@
             ident	col2
         from_clause
           from_item_table
-            path_expression	table2
+            path_expression
+              ident	table2
   
   '''
 # ---
@@ -31,7 +33,8 @@
             ident	col1
         from_clause
           from_item_table
-            path_expression	table1
+            path_expression
+              ident	table1
     query_expr
       select
         select_list
@@ -39,7 +42,8 @@
             ident	col2
         from_clause
           from_item_table
-            path_expression	table2
+            path_expression
+              ident	table2
   
   '''
 # ---
@@ -52,7 +56,8 @@
           ident	col1
       from_clause
         from_item_table
-          path_expression	table1
+          path_expression
+            ident	table1
   
   '''
 # ---
@@ -62,7 +67,8 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	table1
+          path_expression
+            ident	table1
   
   '''
 # ---

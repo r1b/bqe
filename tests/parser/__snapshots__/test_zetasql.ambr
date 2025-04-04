@@ -164,7 +164,8 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	x
+          path_expression
+            ident	x
     pipe_agg
       group_by
         group_by_and_order_by
@@ -199,13 +200,16 @@
             grouping_item_empty
           grouping_item
             rollup_list
-              ident	x
+              rollup_item
+                ident	x
           grouping_item
             cube_list
-              ident	x
+              cube_item
+                ident	x
           grouping_item
             grouping_set_list
-              ident	x
+              grouping_set
+                ident	x
   
   '''
 # ---
@@ -473,18 +477,22 @@
         grouping_items
           grouping_item
             rollup_list
-              ident	x
-              ident	y
+              rollup_item
+                ident	x
+              rollup_item
+                ident	y
     pipe_agg
       group_by
         grouping_items
           grouping_item
             grouping_set_list
-              parenthesized_expr
-                ident	x
-              struct_literal
-                ident	y
-                ident	z
+              grouping_set
+                parenthesized_expr
+                  ident	x
+              grouping_set
+                struct_literal
+                  ident	y
+                  ident	z
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -495,15 +503,22 @@
         grouping_items
           grouping_item
             grouping_set_list
-              cube_list
-                ident	x
-                ident	y
-              struct_literal
-                ident	z
-                ident	z
-              rollup_list
-                ident	a
-                ident	b
+              grouping_set
+                cube_list
+                  cube_item
+                    ident	x
+                  cube_item
+                    ident	y
+              grouping_set
+                struct_literal
+                  ident	z
+                  ident	z
+              grouping_set
+                rollup_list
+                  rollup_item
+                    ident	a
+                  rollup_item
+                    ident	b
   
   '''
 # ---
@@ -513,7 +528,8 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	t
+          path_expression
+            ident	t
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -577,7 +593,8 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	t
+          path_expression
+            ident	t
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -699,11 +716,13 @@
     pipe_from
       from_clause
         from_item_table
-          path_expression	t1
+          path_expression
+            ident	t1
     pipe_join
       join
         from_item_table
-          path_expression	t2
+          path_expression
+            ident	t2
         using_clause
           ident	key
     pipe_as
