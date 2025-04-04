@@ -206,3 +206,24 @@ def test_pipe_agg(sql, assert_parse_tree):
 )
 def test_pipe_as(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            select 1
+            |> call f()
+            |> call a.b.c(1, x.y, g(), named=>5)
+            # TODO: TVF-specific syntax
+            # |> call f(TABLE t, (select 1))
+            # |> call f(DESCRIPTOR(col))
+            # |> call f(MODEL m, CONNECTION c)
+            """,
+            id="zeta_pipe_call",
+        ),
+    ),
+)
+def test_pipe_call(sql, assert_parse_tree):
+    assert_parse_tree(sql)

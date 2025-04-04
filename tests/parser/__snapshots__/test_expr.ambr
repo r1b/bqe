@@ -438,7 +438,7 @@
     select
       select_list
         select_expr
-          field_access_expr
+          path_expression
             ident	x
             ident	y
   
@@ -753,10 +753,9 @@
     select
       select_list
         select_expr
-          field_access_expr
-            field_access_expr
-              ident	column1
-              ident	column2
+          path_expression
+            ident	column1
+            ident	column2
             ident	column3
   
   '''
@@ -767,7 +766,7 @@
     select
       select_list
         select_expr
-          field_access_expr
+          path_expression
             ident	column1
             ident	column2
   
@@ -782,7 +781,7 @@
           ident	column1
       from_clause
         from_item_table
-          ident
+          path_expression
             `project1`
             dataset1
             table1
@@ -798,7 +797,7 @@
           ident	column1
       from_clause
         from_item_table
-          ident
+          path_expression
             dataset1
             table1
   
@@ -865,7 +864,7 @@
         select_expr
           function_call_expr
             function_name
-              field_access_expr
+              path_expression
                 ident	NET
                 ident	IPV4_FROM_INT64
             function_args
@@ -995,9 +994,9 @@
       select_list
         select_expr
           subscript_expr
-            field_access_expr
+            dot_ident
               subscript_expr
-                field_access_expr
+                dot_ident
                   subscript_expr
                     ident	column1
                     integer_literal	0
@@ -1038,7 +1037,7 @@
         select_expr
           subscript_expr
             subscript_expr
-              field_access_expr
+              path_expression
                 ident	column1
                 ident	column2
               integer_literal	0

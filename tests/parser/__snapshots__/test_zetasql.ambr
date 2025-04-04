@@ -164,7 +164,7 @@
     pipe_from
       from_clause
         from_item_table
-          ident	x
+          path_expression	x
     pipe_agg
       group_by
         group_by_and_order_by
@@ -513,7 +513,7 @@
     pipe_from
       from_clause
         from_item_table
-          ident	t
+          path_expression	t
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -577,7 +577,7 @@
     pipe_from
       from_clause
         from_item_table
-          ident	t
+          path_expression	t
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -687,7 +687,7 @@
     pipe_select
       select_list
         select_expr
-          field_access_expr
+          path_expression
             ident	t
             ident	a
   
@@ -699,15 +699,50 @@
     pipe_from
       from_clause
         from_item_table
-          ident	t1
+          path_expression	t1
     pipe_join
       join
         from_item_table
-          ident	t2
+          path_expression	t2
         using_clause
           ident	key
     pipe_as
       ident	t3
+  
+  '''
+# ---
+# name: test_pipe_call[zeta_pipe_call]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_call
+      function_call_expr
+        function_name
+          ident	f
+    pipe_call
+      function_call_expr
+        function_name
+          path_expression
+            ident	a
+            ident	b
+            ident	c
+        function_args
+          pos_arg
+            integer_literal	1
+          pos_arg
+            path_expression
+              ident	x
+              ident	y
+          pos_arg
+            function_call_expr
+              function_name
+                ident	g
+          named_arg
+            ident	named
+            integer_literal	5
   
   '''
 # ---

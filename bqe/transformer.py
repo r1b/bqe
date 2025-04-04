@@ -29,8 +29,23 @@ class BqeTransformer(Transformer):
         return fixup_lrec_rule(coerce_binary(args), "query_expr", spread=False)
 
     def path_expression(self, args: list[Tree]):
-        """Rewrite left-recursive path_expression to ident"""
-        return fixup_lrec_rule(coerce_binary(args), "ident")
+        """Rewrite left-recursive path_expression"""
+        return fixup_lrec_rule(coerce_binary(args), "path_expression")
+
+    def field_access_expr(self, args: list[Tree]):
+        """Rewrite left-recursive field_access_expr to path_expression.
+        When a non-ident lhs is encountered, rewrite to dot_ident."""
+        parent, child = args
+
+        if parent.data == "ident":
+            return Tree("path_expression", args)
+
+        if parent.data in ("field_access_expr", "path_expression"):
+            lhs, rhs = parent.children, [child]
+            children = lhs + rhs
+            return Tree("path_expression", children)
+
+        return Tree("dot_ident", args)
 
     def grouping_set_list(self, args: list[Tree]):
         """Collapse left-recursive grouping_set_list"""

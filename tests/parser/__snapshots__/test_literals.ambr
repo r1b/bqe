@@ -52,7 +52,7 @@
                         ident	a
                         type
                           type_name
-                            ident	INT64
+                            path_expression	INT64
             named_struct_literal
               named_struct_literal_prefix
               named_struct_literal_item_list
@@ -82,7 +82,7 @@
                                 ident	b
                                 type
                                   type_name
-                                    ident	INT64
+                                    path_expression	INT64
             named_struct_literal
               named_struct_literal_prefix
               named_struct_literal_item_list
@@ -106,7 +106,7 @@
               array_type
                 type
                   type_name
-                    ident	INT64
+                    path_expression	INT64
             integer_literal	1
             integer_literal	2
             integer_literal	3
@@ -508,7 +508,7 @@
             range_type
               type
                 type_name
-                  ident	DATE
+                  path_expression	DATE
             range_value	'[1970-01-01, 1970-01-02)'
   
   '''
@@ -765,15 +765,15 @@
                       struct_field
                         type
                           type_name
-                            ident	INT64
+                            path_expression	INT64
                     struct_field
                       type
                         type_name
-                          ident	INT64
+                          path_expression	INT64
                   struct_field
                     type
                       type_name
-                        ident	INT64
+                        path_expression	INT64
             named_struct_literal_item_list
               named_struct_literal_item
                 integer_literal	1
@@ -800,17 +800,17 @@
                         ident	a
                         type
                           type_name
-                            ident	INT64
+                            path_expression	INT64
                     struct_field
                       ident	b
                       type
                         type_name
-                          ident	INT64
+                          path_expression	INT64
                   struct_field
                     ident	c
                     type
                       type_name
-                        ident	INT64
+                        path_expression	INT64
             named_struct_literal_item_list
               named_struct_literal_item
                 integer_literal	1
@@ -836,7 +836,7 @@
                       ident	a
                       type
                         type_name
-                          ident	INT64
+                          path_expression	INT64
                   struct_field
                     type
                       struct_type
@@ -846,12 +846,12 @@
                               ident	b
                               type
                                 type_name
-                                  ident	INT64
+                                  path_expression	INT64
                           struct_field
                             ident	c
                             type
                               type_name
-                                ident	INT64
+                                path_expression	INT64
             named_struct_literal_item_list
               named_struct_literal_item
                 integer_literal	1

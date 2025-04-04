@@ -880,6 +880,7 @@ join_criteria : CROSS | INNER | ( FULL | LEFT | RIGHT ) OUTER?
 
 # CALL
 
+# TODO: TVF function calls are special, but this doesn't seem important yet
 pipe_call : _CALL function_call_expr as_alias?
 
 # TABLESAMPLE
