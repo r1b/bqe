@@ -628,3 +628,86 @@
   
   '''
 # ---
+# name: test_pipe_as[zeta_pipe_as]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_as
+      ident	t
+  
+  '''
+# ---
+# name: test_pipe_as[zeta_pipe_as_chained]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_as
+      ident	t1
+    pipe_as
+      ident	t2
+  
+  '''
+# ---
+# name: test_pipe_as[zeta_pipe_as_input_aliased]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_as
+      ident	t
+  
+  '''
+# ---
+# name: test_pipe_as[zeta_pipe_as_scope_oopsie]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_subquery
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+                    as_alias
+                      ident	a
+              pipe_as
+                ident	t
+    pipe_select
+      select_list
+        select_expr
+          field_access_expr
+            ident	t
+            ident	a
+  
+  '''
+# ---
+# name: test_pipe_as[zeta_pipe_as_typical_usage_join]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	t1
+    pipe_join
+      join
+        from_item_table
+          ident	t2
+        using_clause
+          ident	key
+    pipe_as
+      ident	t3
+  
+  '''
+# ---

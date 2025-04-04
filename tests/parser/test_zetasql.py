@@ -164,3 +164,45 @@ import pytest
 )
 def test_pipe_agg(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            SELECT 1 |> AS t
+            """,
+            id="zeta_pipe_as",
+        ),
+        pytest.param(
+            """
+            SELECT 1 x |> AS t
+            """,
+            id="zeta_pipe_as_input_aliased",
+        ),
+        pytest.param(
+            """
+            SELECT 1 |> AS t1 |> AS t2;
+            """,
+            id="zeta_pipe_as_chained",
+        ),
+        pytest.param(
+            """
+            FROM (SELECT 1 AS a |> AS t)
+            |> SELECT t.a
+            """,
+            id="zeta_pipe_as_scope_oopsie",
+        ),
+        pytest.param(
+            """
+            FROM t1
+            |> JOIN t2 USING(key)
+            |> AS t3
+            """,
+            id="zeta_pipe_as_typical_usage_join",
+        ),
+    ),
+)
+def test_pipe_as(sql, assert_parse_tree):
+    assert_parse_tree(sql)
