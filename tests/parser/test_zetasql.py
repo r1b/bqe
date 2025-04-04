@@ -246,3 +246,78 @@ def test_pipe_call(sql, assert_parse_tree):
 )
 def test_pipe_drop(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            from t
+            """,
+            id="zeta_pipe_from",
+        ),
+        pytest.param(
+            """
+            from unnest([1]) x
+            """,
+            id="zeta_pipe_from_unnest_aliased",
+        ),
+        pytest.param(
+            """
+            from t1, t2 JOIN t3 using (x), unnest(4) with offset o
+            """,
+            id="zeta_pipe_from_joins",
+        ),
+        pytest.param(
+            """
+            select *
+            from
+              (from t) join (from t2) using (x)
+            """,
+            id="zeta_pipe_from_join_subqueries",
+        ),
+        pytest.param(
+            """
+            from (select * from t)
+            """,
+            id="zeta_pipe_from_subquery",
+        ),
+        pytest.param(
+            """
+            select (from t), EXISTS(from t1), ARRAY(from t2)
+            from (from t)
+            """,
+            id="zeta_pipe_from_expression_subquery",
+        ),
+        pytest.param(
+            """
+            from tvf(1,2)
+            """,
+            id="zeta_pipe_from_tvf",
+            marks=pytest.mark.xfail,
+        ),
+        pytest.param(
+            """
+            select * from tvf((from t))
+            """,
+            id="zeta_pipe_from_tvf_subquery",
+            marks=pytest.mark.xfail,
+        ),
+        pytest.param(
+            """
+            from
+              t1,
+              t2 PIVOT(SUM(a) FOR b IN (0, 1)),
+              t3 UNPIVOT (a FOR c IN (x, y)),
+              t4 WITH OFFSET AS o
+                 FOR SYSTEM TIME AS OF y
+                 TABLESAMPLE SYSTEM(5 percent)
+            """,
+            id="zeta_pipe_from_postfix",
+            marks=pytest.mark.xfail,
+        ),
+    ),
+)
+def test_pipe_from(sql, assert_parse_tree):
+    assert_parse_tree(sql)

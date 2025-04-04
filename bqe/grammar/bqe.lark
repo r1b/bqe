@@ -687,6 +687,9 @@ from_clause : from_item ( _COMMA from_item )*
 ?from_item : path_expression as_alias? time_travel? -> from_item_table
     | subquery as_alias? -> from_item_subquery
     | from_item_unnest
+    | ( join_operation | _LPAR join_operation _RPAR ) -> from_item_join
+
+join_operation : from_item ( join | join_with_criteria )
 
 # Time travel
 
