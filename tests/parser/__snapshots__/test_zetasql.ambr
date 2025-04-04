@@ -134,6 +134,81 @@
   
   '''
 # ---
+# name: test_pipe_agg[zeta_pipe_agg_group_and_order_by]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              integer_literal	1
+      group_by
+        group_by_and_order_by
+        grouping_items
+          grouping_item
+            ident	x
+          grouping_item
+            ident	y
+            order_by_item_sort	DESC
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_group_and_order_by_aliased]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	x
+    pipe_agg
+      group_by
+        group_by_and_order_by
+        grouping_items
+          grouping_item
+            add_expr
+              ident	x
+              integer_literal	1
+            as_alias
+              ident	y
+            order_by_item_sort	ASC
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_group_and_order_by_grouping_sets_kitchen_sink]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              integer_literal	1
+      group_by
+        group_by_and_order_by
+        grouping_items
+          grouping_item
+            grouping_item_empty
+          grouping_item
+            rollup_list
+              ident	x
+          grouping_item
+            cube_list
+              ident	x
+          grouping_item
+            grouping_set_list
+              ident	x
+  
+  '''
+# ---
 # name: test_pipe_agg[zeta_pipe_agg_group_by]
   '''
   query_expr
@@ -316,6 +391,45 @@
   
   '''
 # ---
+# name: test_pipe_agg[zeta_pipe_agg_group_by_order_by_implicit]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      group_by
+        grouping_items
+          grouping_item
+            ident	x
+          grouping_item
+            add_expr
+              ident	x
+              integer_literal	1
+            order_by_item_sort	ASC
+          grouping_item
+            function_call_expr
+              function_name
+                ident	f
+            order_by_item_sort	DESC
+          grouping_item
+            ident	z
+            order_by_item_sort	ASC
+            order_by_item_nulls	FIRST
+          grouping_item
+            ident	zz
+            order_by_item_sort	DESC
+            order_by_item_nulls	LAST
+          grouping_item
+            ident	a
+            order_by_item_nulls	FIRST
+          grouping_item
+            ident	aa
+            order_by_item_nulls	LAST
+  
+  '''
+# ---
 # name: test_pipe_agg[zeta_pipe_agg_group_by_trailing_comma]
   '''
   query_expr
@@ -390,6 +504,96 @@
               rollup_list
                 ident	a
                 ident	b
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_order_by]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	t
+    pipe_agg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	count
+                function_args
+                  star_arg
+          order_by_item_sort	ASC
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	sum
+                function_args
+                  pos_arg
+                    ident	x
+              as_alias
+                ident	alias
+          order_by_item_sort	DESC
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	avg
+                function_args
+                  pos_arg
+                    ident	y
+              as_alias
+                ident	alias
+          order_by_item_sort	ASC
+          order_by_item_nulls	FIRST
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	max
+                  function_distinct
+                function_args
+                  pos_arg
+                    ident	z
+          order_by_item_sort	DESC
+          order_by_item_nulls	LAST
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	nosuffix
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_order_by_everywhere]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          ident	t
+    pipe_agg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	count
+                function_args
+                  star_arg
+          order_by_item_sort	asc
+      group_by
+        grouping_items
+          grouping_item
+            ident	key
+            order_by_item_sort	asc
   
   '''
 # ---

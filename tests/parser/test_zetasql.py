@@ -5,6 +5,7 @@ import pytest
 
 # https://github.com/google/zetasql/blob/2025.03.1/zetasql/parser/testdata/pipe_aggregate.test
 # https://github.com/google/zetasql/blob/2025.03.1/zetasql/parser/testdata/pipe_aggregate_group_by_aliases.test
+# https://github.com/google/zetasql/blob/2025.03.1/zetasql/parser/testdata/pipe_aggregate_with_order.test
 @pytest.mark.parametrize(
     "sql",
     (
@@ -101,6 +102,63 @@ import pytest
                GROUP BY x y, x+y xy
             """,
             id="zeta_pipe_agg_group_by_alias_implicit",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> AGGREGATE
+               GROUP BY
+                  x,
+                  x+1 ASC,
+                  f() DESC,
+                  z ASC NULLS FIRST,
+                  zz DESC NULLS LAST,
+                  a NULLS FIRST,
+                  aa NULLS LAST
+            """,
+            id="zeta_pipe_agg_group_by_order_by_implicit",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> AGGREGATE 1 GROUP AND ORDER BY x, y DESC,
+            """,
+            id="zeta_pipe_agg_group_and_order_by",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> AGGREGATE 1
+               GROUP AND ORDER BY (),ROLLUP(x),CUBE(x),GROUPING SETS(x)
+            """,
+            id="zeta_pipe_agg_group_and_order_by_grouping_sets_kitchen_sink",
+        ),
+        pytest.param(
+            """
+            from x
+            |> AGGREGATE
+               GROUP AND ORDER BY x+1 AS y ASC
+            """,
+            id="zeta_pipe_agg_group_and_order_by_aliased",
+        ),
+        pytest.param(
+            """
+            from t
+            |> aggregate count(*) ASC,
+               sum(x) alias DESC,
+               avg(y) AS alias ASC NULLS FIRST,
+               max(distinct z) DESC NULLS LAST,
+               nosuffix()
+            """,
+            id="zeta_pipe_agg_order_by",
+        ),
+        pytest.param(
+            """
+            from t
+            |> aggregate count(*) asc
+               group by key asc
+            """,
+            id="zeta_pipe_agg_order_by_everywhere",
         ),
     ),
 )
