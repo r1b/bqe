@@ -47,3 +47,13 @@ class BqeTransformer(Transformer):
     def named_struct_literal_item_list(self, args: list[Tree]):
         """Collapse left-recursive named_struct_literal_item_list"""
         return fixup_lrec_rule(coerce_binary(args), "named_struct_literal_item_list", spread=False)
+
+    def pipe_selection_item_list(self, args: list[Tree]):
+        """Collapse left-recursive pipe_selection_item_list"""
+        return fixup_lrec_rule(coerce_binary(args), "pipe_selection_item_list", spread=False)
+
+    def pipe_selection_item_list_with_order(self, args: list[Tree]):
+        """Collapse left-recursive pipe_selection_item_list_with_order"""
+        return fixup_lrec_rule(
+            coerce_binary(args), "pipe_selection_item_list_with_order", spread=False
+        )

@@ -7,16 +7,18 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
       group_by
         group_by_and_order_by
         grouping_items
@@ -33,16 +35,18 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
       group_by
         grouping_items
           grouping_item
@@ -62,16 +66,18 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
       group_by
         grouping_items
           grouping_item
@@ -87,16 +93,18 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
       group_by
         grouping_items
           grouping_item
@@ -117,16 +125,18 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
       group_by
         grouping_items
           grouping_item
@@ -149,16 +159,18 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
       group_by
         grouping_items
           grouping_item
@@ -180,16 +192,18 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
       group_by
         grouping_items
           grouping_item
@@ -214,16 +228,18 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
       group_by
         grouping_items
           grouping_item
@@ -241,16 +257,18 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
       group_by
         grouping_items
           grouping_item
@@ -266,16 +284,18 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
       group_by
         grouping_items
           grouping_item
@@ -293,25 +313,29 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col3
-          as_alias
-            ident	col4
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col3
+              as_alias
+                ident	col4
   
   '''
 # ---
@@ -323,26 +347,30 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
           order_by_item_sort	DESC
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col3
-          as_alias
-            ident	col4
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col3
+              as_alias
+                ident	col4
           order_by_item_sort	ASC
           order_by_item_nulls	LAST
   
@@ -356,14 +384,16 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
   
   '''
 # ---
@@ -375,16 +405,18 @@
         from_item_table
           ident	table1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-          as_alias
-            ident	col2
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	col1
+              as_alias
+                ident	col2
   
   '''
 # ---
@@ -849,27 +881,29 @@
         from_item_table
           ident	table1
     pipe_extend
-      extend_list
-        extend_item
-          function_call_expr
-            function_name
-              ident	POW
-            function_args
-              pos_arg
-                ident	col1
-              pos_arg
-                integer_literal	2
-          as_alias
-            ident	col2
-        extend_item
-          function_call_expr
-            function_name
-              ident	EXP
-            function_args
-              pos_arg
-                ident	col1
-              pos_arg
-                integer_literal	2
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	POW
+              function_args
+                pos_arg
+                  ident	col1
+                pos_arg
+                  integer_literal	2
+            as_alias
+              ident	col2
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	EXP
+              function_args
+                pos_arg
+                  ident	col1
+                pos_arg
+                  integer_literal	2
   
   '''
 # ---
@@ -881,27 +915,29 @@
         from_item_table
           ident	table1
     pipe_extend
-      extend_list
-        extend_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-            window_expr
-              window_spec
-                ident	w1
-        extend_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col2
-            window_expr
-              window_spec
-                ident	w2
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	SUM
+              function_args
+                pos_arg
+                  ident	col1
+              window_expr
+                window_spec
+                  ident	w1
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	SUM
+              function_args
+                pos_arg
+                  ident	col2
+              window_expr
+                window_spec
+                  ident	w2
       window_clause
         window_item
           ident	w1
@@ -926,17 +962,18 @@
         from_item_table
           ident	table1
     pipe_extend
-      extend_list
-        extend_item
-          function_call_expr
-            function_name
-              ident	SUM
-            function_args
-              pos_arg
-                ident	col1
-            window_expr
-              window_spec
-                ident	w
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	SUM
+              function_args
+                pos_arg
+                  ident	col1
+              window_expr
+                window_spec
+                  ident	w
       window_clause
         window_item
           ident	w
@@ -955,16 +992,17 @@
         from_item_table
           ident	table1
     pipe_extend
-      extend_list
-        extend_item
-          function_call_expr
-            function_name
-              ident	POW
-            function_args
-              pos_arg
-                ident	col1
-              pos_arg
-                integer_literal	2
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	POW
+              function_args
+                pos_arg
+                  ident	col1
+                pos_arg
+                  integer_literal	2
   
   '''
 # ---
@@ -976,18 +1014,19 @@
         from_item_table
           ident	table1
     pipe_extend
-      extend_list
-        extend_item
-          function_call_expr
-            function_name
-              ident	POW
-            function_args
-              pos_arg
-                ident	col1
-              pos_arg
-                integer_literal	2
-          as_alias
-            ident	col2
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	POW
+              function_args
+                pos_arg
+                  ident	col1
+                pos_arg
+                  integer_literal	2
+            as_alias
+              ident	col2
   
   '''
 # ---
@@ -999,16 +1038,17 @@
         from_item_table
           ident	table1
     pipe_extend
-      extend_list
-        extend_item
-          function_call_expr
-            function_name
-              ident	POW
-            function_args
-              pos_arg
-                ident	col1
-              pos_arg
-                integer_literal	2
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	POW
+              function_args
+                pos_arg
+                  ident	col1
+                pos_arg
+                  integer_literal	2
   
   '''
 # ---

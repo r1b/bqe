@@ -9,22 +9,26 @@
           as_alias
             ident	x
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	count
-            function_args
-              star_arg
-        agg_item
-          function_call_expr
-            function_name
-              ident	sum
-            function_args
-              pos_arg
-                ident	x
-          as_alias
-            ident	xx
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	count
+                function_args
+                  star_arg
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	sum
+                function_args
+                  pos_arg
+                    ident	x
+              as_alias
+                ident	xx
   
   '''
 # ---
@@ -36,21 +40,25 @@
         select_expr
           integer_literal	1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	count
-            function_args
-              star_arg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	count
+                function_args
+                  star_arg
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	count
-            function_args
-              star_arg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	count
+                function_args
+                  star_arg
       group_by
         grouping_items
           grouping_item
@@ -66,23 +74,63 @@
         select_expr
           integer_literal	1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	count
-            function_args
-              star_arg
-          as_alias
-            ident	x
-        agg_item
-          function_call_expr
-            function_name
-              ident	count
-            function_args
-              star_arg
-          as_alias
-            ident	z
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	count
+                function_args
+                  star_arg
+              as_alias
+                ident	x
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	count
+                function_args
+                  star_arg
+              as_alias
+                ident	z
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_dot_star]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              ident	x
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_dot_star
+              ident	s
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_dot_star
+              function_call_expr
+                function_name
+                  ident	f
+                function_args
+                  pos_arg
+                    ident	y
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_dot_star
+              parenthesized_expr
+                add_expr
+                  ident	a
+                  ident	b
   
   '''
 # ---
@@ -94,25 +142,29 @@
         select_expr
           integer_literal	1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	sum
-            function_args
-              pos_arg
-                ident	z
-        agg_item
-          add_expr
-            integer_literal	1
-            function_call_expr
-              function_name
-                ident	count
-              function_args
-                pos_arg
-                  add_expr
-                    ident	x
-                    integer_literal	1
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	sum
+                function_args
+                  pos_arg
+                    ident	z
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              add_expr
+                integer_literal	1
+                function_call_expr
+                  function_name
+                    ident	count
+                  function_args
+                    pos_arg
+                      add_expr
+                        ident	x
+                        integer_literal	1
       group_by
         grouping_items
           grouping_item
@@ -134,27 +186,31 @@
         select_expr
           integer_literal	1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	sum
-            function_args
-              pos_arg
-                ident	y
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	sum
+                function_args
+                  pos_arg
+                    ident	y
       group_by
         grouping_items
           grouping_item
             grouping_item_empty
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	sum
-            function_args
-              pos_arg
-                ident	y
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	sum
+                function_args
+                  pos_arg
+                    ident	y
       group_by
         grouping_items
           grouping_item
@@ -196,13 +252,15 @@
         select_expr
           integer_literal	1
     pipe_agg
-      agg_list
-        agg_item
-          function_call_expr
-            function_name
-              ident	count
-            function_args
-              star_arg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	count
+                function_args
+                  star_arg
       group_by
         grouping_items
           grouping_item
@@ -220,9 +278,11 @@
                 ident	y
                 ident	z
     pipe_agg
-      agg_list
-        agg_item
-          ident	xyz
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              ident	xyz
       group_by
         grouping_items
           grouping_item
@@ -247,20 +307,26 @@
         select_expr
           integer_literal	1
     pipe_agg
-      agg_list
-        agg_item
-          integer_literal	1
-        agg_item
-          ident	x
-        agg_item
-          function_call_expr
-            function_name
-              ident	sum
-            function_args
-              pos_arg
-                ident	y
-            window_expr
-              window_spec
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              integer_literal	1
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              ident	x
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	sum
+                function_args
+                  pos_arg
+                    ident	y
+                window_expr
+                  window_spec
   
   '''
 # ---

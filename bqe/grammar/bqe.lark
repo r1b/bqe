@@ -731,11 +731,14 @@ pipe_select : _SELECT select_shape? select_list window_clause?
 
 # EXTEND
 
-pipe_extend : _EXTEND extend_list window_clause?
+pipe_extend : _EXTEND pipe_selection_item_list_ window_clause?
 
-extend_list : extend_item ( _COMMA extend_item )* _COMMA?
+?pipe_selection_item_list_ : pipe_selection_item_list _COMMA?
 
-extend_item : column_expr as_alias?
+pipe_selection_item_list : pipe_selection_item
+    | pipe_selection_item_list _COMMA pipe_selection_item
+
+pipe_selection_item : select_expr | select_dot_star
 
 # WINDOW
 
@@ -787,12 +790,14 @@ offset_value : integer_literal | parameter
 
 # AGGREGATE
 
-# FIXME: This is actually select_list
-pipe_agg : _AGGREGATE agg_list? group_by?
+pipe_agg : _AGGREGATE pipe_selection_item_list_with_order_? group_by?
 
-agg_list : agg_item ( _COMMA agg_item )* _COMMA?
+?pipe_selection_item_list_with_order_ : pipe_selection_item_list_with_order _COMMA?
 
-agg_item : column_expr as_alias? order_by_item_sort? order_by_item_nulls?
+pipe_selection_item_list_with_order : pipe_selection_item_with_order
+    | pipe_selection_item_list_with_order _COMMA pipe_selection_item_with_order
+
+pipe_selection_item_with_order : pipe_selection_item order_by_item_sort? order_by_item_nulls?
 
 # GROUP BY
 

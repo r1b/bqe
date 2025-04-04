@@ -74,7 +74,6 @@ import pytest
             |> AGGREGATE x, s.*, f(y).*, (a+b).*
             """,
             id="zeta_pipe_agg_dot_star",
-            marks=pytest.mark.xfail,
         ),
         pytest.param(
             """
