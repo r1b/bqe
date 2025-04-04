@@ -655,6 +655,7 @@ placeholder : _USCORE _USCORE _AT _LPAR ident _RPAR
 ################################################################################
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list
+# TODO: Flesh this out to add the full feature set (ALL / DISTINCT, EXCEPT, REPLACE and co.)
 
 select : _SELECT select_shape? select_list select_from?
 
@@ -786,7 +787,8 @@ offset_value : integer_literal | parameter
 
 # AGGREGATE
 
-pipe_agg : _AGGREGATE agg_list group_by?
+# FIXME: This is actually select_list
+pipe_agg : _AGGREGATE agg_list? group_by?
 
 agg_list : agg_item ( _COMMA agg_item )* _COMMA?
 
@@ -798,7 +800,8 @@ group_by : _GROUP group_by_and_order_by? _BY grouping_items
 
 group_by_and_order_by : _AND _ORDER
 
-grouping_items :  grouping_item ( _COMMA grouping_item )*
+# FIXME: This is weird but apparently grouping items can have aliases in pipe syntax
+grouping_items :  grouping_item ( _COMMA grouping_item )* _COMMA?
 
 grouping_item : grouping_item_empty
     | column_expr as_alias_as_required? order_by_item_sort? order_by_item_nulls?

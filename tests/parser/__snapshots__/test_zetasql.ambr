@@ -1,0 +1,266 @@
+# serializer version: 1
+# name: test_pipe_agg[zeta_pipe_agg]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	count
+            function_args
+              star_arg
+        agg_item
+          function_call_expr
+            function_name
+              ident	sum
+            function_args
+              pos_arg
+                ident	x
+          as_alias
+            ident	xx
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_agg_list_trailing_comma]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	count
+            function_args
+              star_arg
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	count
+            function_args
+              star_arg
+      group_by
+        grouping_items
+          grouping_item
+            ident	x
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_aliases]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	count
+            function_args
+              star_arg
+          as_alias
+            ident	x
+        agg_item
+          function_call_expr
+            function_name
+              ident	count
+            function_args
+              star_arg
+          as_alias
+            ident	z
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_group_by]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	sum
+            function_args
+              pos_arg
+                ident	z
+        agg_item
+          add_expr
+            integer_literal	1
+            function_call_expr
+              function_name
+                ident	count
+              function_args
+                pos_arg
+                  add_expr
+                    ident	x
+                    integer_literal	1
+      group_by
+        grouping_items
+          grouping_item
+            ident	x
+          grouping_item
+            add_expr
+              ident	y
+              integer_literal	2
+          grouping_item
+            integer_literal	3
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_group_by_empty]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	sum
+            function_args
+              pos_arg
+                ident	y
+      group_by
+        grouping_items
+          grouping_item
+            grouping_item_empty
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	sum
+            function_args
+              pos_arg
+                ident	y
+      group_by
+        grouping_items
+          grouping_item
+            ident	y
+          grouping_item
+            grouping_item_empty
+          grouping_item
+            ident	x
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_group_by_trailing_comma]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      group_by
+        grouping_items
+          grouping_item
+            ident	x
+    pipe_agg
+      group_by
+        grouping_items
+          grouping_item
+            ident	x
+          grouping_item
+            ident	y
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_grouping_item_kitchen_sink]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      agg_list
+        agg_item
+          function_call_expr
+            function_name
+              ident	count
+            function_args
+              star_arg
+      group_by
+        grouping_items
+          grouping_item
+            rollup_list
+              ident	x
+              ident	y
+    pipe_agg
+      group_by
+        grouping_items
+          grouping_item
+            grouping_set_list
+              parenthesized_expr
+                ident	x
+              struct_literal
+                ident	y
+                ident	z
+    pipe_agg
+      agg_list
+        agg_item
+          ident	xyz
+      group_by
+        grouping_items
+          grouping_item
+            grouping_set_list
+              cube_list
+                ident	x
+                ident	y
+              struct_literal
+                ident	z
+                ident	z
+              rollup_list
+                ident	a
+                ident	b
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_window_fail_analysis]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      agg_list
+        agg_item
+          integer_literal	1
+        agg_item
+          ident	x
+        agg_item
+          function_call_expr
+            function_name
+              ident	sum
+            function_args
+              pos_arg
+                ident	y
+            window_expr
+              window_spec
+  
+  '''
+# ---
