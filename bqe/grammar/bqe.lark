@@ -805,11 +805,10 @@ group_by : _GROUP group_by_and_order_by? _BY grouping_items
 
 group_by_and_order_by : _AND _ORDER
 
-# FIXME: This is weird but apparently grouping items can have aliases in pipe syntax
 grouping_items :  grouping_item ( _COMMA grouping_item )* _COMMA?
 
 grouping_item : grouping_item_empty
-    | column_expr as_alias_as_required? order_by_item_sort? order_by_item_nulls?
+    | column_expr as_alias? order_by_item_sort? order_by_item_nulls?
     | rollup_list _RPAR
     | cube_list _RPAR
     | grouping_set_list _RPAR

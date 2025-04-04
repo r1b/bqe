@@ -175,11 +175,11 @@
         grouping_items
           grouping_item
             ident	col3
-            as_alias_as_required
+            as_alias
               ident	col4
           grouping_item
             ident	col5
-            as_alias_as_required
+            as_alias
               ident	col6
   
   '''
@@ -208,12 +208,12 @@
         grouping_items
           grouping_item
             ident	col3
-            as_alias_as_required
+            as_alias
               ident	col4
             order_by_item_sort	DESC
           grouping_item
             ident	col5
-            as_alias_as_required
+            as_alias
               ident	col6
             order_by_item_sort	ASC
             order_by_item_nulls	LAST
@@ -300,7 +300,7 @@
         grouping_items
           grouping_item
             ident	col3
-            as_alias_as_required
+            as_alias
               ident	col4
   
   '''

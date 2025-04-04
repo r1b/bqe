@@ -178,6 +178,100 @@
   
   '''
 # ---
+# name: test_pipe_agg[zeta_pipe_agg_group_by_alias_explicit]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	count
+                function_args
+                  star_arg
+              as_alias
+                ident	x
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	count
+                function_args
+                  star_arg
+              as_alias
+                ident	z
+      group_by
+        grouping_items
+          grouping_item
+            ident	x
+            as_alias
+              ident	y
+          grouping_item
+            ident	z
+          grouping_item
+            integer_literal	1
+            as_alias
+              ident	one
+          grouping_item
+            add_expr
+              ident	x
+              ident	y
+            as_alias
+              ident	xy
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_group_by_alias_implicit]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	count
+                function_args
+                  star_arg
+              as_alias
+                ident	x
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              function_call_expr
+                function_name
+                  ident	count
+                function_args
+                  star_arg
+              as_alias
+                ident	z
+      group_by
+        grouping_items
+          grouping_item
+            ident	x
+            as_alias
+              ident	y
+          grouping_item
+            add_expr
+              ident	x
+              ident	y
+            as_alias
+              ident	xy
+  
+  '''
+# ---
 # name: test_pipe_agg[zeta_pipe_agg_group_by_empty]
   '''
   query_expr

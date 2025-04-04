@@ -4,6 +4,7 @@ import pytest
 
 
 # https://github.com/google/zetasql/blob/2025.03.1/zetasql/parser/testdata/pipe_aggregate.test
+# https://github.com/google/zetasql/blob/2025.03.1/zetasql/parser/testdata/pipe_aggregate_group_by_aliases.test
 @pytest.mark.parametrize(
     "sql",
     (
@@ -84,6 +85,22 @@ import pytest
             """,
             id="zeta_pipe_agg_except_replace",
             marks=pytest.mark.xfail,
+        ),
+        pytest.param(
+            """
+            select 1
+            |> AGGREGATE count(*) as x, count(*) z
+               GROUP BY x AS y, z, 1 AS one, x+y AS xy
+            """,
+            id="zeta_pipe_agg_group_by_alias_explicit",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> AGGREGATE count(*) as x, count(*) z
+               GROUP BY x y, x+y xy
+            """,
+            id="zeta_pipe_agg_group_by_alias_implicit",
         ),
     ),
 )
