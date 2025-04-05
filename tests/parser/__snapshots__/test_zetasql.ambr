@@ -1254,3 +1254,75 @@
   
   '''
 # ---
+# name: test_pipe_order_by[zeta_pipe_order_by]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	x
+    pipe_order_by
+      order_by_items
+        order_by_item
+          integer_literal	1
+        order_by_item
+          ident	x
+        order_by_item
+          ident	y
+        order_by_item
+          add_expr
+            ident	x
+            integer_literal	1
+        order_by_item
+          function_call_expr
+            function_name
+              ident	sum
+            function_args
+              pos_arg
+                ident	x
+        order_by_item
+          function_call_expr
+            function_name
+              ident	x
+            window_expr
+              window_spec
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	x
+          order_by_item_sort	ASC
+        order_by_item
+          ident	y
+          order_by_item_sort	DESC
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	x
+          order_by_item_nulls	FIRST
+  
+  '''
+# ---
+# name: test_pipe_order_by[zeta_pipe_order_by_trailing_comma]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	x
+    pipe_order_by
+      order_by_items
+        order_by_item
+          ident	x
+        order_by_item
+          ident	y
+  
+  '''
+# ---

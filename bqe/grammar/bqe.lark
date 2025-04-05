@@ -551,7 +551,7 @@ having_modifier_kind : _MIN -> having_min | _MAX -> having_max
 
 order_by_modifier : _ORDER _BY order_by_items
 
-order_by_items : order_by_item ( _COMMA order_by_item )*
+order_by_items : order_by_item ( _COMMA order_by_item )* _COMMA?
 
 order_by_item : column_expr order_by_item_sort? order_by_item_nulls?
 

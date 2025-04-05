@@ -414,3 +414,32 @@ def test_pipe_join(sql, assert_parse_tree):
 )
 def test_pipe_named_window(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            select 1
+            |> order by x
+            |> order by 1, x, y, x+1, sum(x), x() OVER ()
+            |> order by x ASC, y DESC
+            # |> order by x COLLATE "abc"
+            |> order by x NULLS FIRST
+            # |> order by x COLLATE "abc" ASC NULLS LAST
+            """,
+            id="zeta_pipe_order_by",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> order by x,
+            |> order by x, y,
+            """,
+            id="zeta_pipe_order_by_trailing_comma",
+        ),
+    ),
+)
+def test_pipe_order_by(sql, assert_parse_tree):
+    assert_parse_tree(sql)
