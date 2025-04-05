@@ -321,3 +321,52 @@ def test_pipe_drop(sql, assert_parse_tree):
 )
 def test_pipe_from(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            select 1 x
+            |> join t2.x.y
+            |> join t3 using (x)
+            |> left join t4 on true
+            |> inner join (select zzz from zzz)
+            |> cross join t6
+            # Private syntax
+            # |> natural join t7
+            # |> hash join t7
+            # |> lookup join t7
+            """,
+            id="zeta_pipe_join",
+        ),
+        pytest.param(
+            """
+            select 1 x
+            # TODO: Add TVFs
+            # |> join tvf((select 1))
+            |> join unnest(y)
+            |> join unnest(y.z) i WITH OFFSET o
+            """,
+            id="zeta_pipe_join_unnest",
+        ),
+        pytest.param(
+            """
+            select 1 x
+            |> join (t2 join t3 using (x))
+            |> join (t2 join (t3 join t4))
+            """,
+            id="zeta_pipe_join_nested",
+        ),
+        pytest.param(
+            """
+            select 1 x
+            |> join (t2 join t3 join t4) using (x)
+            """,
+            id="zeta_pipe_join_sequencing",
+        ),
+    ),
+)
+def test_pipe_join(sql, assert_parse_tree):
+    assert_parse_tree(sql)

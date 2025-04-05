@@ -942,3 +942,162 @@
   
   '''
 # ---
+# name: test_pipe_join[zeta_pipe_join]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_join
+      join
+        from_item_table
+          path_expression
+            ident	t2
+            ident	x
+            ident	y
+    pipe_join
+      join
+        from_item_table
+          path_expression
+            ident	t3
+        using_clause
+          ident	x
+    pipe_join
+      join_with_criteria
+        join_criteria	left
+        join
+          from_item_table
+            path_expression
+              ident	t4
+          on_clause
+            boolean_literal	true
+    pipe_join
+      join_with_criteria
+        join_criteria	inner
+        join
+          from_item_subquery
+            subquery
+              query_expr
+                select
+                  select_list
+                    select_expr
+                      ident	zzz
+                  from_clause
+                    from_item_table
+                      path_expression
+                        ident	zzz
+    pipe_join
+      join_with_criteria
+        join_criteria	cross
+        join
+          from_item_table
+            path_expression
+              ident	t6
+  
+  '''
+# ---
+# name: test_pipe_join[zeta_pipe_join_nested]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_join
+      join
+        from_item_join
+          join_operation
+            from_item_table
+              path_expression
+                ident	t2
+            join
+              from_item_table
+                path_expression
+                  ident	t3
+              using_clause
+                ident	x
+    pipe_join
+      join
+        from_item_join
+          join_operation
+            from_item_table
+              path_expression
+                ident	t2
+            join
+              from_item_join
+                join_operation
+                  from_item_table
+                    path_expression
+                      ident	t3
+                  join
+                    from_item_table
+                      path_expression
+                        ident	t4
+  
+  '''
+# ---
+# name: test_pipe_join[zeta_pipe_join_sequencing]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_join
+      join
+        from_item_join
+          join_operation
+            from_item_table
+              path_expression
+                ident	t2
+            join
+              from_item_join
+                join_operation
+                  from_item_table
+                    path_expression
+                      ident	t3
+                  join
+                    from_item_table
+                      path_expression
+                        ident	t4
+        using_clause
+          ident	x
+  
+  '''
+# ---
+# name: test_pipe_join[zeta_pipe_join_unnest]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_join
+      join
+        from_item_unnest
+          unnest_expr
+            ident	y
+    pipe_join
+      join
+        from_item_unnest
+          unnest_expr
+            path_expression
+              ident	y
+              ident	z
+          as_alias
+            ident	i
+          from_unnest_offset_expr
+            as_alias
+              ident	o
+  
+  '''
+# ---

@@ -802,29 +802,30 @@
     pipe_join
       join_with_criteria
         join_criteria	LEFT
-        from_item_subquery
-          subquery
-            query_expr
-              select
-                select_list
-                  select_expr
-                    string_literal	"apples"
-                    as_alias
-                      ident	item
-                  select_expr
-                    integer_literal	123
-                    as_alias
-                      ident	id
-          as_alias
-            ident	produce_data
-        on_clause
-          eq_expr
-            path_expression
-              ident	produce_sales
-              ident	item
-            path_expression
+        join
+          from_item_subquery
+            subquery
+              query_expr
+                select
+                  select_list
+                    select_expr
+                      string_literal	"apples"
+                      as_alias
+                        ident	item
+                    select_expr
+                      integer_literal	123
+                      as_alias
+                        ident	id
+            as_alias
               ident	produce_data
-              ident	item
+          on_clause
+            eq_expr
+              path_expression
+                ident	produce_sales
+                ident	item
+              path_expression
+                ident	produce_data
+                ident	item
     pipe_select
       select_list
         select_expr

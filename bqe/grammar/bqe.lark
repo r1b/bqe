@@ -871,13 +871,13 @@ set_operation_criteria : INNER | ( FULL | LEFT ) OUTER?
 
 pipe_join : join | join_with_criteria
 
-join : _JOIN from_item ( on_clause | using_clause )
+join : _JOIN from_item as_alias? ( on_clause | using_clause )?
 
 on_clause : _ON column_expr
 
 using_clause : _USING _LPAR ident ( _COMMA ident )* _RPAR
 
-join_with_criteria : join_criteria _JOIN from_item ( on_clause | using_clause )
+join_with_criteria : join_criteria join
 
 join_criteria : CROSS | INNER | ( FULL | LEFT | RIGHT ) OUTER?
 
