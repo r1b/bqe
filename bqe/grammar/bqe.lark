@@ -745,7 +745,7 @@ pipe_selection_item : select_expr | select_dot_star
 
 # WINDOW
 
-window_clause : _WINDOW window_item ( _COMMA window_item )*
+window_clause : _WINDOW window_item ( _COMMA window_item )* _COMMA?
 
 window_item : ident _AS window_expr
 

@@ -1101,3 +1101,156 @@
   
   '''
 # ---
+# name: test_pipe_named_window[zeta_pipe_named_window]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	sum
+            function_args
+              pos_arg
+                ident	x
+            window_expr
+              window_spec
+                ident	w
+        select_expr
+          function_call_expr
+            function_name
+              ident	count
+            function_args
+              star_arg
+            window_expr
+              window_spec
+                ident	w2
+      window_clause
+        window_item
+          ident	w
+          window_expr
+            window_spec
+        window_item
+          ident	w2
+          window_expr
+            window_spec
+              window_partition_by
+                ident	a
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	max
+              function_args
+                pos_arg
+                  ident	y
+              window_expr
+                window_spec
+                  ident	w
+                  window_partition_by
+                    ident	x
+      window_clause
+        window_item
+          ident	w
+          window_expr
+            window_spec
+              window_order_by
+                order_by_items
+                  order_by_item
+                    ident	b
+              window_frame
+                window_frame_kind	ROWS
+                window_frame_start
+                  window_frame_current_row
+  
+  '''
+# ---
+# name: test_pipe_named_window[zeta_pipe_named_window_extend_trailing_comma]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	sum
+              function_args
+                pos_arg
+                  ident	x
+              window_expr
+                window_spec
+                  ident	w
+      window_clause
+        window_item
+          ident	w
+          window_expr
+            window_spec
+  
+  '''
+# ---
+# name: test_pipe_named_window[zeta_pipe_named_window_select_trailing_comma]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	sum
+            function_args
+              pos_arg
+                ident	x
+            window_expr
+              window_spec
+                ident	w
+      window_clause
+        window_item
+          ident	w
+          window_expr
+            window_spec
+  
+  '''
+# ---
+# name: test_pipe_named_window[zeta_pipe_named_window_unused]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_select
+      select_list
+        select_expr
+          function_call_expr
+            function_name
+              ident	sum
+            function_args
+              pos_arg
+                ident	x
+      window_clause
+        window_item
+          ident	w
+          window_expr
+            window_spec
+  
+  '''
+# ---

@@ -370,3 +370,47 @@ def test_pipe_from(sql, assert_parse_tree):
 )
 def test_pipe_join(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            from t
+            |> select sum(x) over(w), count(*) over (w2)
+               window w AS (),
+                      w2 AS (partition by a)
+            |> extend max(y) over (w partition by x)
+               window w AS (ORDER BY b ROWS CURRENT ROW)
+            """,
+            id="zeta_pipe_named_window",
+        ),
+        pytest.param(
+            """
+            from t
+            |> select sum(x)
+               window w AS ()
+            """,
+            id="zeta_pipe_named_window_unused",
+        ),
+        pytest.param(
+            """
+            from t
+            |> select sum(x) over (w),
+            window w AS (),
+            """,
+            id="zeta_pipe_named_window_select_trailing_comma",
+        ),
+        pytest.param(
+            """
+            from t
+            |> extend sum(x) over (w),
+            window w AS (),
+            """,
+            id="zeta_pipe_named_window_extend_trailing_comma",
+        ),
+    ),
+)
+def test_pipe_named_window(sql, assert_parse_tree):
+    assert_parse_tree(sql)
