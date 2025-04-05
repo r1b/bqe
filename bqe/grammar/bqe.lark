@@ -635,7 +635,6 @@ query_expr : select
     | subquery
     | aliased_subquery
     | pipe_from
-    | placeholder
     | query_expr pipe_expr
 
 subquery : _LPAR query_expr _RPAR
@@ -645,12 +644,6 @@ aliased_subquery : subquery as_alias_as_required
 pipe_from : _FROM from_clause
 
 ?pipe_expr : _PIPE_OP pipe_operator
-
-################################################################################
-# Placeholders
-################################################################################
-
-placeholder : _USCORE _USCORE _AT _LPAR ident _RPAR
 
 ################################################################################
 # SELECT
