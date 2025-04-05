@@ -619,7 +619,9 @@ window_frame_unbounded_following : _UNBOUNDED _FOLLOWING
 # Entry point
 ################################################################################
 
-?start : query
+?start_query : query
+?start_pipe : pipe_expr
+?start_expr : column_expr
 
 ################################################################################
 # Query

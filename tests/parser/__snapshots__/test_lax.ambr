@@ -1,0 +1,55 @@
+# serializer version: 1
+# name: test_lax_ok[lax_expr_and]
+  '''
+  and_expr
+    and_expr
+      ident	a
+      ident	b
+    ident	c
+  
+  '''
+# ---
+# name: test_lax_ok[lax_expr_case]
+  '''
+  case_expr
+    when_then_expr
+      and_expr
+        ident	a
+        ident	b
+      ident	c
+    else_expr
+      ident	d
+  
+  '''
+# ---
+# name: test_lax_ok[lax_expr_pipe_agg]
+  '''
+  pipe_agg
+    group_by
+      grouping_items
+        grouping_item
+          ident	a
+        grouping_item
+          ident	b
+        grouping_item
+          rollup_list
+            rollup_item
+              ident	c
+            rollup_item
+              ident	d
+  
+  '''
+# ---
+# name: test_lax_ok[lax_expr_pipe_select]
+  '''
+  pipe_select
+    select_list
+      select_expr
+        ident	a
+      select_expr
+        ident	b
+      select_expr
+        ident	c
+  
+  '''
+# ---
