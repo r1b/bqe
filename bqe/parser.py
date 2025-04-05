@@ -13,7 +13,7 @@ transformer = BqeTransformer()
 
 
 def parse(sql: str, *, lax=False):
-    """Parse SQL. If `lax` is `True`, expressions are allowed at the top-level."""
+    """Parse SQL. If `lax` is `True`, attempt to parse multiple forms."""
     tree = parse_lax(sql) if lax else parse_strict(sql)
     tree = transformer.transform(tree)
     return tree
