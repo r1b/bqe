@@ -528,14 +528,13 @@
           path_expression
             ident	table1
     pipe_join
-      join_with_criteria
-        join_criteria	CROSS
-        join
-          from_item_table
-            path_expression
-              ident	table2
-          using_clause
-            ident	col1
+      join_criteria	CROSS
+      from_item_table
+        path_expression
+          ident	table2
+      on_or_using_clause
+        using_clause
+          ident	col1
   
   '''
 # ---
@@ -548,14 +547,13 @@
           path_expression
             ident	table1
     pipe_join
-      join_with_criteria
-        join_criteria	FULL
-        join
-          from_item_table
-            path_expression
-              ident	table2
-          using_clause
-            ident	col1
+      join_criteria	FULL
+      from_item_table
+        path_expression
+          ident	table2
+      on_or_using_clause
+        using_clause
+          ident	col1
   
   '''
 # ---
@@ -568,16 +566,15 @@
           path_expression
             ident	table1
     pipe_join
-      join_with_criteria
-        join_criteria
-          FULL
-          OUTER
-        join
-          from_item_table
-            path_expression
-              ident	table2
-          using_clause
-            ident	col1
+      join_criteria
+        FULL
+        OUTER
+      from_item_table
+        path_expression
+          ident	table2
+      on_or_using_clause
+        using_clause
+          ident	col1
   
   '''
 # ---
@@ -590,14 +587,13 @@
           path_expression
             ident	table1
     pipe_join
-      join_with_criteria
-        join_criteria	INNER
-        join
-          from_item_table
-            path_expression
-              ident	table2
-          using_clause
-            ident	col1
+      join_criteria	INNER
+      from_item_table
+        path_expression
+          ident	table2
+      on_or_using_clause
+        using_clause
+          ident	col1
   
   '''
 # ---
@@ -610,14 +606,13 @@
           path_expression
             ident	table1
     pipe_join
-      join_with_criteria
-        join_criteria	LEFT
-        join
-          from_item_table
-            path_expression
-              ident	table2
-          using_clause
-            ident	col1
+      join_criteria	LEFT
+      from_item_table
+        path_expression
+          ident	table2
+      on_or_using_clause
+        using_clause
+          ident	col1
   
   '''
 # ---
@@ -630,16 +625,15 @@
           path_expression
             ident	table1
     pipe_join
-      join_with_criteria
-        join_criteria
-          LEFT
-          OUTER
-        join
-          from_item_table
-            path_expression
-              ident	table2
-          using_clause
-            ident	col1
+      join_criteria
+        LEFT
+        OUTER
+      from_item_table
+        path_expression
+          ident	table2
+      on_or_using_clause
+        using_clause
+          ident	col1
   
   '''
 # ---
@@ -652,10 +646,10 @@
           path_expression
             ident	table1
     pipe_join
-      join
-        from_item_table
-          path_expression
-            ident	table2
+      from_item_table
+        path_expression
+          ident	table2
+      on_or_using_clause
         on_clause
           and_expr
             eq_expr
@@ -676,10 +670,10 @@
           path_expression
             ident	table1
     pipe_join
-      join
-        from_item_table
-          path_expression
-            ident	table2
+      from_item_table
+        path_expression
+          ident	table2
+      on_or_using_clause
         on_clause
           eq_expr
             ident	col1
@@ -696,14 +690,13 @@
           path_expression
             ident	table1
     pipe_join
-      join_with_criteria
-        join_criteria	RIGHT
-        join
-          from_item_table
-            path_expression
-              ident	table2
-          using_clause
-            ident	col1
+      join_criteria	RIGHT
+      from_item_table
+        path_expression
+          ident	table2
+      on_or_using_clause
+        using_clause
+          ident	col1
   
   '''
 # ---
@@ -716,16 +709,15 @@
           path_expression
             ident	table1
     pipe_join
-      join_with_criteria
-        join_criteria
-          RIGHT
-          OUTER
-        join
-          from_item_table
-            path_expression
-              ident	table2
-          using_clause
-            ident	col1
+      join_criteria
+        RIGHT
+        OUTER
+      from_item_table
+        path_expression
+          ident	table2
+      on_or_using_clause
+        using_clause
+          ident	col1
   
   '''
 # ---
@@ -738,10 +730,10 @@
           path_expression
             ident	table1
     pipe_join
-      join
-        from_item_table
-          path_expression
-            ident	table2
+      from_item_table
+        path_expression
+          ident	table2
+      on_or_using_clause
         using_clause
           ident	col1
           ident	col2
@@ -757,10 +749,10 @@
           path_expression
             ident	table1
     pipe_join
-      join
-        from_item_table
-          path_expression
-            ident	table2
+      from_item_table
+        path_expression
+          ident	table2
+      on_or_using_clause
         using_clause
           ident	col1
   

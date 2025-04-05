@@ -319,22 +319,22 @@
     pipe_as
       ident	t1
     pipe_join
-      join
-        from_item_subquery
-          subquery
-            query_expr
-              select
-                select_list
-                  select_expr
-                    integer_literal	456
-                    as_alias
-                      ident	id
-                  select_expr
-                    string_literal	"yellow"
-                    as_alias
-                      ident	color
-          as_alias
-            ident	t2
+      from_item_subquery
+        subquery
+          query_expr
+            select
+              select_list
+                select_expr
+                  integer_literal	456
+                  as_alias
+                    ident	id
+                select_expr
+                  string_literal	"yellow"
+                  as_alias
+                    ident	color
+        as_alias
+          ident	t2
+      on_or_using_clause
         on_clause
           eq_expr
             cast_expr_kind_cast
@@ -678,12 +678,12 @@
     pipe_as
       ident	p1
     pipe_join
-      join
-        from_item_table
-          path_expression
-            ident	Produce
-          as_alias
-            ident	p2
+      from_item_table
+        path_expression
+          ident	Produce
+        as_alias
+          ident	p2
+      on_or_using_clause
         using_clause
           ident	item
     pipe_where
@@ -800,32 +800,31 @@
     pipe_as
       ident	produce_sales
     pipe_join
-      join_with_criteria
-        join_criteria	LEFT
-        join
-          from_item_subquery
-            subquery
-              query_expr
-                select
-                  select_list
-                    select_expr
-                      string_literal	"apples"
-                      as_alias
-                        ident	item
-                    select_expr
-                      integer_literal	123
-                      as_alias
-                        ident	id
-            as_alias
+      join_criteria	LEFT
+      from_item_subquery
+        subquery
+          query_expr
+            select
+              select_list
+                select_expr
+                  string_literal	"apples"
+                  as_alias
+                    ident	item
+                select_expr
+                  integer_literal	123
+                  as_alias
+                    ident	id
+        as_alias
+          ident	produce_data
+      on_or_using_clause
+        on_clause
+          eq_expr
+            path_expression
+              ident	produce_sales
+              ident	item
+            path_expression
               ident	produce_data
-          on_clause
-            eq_expr
-              path_expression
-                ident	produce_sales
-                ident	item
-              path_expression
-                ident	produce_data
-                ident	item
+              ident	item
     pipe_select
       select_list
         select_expr

@@ -71,9 +71,10 @@
         select_expr
           ident	column2
       from_clause
-        from_item_table
-          path_expression
-            ident	table1
+        from_clause
+          from_item_table
+            path_expression
+              ident	table1
         from_item_table
           path_expression
             ident	table2
@@ -114,11 +115,12 @@
           as_alias
             ident	column2
       from_clause
-        from_item_table
-          path_expression
-            ident	table1
-          as_alias
-            ident	alias1
+        from_clause
+          from_item_table
+            path_expression
+              ident	table1
+            as_alias
+              ident	alias1
         from_item_subquery
           subquery
             query_expr
@@ -382,9 +384,10 @@
         select_expr
           ident	column1
       from_clause
-        from_item_table
-          path_expression
-            ident	table1
+        from_clause
+          from_item_table
+            path_expression
+              ident	table1
         from_item_unnest
           unnest_expr
             ident	array1
@@ -399,9 +402,10 @@
         select_expr
           ident	column1
       from_clause
-        from_item_table
-          path_expression
-            ident	table1
+        from_clause
+          from_item_table
+            path_expression
+              ident	table1
         from_item_unnest
           unnest_expr
             ident	array1
@@ -421,9 +425,10 @@
         select_expr
           ident	column1
       from_clause
-        from_item_table
-          path_expression
-            ident	table1
+        from_clause
+          from_item_table
+            path_expression
+              ident	table1
         from_item_unnest
           unnest_expr
             ident	array1
@@ -439,9 +444,10 @@
         select_expr
           ident	column1
       from_clause
-        from_item_table
-          path_expression
-            ident	table1
+        from_clause
+          from_item_table
+            path_expression
+              ident	table1
         from_item_unnest
           unnest_expr
             ident	array1
