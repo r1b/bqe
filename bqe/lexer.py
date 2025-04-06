@@ -35,10 +35,11 @@ class BqePostLex(PostLex):
     """
     Lexer postprocessing.
 
-    AMBIGUOUS CASE 1: FROM subquery with set operation
-        > SELECT * FROM (SELECT 1 AS a) INNER UNION ALL CORRESPONDING SELECT 2 AS a
-        Can't determine if the subquery belongs to the FROM or the set operation.
-        Resolved by rewriting JOIN keywords to set-operation-specific variants.
+    AMBIGUOUS CASE 1: JOIN keywords
+        > SELECT 1 AS x |> LEFT OUTER UNION ALL SELECT 2 AS x
+        INNER, FULL and LEFT can appear before both set operations and JOINs
+        Resolved by rewriting JOIN keywords to set-operation-specific variants
+        when a set-operation keyword follows.
         Ref: https://github.com/google/zetasql/blob/2025.03.1/zetasql/parser/lookahead_transformer.cc#L754-L755
     """
 
