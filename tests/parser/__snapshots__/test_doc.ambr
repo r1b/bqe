@@ -650,21 +650,20 @@
   query_expr
     pipe_from
       from_clause
-        from_clause_join
-          from_clause
-            from_item_table
-              path_expression
-                ident	Produce
-              as_alias
-                ident	p1
-          from_item_table
-            path_expression
-              ident	Produce
-            as_alias
-              ident	p2
-          on_or_using_clause
-            using_clause
-              ident	item
+        from_item_table
+          path_expression
+            ident	Produce
+          as_alias
+            ident	p1
+    pipe_join
+      from_item_table
+        path_expression
+          ident	Produce
+        as_alias
+          ident	p2
+      on_or_using_clause
+        using_clause
+          ident	item
     pipe_where
       eq_expr
         ident	item

@@ -265,20 +265,6 @@ def test_pipe_drop(sql, assert_parse_tree):
         ),
         pytest.param(
             """
-            from t1, t2 JOIN t3 using (x), unnest(4) with offset o
-            """,
-            id="zeta_pipe_from_joins",
-        ),
-        pytest.param(
-            """
-            select *
-            from
-              (from t) join (from t2) using (x)
-            """,
-            id="zeta_pipe_from_join_subqueries",
-        ),
-        pytest.param(
-            """
             from (select * from t)
             """,
             id="zeta_pipe_from_subquery",
@@ -350,21 +336,6 @@ def test_pipe_from(sql, assert_parse_tree):
             |> join unnest(y.z) i WITH OFFSET o
             """,
             id="zeta_pipe_join_unnest",
-        ),
-        pytest.param(
-            """
-            select 1 x
-            |> join (t2 join t3 using (x))
-            |> join (t2 join (t3 join t4))
-            """,
-            id="zeta_pipe_join_nested",
-        ),
-        pytest.param(
-            """
-            select 1 x
-            |> join (t2 join t3 join t4) using (x)
-            """,
-            id="zeta_pipe_join_sequencing",
         ),
     ),
 )

@@ -13,7 +13,6 @@ import pytest
         pytest.param("SELECT * FROM table1", id="select_star"),
         pytest.param("SELECT column1.* FROM table1", id="select_star_scoped"),
         pytest.param("SELECT column1.column2.* FROM table1", id="select_star_scoped_nested"),
-        pytest.param("SELECT column1, column2 FROM table1, table2", id="select_from_multi"),
         pytest.param("SELECT column1 FROM table1 AS alias1", id="select_from_alias_explicit"),
         pytest.param("SELECT column1 FROM table1 alias1", id="select_from_alias_implicit"),
         pytest.param(
@@ -29,10 +28,9 @@ import pytest
             column1,
             (SELECT 1) AS column2
         FROM
-            table1 alias1,
             (SELECT column7 FROM table2) AS alias2
         """,
-            id="select_kitchen_sink",
+            id="select_subqueries",
         ),
     ),
 )
@@ -77,20 +75,19 @@ def test_subquery_ok(sql, assert_parse_tree):
 @pytest.mark.parametrize(
     "sql",
     (
-        pytest.param("SELECT column1 FROM UNNEST(array1)", id="unnest_single"),
-        pytest.param("SELECT column1 FROM UNNEST(array1) AS alias1", id="unnest_single_alias"),
-        pytest.param("SELECT column1 FROM table1, UNNEST(array1)", id="unnest_trailing"),
+        pytest.param("SELECT column1 FROM UNNEST(array1)", id="unnest"),
+        pytest.param("SELECT column1 FROM UNNEST(array1) AS alias1", id="unnest_alias"),
         pytest.param(
-            "SELECT column1 FROM table1, UNNEST(array1) WITH OFFSET",
-            id="unnest_trailing_with_offset",
+            "SELECT column1 FROM UNNEST(array1) WITH OFFSET",
+            id="unnest_with_offset",
         ),
         pytest.param(
-            "SELECT column1 FROM table1, UNNEST(array1) WITH OFFSET AS alias1",
-            id="unnest_trailing_with_offset_alias",
+            "SELECT column1 FROM UNNEST(array1) WITH OFFSET AS alias1",
+            id="unnest_with_offset_alias",
         ),
         pytest.param(
-            "SELECT column1 FROM table1, UNNEST(array1) AS alias1 WITH OFFSET AS alias2",
-            id="unnest_trailing_alias_with_offset_alias",
+            "SELECT column1 FROM UNNEST(array1) AS alias1 WITH OFFSET AS alias2",
+            id="unnest_alias_with_offset_alias",
         ),
     ),
 )

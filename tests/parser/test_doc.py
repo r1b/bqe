@@ -20,10 +20,8 @@ import pytest
         ),
         pytest.param(
             """
-            FROM
-                Produce AS p1
-                JOIN Produce AS p2
-                    USING (item)
+            FROM Produce AS p1
+            |> JOIN Produce AS p2 USING (item)
             |> WHERE item = 'bananas'
             |> SELECT p1.item, p2.sales;
             """,

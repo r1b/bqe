@@ -61,27 +61,6 @@
   
   '''
 # ---
-# name: test_select_ok[select_from_multi]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          ident	column1
-        select_expr
-          ident	column2
-      from_clause
-        from_clause_comma_cross_join
-          from_clause
-            from_item_table
-              path_expression
-                ident	table1
-          from_item_table
-            path_expression
-              ident	table2
-  
-  '''
-# ---
 # name: test_select_ok[select_from_time_travel]
   '''
   query_expr
@@ -95,47 +74,6 @@
             ident	table1
           time_travel
             string_literal	'1970-01-01'
-  
-  '''
-# ---
-# name: test_select_ok[select_kitchen_sink]
-  '''
-  query_expr
-    select
-      select_list
-        select_star
-        select_expr
-          ident	column1
-        select_expr
-          subquery
-            query_expr
-              select
-                select_list
-                  select_expr
-                    integer_literal	1
-          as_alias
-            ident	column2
-      from_clause
-        from_clause_comma_cross_join
-          from_clause
-            from_item_table
-              path_expression
-                ident	table1
-              as_alias
-                ident	alias1
-          from_item_subquery
-            subquery
-              query_expr
-                select
-                  select_list
-                    select_expr
-                      ident	column7
-                  from_clause
-                    from_item_table
-                      path_expression
-                        ident	table2
-            as_alias
-              ident	alias2
   
   '''
 # ---
@@ -268,6 +206,40 @@
   
   '''
 # ---
+# name: test_select_ok[select_subqueries]
+  '''
+  query_expr
+    select
+      select_list
+        select_star
+        select_expr
+          ident	column1
+        select_expr
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+          as_alias
+            ident	column2
+      from_clause
+        from_item_subquery
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    ident	column7
+                from_clause
+                  from_item_table
+                    path_expression
+                      ident	table2
+          as_alias
+            ident	alias2
+  
+  '''
+# ---
 # name: test_subquery_ok[select_from_subquery]
   '''
   query_expr
@@ -348,7 +320,7 @@
   
   '''
 # ---
-# name: test_unnest_ok[unnest_single]
+# name: test_unnest_ok[unnest]
   '''
   query_expr
     select
@@ -362,7 +334,7 @@
   
   '''
 # ---
-# name: test_unnest_ok[unnest_single_alias]
+# name: test_unnest_ok[unnest_alias]
   '''
   query_expr
     select
@@ -378,7 +350,7 @@
   
   '''
 # ---
-# name: test_unnest_ok[unnest_trailing]
+# name: test_unnest_ok[unnest_alias_with_offset_alias]
   '''
   query_expr
     select
@@ -386,18 +358,18 @@
         select_expr
           ident	column1
       from_clause
-        from_clause_comma_cross_join
-          from_clause
-            from_item_table
-              path_expression
-                ident	table1
-          from_item_unnest
-            unnest_expr
-              ident	array1
+        from_item_unnest
+          unnest_expr
+            ident	array1
+          as_alias
+            ident	alias1
+          from_unnest_offset_expr
+            as_alias
+              ident	alias2
   
   '''
 # ---
-# name: test_unnest_ok[unnest_trailing_alias_with_offset_alias]
+# name: test_unnest_ok[unnest_with_offset]
   '''
   query_expr
     select
@@ -405,61 +377,27 @@
         select_expr
           ident	column1
       from_clause
-        from_clause_comma_cross_join
-          from_clause
-            from_item_table
-              path_expression
-                ident	table1
-          from_item_unnest
-            unnest_expr
-              ident	array1
+        from_item_unnest
+          unnest_expr
+            ident	array1
+          from_unnest_offset_expr
+  
+  '''
+# ---
+# name: test_unnest_ok[unnest_with_offset_alias]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ident	column1
+      from_clause
+        from_item_unnest
+          unnest_expr
+            ident	array1
+          from_unnest_offset_expr
             as_alias
               ident	alias1
-            from_unnest_offset_expr
-              as_alias
-                ident	alias2
-  
-  '''
-# ---
-# name: test_unnest_ok[unnest_trailing_with_offset]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          ident	column1
-      from_clause
-        from_clause_comma_cross_join
-          from_clause
-            from_item_table
-              path_expression
-                ident	table1
-          from_item_unnest
-            unnest_expr
-              ident	array1
-            from_unnest_offset_expr
-  
-  '''
-# ---
-# name: test_unnest_ok[unnest_trailing_with_offset_alias]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          ident	column1
-      from_clause
-        from_clause_comma_cross_join
-          from_clause
-            from_item_table
-              path_expression
-                ident	table1
-          from_item_unnest
-            unnest_expr
-              ident	array1
-            from_unnest_offset_expr
-              as_alias
-                ident	alias1
   
   '''
 # ---

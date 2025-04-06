@@ -660,7 +660,6 @@ pipe_from : _FROM from_clause
 ################################################################################
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list
-# TODO: Flesh this out to add the full feature set (ALL / DISTINCT, EXCEPT, REPLACE and co.)
 
 select : _SELECT select_shape? select_list select_from?
 
@@ -688,33 +687,14 @@ as_alias : [ _AS ] ident
 ?select_from : _FROM from_clause
 
 from_clause : from_item
-    | from_clause_comma_cross_join
-    | from_clause_join
-
-from_clause_comma_cross_join : from_clause _COMMA from_item
-
-from_clause_join : from_clause join_criteria? _JOIN from_item on_or_using_clause?
 
 ?from_item : path_expression as_alias? time_travel? -> from_item_table
     | from_item_subquery
     | from_item_unnest
-    | _LPAR join _RPAR -> from_item_subquery_join
 
 from_item_subquery : subquery as_alias?
 
-join : join_input join_criteria? _JOIN from_item on_or_using_clause?
-
-join_input : join | from_item
-
-# Time travel
-
 time_travel : _FOR _SYSTEM_TIME _AS _OF column_expr
-
-################################################################################
-# UNNEST
-################################################################################
-
-# Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#unnest_operator
 
 from_item_unnest : unnest_expr as_alias? from_unnest_offset_expr?
 
