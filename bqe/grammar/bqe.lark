@@ -150,11 +150,6 @@ _WHERE : "WHERE"i
 _WINDOW : "WINDOW"i
 _WITH : "WITH"i
 
-# Disambiguation keywords produced by postlex
-FULL_IN_SET_OPERATION : "FULL"
-INNER_IN_SET_OPERATION : "INNER"
-LEFT_IN_SET_OPERATION : "LEFT"
-
 ################################################################################
 # Identifiers
 ################################################################################
@@ -860,9 +855,9 @@ set_operation_modifier_strict_corresponding : _STRICT _CORRESPONDING ( _BY set_o
 
 set_operation_columns : _LPAR ident ( _COMMA ident )* _RPAR
 
-set_operation_criteria : INNER_IN_SET_OPERATION
-    | FULL_IN_SET_OPERATION OUTER?
-    | LEFT_IN_SET_OPERATION OUTER?
+set_operation_criteria : INNER
+    | FULL OUTER?
+    | LEFT OUTER?
     | OUTER
 
 # JOIN

@@ -240,6 +240,40 @@
   
   '''
 # ---
+# name: test_select_ok[select_subquery_set_operation]
+  '''
+  query_expr
+    query_set_operation
+      select
+        select_list
+          select_expr
+            ident	x
+        from_clause
+          from_item_subquery
+            subquery
+              query_expr
+                select
+                  select_list
+                    select_expr
+                      integer_literal	1
+                      as_alias
+                        ident	x
+      set_operation_metadata
+        set_operation_criteria	LEFT
+        set_operation_kind	UNION
+        set_operation_mode	ALL
+        set_operation_modifier_corresponding
+      subquery
+        query_expr
+          select
+            select_list
+              select_expr
+                integer_literal	2
+                as_alias
+                  ident	x
+  
+  '''
+# ---
 # name: test_subquery_ok[select_from_subquery]
   '''
   query_expr

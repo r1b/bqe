@@ -1,7 +1,6 @@
 from lark import Lark
 from lark.exceptions import UnexpectedInput
 
-from .lexer import BqePostLex
 from .settings import PACKAGE_ROOT
 from .transformer import BqeTransformer
 
@@ -10,7 +9,6 @@ GRAMMAR_PATH = PACKAGE_ROOT / "grammar" / "bqe.lark"
 parser = Lark(
     GRAMMAR_PATH.read_text(),
     parser="lalr",
-    postlex=BqePostLex(),
     start=["start_query", "start_pipe", "start_expr"],
 )
 transformer = BqeTransformer()

@@ -23,14 +23,20 @@ import pytest
         pytest.param("SELECT AS VALUE column1 FROM table1", id="select_as_value"),
         pytest.param(
             """
-        SELECT
-            *,
-            column1,
-            (SELECT 1) AS column2
-        FROM
-            (SELECT column7 FROM table2) AS alias2
-        """,
+            SELECT
+                *,
+                column1,
+                (SELECT 1) AS column2
+            FROM
+                (SELECT column7 FROM table2) AS alias2
+            """,
             id="select_subqueries",
+        ),
+        pytest.param(
+            """
+            SELECT x FROM (SELECT 1 AS x) LEFT UNION ALL CORRESPONDING (SELECT 2 AS x)
+            """,
+            id="select_subquery_set_operation",
         ),
     ),
 )
