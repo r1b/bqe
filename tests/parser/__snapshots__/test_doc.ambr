@@ -1049,16 +1049,22 @@
                   ident	quarter
     pipe_pivot
       pivot_clause
-        function_call_expr
-          function_name
-            ident	SUM
-          function_args
-            pos_arg
-              ident	sales
-        ident	quarter
+        pivot_item_list
+          pivot_item
+            function_call_expr
+              function_name
+                ident	SUM
+              function_args
+                pos_arg
+                  ident	sales
+        path_expression
+          ident	quarter
         pivot_value_list
-          string_literal	'Q1'
-          string_literal	'Q2'
+          pivot_value_list
+            pivot_value_item
+              string_literal	'Q1'
+          pivot_value_item
+            string_literal	'Q2'
   
   '''
 # ---

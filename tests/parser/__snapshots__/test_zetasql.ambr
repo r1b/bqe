@@ -1320,3 +1320,156 @@
   
   '''
 # ---
+# name: test_pipe_pivot[zeta_pipe_pivot_aliased_exprs_kitchen_sink]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_pivot
+      pivot_clause
+        pivot_item_list
+          pivot_item_list
+            pivot_item_list
+              pivot_item
+                function_call_expr
+                  function_name
+                    ident	SUM
+                  function_args
+                    pos_arg
+                      ident	a
+                as_alias
+                  ident	sum_a
+            pivot_item
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	aa
+              as_alias
+                ident	sum_aa
+          pivot_item
+            add_expr
+              integer_literal	2
+              function_call_expr
+                function_name
+                  ident	COUNT
+                function_args
+                  pos_arg
+                    add_expr
+                      ident	b
+                      integer_literal	3
+        path_expression
+          ident	t
+          ident	x
+        pivot_value_list
+          pivot_value_list
+            pivot_value_list
+              pivot_value_item
+                ident	z
+            pivot_value_item
+              add_expr
+                ident	x
+                ident	y
+              as_alias
+                ident	xpy
+          pivot_value_item
+            integer_literal	1
+            as_alias
+              ident	one
+      as_alias
+        ident	p
+  
+  '''
+# ---
+# name: test_pipe_pivot[zeta_pipe_pivot_multi_implicit_alias]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_pivot
+      pivot_clause
+        pivot_item_list
+          pivot_item_list
+            pivot_item
+              function_call_expr
+                function_name
+                  ident	SUM
+                function_args
+                  pos_arg
+                    ident	a
+          pivot_item
+            function_call_expr
+              function_name
+                ident	SUM
+              function_args
+                pos_arg
+                  ident	b
+        path_expression
+          ident	b
+        pivot_value_list
+          pivot_value_item
+            integer_literal	0
+      as_alias
+        ident	pivot_table
+  
+  '''
+# ---
+# name: test_pipe_pivot[zeta_pipe_pivot_nonreserved_kw]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_pivot
+      pivot_clause
+        pivot_item_list
+          pivot_item
+            ident	a
+        path_expression
+          ident	b
+        pivot_value_list
+          pivot_value_item
+            ident	c
+      as_alias
+        ident	PIVOT
+  
+  '''
+# ---
+# name: test_pipe_pivot[zeta_pipe_pivot_single]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_pivot
+      pivot_clause
+        pivot_item_list
+          pivot_item
+            function_call_expr
+              function_name
+                ident	SUM
+              function_args
+                pos_arg
+                  ident	a
+        path_expression
+          ident	b
+        pivot_value_list
+          pivot_value_list
+            pivot_value_item
+              integer_literal	0
+          pivot_value_item
+            integer_literal	1
+  
+  '''
+# ---

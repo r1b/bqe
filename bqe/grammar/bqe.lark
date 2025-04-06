@@ -912,9 +912,15 @@ tablesample_perc : ( integer_literal | parameter ) _PERCENT
 
 pipe_pivot : _PIVOT _LPAR pivot_clause _RPAR as_alias?
 
-pivot_clause : function_call_expr _FOR ident _IN _LPAR pivot_value_list _RPAR
+pivot_clause : pivot_item_list _FOR path_expression _IN _LPAR pivot_value_list _RPAR
 
-pivot_value_list : column_expr ( _COMMA column_expr )+
+pivot_item_list : pivot_item | pivot_item_list _COMMA pivot_item
+
+pivot_item : column_expr as_alias?
+
+pivot_value_list : pivot_value_item | pivot_value_list _COMMA pivot_value_item
+
+pivot_value_item : column_expr as_alias?
 
 # UNPIVOT
 

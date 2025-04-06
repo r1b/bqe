@@ -443,3 +443,41 @@ def test_pipe_named_window(sql, assert_parse_tree):
 )
 def test_pipe_order_by(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            FROM t
+            |> PIVOT(SUM(a) FOR b IN (0, 1))
+            """,
+            id="zeta_pipe_pivot_single",
+        ),
+        pytest.param(
+            """
+            FROM t
+            |> PIVOT(SUM(a), SUM(b) FOR b IN (0)) pivot_table
+            """,
+            id="zeta_pipe_pivot_multi_implicit_alias",
+        ),
+        pytest.param(
+            """
+            FROM t
+            |> PIVOT(SUM(a) AS sum_a, SUM(aa) sum_aa, 2+COUNT(b+3)
+                     FOR t.x IN (z, x+y xpy, 1 AS one)) AS p
+            """,
+            id="zeta_pipe_pivot_aliased_exprs_kitchen_sink",
+        ),
+        pytest.param(
+            """
+            FROM t
+            |> PIVOT(a FOR b IN (c)) AS PIVOT
+            """,
+            id="zeta_pipe_pivot_nonreserved_kw",
+        ),
+    ),
+)
+def test_pipe_pivot(sql, assert_parse_tree):
+    assert_parse_tree(sql)
