@@ -150,6 +150,11 @@ _WHERE : "WHERE"i
 _WINDOW : "WINDOW"i
 _WITH : "WITH"i
 
+# Disambiguation keywords produced by postlex
+FULL_IN_SET_OPERATION : "FULL"
+INNER_IN_SET_OPERATION : "INNER"
+LEFT_IN_SET_OPERATION : "LEFT"
+
 ################################################################################
 # Identifiers
 ################################################################################
@@ -631,15 +636,20 @@ window_frame_unbounded_following : _UNBOUNDED _FOLLOWING
 
 ?query : query_expr ( _SEMI query_expr )* _SEMI?
 
-query_expr : select
-    | subquery
-    | aliased_subquery
+query_expr : query_primary_or_set_operation
     | pipe_from
     | query_expr pipe_expr
 
-subquery : _LPAR query_expr _RPAR
+?query_primary_or_set_operation : query_primary
+    | query_set_operation
 
-aliased_subquery : subquery as_alias_as_required
+?query_primary : select
+    | subquery as_alias_as_required?
+
+query_set_operation : query_primary set_operation_metadata query_primary
+    | query_set_operation set_operation_metadata query_primary
+
+subquery : _LPAR query_expr _RPAR
 
 pipe_from : _FROM from_clause
 
@@ -678,13 +688,19 @@ as_alias : [ _AS ] ident
 ?select_from : _FROM from_clause
 
 from_clause : from_item
-    | from_clause _COMMA from_item
-    | from_clause join_criteria? _JOIN from_item on_or_using_clause?
+    | from_clause_comma_cross_join
+    | from_clause_join
+
+from_clause_comma_cross_join : from_clause _COMMA from_item
+
+from_clause_join : from_clause join_criteria? _JOIN from_item on_or_using_clause?
 
 ?from_item : path_expression as_alias? time_travel? -> from_item_table
-    | subquery as_alias? -> from_item_subquery
+    | from_item_subquery
     | from_item_unnest
-    | _LPAR join _RPAR
+    | _LPAR join _RPAR -> from_item_subquery_join
+
+from_item_subquery : subquery as_alias?
 
 join : join_input join_criteria? _JOIN from_item on_or_using_clause?
 
@@ -840,11 +856,11 @@ pipe_order_by : _ORDER _BY order_by_items
 
 # Set operations
 
-pipe_set_operation : set_operation | set_operation_with_criteria
+pipe_set_operation : set_operation
 
-set_operation : set_operation_kind set_operation_mode set_operation_modifier? set_operation_list
+set_operation : set_operation_metadata set_operation_list
 
-set_operation_with_criteria : set_operation_criteria set_operation_kind set_operation_mode set_operation_modifier set_operation_list
+set_operation_metadata : set_operation_criteria? set_operation_kind set_operation_mode set_operation_modifier?
 
 set_operation_kind : UNION | INTERSECT | EXCEPT
 
@@ -864,13 +880,16 @@ set_operation_modifier_strict_corresponding : _STRICT _CORRESPONDING ( _BY set_o
 
 set_operation_columns : _LPAR ident ( _COMMA ident )* _RPAR
 
-set_operation_criteria : INNER | ( FULL | LEFT ) OUTER?
+set_operation_criteria : INNER_IN_SET_OPERATION
+    | FULL_IN_SET_OPERATION OUTER?
+    | LEFT_IN_SET_OPERATION OUTER?
+    | OUTER
 
 # JOIN
 
 pipe_join : join_criteria? _JOIN from_item as_alias? on_or_using_clause?
 
-join_criteria : CROSS | INNER | ( FULL | LEFT | RIGHT ) OUTER?
+join_criteria : CROSS | INNER | FULL OUTER? | LEFT OUTER? | RIGHT OUTER?
 
 on_or_using_clause : on_clause | using_clause
 

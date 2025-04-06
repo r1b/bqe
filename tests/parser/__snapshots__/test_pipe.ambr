@@ -1525,8 +1525,9 @@
             ident	table1
     pipe_set_operation
       set_operation
-        set_operation_kind	UNION
-        set_operation_mode	ALL
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
         set_operation_list
           subquery
             query_expr
@@ -1547,9 +1548,10 @@
             ident	table1
     pipe_set_operation
       set_operation
-        set_operation_kind	EXCEPT
-        set_operation_mode	ALL
-        set_operation_modifier_by_name
+        set_operation_metadata
+          set_operation_kind	EXCEPT
+          set_operation_mode	ALL
+          set_operation_modifier_by_name
         set_operation_list
           subquery
             query_expr
@@ -1572,12 +1574,13 @@
             ident	table1
     pipe_set_operation
       set_operation
-        set_operation_kind	EXCEPT
-        set_operation_mode	ALL
-        set_operation_modifier_by_name
-          set_operation_columns
-            ident	col1
-            ident	col2
+        set_operation_metadata
+          set_operation_kind	EXCEPT
+          set_operation_mode	ALL
+          set_operation_modifier_by_name
+            set_operation_columns
+              ident	col1
+              ident	col2
         set_operation_list
           subquery
             query_expr
@@ -1600,11 +1603,12 @@
             ident	table1
     pipe_set_operation
       set_operation
-        set_operation_kind	EXCEPT
-        set_operation_mode	ALL
-        set_operation_modifier_by_name
-          set_operation_columns
-            ident	col1
+        set_operation_metadata
+          set_operation_kind	EXCEPT
+          set_operation_mode	ALL
+          set_operation_modifier_by_name
+            set_operation_columns
+              ident	col1
         set_operation_list
           subquery
             query_expr
@@ -1627,9 +1631,10 @@
             ident	table1
     pipe_set_operation
       set_operation
-        set_operation_kind	UNION
-        set_operation_mode	ALL
-        set_operation_modifier_corresponding
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+          set_operation_modifier_corresponding
         set_operation_list
           subquery
             query_expr
@@ -1652,8 +1657,9 @@
             ident	table1
     pipe_set_operation
       set_operation
-        set_operation_kind	INTERSECT
-        set_operation_mode	DISTINCT
+        set_operation_metadata
+          set_operation_kind	INTERSECT
+          set_operation_mode	DISTINCT
         set_operation_list
           subquery
             query_expr
@@ -1680,9 +1686,10 @@
             ident	table1
     pipe_set_operation
       set_operation
-        set_operation_kind	UNION
-        set_operation_mode	ALL
-        set_operation_modifier_strict_corresponding
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+          set_operation_modifier_strict_corresponding
         set_operation_list
           subquery
             query_expr
@@ -1705,11 +1712,12 @@
             ident	table1
     pipe_set_operation
       set_operation
-        set_operation_kind	EXCEPT
-        set_operation_mode	ALL
-        set_operation_modifier_strict_corresponding
-          set_operation_columns
-            ident	col1
+        set_operation_metadata
+          set_operation_kind	EXCEPT
+          set_operation_mode	ALL
+          set_operation_modifier_strict_corresponding
+            set_operation_columns
+              ident	col1
         set_operation_list
           subquery
             query_expr
@@ -1731,11 +1739,12 @@
           path_expression
             ident	table1
     pipe_set_operation
-      set_operation_with_criteria
-        set_operation_criteria	FULL
-        set_operation_kind	UNION
-        set_operation_mode	ALL
-        set_operation_modifier_by_name
+      set_operation
+        set_operation_metadata
+          set_operation_criteria	FULL
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+          set_operation_modifier_by_name
         set_operation_list
           subquery
             query_expr
@@ -1757,11 +1766,12 @@
           path_expression
             ident	table1
     pipe_set_operation
-      set_operation_with_criteria
-        set_operation_criteria	INNER
-        set_operation_kind	UNION
-        set_operation_mode	ALL
-        set_operation_modifier_by_name
+      set_operation
+        set_operation_metadata
+          set_operation_criteria	INNER
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+          set_operation_modifier_by_name
         set_operation_list
           subquery
             query_expr
@@ -1783,11 +1793,12 @@
           path_expression
             ident	table1
     pipe_set_operation
-      set_operation_with_criteria
-        set_operation_criteria	LEFT
-        set_operation_kind	UNION
-        set_operation_mode	ALL
-        set_operation_modifier_by_name
+      set_operation
+        set_operation_metadata
+          set_operation_criteria	LEFT
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+          set_operation_modifier_by_name
         set_operation_list
           subquery
             query_expr
@@ -1809,13 +1820,14 @@
           path_expression
             ident	table1
     pipe_set_operation
-      set_operation_with_criteria
-        set_operation_criteria
-          LEFT
-          OUTER
-        set_operation_kind	UNION
-        set_operation_mode	ALL
-        set_operation_modifier_by_name
+      set_operation
+        set_operation_metadata
+          set_operation_criteria
+            LEFT
+            OUTER
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+          set_operation_modifier_by_name
         set_operation_list
           subquery
             query_expr
