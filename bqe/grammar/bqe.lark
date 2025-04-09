@@ -91,6 +91,7 @@ _DISTINCT : "DISTINCT"i
 _DROP : "DROP"i
 _ELSE : "ELSE"i
 _END : "END"i
+_EXCEPT : "EXCEPT"i
 _EXISTS : "EXISTS"i
 _EXTEND : "EXTEND"i
 _FOLLOWING : "FOLLOWING"i
@@ -126,6 +127,7 @@ _PIVOT : "PIVOT"i
 _PRECEDING : "PRECEDING"i
 _RANGE : "RANGE"i
 _RENAME : "RENAME"i
+_REPLACE : "REPLACE"i
 _RESPECT : "RESPECT"i
 _ROLLUP : "ROLLUP"i
 _ROW : "ROW"i
@@ -631,18 +633,10 @@ window_frame_unbounded_following : _UNBOUNDED _FOLLOWING
 
 ?query : query_expr ( _SEMI query_expr )* _SEMI?
 
-query_expr : query_primary_or_set_operation
+query_expr : select
+    | subquery as_alias_as_required?
     | pipe_from
     | query_expr pipe_expr
-
-?query_primary_or_set_operation : query_primary
-    | query_set_operation
-
-?query_primary : select
-    | subquery as_alias_as_required?
-
-query_set_operation : query_primary set_operation_metadata query_primary
-    | query_set_operation set_operation_metadata query_primary
 
 subquery : _LPAR query_expr _RPAR
 
@@ -656,7 +650,9 @@ pipe_from : _FROM from_clause
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list
 
-select : _SELECT select_shape? select_list select_from?
+select : _SELECT select_mode? select_shape? select_list select_from?
+
+select_mode : ALL | DISTINCT
 
 select_shape : _AS ( STRUCT | VALUE )
 
@@ -665,9 +661,21 @@ select_list : select_item ( _COMMA select_item )* _COMMA?
 
 ?select_item : select_star | select_dot_star | select_expr
 
-select_star : _STAR
+select_star : _STAR select_except? select_replace?
 
-select_dot_star : prec_higher_than_and_expr _DOT _STAR
+select_except : _EXCEPT _LPAR select_except_list _RPAR
+
+select_except_list : select_except_item | select_except_list _COMMA select_except_item
+
+select_except_item : ident
+
+select_replace : _REPLACE _LPAR select_replace_list _RPAR
+
+select_replace_list : select_replace_item | select_replace_list _COMMA select_replace_item
+
+select_replace_item : column_expr _AS ident
+
+select_dot_star : prec_higher_than_and_expr _DOT _STAR select_except? select_replace?
 
 select_expr : column_expr as_alias?
 

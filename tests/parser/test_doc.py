@@ -36,24 +36,17 @@ import pytest
         ),
         pytest.param(
             """
-            (
-                SELECT 'apples' AS item, 2 AS sales
-                UNION ALL
-                SELECT 'carrots' AS item, 8 AS sales
-            )
+            SELECT 'apples' AS item, 2 AS sales
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
             |> EXTEND item IN ('carrots', 'oranges') AS is_orange;
             """,
             id="doc_extend",
         ),
         pytest.param(
             """
-            (
-                SELECT 'apples' AS item, 2 AS sales
-                UNION ALL
-                SELECT 'bananas' AS item, 5 AS sales
-                UNION ALL
-                SELECT 'carrots' AS item, 8 AS sales
-            )
+            SELECT 'apples' AS item, 2 AS sales
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
             |> EXTEND SUM(sales) OVER() AS total_sales;
             """,
             id="doc_extend_window",
@@ -68,11 +61,8 @@ import pytest
         ),
         pytest.param(
             """
-            (
-                SELECT 1 AS x, 11 AS y
-                UNION ALL
-                SELECT 2 AS x, 22 AS y
-            )
+            SELECT 1 AS x, 11 AS y
+            |> UNION ALL (SELECT 2 AS x, 22 AS y)
             |> SET x = x * x, y = 3;
             """,
             id="doc_set",
@@ -113,8 +103,7 @@ import pytest
             """
             (
                 SELECT "000123" AS id, "apples" AS item, 2 AS sales
-                UNION ALL
-                SELECT "000456" AS id, "bananas" AS item, 5 AS sales
+                |> UNION ALL (SELECT "000456" AS id, "bananas" AS item, 5 AS sales)
             ) AS sales_table
             |> AGGREGATE SUM(sales) AS total_sales GROUP BY id, item
             -- The sales_table alias is now out of scope. We must introduce a new one.
@@ -127,26 +116,18 @@ import pytest
         ),
         pytest.param(
             """
-            (
-                SELECT 'apples' AS item, 2 AS sales
-                UNION ALL
-                SELECT 'bananas' AS item, 5 AS sales
-                UNION ALL
-                SELECT 'carrots' AS item, 8 AS sales
-            )
+            SELECT 'apples' AS item, 2 AS sales
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
             |> WHERE sales >= 3;
             """,
             id="doc_where",
         ),
         pytest.param(
             """
-            (
-                SELECT 'apples' AS item, 2 AS sales
-                UNION ALL
-                SELECT 'bananas' AS item, 5 AS sales
-                UNION ALL
-                SELECT 'carrots' AS item, 8 AS sales
-            )
+            SELECT 'apples' AS item, 2 AS sales
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
             |> ORDER BY item
             |> LIMIT 1;
             """,
@@ -154,13 +135,9 @@ import pytest
         ),
         pytest.param(
             """
-            (
-                SELECT 'apples' AS item, 2 AS sales
-                UNION ALL
-                SELECT 'bananas' AS item, 5 AS sales
-                UNION ALL
-                SELECT 'carrots' AS item, 8 AS sales
-            )
+            SELECT 'apples' AS item, 2 AS sales
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
             |> ORDER BY item
             |> LIMIT 1 OFFSET 2;
             """,
@@ -168,26 +145,18 @@ import pytest
         ),
         pytest.param(
             """
-            (
-                SELECT 'apples' AS item, 2 AS sales
-                UNION ALL
-                SELECT 'bananas' AS item, 5 AS sales
-                UNION ALL
-                SELECT 'carrots' AS item, 8 AS sales
-            )
+            SELECT 'apples' AS item, 2 AS sales
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
             |> AGGREGATE COUNT(*) AS num_items, SUM(sales) AS total_sales;
             """,
             id="doc_agg",
         ),
         pytest.param(
             """
-            (
-                SELECT 'apples' AS item, 2 AS sales
-                UNION ALL
-                SELECT 'bananas' AS item, 5 AS sales
-                UNION ALL
-                SELECT 'carrots' AS item, 8 AS sales
-            )
+            SELECT 'apples' AS item, 2 AS sales
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
+            |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
             |> AGGREGATE COUNT(*) AS num_items, SUM(sales) AS total_sales
                GROUP BY item;
             """,
@@ -220,13 +189,9 @@ import pytest
         ),
         pytest.param(
             """
-            (
-                SELECT 1 AS x
-                UNION ALL
-                SELECT 3 AS x
-                UNION ALL
-                SELECT 2 AS x
-            )
+            SELECT 1 AS x
+            |> UNION ALL (SELECT 3 AS x)
+            |> UNION ALL (SELECT 2 AS x)
             |> ORDER BY x DESC;
             """,
             id="doc_order_by",
@@ -272,13 +237,9 @@ import pytest
         ),
         pytest.param(
             """
-            (
-                SELECT 1 AS one_digit, 10 AS two_digit
-                UNION ALL
-                SELECT 2, 20
-                UNION ALL
-                SELECT 3, 30
-            )
+            SELECT 1 AS one_digit, 10 AS two_digit
+            |> UNION ALL (SELECT 2, 20)
+            |> UNION ALL (SELECT 3, 30)
             |> INTERSECT DISTINCT BY NAME
                 (SELECT 10 AS two_digit, 1 AS one_digit);
             """,
@@ -298,11 +259,8 @@ import pytest
         ),
         pytest.param(
             """
-            (
-                SELECT 'apples' AS item, 2 AS sales
-                UNION ALL
-                SELECT 'bananas' AS item, 5 AS sales
-            )
+            SELECT 'apples' AS item, 2 AS sales
+            |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
             |> AS produce_sales
             |> LEFT JOIN
                  (
@@ -330,28 +288,19 @@ import pytest
         ),
         pytest.param(
             """
-            (
-              SELECT "kale" AS product, 51 AS sales, "Q1" AS quarter
-              UNION ALL
-              SELECT "kale" AS product, 4 AS sales, "Q1" AS quarter
-              UNION ALL
-              SELECT "kale" AS product, 45 AS sales, "Q2" AS quarter
-              UNION ALL
-              SELECT "apple" AS product, 8 AS sales, "Q1" AS quarter
-              UNION ALL
-              SELECT "apple" AS product, 10 AS sales, "Q2" AS quarter
-            )
+            SELECT "kale" AS product, 51 AS sales, "Q1" AS quarter
+            |> UNION ALL (SELECT "kale" AS product, 4 AS sales, "Q1" AS quarter)
+            |> UNION ALL (SELECT "kale" AS product, 45 AS sales, "Q2" AS quarter)
+            |> UNION ALL (SELECT "apple" AS product, 8 AS sales, "Q1" AS quarter)
+            |> UNION ALL (SELECT "apple" AS product, 10 AS sales, "Q2" AS quarter)
             |> PIVOT(SUM(sales) FOR quarter IN ('Q1', 'Q2'));
             """,
             id="doc_pivot",
         ),
         pytest.param(
             """
-            (
-              SELECT 'kale' as product, 55 AS Q1, 45 AS Q2
-              UNION ALL
-              SELECT 'apple', 8, 10
-            )
+            SELECT 'kale' as product, 55 AS Q1, 45 AS Q2
+            |> UNION ALL (SELECT 'apple', 8, 10)
             |> UNPIVOT(sales FOR quarter IN (Q1, Q2));
             """,
             id="doc_unpivot",

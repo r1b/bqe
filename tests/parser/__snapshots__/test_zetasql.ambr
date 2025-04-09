@@ -134,6 +134,53 @@
   
   '''
 # ---
+# name: test_pipe_agg[zeta_pipe_agg_except_replace]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_dot_star
+              ident	x
+              select_except
+                select_except_list
+                  select_except_list
+                    select_except_item
+                      ident	a
+                  select_except_item
+                    ident	b
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_dot_star
+              ident	y
+              select_replace
+                select_replace_list
+                  select_replace_item
+                    ident	abc
+                    ident	def
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_dot_star
+              ident	z
+              select_except
+                select_except_list
+                  select_except_item
+                    ident	a
+              select_replace
+                select_replace_list
+                  select_replace_item
+                    add_expr
+                      integer_literal	1
+                      integer_literal	2
+                    ident	ccc
+  
+  '''
+# ---
 # name: test_pipe_agg[zeta_pipe_agg_group_and_order_by]
   '''
   query_expr

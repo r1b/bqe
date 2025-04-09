@@ -29,6 +29,65 @@
   
   '''
 # ---
+# name: test_select_ok[select_distinct]
+  '''
+  query_expr
+    select
+      select_mode	DISTINCT
+      select_list
+        select_expr
+          ident	column1
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_dot_star_except]
+  '''
+  query_expr
+    select
+      select_list
+        select_dot_star
+          ident	struct_column
+          select_except
+            select_except_list
+              select_except_list
+                select_except_item
+                  ident	column1
+              select_except_item
+                ident	column2
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_dot_star_replace]
+  '''
+  query_expr
+    select
+      select_list
+        select_dot_star
+          ident	struct_column
+          select_replace
+            select_replace_list
+              select_replace_list
+                select_replace_item
+                  integer_literal	1
+                  ident	column1
+              select_replace_item
+                integer_literal	2
+                ident	column2
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+  
+  '''
+# ---
 # name: test_select_ok[select_from_alias_explicit]
   '''
   query_expr
@@ -176,6 +235,48 @@
   
   '''
 # ---
+# name: test_select_ok[select_star_except]
+  '''
+  query_expr
+    select
+      select_list
+        select_star
+          select_except
+            select_except_list
+              select_except_list
+                select_except_item
+                  ident	column1
+              select_except_item
+                ident	column2
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+  
+  '''
+# ---
+# name: test_select_ok[select_star_replace]
+  '''
+  query_expr
+    select
+      select_list
+        select_star
+          select_replace
+            select_replace_list
+              select_replace_list
+                select_replace_item
+                  integer_literal	1
+                  ident	column1
+              select_replace_item
+                integer_literal	2
+                ident	column2
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+  
+  '''
+# ---
 # name: test_select_ok[select_star_scoped]
   '''
   query_expr
@@ -237,40 +338,6 @@
                       ident	table2
           as_alias
             ident	alias2
-  
-  '''
-# ---
-# name: test_select_ok[select_subquery_set_operation]
-  '''
-  query_expr
-    query_set_operation
-      select
-        select_list
-          select_expr
-            ident	x
-        from_clause
-          from_item_subquery
-            subquery
-              query_expr
-                select
-                  select_list
-                    select_expr
-                      integer_literal	1
-                      as_alias
-                        ident	x
-      set_operation_metadata
-        set_operation_criteria	LEFT
-        set_operation_kind	UNION
-        set_operation_mode	ALL
-        set_operation_modifier_corresponding
-      subquery
-        query_expr
-          select
-            select_list
-              select_expr
-                integer_literal	2
-                as_alias
-                  ident	x
   
   '''
 # ---

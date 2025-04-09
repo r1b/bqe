@@ -34,9 +34,33 @@ import pytest
         ),
         pytest.param(
             """
-            SELECT x FROM (SELECT 1 AS x) LEFT UNION ALL CORRESPONDING (SELECT 2 AS x)
+            SELECT DISTINCT column1 FROM table1
             """,
-            id="select_subquery_set_operation",
+            id="select_distinct",
+        ),
+        pytest.param(
+            """
+            SELECT * EXCEPT(column1, column2) FROM table1
+            """,
+            id="select_star_except",
+        ),
+        pytest.param(
+            """
+            SELECT struct_column.* EXCEPT(column1, column2) FROM table1
+            """,
+            id="select_dot_star_except",
+        ),
+        pytest.param(
+            """
+            SELECT * REPLACE(1 AS column1, 2 AS column2) FROM table1
+            """,
+            id="select_star_replace",
+        ),
+        pytest.param(
+            """
+            SELECT struct_column.* REPLACE(1 AS column1, 2 AS column2) FROM table1
+            """,
+            id="select_dot_star_replace",
         ),
     ),
 )

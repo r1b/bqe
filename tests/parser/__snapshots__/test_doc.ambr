@@ -2,46 +2,52 @@
 # name: test_doc_ok[doc_agg]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          query_set_operation
-            select
-              select_list
-                select_expr
-                  string_literal	'apples'
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	2
-                  as_alias
-                    ident	sales
-            set_operation_metadata
-              set_operation_kind	UNION
-              set_operation_mode	ALL
-            select
-              select_list
-                select_expr
-                  string_literal	'bananas'
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	5
-                  as_alias
-                    ident	sales
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                string_literal	'carrots'
-                as_alias
-                  ident	item
-              select_expr
-                integer_literal	8
-                as_alias
-                  ident	sales
+    select
+      select_list
+        select_expr
+          string_literal	'apples'
+          as_alias
+            ident	item
+        select_expr
+          integer_literal	2
+          as_alias
+            ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -103,46 +109,52 @@
 # name: test_doc_ok[doc_agg_group_by]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          query_set_operation
-            select
-              select_list
-                select_expr
-                  string_literal	'apples'
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	2
-                  as_alias
-                    ident	sales
-            set_operation_metadata
-              set_operation_kind	UNION
-              set_operation_mode	ALL
-            select
-              select_list
-                select_expr
-                  string_literal	'bananas'
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	5
-                  as_alias
-                    ident	sales
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                string_literal	'carrots'
-                as_alias
-                  ident	item
-              select_expr
-                integer_literal	8
-                as_alias
-                  ident	sales
+    select
+      select_list
+        select_expr
+          string_literal	'apples'
+          as_alias
+            ident	item
+        select_expr
+          integer_literal	2
+          as_alias
+            ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -245,43 +257,45 @@
 # name: test_doc_ok[doc_as]
   '''
   query_expr
-    query_primary
-      subquery
-        query_expr
-          query_set_operation
-            select
-              select_list
-                select_expr
-                  string_literal	"000123"
-                  as_alias
-                    ident	id
-                select_expr
-                  string_literal	"apples"
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	2
-                  as_alias
-                    ident	sales
-            set_operation_metadata
-              set_operation_kind	UNION
-              set_operation_mode	ALL
-            select
-              select_list
-                select_expr
-                  string_literal	"000456"
-                  as_alias
-                    ident	id
-                select_expr
-                  string_literal	"bananas"
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	5
-                  as_alias
-                    ident	sales
-      as_alias_as_required
-        ident	sales_table
+    query_expr
+      select
+        select_list
+          select_expr
+            string_literal	"000123"
+            as_alias
+              ident	id
+          select_expr
+            string_literal	"apples"
+            as_alias
+              ident	item
+          select_expr
+            integer_literal	2
+            as_alias
+              ident	sales
+      pipe_set_operation
+        set_operation
+          set_operation_metadata
+            set_operation_kind	UNION
+            set_operation_mode	ALL
+          set_operation_list
+            subquery
+              query_expr
+                select
+                  select_list
+                    select_expr
+                      string_literal	"000456"
+                      as_alias
+                        ident	id
+                    select_expr
+                      string_literal	"bananas"
+                      as_alias
+                        ident	item
+                    select_expr
+                      integer_literal	5
+                      as_alias
+                        ident	sales
+    as_alias_as_required
+      ident	sales_table
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -513,32 +527,34 @@
 # name: test_doc_ok[doc_extend]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          select
-            select_list
-              select_expr
-                string_literal	'apples'
-                as_alias
-                  ident	item
-              select_expr
-                integer_literal	2
-                as_alias
-                  ident	sales
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                string_literal	'carrots'
-                as_alias
-                  ident	item
-              select_expr
-                integer_literal	8
-                as_alias
-                  ident	sales
+    select
+      select_list
+        select_expr
+          string_literal	'apples'
+          as_alias
+            ident	item
+        select_expr
+          integer_literal	2
+          as_alias
+            ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -588,46 +604,52 @@
 # name: test_doc_ok[doc_extend_window]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          query_set_operation
-            select
-              select_list
-                select_expr
-                  string_literal	'apples'
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	2
-                  as_alias
-                    ident	sales
-            set_operation_metadata
-              set_operation_kind	UNION
-              set_operation_mode	ALL
-            select
-              select_list
-                select_expr
-                  string_literal	'bananas'
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	5
-                  as_alias
-                    ident	sales
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                string_literal	'carrots'
-                as_alias
-                  ident	item
-              select_expr
-                integer_literal	8
-                as_alias
-                  ident	sales
+    select
+      select_list
+        select_expr
+          string_literal	'apples'
+          as_alias
+            ident	item
+        select_expr
+          integer_literal	2
+          as_alias
+            ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -684,38 +706,44 @@
 # name: test_doc_ok[doc_intersect_distinct]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          query_set_operation
-            select
-              select_list
-                select_expr
-                  integer_literal	1
-                  as_alias
-                    ident	one_digit
-                select_expr
-                  integer_literal	10
-                  as_alias
-                    ident	two_digit
-            set_operation_metadata
-              set_operation_kind	UNION
-              set_operation_mode	ALL
-            select
-              select_list
-                select_expr
-                  integer_literal	2
-                select_expr
-                  integer_literal	20
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                integer_literal	3
-              select_expr
-                integer_literal	30
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	one_digit
+        select_expr
+          integer_literal	10
+          as_alias
+            ident	two_digit
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+                  select_expr
+                    integer_literal	20
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	3
+                  select_expr
+                    integer_literal	30
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -741,32 +769,34 @@
 # name: test_doc_ok[doc_join]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          select
-            select_list
-              select_expr
-                string_literal	'apples'
-                as_alias
-                  ident	item
-              select_expr
-                integer_literal	2
-                as_alias
-                  ident	sales
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                string_literal	'bananas'
-                as_alias
-                  ident	item
-              select_expr
-                integer_literal	5
-                as_alias
-                  ident	sales
+    select
+      select_list
+        select_expr
+          string_literal	'apples'
+          as_alias
+            ident	item
+        select_expr
+          integer_literal	2
+          as_alias
+            ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
     pipe_as
       ident	produce_sales
     pipe_join
@@ -811,46 +841,52 @@
 # name: test_doc_ok[doc_limit]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          query_set_operation
-            select
-              select_list
-                select_expr
-                  string_literal	'apples'
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	2
-                  as_alias
-                    ident	sales
-            set_operation_metadata
-              set_operation_kind	UNION
-              set_operation_mode	ALL
-            select
-              select_list
-                select_expr
-                  string_literal	'bananas'
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	5
-                  as_alias
-                    ident	sales
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                string_literal	'carrots'
-                as_alias
-                  ident	item
-              select_expr
-                integer_literal	8
-                as_alias
-                  ident	sales
+    select
+      select_list
+        select_expr
+          string_literal	'apples'
+          as_alias
+            ident	item
+        select_expr
+          integer_literal	2
+          as_alias
+            ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
     pipe_order_by
       order_by_items
         order_by_item
@@ -864,46 +900,52 @@
 # name: test_doc_ok[doc_limit_offset]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          query_set_operation
-            select
-              select_list
-                select_expr
-                  string_literal	'apples'
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	2
-                  as_alias
-                    ident	sales
-            set_operation_metadata
-              set_operation_kind	UNION
-              set_operation_mode	ALL
-            select
-              select_list
-                select_expr
-                  string_literal	'bananas'
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	5
-                  as_alias
-                    ident	sales
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                string_literal	'carrots'
-                as_alias
-                  ident	item
-              select_expr
-                integer_literal	8
-                as_alias
-                  ident	sales
+    select
+      select_list
+        select_expr
+          string_literal	'apples'
+          as_alias
+            ident	item
+        select_expr
+          integer_literal	2
+          as_alias
+            ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
     pipe_order_by
       order_by_items
         order_by_item
@@ -919,34 +961,40 @@
 # name: test_doc_ok[doc_order_by]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          query_set_operation
-            select
-              select_list
-                select_expr
-                  integer_literal	1
-                  as_alias
-                    ident	x
-            set_operation_metadata
-              set_operation_kind	UNION
-              set_operation_mode	ALL
-            select
-              select_list
-                select_expr
-                  integer_literal	3
-                  as_alias
-                    ident	x
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                integer_literal	2
-                as_alias
-                  ident	x
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	3
+                    as_alias
+                      ident	x
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+                    as_alias
+                      ident	x
     pipe_order_by
       order_by_items
         order_by_item
@@ -958,46 +1006,50 @@
 # name: test_doc_ok[doc_pivot]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          query_set_operation
-            query_set_operation
-              query_set_operation
-                select
-                  select_list
-                    select_expr
-                      string_literal	"kale"
-                      as_alias
-                        ident	product
-                    select_expr
-                      integer_literal	51
-                      as_alias
-                        ident	sales
-                    select_expr
-                      string_literal	"Q1"
-                      as_alias
-                        ident	quarter
-                set_operation_metadata
-                  set_operation_kind	UNION
-                  set_operation_mode	ALL
-                select
-                  select_list
-                    select_expr
-                      string_literal	"kale"
-                      as_alias
-                        ident	product
-                    select_expr
-                      integer_literal	4
-                      as_alias
-                        ident	sales
-                    select_expr
-                      string_literal	"Q1"
-                      as_alias
-                        ident	quarter
-              set_operation_metadata
-                set_operation_kind	UNION
-                set_operation_mode	ALL
+    select
+      select_list
+        select_expr
+          string_literal	"kale"
+          as_alias
+            ident	product
+        select_expr
+          integer_literal	51
+          as_alias
+            ident	sales
+        select_expr
+          string_literal	"Q1"
+          as_alias
+            ident	quarter
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	"kale"
+                    as_alias
+                      ident	product
+                  select_expr
+                    integer_literal	4
+                    as_alias
+                      ident	sales
+                  select_expr
+                    string_literal	"Q1"
+                    as_alias
+                      ident	quarter
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
               select
                 select_list
                   select_expr
@@ -1012,40 +1064,50 @@
                     string_literal	"Q2"
                     as_alias
                       ident	quarter
-            set_operation_metadata
-              set_operation_kind	UNION
-              set_operation_mode	ALL
-            select
-              select_list
-                select_expr
-                  string_literal	"apple"
-                  as_alias
-                    ident	product
-                select_expr
-                  integer_literal	8
-                  as_alias
-                    ident	sales
-                select_expr
-                  string_literal	"Q1"
-                  as_alias
-                    ident	quarter
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                string_literal	"apple"
-                as_alias
-                  ident	product
-              select_expr
-                integer_literal	10
-                as_alias
-                  ident	sales
-              select_expr
-                string_literal	"Q2"
-                as_alias
-                  ident	quarter
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	"apple"
+                    as_alias
+                      ident	product
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
+                  select_expr
+                    string_literal	"Q1"
+                    as_alias
+                      ident	quarter
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	"apple"
+                    as_alias
+                      ident	product
+                  select_expr
+                    integer_literal	10
+                    as_alias
+                      ident	sales
+                  select_expr
+                    string_literal	"Q2"
+                    as_alias
+                      ident	quarter
     pipe_pivot
       pivot_clause
         pivot_item_list
@@ -1187,32 +1249,34 @@
 # name: test_doc_ok[doc_set]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          select
-            select_list
-              select_expr
-                integer_literal	1
-                as_alias
-                  ident	x
-              select_expr
-                integer_literal	11
-                as_alias
-                  ident	y
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                integer_literal	2
-                as_alias
-                  ident	x
-              select_expr
-                integer_literal	22
-                as_alias
-                  ident	y
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+        select_expr
+          integer_literal	11
+          as_alias
+            ident	y
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+                    as_alias
+                      ident	x
+                  select_expr
+                    integer_literal	22
+                    as_alias
+                      ident	y
     pipe_set
       set_list
         set_item
@@ -1471,34 +1535,36 @@
 # name: test_doc_ok[doc_unpivot]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          select
-            select_list
-              select_expr
-                string_literal	'kale'
-                as_alias
-                  ident	product
-              select_expr
-                integer_literal	55
-                as_alias
-                  ident	Q1
-              select_expr
-                integer_literal	45
-                as_alias
-                  ident	Q2
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                string_literal	'apple'
-              select_expr
-                integer_literal	8
-              select_expr
-                integer_literal	10
+    select
+      select_list
+        select_expr
+          string_literal	'kale'
+          as_alias
+            ident	product
+        select_expr
+          integer_literal	55
+          as_alias
+            ident	Q1
+        select_expr
+          integer_literal	45
+          as_alias
+            ident	Q2
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'apple'
+                  select_expr
+                    integer_literal	8
+                  select_expr
+                    integer_literal	10
     pipe_unpivot
       unpivot_clause
         unpivot_values_column
@@ -1514,46 +1580,52 @@
 # name: test_doc_ok[doc_where]
   '''
   query_expr
-    subquery
-      query_expr
-        query_set_operation
-          query_set_operation
-            select
-              select_list
-                select_expr
-                  string_literal	'apples'
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	2
-                  as_alias
-                    ident	sales
-            set_operation_metadata
-              set_operation_kind	UNION
-              set_operation_mode	ALL
-            select
-              select_list
-                select_expr
-                  string_literal	'bananas'
-                  as_alias
-                    ident	item
-                select_expr
-                  integer_literal	5
-                  as_alias
-                    ident	sales
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          select
-            select_list
-              select_expr
-                string_literal	'carrots'
-                as_alias
-                  ident	item
-              select_expr
-                integer_literal	8
-                as_alias
-                  ident	sales
+    select
+      select_list
+        select_expr
+          string_literal	'apples'
+          as_alias
+            ident	item
+        select_expr
+          integer_literal	2
+          as_alias
+            ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'bananas'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	5
+                    as_alias
+                      ident	sales
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    string_literal	'carrots'
+                    as_alias
+                      ident	item
+                  select_expr
+                    integer_literal	8
+                    as_alias
+                      ident	sales
     pipe_where
       gte_expr
         ident	sales
