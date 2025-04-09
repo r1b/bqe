@@ -892,7 +892,7 @@
         order_by_item
           ident	item
     pipe_limit
-      limit_value
+      limit_expr
         integer_literal	1
   
   '''
@@ -951,9 +951,9 @@
         order_by_item
           ident	item
     pipe_limit
-      limit_value
+      limit_expr
         integer_literal	1
-      offset_value
+      offset_expr
         integer_literal	2
   
   '''

@@ -452,3 +452,131 @@ def test_pipe_order_by(sql, assert_parse_tree):
 )
 def test_pipe_pivot(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            select 1,2,3
+            |> where true
+            """,
+            id="zeta_pipe_query_simple",
+        ),
+        pytest.param(
+            """
+            select 5
+            from (
+              select 1
+              |> where true
+            )
+            """,
+            id="zeta_pipe_query_from_subquery",
+        ),
+        pytest.param(
+            """
+            select (select 1 |> where true)
+            """,
+            id="zeta_pipe_query_select_subquery",
+        ),
+        pytest.param(
+            """
+            WITH q1 AS (select 1 x |> where true)
+            select * from q1
+            |> where false
+            """,
+            id="zeta_pipe_query_cte",
+            marks=pytest.mark.xfail,
+        ),
+        pytest.param(
+            """
+            (
+              WITH q1 AS (select 1 x |> where 1)
+              select * from q1
+              |> where 2
+            )
+            |> where 3
+            """,
+            id="zeta_pipe_query_cte_binding",
+            marks=pytest.mark.xfail,
+        ),
+        pytest.param(
+            """
+            select 1
+            |> select 1,2,"abc"
+            |> select distinct x
+            |> select as struct x,y
+            |> select as value z
+            # |> select as c.TypeName z
+            |> select *, * except(abc), * replace(abc as def)
+            # |> select @{hint=1} *, * except(abc), * replace(abc as def)
+            |> select abc.def.*, abc.* except(x)
+            # |> select with anonymization 1,2
+            """,
+            id="zeta_pipe_query_select_forms",
+        ),
+        pytest.param(
+            """
+            select 1,
+            |> select 2,
+            |> select 3,4,
+            """,
+            id="zeta_pipe_query_select_trailing_commas",
+        ),
+        pytest.param(
+            """
+            select 1 x
+            |> extend 2 y, 3 AS z
+            |> extend y+z AS yz, pb.f1.f2[3] f3, sqrt(y)
+            |> where true
+            |> extend 1,2,3 as `three`, 4 four
+            """,
+            id="zeta_pipe_query_projection",
+        ),
+        pytest.param(
+            """
+            select 1 x,
+            |> extend 2,
+            |> extend 3, 4,
+            """,
+            id="zeta_pipe_query_extend_trailing_commas",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> EXTEND x.*,
+                      f(x).* except(a),
+                      (1+x).* replace(a as b),
+                      (sum(x) OVER ()).*
+            """,
+            id="zeta_pipe_query_extend_modifiers",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> EXTEND sum(x) OVER ().*
+            """,
+            id="zeta_pipe_query_extend_quirks",
+        ),
+        pytest.param(
+            """
+            select 1 x
+            |> extend count(*), sum(x) over ()
+            """,
+            id="zeta_pipe_query_extend_agg",
+        ),
+        pytest.param(
+            """
+            select 1 x
+            |> limit 10
+            |> limit 12 offset 22
+            |> limit @x offset @y
+            |> limit cast(@z as int64)
+            """,
+            id="zeta_pipe_query_limit",
+        ),
+    ),
+)
+def test_pipe_query(sql, assert_parse_tree):
+    assert_parse_tree(sql)

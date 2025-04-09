@@ -1386,3 +1386,367 @@
   
   '''
 # ---
+# name: test_pipe_query[zeta_pipe_query_extend_agg]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	count
+              function_args
+                star_arg
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	sum
+              function_args
+                pos_arg
+                  ident	x
+              window_expr
+                window_spec
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_extend_modifiers]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_dot_star
+            ident	x
+        pipe_selection_item
+          select_dot_star
+            function_call_expr
+              function_name
+                ident	f
+              function_args
+                pos_arg
+                  ident	x
+            select_except
+              select_except_list
+                select_except_item
+                  ident	a
+        pipe_selection_item
+          select_dot_star
+            parenthesized_expr
+              add_expr
+                integer_literal	1
+                ident	x
+            select_replace
+              select_replace_list
+                select_replace_item
+                  ident	a
+                  ident	b
+        pipe_selection_item
+          select_dot_star
+            parenthesized_expr
+              function_call_expr
+                function_name
+                  ident	sum
+                function_args
+                  pos_arg
+                    ident	x
+                window_expr
+                  window_spec
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_extend_quirks]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_dot_star
+            function_call_expr
+              function_name
+                ident	sum
+              function_args
+                pos_arg
+                  ident	x
+              window_expr
+                window_spec
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_extend_trailing_commas]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            integer_literal	2
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            integer_literal	3
+        pipe_selection_item
+          select_expr
+            integer_literal	4
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_from_subquery]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	5
+      from_clause
+        from_item_subquery
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+              pipe_where
+                boolean_literal	true
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_limit]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_limit
+      limit_expr
+        integer_literal	10
+    pipe_limit
+      limit_expr
+        integer_literal	12
+      offset_expr
+        integer_literal	22
+    pipe_limit
+      limit_expr
+        parameter	x
+      offset_expr
+        parameter	y
+    pipe_limit
+      limit_expr
+        cast_expr_kind_cast
+          cast_expr_target
+            parameter	z
+            ident	int64
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_projection]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            integer_literal	2
+            as_alias
+              ident	y
+        pipe_selection_item
+          select_expr
+            integer_literal	3
+            as_alias
+              ident	z
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            add_expr
+              ident	y
+              ident	z
+            as_alias
+              ident	yz
+        pipe_selection_item
+          select_expr
+            subscript_expr
+              path_expression
+                ident	pb
+                ident	f1
+                ident	f2
+              integer_literal	3
+            as_alias
+              ident	f3
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	sqrt
+              function_args
+                pos_arg
+                  ident	y
+    pipe_where
+      boolean_literal	true
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            integer_literal	1
+        pipe_selection_item
+          select_expr
+            integer_literal	2
+        pipe_selection_item
+          select_expr
+            integer_literal	3
+            as_alias
+              ident	`three`
+        pipe_selection_item
+          select_expr
+            integer_literal	4
+            as_alias
+              ident	four
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_select_forms]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_select
+      select_list
+        select_expr
+          integer_literal	1
+        select_expr
+          integer_literal	2
+        select_expr
+          string_literal	"abc"
+    pipe_select
+      select_list
+        select_expr
+          ident	distinct
+          as_alias
+            ident	x
+    pipe_select
+      select_shape	struct
+      select_list
+        select_expr
+          ident	x
+        select_expr
+          ident	y
+    pipe_select
+      select_shape	value
+      select_list
+        select_expr
+          ident	z
+    pipe_select
+      select_list
+        select_star
+        select_star
+          select_except
+            select_except_list
+              select_except_item
+                ident	abc
+        select_star
+          select_replace
+            select_replace_list
+              select_replace_item
+                ident	abc
+                ident	def
+    pipe_select
+      select_list
+        select_dot_star
+          path_expression
+            ident	abc
+            ident	def
+        select_dot_star
+          ident	abc
+          select_except
+            select_except_list
+              select_except_item
+                ident	x
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_select_subquery]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+              pipe_where
+                boolean_literal	true
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_select_trailing_commas]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_select
+      select_list
+        select_expr
+          integer_literal	2
+    pipe_select
+      select_list
+        select_expr
+          integer_literal	3
+        select_expr
+          integer_literal	4
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_simple]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+        select_expr
+          integer_literal	2
+        select_expr
+          integer_literal	3
+    pipe_where
+      boolean_literal	true
+  
+  '''
+# ---

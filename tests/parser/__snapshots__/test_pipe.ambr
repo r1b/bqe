@@ -767,7 +767,7 @@
           path_expression
             ident	table1
     pipe_limit
-      limit_value
+      limit_expr
         integer_literal	1
   
   '''
@@ -781,9 +781,9 @@
           path_expression
             ident	table1
     pipe_limit
-      limit_value
+      limit_expr
         integer_literal	1
-      offset_value
+      offset_expr
         integer_literal	2
   
   '''
@@ -797,7 +797,7 @@
           path_expression
             ident	table1
     pipe_limit
-      limit_value
+      limit_expr
         parameter	limit
   
   '''

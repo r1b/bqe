@@ -561,7 +561,7 @@ order_by_item_sort : ASC | DESC
 
 order_by_item_nulls : _NULLS ( FIRST | LAST )
 
-limit_modifier : _LIMIT ( integer_literal | parameter )
+limit_modifier : _LIMIT column_expr
 
 keyword_subquery_expr : _ARRAY _LPAR query_expr _RPAR -> array_subquery_expr
     | _EXISTS _LPAR query_expr _RPAR -> exists_subquery_expr
@@ -783,11 +783,11 @@ pipe_where : _WHERE column_expr
 
 # LIMIT
 
-pipe_limit : _LIMIT limit_value ( _OFFSET offset_value )?
+pipe_limit :  limit_expr offset_expr?
 
-limit_value : integer_literal | parameter
+limit_expr : _LIMIT column_expr
 
-offset_value : integer_literal | parameter
+offset_expr : _OFFSET column_expr
 
 # AGGREGATE
 
