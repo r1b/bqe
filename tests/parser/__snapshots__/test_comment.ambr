@@ -1,5 +1,12 @@
 # serializer version: 1
-# name: test_comment_ok[comment_c_expr]
+# name: test_comment_ok[comment_c_expr][sql]
+  '''
+  SELECT
+      1, /* one */
+      2
+  '''
+# ---
+# name: test_comment_ok[comment_c_expr][tree]
   '''
   query_expr
     select
@@ -11,7 +18,13 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_c_leading]
+# name: test_comment_ok[comment_c_leading][sql]
+  '''
+  /* TODO: SELECT 2 */
+  SELECT 1
+  '''
+# ---
+# name: test_comment_ok[comment_c_leading][tree]
   '''
   query_expr
     select
@@ -21,7 +34,13 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_c_trailing]
+# name: test_comment_ok[comment_c_trailing][sql]
+  '''
+  SELECT 1
+  /* one */
+  '''
+# ---
+# name: test_comment_ok[comment_c_trailing][tree]
   '''
   query_expr
     select
@@ -31,39 +50,14 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_sh_expr]
+# name: test_comment_ok[comment_sh_expr][sql]
   '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	1
-        select_expr
-          integer_literal	2
-  
+  SELECT
+      1, # one
+      2
   '''
 # ---
-# name: test_comment_ok[comment_sh_leading]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	1
-  
-  '''
-# ---
-# name: test_comment_ok[comment_sh_trailing]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	1
-  
-  '''
-# ---
-# name: test_comment_ok[comment_sql_expr]
+# name: test_comment_ok[comment_sh_expr][tree]
   '''
   query_expr
     select
@@ -75,7 +69,13 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_sql_leading]
+# name: test_comment_ok[comment_sh_leading][sql]
+  '''
+  # TODO: SELECT 2
+  SELECT 1
+  '''
+# ---
+# name: test_comment_ok[comment_sh_leading][tree]
   '''
   query_expr
     select
@@ -85,7 +85,64 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_sql_trailing]
+# name: test_comment_ok[comment_sh_trailing][sql]
+  '''
+  SELECT 1
+  # one
+  '''
+# ---
+# name: test_comment_ok[comment_sh_trailing][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+  
+  '''
+# ---
+# name: test_comment_ok[comment_sql_expr][sql]
+  '''
+  SELECT
+      1, -- one
+      2
+  '''
+# ---
+# name: test_comment_ok[comment_sql_expr][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+        select_expr
+          integer_literal	2
+  
+  '''
+# ---
+# name: test_comment_ok[comment_sql_leading][sql]
+  '''
+  -- myfile.sql
+  SELECT 1
+  '''
+# ---
+# name: test_comment_ok[comment_sql_leading][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+  
+  '''
+# ---
+# name: test_comment_ok[comment_sql_trailing][sql]
+  '''
+  SELECT 1
+  -- one
+  '''
+# ---
+# name: test_comment_ok[comment_sql_trailing][tree]
   '''
   query_expr
     select

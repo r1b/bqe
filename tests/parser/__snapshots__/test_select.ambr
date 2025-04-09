@@ -1,5 +1,8 @@
 # serializer version: 1
-# name: test_select_ok[select_as_struct]
+# name: test_select_ok[select_as_struct][sql]
+  'SELECT AS STRUCT column1 FROM table1'
+# ---
+# name: test_select_ok[select_as_struct][tree]
   '''
   query_expr
     select
@@ -14,7 +17,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_as_value]
+# name: test_select_ok[select_as_value][sql]
+  'SELECT AS VALUE column1 FROM table1'
+# ---
+# name: test_select_ok[select_as_value][tree]
   '''
   query_expr
     select
@@ -29,7 +35,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_distinct]
+# name: test_select_ok[select_distinct][sql]
+  'SELECT DISTINCT column1 FROM table1'
+# ---
+# name: test_select_ok[select_distinct][tree]
   '''
   query_expr
     select
@@ -44,7 +53,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_dot_star_except]
+# name: test_select_ok[select_dot_star_except][sql]
+  'SELECT struct_column.* EXCEPT(column1, column2) FROM table1'
+# ---
+# name: test_select_ok[select_dot_star_except][tree]
   '''
   query_expr
     select
@@ -65,7 +77,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_dot_star_replace]
+# name: test_select_ok[select_dot_star_replace][sql]
+  'SELECT struct_column.* REPLACE(1 AS column1, 2 AS column2) FROM table1'
+# ---
+# name: test_select_ok[select_dot_star_replace][tree]
   '''
   query_expr
     select
@@ -88,7 +103,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_from_alias_explicit]
+# name: test_select_ok[select_from_alias_explicit][sql]
+  'SELECT column1 FROM table1 AS alias1'
+# ---
+# name: test_select_ok[select_from_alias_explicit][tree]
   '''
   query_expr
     select
@@ -104,7 +122,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_from_alias_implicit]
+# name: test_select_ok[select_from_alias_implicit][sql]
+  'SELECT column1 FROM table1 alias1'
+# ---
+# name: test_select_ok[select_from_alias_implicit][tree]
   '''
   query_expr
     select
@@ -120,7 +141,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_from_time_travel]
+# name: test_select_ok[select_from_time_travel][sql]
+  "SELECT column1 FROM table1 FOR SYSTEM_TIME AS OF '1970-01-01'"
+# ---
+# name: test_select_ok[select_from_time_travel][tree]
   '''
   query_expr
     select
@@ -136,7 +160,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_list_alias_explicit]
+# name: test_select_ok[select_list_alias_explicit][sql]
+  'SELECT column1 AS alias1 FROM table1'
+# ---
+# name: test_select_ok[select_list_alias_explicit][tree]
   '''
   query_expr
     select
@@ -152,7 +179,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_list_alias_implicit]
+# name: test_select_ok[select_list_alias_implicit][sql]
+  'SELECT column1 alias1 FROM table1'
+# ---
+# name: test_select_ok[select_list_alias_implicit][tree]
   '''
   query_expr
     select
@@ -168,7 +198,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_list_multi]
+# name: test_select_ok[select_list_multi][sql]
+  'SELECT column1, column2 FROM table1'
+# ---
+# name: test_select_ok[select_list_multi][tree]
   '''
   query_expr
     select
@@ -184,7 +217,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_list_single]
+# name: test_select_ok[select_list_single][sql]
+  'SELECT column1 FROM table1'
+# ---
+# name: test_select_ok[select_list_single][tree]
   '''
   query_expr
     select
@@ -198,7 +234,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_list_trailing_comma]
+# name: test_select_ok[select_list_trailing_comma][sql]
+  'SELECT column1, FROM table2'
+# ---
+# name: test_select_ok[select_list_trailing_comma][tree]
   '''
   query_expr
     select
@@ -212,7 +251,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_literal]
+# name: test_select_ok[select_literal][sql]
+  'SELECT 1'
+# ---
+# name: test_select_ok[select_literal][tree]
   '''
   query_expr
     select
@@ -222,7 +264,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_star]
+# name: test_select_ok[select_star][sql]
+  'SELECT * FROM table1'
+# ---
+# name: test_select_ok[select_star][tree]
   '''
   query_expr
     select
@@ -235,7 +280,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_star_except]
+# name: test_select_ok[select_star_except][sql]
+  'SELECT * EXCEPT(column1, column2) FROM table1'
+# ---
+# name: test_select_ok[select_star_except][tree]
   '''
   query_expr
     select
@@ -255,7 +303,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_star_replace]
+# name: test_select_ok[select_star_replace][sql]
+  'SELECT * REPLACE(1 AS column1, 2 AS column2) FROM table1'
+# ---
+# name: test_select_ok[select_star_replace][tree]
   '''
   query_expr
     select
@@ -277,7 +328,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_star_scoped]
+# name: test_select_ok[select_star_scoped][sql]
+  'SELECT column1.* FROM table1'
+# ---
+# name: test_select_ok[select_star_scoped][tree]
   '''
   query_expr
     select
@@ -291,7 +345,10 @@
   
   '''
 # ---
-# name: test_select_ok[select_star_scoped_nested]
+# name: test_select_ok[select_star_scoped_nested][sql]
+  'SELECT column1.column2.* FROM table1'
+# ---
+# name: test_select_ok[select_star_scoped_nested][tree]
   '''
   query_expr
     select
@@ -307,7 +364,17 @@
   
   '''
 # ---
-# name: test_select_ok[select_subqueries]
+# name: test_select_ok[select_subqueries][sql]
+  '''
+  SELECT
+      *,
+      column1,
+      (SELECT 1) AS column2
+  FROM
+      (SELECT column7 FROM table2) AS alias2
+  '''
+# ---
+# name: test_select_ok[select_subqueries][tree]
   '''
   query_expr
     select
@@ -341,7 +408,10 @@
   
   '''
 # ---
-# name: test_subquery_ok[select_from_subquery]
+# name: test_subquery_ok[select_from_subquery][sql]
+  'SELECT column1 FROM (SELECT column1 FROM table1)'
+# ---
+# name: test_subquery_ok[select_from_subquery][tree]
   '''
   query_expr
     select
@@ -363,7 +433,10 @@
   
   '''
 # ---
-# name: test_subquery_ok[select_from_subquery_aliased]
+# name: test_subquery_ok[select_from_subquery_aliased][sql]
+  'SELECT column1 FROM (SELECT column1 FROM table1) AS table2'
+# ---
+# name: test_subquery_ok[select_from_subquery_aliased][tree]
   '''
   query_expr
     select
@@ -387,7 +460,10 @@
   
   '''
 # ---
-# name: test_subquery_ok[subquery]
+# name: test_subquery_ok[subquery][sql]
+  '(SELECT 1)'
+# ---
+# name: test_subquery_ok[subquery][tree]
   '''
   query_expr
     subquery
@@ -399,7 +475,10 @@
   
   '''
 # ---
-# name: test_subquery_ok[subquery_nested]
+# name: test_subquery_ok[subquery_nested][sql]
+  '(SELECT (SELECT (SELECT 1)))'
+# ---
+# name: test_subquery_ok[subquery_nested][tree]
   '''
   query_expr
     subquery
@@ -421,7 +500,10 @@
   
   '''
 # ---
-# name: test_unnest_ok[unnest]
+# name: test_unnest_ok[unnest][sql]
+  'SELECT column1 FROM UNNEST(array1)'
+# ---
+# name: test_unnest_ok[unnest][tree]
   '''
   query_expr
     select
@@ -435,7 +517,10 @@
   
   '''
 # ---
-# name: test_unnest_ok[unnest_alias]
+# name: test_unnest_ok[unnest_alias][sql]
+  'SELECT column1 FROM UNNEST(array1) AS alias1'
+# ---
+# name: test_unnest_ok[unnest_alias][tree]
   '''
   query_expr
     select
@@ -451,7 +536,10 @@
   
   '''
 # ---
-# name: test_unnest_ok[unnest_alias_with_offset_alias]
+# name: test_unnest_ok[unnest_alias_with_offset_alias][sql]
+  'SELECT column1 FROM UNNEST(array1) AS alias1 WITH OFFSET AS alias2'
+# ---
+# name: test_unnest_ok[unnest_alias_with_offset_alias][tree]
   '''
   query_expr
     select
@@ -470,7 +558,10 @@
   
   '''
 # ---
-# name: test_unnest_ok[unnest_with_offset]
+# name: test_unnest_ok[unnest_with_offset][sql]
+  'SELECT column1 FROM UNNEST(array1) WITH OFFSET'
+# ---
+# name: test_unnest_ok[unnest_with_offset][tree]
   '''
   query_expr
     select
@@ -485,7 +576,10 @@
   
   '''
 # ---
-# name: test_unnest_ok[unnest_with_offset_alias]
+# name: test_unnest_ok[unnest_with_offset_alias][sql]
+  'SELECT column1 FROM UNNEST(array1) WITH OFFSET AS alias1'
+# ---
+# name: test_unnest_ok[unnest_with_offset_alias][tree]
   '''
   query_expr
     select

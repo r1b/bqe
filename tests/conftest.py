@@ -1,3 +1,5 @@
+import inspect
+
 import pytest
 from lark.exceptions import UnexpectedInput
 
@@ -8,7 +10,8 @@ from bqe.parser import parse
 def assert_parse_tree(snapshot):
     def assert_parse_tree_impl(sql, lax=False):
         tree = parse(sql, lax=lax)
-        assert snapshot == tree.pretty()
+        assert snapshot(name="sql") == inspect.cleandoc(sql)
+        assert snapshot(name="tree") == tree.pretty()
 
     return assert_parse_tree_impl
 

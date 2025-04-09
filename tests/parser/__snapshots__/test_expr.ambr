@@ -1,5 +1,8 @@
 # serializer version: 1
-# name: test_aggregate_function_call_ok[agg_fcall_distinct]
+# name: test_aggregate_function_call_ok[agg_fcall_distinct][sql]
+  'SELECT FUNC(DISTINCT col1)'
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_distinct][tree]
   '''
   query_expr
     select
@@ -15,7 +18,10 @@
   
   '''
 # ---
-# name: test_aggregate_function_call_ok[agg_fcall_having_max]
+# name: test_aggregate_function_call_ok[agg_fcall_having_max][sql]
+  'SELECT FUNC(col1 HAVING MAX col2)'
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_having_max][tree]
   '''
   query_expr
     select
@@ -34,7 +40,10 @@
   
   '''
 # ---
-# name: test_aggregate_function_call_ok[agg_fcall_having_min]
+# name: test_aggregate_function_call_ok[agg_fcall_having_min][sql]
+  'SELECT FUNC(col1 HAVING MIN col2)'
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_having_min][tree]
   '''
   query_expr
     select
@@ -53,7 +62,10 @@
   
   '''
 # ---
-# name: test_aggregate_function_call_ok[agg_fcall_ignore_nulls]
+# name: test_aggregate_function_call_ok[agg_fcall_ignore_nulls][sql]
+  'SELECT FUNC(col1 IGNORE NULLS)'
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_ignore_nulls][tree]
   '''
   query_expr
     select
@@ -71,7 +83,10 @@
   
   '''
 # ---
-# name: test_aggregate_function_call_ok[agg_fcall_limit]
+# name: test_aggregate_function_call_ok[agg_fcall_limit][sql]
+  'SELECT FUNC(col1 LIMIT 1)'
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_limit][tree]
   '''
   query_expr
     select
@@ -89,7 +104,10 @@
   
   '''
 # ---
-# name: test_aggregate_function_call_ok[agg_fcall_order_by]
+# name: test_aggregate_function_call_ok[agg_fcall_order_by][sql]
+  'SELECT FUNC(col1 ORDER BY col2 DESC)'
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_order_by][tree]
   '''
   query_expr
     select
@@ -110,7 +128,10 @@
   
   '''
 # ---
-# name: test_aggregate_function_call_ok[agg_fcall_respect_nulls]
+# name: test_aggregate_function_call_ok[agg_fcall_respect_nulls][sql]
+  'SELECT FUNC(col1 RESPECT NULLS)'
+# ---
+# name: test_aggregate_function_call_ok[agg_fcall_respect_nulls][tree]
   '''
   query_expr
     select
@@ -128,7 +149,10 @@
   
   '''
 # ---
-# name: test_and_or_not_ok[expr_and_or_not]
+# name: test_and_or_not_ok[expr_and_or_not][sql]
+  'SELECT x OR y AND NOT z'
+# ---
+# name: test_and_or_not_ok[expr_and_or_not][tree]
   '''
   query_expr
     select
@@ -143,7 +167,10 @@
   
   '''
 # ---
-# name: test_and_or_not_ok[expr_and_or_not_parens]
+# name: test_and_or_not_ok[expr_and_or_not_parens][sql]
+  'SELECT (x OR y) AND NOT z'
+# ---
+# name: test_and_or_not_ok[expr_and_or_not_parens][tree]
   '''
   query_expr
     select
@@ -159,7 +186,10 @@
   
   '''
 # ---
-# name: test_between_ok[expr_between]
+# name: test_between_ok[expr_between][sql]
+  'SELECT x BETWEEN a AND b AND c'
+# ---
+# name: test_between_ok[expr_between][tree]
   '''
   query_expr
     select
@@ -174,7 +204,10 @@
   
   '''
 # ---
-# name: test_case_ok[case_match_multi]
+# name: test_case_ok[case_match_multi][sql]
+  'SELECT CASE col1 WHEN 1 THEN 1 WHEN 2 THEN 2 END'
+# ---
+# name: test_case_ok[case_match_multi][tree]
   '''
   query_expr
     select
@@ -191,7 +224,10 @@
   
   '''
 # ---
-# name: test_case_ok[case_match_multi_else]
+# name: test_case_ok[case_match_multi_else][sql]
+  'SELECT CASE col1 WHEN 1 THEN 1 WHEN 2 THEN 2 ELSE 3 END'
+# ---
+# name: test_case_ok[case_match_multi_else][tree]
   '''
   query_expr
     select
@@ -210,7 +246,10 @@
   
   '''
 # ---
-# name: test_case_ok[case_match_single]
+# name: test_case_ok[case_match_single][sql]
+  'SELECT CASE col1 WHEN 1 THEN 1 END'
+# ---
+# name: test_case_ok[case_match_single][tree]
   '''
   query_expr
     select
@@ -224,7 +263,10 @@
   
   '''
 # ---
-# name: test_case_ok[case_multi]
+# name: test_case_ok[case_multi][sql]
+  'SELECT CASE WHEN 1 THEN 1 WHEN 2 THEN 2 END'
+# ---
+# name: test_case_ok[case_multi][tree]
   '''
   query_expr
     select
@@ -240,7 +282,10 @@
   
   '''
 # ---
-# name: test_case_ok[case_multi_else]
+# name: test_case_ok[case_multi_else][sql]
+  'SELECT CASE WHEN 1 THEN 1 WHEN 2 THEN 2 ELSE 3 END'
+# ---
+# name: test_case_ok[case_multi_else][tree]
   '''
   query_expr
     select
@@ -258,7 +303,10 @@
   
   '''
 # ---
-# name: test_case_ok[case_single]
+# name: test_case_ok[case_single][sql]
+  'SELECT CASE WHEN 1 THEN 1 END'
+# ---
+# name: test_case_ok[case_single][tree]
   '''
   query_expr
     select
@@ -271,7 +319,10 @@
   
   '''
 # ---
-# name: test_cast_ok[cast]
+# name: test_cast_ok[cast][sql]
+  "SELECT CAST('1' AS INT64)"
+# ---
+# name: test_cast_ok[cast][tree]
   '''
   query_expr
     select
@@ -284,7 +335,10 @@
   
   '''
 # ---
-# name: test_cast_ok[cast_format]
+# name: test_cast_ok[cast_format][sql]
+  "SELECT CAST(b'\\x48\\x65\\x6c\\x6c\\x6f' AS STRING FORMAT 'ASCII')"
+# ---
+# name: test_cast_ok[cast_format][tree]
   '''
   query_expr
     select
@@ -299,7 +353,10 @@
   
   '''
 # ---
-# name: test_cast_ok[cast_safe]
+# name: test_cast_ok[cast_safe][sql]
+  "SELECT SAFE_CAST('1' AS INT64)"
+# ---
+# name: test_cast_ok[cast_safe][tree]
   '''
   query_expr
     select
@@ -312,7 +369,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_add]
+# name: test_column_expr_ok[expr_add][sql]
+  'SELECT x + y'
+# ---
+# name: test_column_expr_ok[expr_add][tree]
   '''
   query_expr
     select
@@ -324,7 +384,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_and]
+# name: test_column_expr_ok[expr_and][sql]
+  'SELECT x AND y'
+# ---
+# name: test_column_expr_ok[expr_and][tree]
   '''
   query_expr
     select
@@ -336,7 +399,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_between]
+# name: test_column_expr_ok[expr_between][sql]
+  'SELECT x BETWEEN y AND z'
+# ---
+# name: test_column_expr_ok[expr_between][tree]
   '''
   query_expr
     select
@@ -349,7 +415,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_bitwise_and]
+# name: test_column_expr_ok[expr_bitwise_and][sql]
+  'SELECT x & y'
+# ---
+# name: test_column_expr_ok[expr_bitwise_and][tree]
   '''
   query_expr
     select
@@ -361,7 +430,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_bitwise_not]
+# name: test_column_expr_ok[expr_bitwise_not][sql]
+  'SELECT ~x'
+# ---
+# name: test_column_expr_ok[expr_bitwise_not][tree]
   '''
   query_expr
     select
@@ -372,7 +444,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_bitwise_or]
+# name: test_column_expr_ok[expr_bitwise_or][sql]
+  'SELECT x | y'
+# ---
+# name: test_column_expr_ok[expr_bitwise_or][tree]
   '''
   query_expr
     select
@@ -384,7 +459,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_bitwise_shr]
+# name: test_column_expr_ok[expr_bitwise_shr][sql]
+  'SELECT x >> y'
+# ---
+# name: test_column_expr_ok[expr_bitwise_shr][tree]
   '''
   query_expr
     select
@@ -396,7 +474,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_bitwise_xor]
+# name: test_column_expr_ok[expr_bitwise_xor][sql]
+  'SELECT x ^ y'
+# ---
+# name: test_column_expr_ok[expr_bitwise_xor][tree]
   '''
   query_expr
     select
@@ -408,7 +489,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_div]
+# name: test_column_expr_ok[expr_div][sql]
+  'SELECT x / y'
+# ---
+# name: test_column_expr_ok[expr_div][tree]
   '''
   query_expr
     select
@@ -420,7 +504,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_eq]
+# name: test_column_expr_ok[expr_eq][sql]
+  'SELECT x = y'
+# ---
+# name: test_column_expr_ok[expr_eq][tree]
   '''
   query_expr
     select
@@ -432,7 +519,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_field_access]
+# name: test_column_expr_ok[expr_field_access][sql]
+  'SELECT x.y'
+# ---
+# name: test_column_expr_ok[expr_field_access][tree]
   '''
   query_expr
     select
@@ -444,7 +534,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_gt]
+# name: test_column_expr_ok[expr_gt][sql]
+  'SELECT x > y'
+# ---
+# name: test_column_expr_ok[expr_gt][tree]
   '''
   query_expr
     select
@@ -456,7 +549,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_gte]
+# name: test_column_expr_ok[expr_gte][sql]
+  'SELECT x >= y'
+# ---
+# name: test_column_expr_ok[expr_gte][tree]
   '''
   query_expr
     select
@@ -468,7 +564,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_in]
+# name: test_column_expr_ok[expr_in][sql]
+  'SELECT x IN (1,2,3)'
+# ---
+# name: test_column_expr_ok[expr_in][tree]
   '''
   query_expr
     select
@@ -483,7 +582,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_is]
+# name: test_column_expr_ok[expr_is][sql]
+  'SELECT x IS TRUE'
+# ---
+# name: test_column_expr_ok[expr_is][tree]
   '''
   query_expr
     select
@@ -495,7 +597,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_is_distinct_from]
+# name: test_column_expr_ok[expr_is_distinct_from][sql]
+  'SELECT x IS DISTINCT FROM y'
+# ---
+# name: test_column_expr_ok[expr_is_distinct_from][tree]
   '''
   query_expr
     select
@@ -507,7 +612,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_is_not]
+# name: test_column_expr_ok[expr_is_not][sql]
+  'SELECT x IS NOT NULL'
+# ---
+# name: test_column_expr_ok[expr_is_not][tree]
   '''
   query_expr
     select
@@ -519,7 +627,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_like]
+# name: test_column_expr_ok[expr_like][sql]
+  "SELECT x LIKE 'a%'"
+# ---
+# name: test_column_expr_ok[expr_like][tree]
   '''
   query_expr
     select
@@ -531,7 +642,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_lt]
+# name: test_column_expr_ok[expr_lt][sql]
+  'SELECT x < y'
+# ---
+# name: test_column_expr_ok[expr_lt][tree]
   '''
   query_expr
     select
@@ -543,7 +657,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_lte]
+# name: test_column_expr_ok[expr_lte][sql]
+  'SELECT x <= y'
+# ---
+# name: test_column_expr_ok[expr_lte][tree]
   '''
   query_expr
     select
@@ -555,7 +672,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_mul]
+# name: test_column_expr_ok[expr_mul][sql]
+  'SELECT x * y'
+# ---
+# name: test_column_expr_ok[expr_mul][tree]
   '''
   query_expr
     select
@@ -567,7 +687,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_ne]
+# name: test_column_expr_ok[expr_ne][sql]
+  'SELECT x != y'
+# ---
+# name: test_column_expr_ok[expr_ne][tree]
   '''
   query_expr
     select
@@ -579,7 +702,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_ne_var]
+# name: test_column_expr_ok[expr_ne_var][sql]
+  'SELECT x <> y'
+# ---
+# name: test_column_expr_ok[expr_ne_var][tree]
   '''
   query_expr
     select
@@ -591,7 +717,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_not]
+# name: test_column_expr_ok[expr_not][sql]
+  'SELECT NOT x'
+# ---
+# name: test_column_expr_ok[expr_not][tree]
   '''
   query_expr
     select
@@ -602,7 +731,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_not_between]
+# name: test_column_expr_ok[expr_not_between][sql]
+  'SELECT x NOT BETWEEN y AND z'
+# ---
+# name: test_column_expr_ok[expr_not_between][tree]
   '''
   query_expr
     select
@@ -615,7 +747,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_not_in]
+# name: test_column_expr_ok[expr_not_in][sql]
+  'SELECT x NOT IN UNNEST([1,2,3])'
+# ---
+# name: test_column_expr_ok[expr_not_in][tree]
   '''
   query_expr
     select
@@ -631,7 +766,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_not_like]
+# name: test_column_expr_ok[expr_not_like][sql]
+  "SELECT x NOT LIKE 'a%'"
+# ---
+# name: test_column_expr_ok[expr_not_like][tree]
   '''
   query_expr
     select
@@ -643,7 +781,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_not_qlike]
+# name: test_column_expr_ok[expr_not_qlike][sql]
+  "SELECT x NOT LIKE ALL ('a%','%b')"
+# ---
+# name: test_column_expr_ok[expr_not_qlike][tree]
   '''
   query_expr
     select
@@ -658,7 +799,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_or]
+# name: test_column_expr_ok[expr_or][sql]
+  'SELECT x OR y'
+# ---
+# name: test_column_expr_ok[expr_or][tree]
   '''
   query_expr
     select
@@ -670,7 +814,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_parens]
+# name: test_column_expr_ok[expr_parens][sql]
+  'SELECT (x OR y) OR z'
+# ---
+# name: test_column_expr_ok[expr_parens][tree]
   '''
   query_expr
     select
@@ -685,7 +832,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_qlike]
+# name: test_column_expr_ok[expr_qlike][sql]
+  "SELECT x LIKE ANY UNNEST(['a%','%b'])"
+# ---
+# name: test_column_expr_ok[expr_qlike][tree]
   '''
   query_expr
     select
@@ -701,7 +851,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_sub]
+# name: test_column_expr_ok[expr_sub][sql]
+  'SELECT x - y'
+# ---
+# name: test_column_expr_ok[expr_sub][tree]
   '''
   query_expr
     select
@@ -713,7 +866,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_subscript]
+# name: test_column_expr_ok[expr_subscript][sql]
+  'SELECT x[0]'
+# ---
+# name: test_column_expr_ok[expr_subscript][tree]
   '''
   query_expr
     select
@@ -725,7 +881,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_uminus]
+# name: test_column_expr_ok[expr_uminus][sql]
+  'SELECT -x'
+# ---
+# name: test_column_expr_ok[expr_uminus][tree]
   '''
   query_expr
     select
@@ -736,7 +895,10 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_uplus]
+# name: test_column_expr_ok[expr_uplus][sql]
+  'SELECT +x'
+# ---
+# name: test_column_expr_ok[expr_uplus][tree]
   '''
   query_expr
     select
@@ -747,7 +909,10 @@
   
   '''
 # ---
-# name: test_dotted_expr_ok[dotted_column_expr_multi]
+# name: test_dotted_expr_ok[dotted_column_expr_multi][sql]
+  'SELECT column1.column2.column3'
+# ---
+# name: test_dotted_expr_ok[dotted_column_expr_multi][tree]
   '''
   query_expr
     select
@@ -760,7 +925,10 @@
   
   '''
 # ---
-# name: test_dotted_expr_ok[dotted_column_expr_single]
+# name: test_dotted_expr_ok[dotted_column_expr_single][sql]
+  'SELECT column1.column2'
+# ---
+# name: test_dotted_expr_ok[dotted_column_expr_single][tree]
   '''
   query_expr
     select
@@ -772,7 +940,10 @@
   
   '''
 # ---
-# name: test_dotted_expr_ok[dotted_table_expr_multi]
+# name: test_dotted_expr_ok[dotted_table_expr_multi][sql]
+  'SELECT column1 FROM `project1`.dataset1.table1'
+# ---
+# name: test_dotted_expr_ok[dotted_table_expr_multi][tree]
   '''
   query_expr
     select
@@ -788,7 +959,10 @@
   
   '''
 # ---
-# name: test_dotted_expr_ok[dotted_table_expr_single]
+# name: test_dotted_expr_ok[dotted_table_expr_single][sql]
+  'SELECT column1 FROM dataset1.table1'
+# ---
+# name: test_dotted_expr_ok[dotted_table_expr_single][tree]
   '''
   query_expr
     select
@@ -803,7 +977,10 @@
   
   '''
 # ---
-# name: test_function_call_ok[fcall_kitchen_sink]
+# name: test_function_call_ok[fcall_kitchen_sink][sql]
+  'SELECT FUNC(1, name2 => 2)'
+# ---
+# name: test_function_call_ok[fcall_kitchen_sink][tree]
   '''
   query_expr
     select
@@ -821,7 +998,10 @@
   
   '''
 # ---
-# name: test_function_call_ok[fcall_named_arg_multi]
+# name: test_function_call_ok[fcall_named_arg_multi][sql]
+  'SELECT FUNC(name1 => 1, name2 => 2)'
+# ---
+# name: test_function_call_ok[fcall_named_arg_multi][tree]
   '''
   query_expr
     select
@@ -840,7 +1020,10 @@
   
   '''
 # ---
-# name: test_function_call_ok[fcall_named_arg_single]
+# name: test_function_call_ok[fcall_named_arg_single][sql]
+  'SELECT FUNC(name1 => 1)'
+# ---
+# name: test_function_call_ok[fcall_named_arg_single][tree]
   '''
   query_expr
     select
@@ -856,7 +1039,10 @@
   
   '''
 # ---
-# name: test_function_call_ok[fcall_path_expr]
+# name: test_function_call_ok[fcall_path_expr][sql]
+  'SELECT NET.IPV4_FROM_INT64(42)'
+# ---
+# name: test_function_call_ok[fcall_path_expr][tree]
   '''
   query_expr
     select
@@ -873,7 +1059,10 @@
   
   '''
 # ---
-# name: test_function_call_ok[fcall_pos_arg_multi]
+# name: test_function_call_ok[fcall_pos_arg_multi][sql]
+  'SELECT FUNC(1, 2)'
+# ---
+# name: test_function_call_ok[fcall_pos_arg_multi][tree]
   '''
   query_expr
     select
@@ -890,7 +1079,10 @@
   
   '''
 # ---
-# name: test_function_call_ok[fcall_pos_arg_none]
+# name: test_function_call_ok[fcall_pos_arg_none][sql]
+  'SELECT FUNC()'
+# ---
+# name: test_function_call_ok[fcall_pos_arg_none][tree]
   '''
   query_expr
     select
@@ -902,7 +1094,10 @@
   
   '''
 # ---
-# name: test_function_call_ok[fcall_pos_arg_single]
+# name: test_function_call_ok[fcall_pos_arg_single][sql]
+  'SELECT FUNC(1)'
+# ---
+# name: test_function_call_ok[fcall_pos_arg_single][tree]
   '''
   query_expr
     select
@@ -917,7 +1112,10 @@
   
   '''
 # ---
-# name: test_function_call_ok[fcall_star_expr]
+# name: test_function_call_ok[fcall_star_expr][sql]
+  'SELECT FUNC(*)'
+# ---
+# name: test_function_call_ok[fcall_star_expr][tree]
   '''
   query_expr
     select
@@ -931,7 +1129,10 @@
   
   '''
 # ---
-# name: test_keyword_subquery_ok[keyword_subquery_array]
+# name: test_keyword_subquery_ok[keyword_subquery_array][sql]
+  'SELECT ARRAY(SELECT 1)'
+# ---
+# name: test_keyword_subquery_ok[keyword_subquery_array][tree]
   '''
   query_expr
     select
@@ -946,7 +1147,10 @@
   
   '''
 # ---
-# name: test_keyword_subquery_ok[keyword_subquery_exists]
+# name: test_keyword_subquery_ok[keyword_subquery_exists][sql]
+  'SELECT EXISTS(SELECT 1)'
+# ---
+# name: test_keyword_subquery_ok[keyword_subquery_exists][tree]
   '''
   query_expr
     select
@@ -961,7 +1165,10 @@
   
   '''
 # ---
-# name: test_subscript_expr_ok[subscript_expr_integer_literal_multi]
+# name: test_subscript_expr_ok[subscript_expr_integer_literal_multi][sql]
+  'SELECT column1[0][1]'
+# ---
+# name: test_subscript_expr_ok[subscript_expr_integer_literal_multi][tree]
   '''
   query_expr
     select
@@ -975,7 +1182,10 @@
   
   '''
 # ---
-# name: test_subscript_expr_ok[subscript_expr_integer_literal_single]
+# name: test_subscript_expr_ok[subscript_expr_integer_literal_single][sql]
+  'SELECT column1[0]'
+# ---
+# name: test_subscript_expr_ok[subscript_expr_integer_literal_single][tree]
   '''
   query_expr
     select
@@ -987,7 +1197,10 @@
   
   '''
 # ---
-# name: test_subscript_expr_ok[subscript_expr_kitchen_sink]
+# name: test_subscript_expr_ok[subscript_expr_kitchen_sink][sql]
+  "SELECT column1[0].column2[OFFSET(0)].column3['key1']"
+# ---
+# name: test_subscript_expr_ok[subscript_expr_kitchen_sink][tree]
   '''
   query_expr
     select
@@ -1012,7 +1225,10 @@
   
   '''
 # ---
-# name: test_subscript_expr_ok[subscript_expr_offset]
+# name: test_subscript_expr_ok[subscript_expr_offset][sql]
+  'SELECT column1[OFFSET(2)]'
+# ---
+# name: test_subscript_expr_ok[subscript_expr_offset][tree]
   '''
   query_expr
     select
@@ -1029,7 +1245,10 @@
   
   '''
 # ---
-# name: test_subscript_expr_ok[subscript_expr_path_expr_nested]
+# name: test_subscript_expr_ok[subscript_expr_path_expr_nested][sql]
+  'SELECT column1.column2[0][1]'
+# ---
+# name: test_subscript_expr_ok[subscript_expr_path_expr_nested][tree]
   '''
   query_expr
     select
@@ -1045,7 +1264,10 @@
   
   '''
 # ---
-# name: test_subscript_expr_ok[subscript_expr_string_literal]
+# name: test_subscript_expr_ok[subscript_expr_string_literal][sql]
+  "SELECT column1['key1']"
+# ---
+# name: test_subscript_expr_ok[subscript_expr_string_literal][tree]
   '''
   query_expr
     select

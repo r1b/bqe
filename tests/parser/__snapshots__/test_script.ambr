@@ -1,5 +1,8 @@
 # serializer version: 1
-# name: test_script_ok[script_multi]
+# name: test_script_ok[script_multi][sql]
+  'SELECT col1 FROM table1; SELECT col2 FROM table2'
+# ---
+# name: test_script_ok[script_multi][tree]
   '''
   query
     query_expr
@@ -23,7 +26,10 @@
   
   '''
 # ---
-# name: test_script_ok[script_multi_with_trailing_semi]
+# name: test_script_ok[script_multi_with_trailing_semi][sql]
+  'SELECT col1 FROM table1; SELECT col2 FROM table2;'
+# ---
+# name: test_script_ok[script_multi_with_trailing_semi][tree]
   '''
   query
     query_expr
@@ -47,7 +53,10 @@
   
   '''
 # ---
-# name: test_script_ok[script_single]
+# name: test_script_ok[script_single][sql]
+  'SELECT col1 FROM table1;'
+# ---
+# name: test_script_ok[script_single][tree]
   '''
   query_expr
     select
@@ -61,7 +70,10 @@
   
   '''
 # ---
-# name: test_script_ok[script_top_level_from]
+# name: test_script_ok[script_top_level_from][sql]
+  'FROM table1;'
+# ---
+# name: test_script_ok[script_top_level_from][tree]
   '''
   query_expr
     pipe_from

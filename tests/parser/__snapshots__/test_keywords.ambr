@@ -1,5 +1,8 @@
 # serializer version: 1
-# name: test_nonreserved_keyword_ok[select_kw_date_alias]
+# name: test_nonreserved_keyword_ok[select_kw_date_alias][sql]
+  'SELECT abc date'
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_date_alias][tree]
   '''
   query_expr
     select
@@ -11,7 +14,10 @@
   
   '''
 # ---
-# name: test_nonreserved_keyword_ok[select_kw_date_column]
+# name: test_nonreserved_keyword_ok[select_kw_date_column][sql]
+  'SELECT date abc'
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_date_column][tree]
   '''
   query_expr
     select
@@ -23,7 +29,10 @@
   
   '''
 # ---
-# name: test_nonreserved_keyword_ok[select_kw_date_double]
+# name: test_nonreserved_keyword_ok[select_kw_date_double][sql]
+  'SELECT date date'
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_date_double][tree]
   '''
   query_expr
     select
@@ -35,7 +44,10 @@
   
   '''
 # ---
-# name: test_nonreserved_keyword_ok[select_kw_format_alias]
+# name: test_nonreserved_keyword_ok[select_kw_format_alias][sql]
+  'SELECT abc format'
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_format_alias][tree]
   '''
   query_expr
     select
@@ -47,7 +59,10 @@
   
   '''
 # ---
-# name: test_nonreserved_keyword_ok[select_kw_format_column]
+# name: test_nonreserved_keyword_ok[select_kw_format_column][sql]
+  'SELECT format abc'
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_format_column][tree]
   '''
   query_expr
     select
@@ -59,7 +74,10 @@
   
   '''
 # ---
-# name: test_nonreserved_keyword_ok[select_kw_percent_alias]
+# name: test_nonreserved_keyword_ok[select_kw_percent_alias][sql]
+  'SELECT abc percent'
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_percent_alias][tree]
   '''
   query_expr
     select
@@ -71,7 +89,10 @@
   
   '''
 # ---
-# name: test_nonreserved_keyword_ok[select_kw_percent_column]
+# name: test_nonreserved_keyword_ok[select_kw_percent_column][sql]
+  'SELECT percent abc'
+# ---
+# name: test_nonreserved_keyword_ok[select_kw_percent_column][tree]
   '''
   query_expr
     select
