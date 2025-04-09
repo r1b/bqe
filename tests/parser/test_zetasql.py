@@ -85,7 +85,6 @@ import pytest
                          z.* except (a) replace (1+2 as ccc)
             """,
             id="zeta_pipe_agg_except_replace",
-            marks=pytest.mark.xfail,
         ),
         pytest.param(
             """
