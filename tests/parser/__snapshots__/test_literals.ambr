@@ -22,9 +22,10 @@
       select_list
         select_expr
           array_literal
-            integer_literal	1
-            integer_literal	2
-            integer_literal	3
+            array_literal_item_list
+              integer_literal	1
+              integer_literal	2
+              integer_literal	3
   
   '''
 # ---
@@ -39,9 +40,10 @@
         select_expr
           array_literal
             array_literal_prefix
-            integer_literal	1
-            integer_literal	2
-            integer_literal	3
+            array_literal_item_list
+              integer_literal	1
+              integer_literal	2
+              integer_literal	3
   
   '''
 # ---
@@ -66,11 +68,12 @@
                           type_name
                             path_expression
                               ident	INT64
-            named_struct_literal
-              named_struct_literal_prefix
-              named_struct_literal_item_list
-                named_struct_literal_item
-                  integer_literal	1
+            array_literal_item_list
+              named_struct_literal
+                named_struct_literal_prefix
+                named_struct_literal_item_list
+                  named_struct_literal_item
+                    integer_literal	1
   
   '''
 # ---
@@ -100,15 +103,16 @@
                                   type_name
                                     path_expression
                                       ident	INT64
-            named_struct_literal
-              named_struct_literal_prefix
-              named_struct_literal_item_list
-                named_struct_literal_item
-                  named_struct_literal
-                    named_struct_literal_prefix
-                    named_struct_literal_item_list
-                      named_struct_literal_item
-                        integer_literal	1
+            array_literal_item_list
+              named_struct_literal
+                named_struct_literal_prefix
+                named_struct_literal_item_list
+                  named_struct_literal_item
+                    named_struct_literal
+                      named_struct_literal_prefix
+                      named_struct_literal_item_list
+                        named_struct_literal_item
+                          integer_literal	1
   
   '''
 # ---
@@ -128,9 +132,10 @@
                   type_name
                     path_expression
                       ident	INT64
-            integer_literal	1
-            integer_literal	2
-            integer_literal	3
+            array_literal_item_list
+              integer_literal	1
+              integer_literal	2
+              integer_literal	3
   
   '''
 # ---
@@ -144,7 +149,8 @@
       select_list
         select_expr
           array_literal
-            integer_literal	1
+            array_literal_item_list
+              integer_literal	1
   
   '''
 # ---
@@ -965,18 +971,16 @@
             named_struct_literal_prefix
               struct_type
                 struct_type_list
-                  struct_type_list
-                    struct_type_list
-                      struct_field
-                        type
-                          type_name
-                            path_expression
-                              ident	INT64
-                    struct_field
-                      type
-                        type_name
-                          path_expression
-                            ident	INT64
+                  struct_field
+                    type
+                      type_name
+                        path_expression
+                          ident	INT64
+                  struct_field
+                    type
+                      type_name
+                        path_expression
+                          ident	INT64
                   struct_field
                     type
                       type_name
@@ -1005,20 +1009,18 @@
             named_struct_literal_prefix
               struct_type
                 struct_type_list
-                  struct_type_list
-                    struct_type_list
-                      struct_field
-                        ident	a
-                        type
-                          type_name
-                            path_expression
-                              ident	INT64
-                    struct_field
-                      ident	b
-                      type
-                        type_name
-                          path_expression
-                            ident	INT64
+                  struct_field
+                    ident	a
+                    type
+                      type_name
+                        path_expression
+                          ident	INT64
+                  struct_field
+                    ident	b
+                    type
+                      type_name
+                        path_expression
+                          ident	INT64
                   struct_field
                     ident	c
                     type
@@ -1048,24 +1050,22 @@
             named_struct_literal_prefix
               struct_type
                 struct_type_list
-                  struct_type_list
-                    struct_field
-                      ident	a
-                      type
-                        type_name
-                          path_expression
-                            ident	INT64
+                  struct_field
+                    ident	a
+                    type
+                      type_name
+                        path_expression
+                          ident	INT64
                   struct_field
                     type
                       struct_type
                         struct_type_list
-                          struct_type_list
-                            struct_field
-                              ident	b
-                              type
-                                type_name
-                                  path_expression
-                                    ident	INT64
+                          struct_field
+                            ident	b
+                            type
+                              type_name
+                                path_expression
+                                  ident	INT64
                           struct_field
                             ident	c
                             type

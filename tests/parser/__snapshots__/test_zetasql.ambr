@@ -182,9 +182,8 @@
               ident	x
               select_except
                 select_except_list
-                  select_except_list
-                    select_except_item
-                      ident	a
+                  select_except_item
+                    ident	a
                   select_except_item
                     ident	b
         pipe_selection_item_with_order
@@ -1113,7 +1112,8 @@
         from_item_unnest
           unnest_expr
             array_literal
-              integer_literal	1
+              array_literal_item_list
+                integer_literal	1
           as_alias
             ident	x
   

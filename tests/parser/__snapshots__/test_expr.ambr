@@ -760,9 +760,10 @@
             ident	x
             unnest_expr
               array_literal
-                integer_literal	1
-                integer_literal	2
-                integer_literal	3
+                array_literal_item_list
+                  integer_literal	1
+                  integer_literal	2
+                  integer_literal	3
   
   '''
 # ---
@@ -846,8 +847,9 @@
             qlike_quantifier	ANY
             unnest_expr
               array_literal
-                string_literal	'a%'
-                string_literal	'%b'
+                array_literal_item_list
+                  string_literal	'a%'
+                  string_literal	'%b'
   
   '''
 # ---

@@ -548,11 +548,12 @@
                     type_name
                       path_expression
                         ident	INT64
-              integer_literal	1
-              integer_literal	2
-              integer_literal	3
-              integer_literal	3
-              integer_literal	4
+              array_literal_item_list
+                integer_literal	1
+                integer_literal	2
+                integer_literal	3
+                integer_literal	3
+                integer_literal	4
           as_alias
             ident	number
     pipe_set_operation
@@ -576,8 +577,9 @@
                               type_name
                                 path_expression
                                   ident	INT64
-                        integer_literal	1
-                        integer_literal	2
+                        array_literal_item_list
+                          integer_literal	1
+                          integer_literal	2
                     as_alias
                       ident	number
               pipe_set_operation
@@ -601,8 +603,9 @@
                                         type_name
                                           path_expression
                                             ident	INT64
-                                  integer_literal	1
-                                  integer_literal	4
+                                  array_literal_item_list
+                                    integer_literal	1
+                                    integer_literal	4
                               as_alias
                                 ident	number
   
@@ -1588,9 +1591,10 @@
                     type_name
                       path_expression
                         ident	INT64
-              integer_literal	1
-              integer_literal	2
-              integer_literal	3
+              array_literal_item_list
+                integer_literal	1
+                integer_literal	2
+                integer_literal	3
           as_alias
             ident	number
     pipe_set_operation
@@ -1715,9 +1719,10 @@
                     type_name
                       path_expression
                         ident	INT64
-              integer_literal	1
-              integer_literal	2
-              integer_literal	3
+              array_literal_item_list
+                integer_literal	1
+                integer_literal	2
+                integer_literal	3
           as_alias
             ident	number
     pipe_set_operation
@@ -1763,9 +1768,10 @@
                     type_name
                       path_expression
                         ident	INT64
-              integer_literal	1
-              integer_literal	2
-              integer_literal	3
+              array_literal_item_list
+                integer_literal	1
+                integer_literal	2
+                integer_literal	3
           as_alias
             ident	number
     pipe_set_operation

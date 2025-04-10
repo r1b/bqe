@@ -164,7 +164,7 @@ QUOTED_IDENT : _BACKTICK /[^`]+/ _BACKTICK
 
 ident : UNQUOTED_IDENT | QUOTED_IDENT | keyword_as_ident
 
-path_expression : ident | path_expression _DOT ident
+path_expression : ident ( _DOT ident )*
 
 # This is the only case where we force inlining of terminals
 !keyword_as_ident : "AGGREGATE"i
@@ -213,10 +213,9 @@ type : raw_type type_parameters?
 
 array_type : _ARRAY _LT type _GT
 
-struct_type : _STRUCT struct_type_list _GT
+struct_type : _STRUCT _LT struct_type_list _GT
 
-struct_type_list : _LT struct_field
-    | struct_type_list _COMMA struct_field
+struct_type_list : struct_field ( _COMMA struct_field )*
 
 struct_field : ident type | type
 
@@ -322,7 +321,9 @@ FLOAT_LITERAL : /[\+\-]?[0-9]+\.[0-9]*([Ee][\+\-]?[0-9]+)?/
 
 # Arrays
 
-array_literal : array_literal_prefix? _LBRACK ( column_expr ( _COMMA column_expr )* )? _RBRACK
+array_literal : array_literal_prefix? _LBRACK array_literal_item_list? _RBRACK
+
+array_literal_item_list : column_expr ( _COMMA column_expr )*
 
 array_literal_prefix : _ARRAY | array_type
 
@@ -356,12 +357,11 @@ json_literal : _JSON STRING_LITERAL
 
 struct_literal : _LPAR column_expr _COMMA column_expr ( _COMMA column_expr )* _RPAR
 
-named_struct_literal : named_struct_literal_prefix named_struct_literal_item_list _RPAR
+named_struct_literal : named_struct_literal_prefix _LPAR named_struct_literal_item_list _RPAR
 
 named_struct_literal_prefix : ( _STRUCT | struct_type )
 
-named_struct_literal_item_list : _LPAR named_struct_literal_item
-    | named_struct_literal_item_list _COMMA named_struct_literal_item
+named_struct_literal_item_list : named_struct_literal_item ( _COMMA named_struct_literal_item )*
 
 named_struct_literal_item : column_expr as_alias?
 
@@ -665,13 +665,13 @@ select_star : _STAR select_except? select_replace?
 
 select_except : _EXCEPT _LPAR select_except_list _RPAR
 
-select_except_list : select_except_item | select_except_list _COMMA select_except_item
+select_except_list : select_except_item ( _COMMA select_except_item )*
 
 select_except_item : ident
 
 select_replace : _REPLACE _LPAR select_replace_list _RPAR
 
-select_replace_list : select_replace_item | select_replace_list _COMMA select_replace_item
+select_replace_list : select_replace_item ( _COMMA select_replace_item )*
 
 select_replace_item : column_expr _AS ident
 
@@ -732,12 +732,9 @@ pipe_select : _SELECT select_shape? select_list window_clause?
 
 # EXTEND
 
-pipe_extend : _EXTEND pipe_selection_item_list_ window_clause?
+pipe_extend : _EXTEND pipe_selection_item_list window_clause?
 
-?pipe_selection_item_list_ : pipe_selection_item_list _COMMA?
-
-pipe_selection_item_list : pipe_selection_item
-    | pipe_selection_item_list _COMMA pipe_selection_item
+pipe_selection_item_list : pipe_selection_item ( _COMMA pipe_selection_item )* _COMMA?
 
 pipe_selection_item : select_expr | select_dot_star
 
@@ -791,12 +788,9 @@ offset_expr : _OFFSET column_expr
 
 # AGGREGATE
 
-pipe_agg : _AGGREGATE pipe_selection_item_list_with_order_? group_by?
+pipe_agg : _AGGREGATE pipe_selection_item_list_with_order? group_by?
 
-?pipe_selection_item_list_with_order_ : pipe_selection_item_list_with_order _COMMA?
-
-pipe_selection_item_list_with_order : pipe_selection_item_with_order
-    | pipe_selection_item_list_with_order _COMMA pipe_selection_item_with_order
+pipe_selection_item_list_with_order : pipe_selection_item_with_order ( _COMMA pipe_selection_item_with_order )* _COMMA?
 
 pipe_selection_item_with_order : pipe_selection_item order_by_item_sort? order_by_item_nulls?
 
@@ -810,28 +804,28 @@ grouping_items :  grouping_item ( _COMMA grouping_item )* _COMMA?
 
 grouping_item : grouping_item_empty
     | column_expr as_alias? order_by_item_sort? order_by_item_nulls?
-    | rollup_list _RPAR
-    | cube_list _RPAR
-    | grouping_set_list _RPAR
+    | rollup_list
+    | cube_list
+    | grouping_set_list
 
 grouping_item_empty : _LPAR _RPAR
 
 as_alias_as_required : _AS ident
 
-rollup_list : _ROLLUP _LPAR rollup_item | rollup_list _COMMA rollup_item
+rollup_list : _ROLLUP _LPAR rollup_item ( _COMMA rollup_item )* _RPAR
 
 rollup_item : column_expr
 
-cube_list : _CUBE _LPAR cube_item | cube_list _COMMA cube_item
+cube_list : _CUBE _LPAR cube_item ( _COMMA cube_item )* _RPAR
 
 cube_item : column_expr
 
-grouping_set_list : _GROUPING _SETS _LPAR grouping_set | grouping_set_list _COMMA grouping_set
+grouping_set_list : _GROUPING _SETS _LPAR grouping_set ( _COMMA grouping_set )* _RPAR
 
 grouping_set : grouping_item_empty
     | column_expr
-    | rollup_list _RPAR
-    | cube_list _RPAR
+    | rollup_list
+    | cube_list
 
 # ORDER BY
 
@@ -897,11 +891,11 @@ pipe_pivot : _PIVOT _LPAR pivot_clause _RPAR as_alias?
 
 pivot_clause : pivot_item_list _FOR path_expression _IN _LPAR pivot_value_list _RPAR
 
-pivot_item_list : pivot_item | pivot_item_list _COMMA pivot_item
+pivot_item_list : pivot_item ( _COMMA pivot_item )*
 
 pivot_item : column_expr as_alias?
 
-pivot_value_list : pivot_value_item | pivot_value_list _COMMA pivot_value_item
+pivot_value_list : pivot_value_item ( _COMMA pivot_value_item )*
 
 pivot_value_item : column_expr as_alias?
 

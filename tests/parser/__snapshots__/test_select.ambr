@@ -65,9 +65,8 @@
           ident	struct_column
           select_except
             select_except_list
-              select_except_list
-                select_except_item
-                  ident	column1
+              select_except_item
+                ident	column1
               select_except_item
                 ident	column2
       from_clause
@@ -89,10 +88,9 @@
           ident	struct_column
           select_replace
             select_replace_list
-              select_replace_list
-                select_replace_item
-                  integer_literal	1
-                  ident	column1
+              select_replace_item
+                integer_literal	1
+                ident	column1
               select_replace_item
                 integer_literal	2
                 ident	column2
@@ -291,9 +289,8 @@
         select_star
           select_except
             select_except_list
-              select_except_list
-                select_except_item
-                  ident	column1
+              select_except_item
+                ident	column1
               select_except_item
                 ident	column2
       from_clause
@@ -314,10 +311,9 @@
         select_star
           select_replace
             select_replace_list
-              select_replace_list
-                select_replace_item
-                  integer_literal	1
-                  ident	column1
+              select_replace_item
+                integer_literal	1
+                ident	column1
               select_replace_item
                 integer_literal	2
                 ident	column2
