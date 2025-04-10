@@ -843,7 +843,7 @@ set_operation_kind : UNION | INTERSECT | EXCEPT
 
 set_operation_mode : ALL | DISTINCT
 
-set_operation_list : subquery ( _COMMA subquery )*
+set_operation_list : subquery ( _COMMA subquery )* _COMMA?
 
 ?set_operation_modifier : set_operation_modifier_by_name
     | set_operation_modifier_corresponding

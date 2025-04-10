@@ -629,3 +629,130 @@ def test_pipe_rename(sql, assert_parse_tree):
 )
 def test_pipe_set(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            select 1
+            |> union all (select 2)
+            """,
+            id="zeta_pipe_set_operation",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> union all (select 2), (select 3)
+            """,
+            id="zeta_pipe_set_operation_multiple_tables",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> union all
+            (select * from t |> where x),
+            (select 1 |> where y)
+            """,
+            id="zeta_pipe_set_operation_complex_queries",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> union distinct (select 2)
+            """,
+            id="zeta_pipe_set_operation_union_distinct",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> intersect all (select 2)
+            """,
+            id="zeta_pipe_set_operation_intersect_all",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> intersect distinct (select 2)
+            """,
+            id="zeta_pipe_set_operation_intersect_distinct",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> except all (select 2)
+            """,
+            id="zeta_pipe_set_operation_except_all",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> except distinct (select 2)
+            """,
+            id="zeta_pipe_set_operation_except_distinct",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> UNION ALL CORRESPONDING (select 2)
+            |> INTERSECT DISTINCT CORRESPONDING BY (x) (select 3)
+            |> EXCEPT ALL STRICT CORRESPONDING BY (x) (select 4)
+            """,
+            id="zeta_pipe_set_operation_corresponding",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> UNION ALL BY NAME (select 2)
+            |> INTERSECT DISTINCT BY NAME ON (x) (select 3)
+            |> EXCEPT ALL BY NAME ON (x) (select 4)
+            """,
+            id="zeta_pipe_set_operation_by_name",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> FULL UNION ALL (select 2)
+            """,
+            id="zeta_pipe_set_operation_full",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> FULL OUTER UNION ALL (select 2)
+            """,
+            id="zeta_pipe_set_operation_full_outer",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> LEFT UNION ALL (select 2)
+            """,
+            id="zeta_pipe_set_operation_left",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> LEFT OUTER UNION ALL (select 2)
+            """,
+            id="zeta_pipe_set_operation_left_outer",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> INNER UNION ALL (select 2)
+            """,
+            id="zeta_pipe_set_operation_inner",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> UNION ALL (select 2),
+            """,
+            id="zeta_pipe_set_operation_trailing_comma",
+        ),
+    ),
+)
+def test_pipe_set_operation(sql, assert_parse_tree):
+    assert_parse_tree(sql)

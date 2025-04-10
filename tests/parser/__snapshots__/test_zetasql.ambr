@@ -2189,7 +2189,7 @@
   '''
   select x
   |> SET x = 1+2
-  |> set x = 1+2, y = 3, z = z 
+  |> set x = 1+2, y = 3, z = z
   '''
 # ---
 # name: test_pipe_set[zeta_pipe_set][tree]
@@ -2256,6 +2256,550 @@
         set_item
           ident	z
           ident	z
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation][sql]
+  '''
+  select 1
+  |> union all (select 2)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	union
+          set_operation_mode	all
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_by_name][sql]
+  '''
+  select 1
+  |> UNION ALL BY NAME (select 2)
+  |> INTERSECT DISTINCT BY NAME ON (x) (select 3)
+  |> EXCEPT ALL BY NAME ON (x) (select 4)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_by_name][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+          set_operation_modifier_by_name
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	INTERSECT
+          set_operation_mode	DISTINCT
+          set_operation_modifier_by_name
+            set_operation_columns
+              ident	x
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	3
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	EXCEPT
+          set_operation_mode	ALL
+          set_operation_modifier_by_name
+            set_operation_columns
+              ident	x
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	4
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_complex_queries][sql]
+  '''
+  select 1
+  |> union all
+  (select * from t |> where x),
+  (select 1 |> where y)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_complex_queries][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	union
+          set_operation_mode	all
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_star
+                from_clause
+                  from_item_table
+                    path_expression
+                      ident	t
+              pipe_where
+                ident	x
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+              pipe_where
+                ident	y
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_corresponding][sql]
+  '''
+  select 1
+  |> UNION ALL CORRESPONDING (select 2)
+  |> INTERSECT DISTINCT CORRESPONDING BY (x) (select 3)
+  |> EXCEPT ALL STRICT CORRESPONDING BY (x) (select 4)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_corresponding][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+          set_operation_modifier_corresponding
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	INTERSECT
+          set_operation_mode	DISTINCT
+          set_operation_modifier_corresponding
+            set_operation_columns
+              ident	x
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	3
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	EXCEPT
+          set_operation_mode	ALL
+          set_operation_modifier_strict_corresponding
+            set_operation_columns
+              ident	x
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	4
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_except_all][sql]
+  '''
+  select 1
+  |> except all (select 2)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_except_all][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	except
+          set_operation_mode	all
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_except_distinct][sql]
+  '''
+  select 1
+  |> except distinct (select 2)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_except_distinct][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	except
+          set_operation_mode	distinct
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_full][sql]
+  '''
+  select 1
+  |> FULL UNION ALL (select 2)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_full][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_criteria	FULL
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_full_outer][sql]
+  '''
+  select 1
+  |> FULL OUTER UNION ALL (select 2)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_full_outer][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_criteria
+            FULL
+            OUTER
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_inner][sql]
+  '''
+  select 1
+  |> INNER UNION ALL (select 2)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_inner][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_criteria	INNER
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_all][sql]
+  '''
+  select 1
+  |> intersect all (select 2)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_all][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	intersect
+          set_operation_mode	all
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_distinct][sql]
+  '''
+  select 1
+  |> intersect distinct (select 2)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_distinct][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	intersect
+          set_operation_mode	distinct
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_left][sql]
+  '''
+  select 1
+  |> LEFT UNION ALL (select 2)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_left][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_criteria	LEFT
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_left_outer][sql]
+  '''
+  select 1
+  |> LEFT OUTER UNION ALL (select 2)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_left_outer][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_criteria
+            LEFT
+            OUTER
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_multiple_tables][sql]
+  '''
+  select 1
+  |> union all (select 2), (select 3)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_multiple_tables][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	union
+          set_operation_mode	all
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	3
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_trailing_comma][sql]
+  '''
+  select 1
+  |> UNION ALL (select 2),
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_trailing_comma][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	UNION
+          set_operation_mode	ALL
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_union_distinct][sql]
+  '''
+  select 1
+  |> union distinct (select 2)
+  '''
+# ---
+# name: test_pipe_set_operation[zeta_pipe_set_operation_union_distinct][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_set_operation
+      set_operation
+        set_operation_metadata
+          set_operation_kind	union
+          set_operation_mode	distinct
+        set_operation_list
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	2
   
   '''
 # ---
