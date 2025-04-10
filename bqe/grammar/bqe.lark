@@ -881,9 +881,10 @@ pipe_call : _CALL function_call_expr as_alias?
 
 # TABLESAMPLE
 
+# TODO: There may be more features here in the future
 pipe_tablesample : _TABLESAMPLE _SYSTEM _LPAR tablesample_perc _RPAR
 
-tablesample_perc : ( integer_literal | parameter ) _PERCENT
+tablesample_perc : column_expr _PERCENT
 
 # PIVOT
 

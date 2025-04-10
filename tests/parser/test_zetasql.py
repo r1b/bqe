@@ -756,3 +756,21 @@ def test_pipe_set(sql, assert_parse_tree):
 )
 def test_pipe_set_operation(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            from t
+            |> TABLESAMPLE SYSTEM (10 PERCENT)
+            |> TABLESAMPLE SYSTEM (cast(10 as int64) PERCENT)
+            |> TABLESAMPLE SYSTEM (@param1 PERCENT)
+            """,
+            id="zeta_pipe_tablesample",
+        ),
+    ),
+)
+def test_pipe_tablesample(sql, assert_parse_tree):
+    assert_parse_tree(sql)

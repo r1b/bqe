@@ -2803,3 +2803,34 @@
   
   '''
 # ---
+# name: test_pipe_tablesample[zeta_pipe_tablesample][sql]
+  '''
+  from t
+  |> TABLESAMPLE SYSTEM (10 PERCENT)
+  |> TABLESAMPLE SYSTEM (cast(10 as int64) PERCENT)
+  |> TABLESAMPLE SYSTEM (@param1 PERCENT)
+  '''
+# ---
+# name: test_pipe_tablesample[zeta_pipe_tablesample][tree]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_tablesample
+      tablesample_perc
+        integer_literal	10
+    pipe_tablesample
+      tablesample_perc
+        cast_expr_kind_cast
+          cast_expr_target
+            integer_literal	10
+            ident	int64
+    pipe_tablesample
+      tablesample_perc
+        parameter	param1
+  
+  '''
+# ---
