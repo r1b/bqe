@@ -2185,3 +2185,77 @@
   
   '''
 # ---
+# name: test_pipe_set[zeta_pipe_set][sql]
+  '''
+  select x
+  |> SET x = 1+2
+  |> set x = 1+2, y = 3, z = z 
+  '''
+# ---
+# name: test_pipe_set[zeta_pipe_set][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ident	x
+    pipe_set
+      set_list
+        set_item
+          ident	x
+          add_expr
+            integer_literal	1
+            integer_literal	2
+    pipe_set
+      set_list
+        set_item
+          ident	x
+          add_expr
+            integer_literal	1
+            integer_literal	2
+        set_item
+          ident	y
+          integer_literal	3
+        set_item
+          ident	z
+          ident	z
+  
+  '''
+# ---
+# name: test_pipe_set[zeta_pipe_set_trailing_commas][sql]
+  '''
+  select x
+  |> SET x = 1+2,
+  |> set x = 1+2, y = 3, z = z,
+  '''
+# ---
+# name: test_pipe_set[zeta_pipe_set_trailing_commas][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ident	x
+    pipe_set
+      set_list
+        set_item
+          ident	x
+          add_expr
+            integer_literal	1
+            integer_literal	2
+    pipe_set
+      set_list
+        set_item
+          ident	x
+          add_expr
+            integer_literal	1
+            integer_literal	2
+        set_item
+          ident	y
+          integer_literal	3
+        set_item
+          ident	z
+          ident	z
+  
+  '''
+# ---

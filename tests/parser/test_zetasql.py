@@ -604,3 +604,28 @@ def test_pipe_query(sql, assert_parse_tree):
 )
 def test_pipe_rename(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            select x
+            |> SET x = 1+2
+            |> set x = 1+2, y = 3, z = z
+            """,
+            id="zeta_pipe_set",
+        ),
+        pytest.param(
+            """
+            select x
+            |> SET x = 1+2,
+            |> set x = 1+2, y = 3, z = z,
+            """,
+            id="zeta_pipe_set_trailing_commas",
+        ),
+    ),
+)
+def test_pipe_set(sql, assert_parse_tree):
+    assert_parse_tree(sql)
