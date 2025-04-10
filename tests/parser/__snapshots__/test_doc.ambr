@@ -1296,9 +1296,8 @@
         path_expression
           ident	quarter
         pivot_value_list
-          pivot_value_list
-            pivot_value_item
-              string_literal	'Q1'
+          pivot_value_item
+            string_literal	'Q1'
           pivot_value_item
             string_literal	'Q2'
   

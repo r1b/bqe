@@ -1512,26 +1512,24 @@
     pipe_pivot
       pivot_clause
         pivot_item_list
-          pivot_item_list
-            pivot_item_list
-              pivot_item
-                function_call_expr
-                  function_name
-                    ident	SUM
-                  function_args
-                    pos_arg
-                      ident	a
-                as_alias
-                  ident	sum_a
-            pivot_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	aa
-              as_alias
-                ident	sum_aa
+          pivot_item
+            function_call_expr
+              function_name
+                ident	SUM
+              function_args
+                pos_arg
+                  ident	a
+            as_alias
+              ident	sum_a
+          pivot_item
+            function_call_expr
+              function_name
+                ident	SUM
+              function_args
+                pos_arg
+                  ident	aa
+            as_alias
+              ident	sum_aa
           pivot_item
             add_expr
               integer_literal	2
@@ -1547,16 +1545,14 @@
           ident	t
           ident	x
         pivot_value_list
-          pivot_value_list
-            pivot_value_list
-              pivot_value_item
-                ident	z
-            pivot_value_item
-              add_expr
-                ident	x
-                ident	y
-              as_alias
-                ident	xpy
+          pivot_value_item
+            ident	z
+          pivot_value_item
+            add_expr
+              ident	x
+              ident	y
+            as_alias
+              ident	xpy
           pivot_value_item
             integer_literal	1
             as_alias
@@ -1583,14 +1579,13 @@
     pipe_pivot
       pivot_clause
         pivot_item_list
-          pivot_item_list
-            pivot_item
-              function_call_expr
-                function_name
-                  ident	SUM
-                function_args
-                  pos_arg
-                    ident	a
+          pivot_item
+            function_call_expr
+              function_name
+                ident	SUM
+              function_args
+                pos_arg
+                  ident	a
           pivot_item
             function_call_expr
               function_name
@@ -1664,9 +1659,8 @@
         path_expression
           ident	b
         pivot_value_list
-          pivot_value_list
-            pivot_value_item
-              integer_literal	0
+          pivot_value_item
+            integer_literal	0
           pivot_value_item
             integer_literal	1
   
@@ -2118,6 +2112,76 @@
           integer_literal	3
     pipe_where
       boolean_literal	true
+  
+  '''
+# ---
+# name: test_pipe_rename[zeta_pipe_rename][sql]
+  '''
+  select 1
+  |> RENAME x AS y
+  |> RENAME `a b` AS `d e`, x AS y, aaa bbb
+  '''
+# ---
+# name: test_pipe_rename[zeta_pipe_rename][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_rename
+      rename_list
+        rename_item
+          ident	x
+          as_alias
+            ident	y
+    pipe_rename
+      rename_list
+        rename_item
+          ident	`a b`
+          as_alias
+            ident	`d e`
+        rename_item
+          ident	x
+          as_alias
+            ident	y
+        rename_item
+          ident	aaa
+          as_alias
+            ident	bbb
+  
+  '''
+# ---
+# name: test_pipe_rename[zeta_pipe_rename_trailing_commas][sql]
+  '''
+  select 1
+  |> RENAME a b,
+  |> RENAME a b, c AS d,
+  '''
+# ---
+# name: test_pipe_rename[zeta_pipe_rename_trailing_commas][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_rename
+      rename_list
+        rename_item
+          ident	a
+          as_alias
+            ident	b
+    pipe_rename
+      rename_list
+        rename_item
+          ident	a
+          as_alias
+            ident	b
+        rename_item
+          ident	c
+          as_alias
+            ident	d
   
   '''
 # ---

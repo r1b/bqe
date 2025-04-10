@@ -579,3 +579,28 @@ def test_pipe_pivot(sql, assert_parse_tree):
 )
 def test_pipe_query(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            select 1
+            |> RENAME x AS y
+            |> RENAME `a b` AS `d e`, x AS y, aaa bbb
+            """,
+            id="zeta_pipe_rename",
+        ),
+        pytest.param(
+            """
+            select 1
+            |> RENAME a b,
+            |> RENAME a b, c AS d,
+            """,
+            id="zeta_pipe_rename_trailing_commas",
+        ),
+    ),
+)
+def test_pipe_rename(sql, assert_parse_tree):
+    assert_parse_tree(sql)
