@@ -386,23 +386,21 @@ null_literal : NULL
 # of parenthesized forms
 # This structure closely follows the expression tree in ZetaSQL
 
-?column_expr: prec_higher_than_and_expr | binary_boolean_expr
+?column_expr: and_expr | column_expr _OR and_expr -> or_expr
 
-?binary_boolean_expr : and_expr | column_expr _OR column_expr -> or_expr
+?and_expr : prec_higher_than_and_expr | and_expr _AND prec_higher_than_and_expr
 
-?and_expr : and_expr _AND prec_higher_than_and_expr
-    | prec_higher_than_and_expr _AND prec_higher_than_and_expr
+?prec_higher_than_and_expr : maybe_parenthesized_expr | subquery
 
-?prec_higher_than_and_expr : unparenthesized_prec_higher_than_and_expr
-    | parenthesized_expr
-    | subquery
+?maybe_parenthesized_expr : unparenthesized_prec_higher_than_and_expr | parenthesized_expr
 
 # In other words, parens used for grouping expressions, but not subqueries
 parenthesized_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPAR
 
-?maybe_parenthesized_not_a_query_expr : parenthesized_expr
-    | unparenthesized_prec_higher_than_and_expr
-    | binary_boolean_expr
+?maybe_parenthesized_not_a_query_expr : unparenthesized_prec_higher_than_and_expr
+    | parenthesized_expr
+    | column_expr _OR and_expr -> or_expr
+    | and_expr _AND prec_higher_than_and_expr -> and_expr
 
 # This begins the chain of operators / atoms
 ?unparenthesized_prec_higher_than_and_expr : is_distinct_from_expr
