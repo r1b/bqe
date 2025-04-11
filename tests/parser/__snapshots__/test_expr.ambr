@@ -33,10 +33,9 @@
             function_args
               pos_arg
                 ident	col1
-            function_modifiers
-              having_modifier
-                having_max
-                ident	col2
+            having_modifier
+              having_max
+              ident	col2
   
   '''
 # ---
@@ -55,10 +54,9 @@
             function_args
               pos_arg
                 ident	col1
-            function_modifiers
-              having_modifier
-                having_min
-                ident	col2
+            having_modifier
+              having_min
+              ident	col2
   
   '''
 # ---
@@ -77,9 +75,8 @@
             function_args
               pos_arg
                 ident	col1
-            function_modifiers
-              nulls_modifier
-                ignore_nulls
+            nulls_modifier
+              ignore_nulls
   
   '''
 # ---
@@ -98,9 +95,8 @@
             function_args
               pos_arg
                 ident	col1
-            function_modifiers
-              limit_modifier
-                integer_literal	1
+            limit_modifier
+              integer_literal	1
   
   '''
 # ---
@@ -119,12 +115,11 @@
             function_args
               pos_arg
                 ident	col1
-            function_modifiers
-              order_by_modifier
-                order_by_items
-                  order_by_item
-                    ident	col2
-                    order_by_item_sort	DESC
+            order_by_modifier
+              order_by_items
+                order_by_item
+                  ident	col2
+                  order_by_item_sort	DESC
   
   '''
 # ---
@@ -143,9 +138,8 @@
             function_args
               pos_arg
                 ident	col1
-            function_modifiers
-              nulls_modifier
-                respect_nulls
+            nulls_modifier
+              respect_nulls
   
   '''
 # ---

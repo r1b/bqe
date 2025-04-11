@@ -529,7 +529,7 @@ else_expr : _ELSE column_expr
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-reference
 # Ref: https://github.com/lark-parser/lark/blob/master/lark/grammars/python.lark#L145-L146
-function_call_expr : function_name function_args? function_modifiers? _RPAR ( _OVER window_expr )?
+function_call_expr : function_name function_args? nulls_modifier? having_modifier? order_by_modifier? limit_modifier? _RPAR ( _OVER window_expr )?
 
 function_name : field_access_expr _LPAR function_distinct?
 
@@ -542,8 +542,6 @@ star_arg : _STAR
 pos_arg : column_expr
 
 named_arg : ident _ARROW column_expr
-
-function_modifiers : nulls_modifier? having_modifier? order_by_modifier? limit_modifier?
 
 nulls_modifier : nulls_modifier_kind _NULLS
 
