@@ -2108,13 +2108,18 @@
             ident	table1
     pipe_unpivot
       unpivot_clause
-        unpivot_values_column
-          ident	col1
-        unpivot_name_column
+        path_expression_list
+          path_expression
+            ident	col1
+        path_expression
           ident	quarter
-        unpivot_column_list
-          ident	q1
-          ident	q2
+        unpivot_value_list
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	q1
+              path_expression
+                ident	q2
   
   '''
 # ---
@@ -2131,13 +2136,18 @@
             ident	table1
     pipe_unpivot
       unpivot_clause
-        unpivot_values_column
-          ident	col1
-        unpivot_name_column
+        path_expression_list
+          path_expression
+            ident	col1
+        path_expression
           ident	quarter
-        unpivot_column_list
-          ident	q1
-          ident	q2
+        unpivot_value_list
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	q1
+              path_expression
+                ident	q2
       as_alias
         ident	col2
   

@@ -514,7 +514,8 @@
     select
       select_list
         select_expr
-          integer_literal	-1
+          uminus_expr
+            integer_literal	1
   
   '''
 # ---
@@ -527,7 +528,8 @@
     select
       select_list
         select_expr
-          integer_literal	+1
+          uplus_expr
+            integer_literal	1
   
   '''
 # ---
@@ -566,7 +568,8 @@
     select
       select_list
         select_expr
-          integer_literal	-0xff
+          uminus_expr
+            integer_literal	0xff
   
   '''
 # ---
@@ -579,7 +582,8 @@
     select
       select_list
         select_expr
-          integer_literal	+0xff
+          uplus_expr
+            integer_literal	0xff
   
   '''
 # ---

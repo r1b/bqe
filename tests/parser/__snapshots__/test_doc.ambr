@@ -1830,13 +1830,18 @@
                     integer_literal	10
     pipe_unpivot
       unpivot_clause
-        unpivot_values_column
-          ident	sales
-        unpivot_name_column
+        path_expression_list
+          path_expression
+            ident	sales
+        path_expression
           ident	quarter
-        unpivot_column_list
-          ident	Q1
-          ident	Q2
+        unpivot_value_list
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	Q1
+              path_expression
+                ident	Q2
   
   '''
 # ---

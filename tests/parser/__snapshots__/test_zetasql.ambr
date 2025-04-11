@@ -2834,3 +2834,253 @@
   
   '''
 # ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot][sql]
+  '''
+  FROM t
+  |> UNPIVOT (a FOR c IN (x, y))
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot][tree]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_unpivot
+      unpivot_clause
+        path_expression_list
+          path_expression
+            ident	a
+        path_expression
+          ident	c
+        unpivot_value_list
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	x
+              path_expression
+                ident	y
+  
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot_alias_quirk][sql]
+  '''
+  FROM t
+  |> UNPIVOT(a FOR b IN (c)) UNPIVOT
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot_alias_quirk][tree]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_unpivot
+      unpivot_clause
+        path_expression_list
+          path_expression
+            ident	a
+        path_expression
+          ident	b
+        unpivot_value_list
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	c
+      as_alias
+        ident	UNPIVOT
+  
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot_exclude_nulls][sql]
+  '''
+  FROM t
+  |> UNPIVOT EXCLUDE NULLS (a FOR c IN (x, y)) unp
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot_exclude_nulls][tree]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_unpivot
+      unpivot_nulls_modifier
+        exclude_nulls
+      unpivot_clause
+        path_expression_list
+          path_expression
+            ident	a
+        path_expression
+          ident	c
+        unpivot_value_list
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	x
+              path_expression
+                ident	y
+      as_alias
+        ident	unp
+  
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot_in_list][sql]
+  '''
+  FROM t
+  |> UNPIVOT((a) FOR b IN (x))
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot_in_list][tree]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_unpivot
+      unpivot_clause
+        path_expression_list
+          path_expression
+            ident	a
+        path_expression
+          ident	b
+        unpivot_value_list
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	x
+  
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot_include_nulls][sql]
+  '''
+  FROM t
+  |> UNPIVOT INCLUDE NULLS (a FOR c IN (x, y)) unp
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot_include_nulls][tree]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_unpivot
+      unpivot_nulls_modifier
+        include_nulls
+      unpivot_clause
+        path_expression_list
+          path_expression
+            ident	a
+        path_expression
+          ident	c
+        unpivot_value_list
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	x
+              path_expression
+                ident	y
+      as_alias
+        ident	unp
+  
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot_integer_labels][sql]
+  '''
+  FROM t
+  |> UNPIVOT(a FOR e IN (w AS 1, x AS 2))
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot_integer_labels][tree]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_unpivot
+      unpivot_clause
+        path_expression_list
+          path_expression
+            ident	a
+        path_expression
+          ident	e
+        unpivot_value_list
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	w
+            unpivot_value_item_alias
+              integer_literal	1
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	x
+            unpivot_value_item_alias
+              integer_literal	2
+  
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot_paths_and_labels][sql]
+  '''
+  FROM t
+  |> UNPIVOT((a, b.b) FOR a.b.c IN ((f), w AS '1', (x) '2', y "3"))
+  '''
+# ---
+# name: test_pipe_unpivot[zeta_pipe_unpivot_paths_and_labels][tree]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+    pipe_unpivot
+      unpivot_clause
+        path_expression_list
+          path_expression
+            ident	a
+          path_expression
+            ident	b
+            ident	b
+        path_expression
+          ident	a
+          ident	b
+          ident	c
+        unpivot_value_list
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	f
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	w
+            unpivot_value_item_alias
+              string_literal	'1'
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	x
+            unpivot_value_item_alias
+              string_literal	'2'
+          unpivot_value_item
+            path_expression_list
+              path_expression
+                ident	y
+            unpivot_value_item_alias
+              string_literal	"3"
+  
+  '''
+# ---

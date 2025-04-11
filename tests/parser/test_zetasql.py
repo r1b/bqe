@@ -774,3 +774,61 @@ def test_pipe_set_operation(sql, assert_parse_tree):
 )
 def test_pipe_tablesample(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param(
+            """
+            FROM t
+            |> UNPIVOT (a FOR c IN (x, y))
+            """,
+            id="zeta_pipe_unpivot",
+        ),
+        pytest.param(
+            """
+            FROM t
+            |> UNPIVOT EXCLUDE NULLS (a FOR c IN (x, y)) unp
+            """,
+            id="zeta_pipe_unpivot_exclude_nulls",
+        ),
+        pytest.param(
+            """
+            FROM t
+            |> UNPIVOT INCLUDE NULLS (a FOR c IN (x, y)) unp
+            """,
+            id="zeta_pipe_unpivot_include_nulls",
+        ),
+        pytest.param(
+            """
+            FROM t
+            |> UNPIVOT((a) FOR b IN (x))
+            """,
+            id="zeta_pipe_unpivot_in_list",
+        ),
+        pytest.param(
+            """
+            FROM t
+            |> UNPIVOT((a, b.b) FOR a.b.c IN ((f), w AS '1', (x) '2', y "3"))
+            """,
+            id="zeta_pipe_unpivot_paths_and_labels",
+        ),
+        pytest.param(
+            """
+            FROM t
+            |> UNPIVOT(a FOR e IN (w AS 1, x AS 2))
+            """,
+            id="zeta_pipe_unpivot_integer_labels",
+        ),
+        pytest.param(
+            """
+            FROM t
+            |> UNPIVOT(a FOR b IN (c)) UNPIVOT
+            """,
+            id="zeta_pipe_unpivot_alias_quirk",
+        ),
+    ),
+)
+def test_pipe_unpivot(sql, assert_parse_tree):
+    assert_parse_tree(sql)
