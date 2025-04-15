@@ -310,45 +310,47 @@
 # name: test_doc_ok[doc_as][tree]
   '''
   query_expr
-    query_expr
-      select
-        select_list
-          select_expr
-            string_literal	"000123"
-            as_alias
-              ident	id
-          select_expr
-            string_literal	"apples"
-            as_alias
-              ident	item
-          select_expr
-            integer_literal	2
-            as_alias
-              ident	sales
-      pipe_set_operation
-        set_operation
-          set_operation_metadata
-            set_operation_kind	UNION
-            set_operation_mode	ALL
-          set_operation_list
-            subquery
-              query_expr
-                select
-                  select_list
-                    select_expr
-                      string_literal	"000456"
-                      as_alias
-                        ident	id
-                    select_expr
-                      string_literal	"bananas"
-                      as_alias
-                        ident	item
-                    select_expr
-                      integer_literal	5
-                      as_alias
-                        ident	sales
-    as_alias_as_required
-      ident	sales_table
+    aliased_subquery
+      subquery
+        query_expr
+          select
+            select_list
+              select_expr
+                string_literal	"000123"
+                as_alias
+                  ident	id
+              select_expr
+                string_literal	"apples"
+                as_alias
+                  ident	item
+              select_expr
+                integer_literal	2
+                as_alias
+                  ident	sales
+          pipe_set_operation
+            set_operation
+              set_operation_metadata
+                set_operation_kind	UNION
+                set_operation_mode	ALL
+              set_operation_list
+                subquery
+                  query_expr
+                    select
+                      select_list
+                        select_expr
+                          string_literal	"000456"
+                          as_alias
+                            ident	id
+                        select_expr
+                          string_literal	"bananas"
+                          as_alias
+                            ident	item
+                        select_expr
+                          integer_literal	5
+                          as_alias
+                            ident	sales
+      as_alias_as_required
+        ident	sales_table
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order

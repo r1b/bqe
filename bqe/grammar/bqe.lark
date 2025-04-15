@@ -631,14 +631,17 @@ window_frame_unbounded_following : _UNBOUNDED _FOLLOWING
 
 ?query : query_expr ( _SEMI query_expr )* _SEMI?
 
-query_expr : select
-    | subquery as_alias_as_required?
+?query_start : select
+    | aliased_subquery
     | pipe_from
-    | query_expr pipe_expr
 
-subquery : _LPAR query_expr _RPAR
+?aliased_subquery : subquery as_alias_as_required?
+
+subquery : _LPAR query_expr _RPAR | _LPAR subquery _RPAR
 
 pipe_from : _FROM from_clause
+
+query_expr : query_start pipe_expr*
 
 ?pipe_expr : _PIPE_OP pipe_operator
 

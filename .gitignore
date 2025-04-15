@@ -161,3 +161,4 @@ cython_debug/
 
 # bqe
 NOTES.md
+bqe/grammar/expr.lark
