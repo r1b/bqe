@@ -76,7 +76,6 @@ import pytest
             |> AGGREGATE x, s.*, f(y).*, (a+b).*
             """,
             id="zeta_pipe_agg_dot_star",
-            marks=pytest.mark.xfail,
         ),
         pytest.param(
             """
@@ -86,7 +85,6 @@ import pytest
                          z.* except (a) replace (1+2 as ccc)
             """,
             id="zeta_pipe_agg_except_replace",
-            marks=pytest.mark.xfail,
         ),
         pytest.param(
             """
@@ -516,7 +514,6 @@ def test_pipe_pivot(sql, assert_parse_tree):
             # |> select with anonymization 1,2
             """,
             id="zeta_pipe_query_select_forms",
-            marks=pytest.mark.xfail,
         ),
         pytest.param(
             """
@@ -553,7 +550,6 @@ def test_pipe_pivot(sql, assert_parse_tree):
                       (sum(x) OVER ()).*
             """,
             id="zeta_pipe_query_extend_modifiers",
-            marks=pytest.mark.xfail,
         ),
         pytest.param(
             """
@@ -561,7 +557,6 @@ def test_pipe_pivot(sql, assert_parse_tree):
             |> EXTEND sum(x) OVER ().*
             """,
             id="zeta_pipe_query_extend_quirks",
-            marks=pytest.mark.xfail,
         ),
         pytest.param(
             """

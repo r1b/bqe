@@ -622,7 +622,7 @@ select_replace_list : select_replace_item ( _COMMA select_replace_item )*
 
 select_replace_item : column_expr _AS ident
 
-select_dot_star : prec_higher_than_and_expr _DOT _STAR select_except? select_replace?
+select_dot_star : atom_expr _DOT _STAR select_except? select_replace?
 
 select_expr : column_expr as_alias?
 

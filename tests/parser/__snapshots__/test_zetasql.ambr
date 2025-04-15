@@ -117,6 +117,102 @@
   
   '''
 # ---
+# name: test_pipe_agg[zeta_pipe_agg_dot_star][sql]
+  '''
+  select 1
+  |> AGGREGATE x, s.*, f(y).*, (a+b).*
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_dot_star][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_expr
+              ident	x
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_dot_star
+              ident	s
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_dot_star
+              function_call_expr
+                function_name
+                  ident	f
+                function_args
+                  pos_arg
+                    ident	y
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_dot_star
+              parenthesized_expr
+                add_expr
+                  ident	a
+                  ident	b
+  
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_except_replace][sql]
+  '''
+  select 1
+  |> AGGREGATE x.* except (a,b),
+               y.* replace (abc as def),
+               z.* except (a) replace (1+2 as ccc)
+  '''
+# ---
+# name: test_pipe_agg[zeta_pipe_agg_except_replace][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_agg
+      pipe_selection_item_list_with_order
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_dot_star
+              ident	x
+              select_except
+                select_except_list
+                  select_except_item
+                    ident	a
+                  select_except_item
+                    ident	b
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_dot_star
+              ident	y
+              select_replace
+                select_replace_list
+                  select_replace_item
+                    ident	abc
+                    ident	def
+        pipe_selection_item_with_order
+          pipe_selection_item
+            select_dot_star
+              ident	z
+              select_except
+                select_except_list
+                  select_except_item
+                    ident	a
+              select_replace
+                select_replace_list
+                  select_replace_item
+                    add_expr
+                      integer_literal	1
+                      integer_literal	2
+                    ident	ccc
+  
+  '''
+# ---
 # name: test_pipe_agg[zeta_pipe_agg_group_and_order_by][sql]
   '''
   select 1
@@ -1607,6 +1703,92 @@
   
   '''
 # ---
+# name: test_pipe_query[zeta_pipe_query_extend_modifiers][sql]
+  '''
+  select 1
+  |> EXTEND x.*,
+            f(x).* except(a),
+            (1+x).* replace(a as b),
+            (sum(x) OVER ()).*
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_extend_modifiers][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_dot_star
+            ident	x
+        pipe_selection_item
+          select_dot_star
+            function_call_expr
+              function_name
+                ident	f
+              function_args
+                pos_arg
+                  ident	x
+            select_except
+              select_except_list
+                select_except_item
+                  ident	a
+        pipe_selection_item
+          select_dot_star
+            parenthesized_expr
+              add_expr
+                integer_literal	1
+                ident	x
+            select_replace
+              select_replace_list
+                select_replace_item
+                  ident	a
+                  ident	b
+        pipe_selection_item
+          select_dot_star
+            parenthesized_expr
+              function_call_expr
+                function_name
+                  ident	sum
+                function_args
+                  pos_arg
+                    ident	x
+                window_expr
+                  window_spec
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_extend_quirks][sql]
+  '''
+  select 1
+  |> EXTEND sum(x) OVER ().*
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_extend_quirks][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_dot_star
+            function_call_expr
+              function_name
+                ident	sum
+              function_args
+                pos_arg
+                  ident	x
+              window_expr
+                window_spec
+  
+  '''
+# ---
 # name: test_pipe_query[zeta_pipe_query_extend_trailing_commas][sql]
   '''
   select 1 x,
@@ -1785,6 +1967,82 @@
             integer_literal	4
             as_alias
               ident	four
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_select_forms][sql]
+  '''
+  select 1
+  |> select 1,2,"abc"
+  |> select distinct x
+  |> select as struct x,y
+  |> select as value z
+  # |> select as c.TypeName z
+  |> select *, * except(abc), * replace(abc as def)
+  # |> select @{hint=1} *, * except(abc), * replace(abc as def)
+  |> select abc.def.*, abc.* except(x)
+  # |> select with anonymization 1,2
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_select_forms][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_select
+      select_list
+        select_expr
+          integer_literal	1
+        select_expr
+          integer_literal	2
+        select_expr
+          string_literal	"abc"
+    pipe_select
+      select_list
+        select_expr
+          ident	distinct
+          as_alias
+            ident	x
+    pipe_select
+      select_shape	struct
+      select_list
+        select_expr
+          ident	x
+        select_expr
+          ident	y
+    pipe_select
+      select_shape	value
+      select_list
+        select_expr
+          ident	z
+    pipe_select
+      select_list
+        select_star
+        select_star
+          select_except
+            select_except_list
+              select_except_item
+                ident	abc
+        select_star
+          select_replace
+            select_replace_list
+              select_replace_item
+                ident	abc
+                ident	def
+    pipe_select
+      select_list
+        select_dot_star
+          path_expression
+            ident	abc
+            ident	def
+        select_dot_star
+          ident	abc
+          select_except
+            select_except_list
+              select_except_item
+                ident	x
   
   '''
 # ---
