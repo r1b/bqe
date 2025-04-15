@@ -39,8 +39,12 @@ _PLUS : "+"
 _RBRACK : "]"
 _RPAR : ")"
 _SEMI : ";"
+_SHL : "<<"
+_SHR : ">>"
 _STAR : "*"
 _TILDE : "~"
+_TYPE_OPEN : "<"
+_TYPE_CLOSE : ">"
 _USCORE : "_"
 
 ################################################################################
@@ -214,17 +218,42 @@ type : raw_type type_parameters?
 
 ?raw_type : array_type | struct_type | type_name | range_type
 
-array_type : _ARRAY _LT type _GT
+array_type : _ARRAY _TYPE_OPEN type _TYPE_CLOSE
 
-struct_type : _STRUCT _LT struct_type_list _GT
+struct_type : _STRUCT _TYPE_OPEN struct_type_list _TYPE_CLOSE
 
 struct_type_list : struct_field ( _COMMA struct_field )*
 
 struct_field : ident type | type
 
-type_name : path_expression | _INTERVAL
+# This precludes UDTs, but its worth it for now to disambiguate more basic stuff
+# e.g: ensuring that SHR tokenizes correctly
+type_name : _type_name
 
-range_type : _RANGE _LT type _GT
+!_type_name : "BOOLEAN"
+    | "BIGDECIMAL"
+    | "BIGINT"
+    | "BIGNUMERIC"
+    | "BYTEINT"
+    | "BYTES"
+    | "DATE"
+    | "DATETIME"
+    | "DECIMAL"
+    | "FLOAT64"
+    | "GEOGRAPHY"
+    | "INT"
+    | "INT64"
+    | "INTEGER"
+    | "INTERVAL"
+    | "JSON"
+    | "NUMERIC"
+    | "SMALLINT"
+    | "STRING"
+    | "TIME"
+    | "TIMESTAMP"
+    | "TINYINT"
+
+range_type : _RANGE _TYPE_OPEN type _TYPE_CLOSE
 
 type_parameters : _LPAR type_parameter ( _COMMA type_parameter )* _RPAR
 
@@ -410,8 +439,8 @@ null_literal : NULL
     | bitwise_and_expr _AMP bitwise_shift_expr
 
 ?bitwise_shift_expr : add_sub_expr
-    | bitwise_shift_expr _LT _LT add_sub_expr -> bitwise_shl_expr
-    | bitwise_shift_expr _GT _GT add_sub_expr -> bitwise_shr_expr
+    | bitwise_shift_expr _SHL add_sub_expr -> bitwise_shl_expr
+    | bitwise_shift_expr _SHR add_sub_expr -> bitwise_shr_expr
 
 ?add_sub_expr : mul_div_expr
     | add_sub_expr _PLUS mul_div_expr -> add_expr

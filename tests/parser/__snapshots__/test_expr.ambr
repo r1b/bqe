@@ -528,6 +528,21 @@
   
   '''
 # ---
+# name: test_column_expr_ok[expr_gt][sql]
+  'SELECT x > y'
+# ---
+# name: test_column_expr_ok[expr_gt][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          gt_expr
+            ident	x
+            ident	y
+  
+  '''
+# ---
 # name: test_column_expr_ok[expr_gte][sql]
   'SELECT x >= y'
 # ---
@@ -618,6 +633,21 @@
           like_expr
             ident	x
             string_literal	'a%'
+  
+  '''
+# ---
+# name: test_column_expr_ok[expr_lt][sql]
+  'SELECT x < y'
+# ---
+# name: test_column_expr_ok[expr_lt][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          lt_expr
+            ident	x
+            ident	y
   
   '''
 # ---
