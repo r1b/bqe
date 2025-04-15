@@ -379,125 +379,70 @@ null_literal : NULL
 # Expressions
 ################################################################################
 
-# We force precedence with only one alternative per rule, in a big chain that
-# runs from lowest to highest precedence
-# We pull out a separate rule for all operators w / higher precedence than AND
-# to deal with semantic ambiguity in `BETWEEN` and disambiguate different flavors
-# of parenthesized forms
-# This structure closely follows the expression tree in ZetaSQL
-
 ?column_expr: and_expr | column_expr _OR and_expr -> or_expr
 
 ?and_expr : prec_higher_than_and_expr | and_expr _AND prec_higher_than_and_expr
 
-?prec_higher_than_and_expr : maybe_parenthesized_expr | subquery
+?prec_higher_than_and_expr : nonassoc_expr | _NOT prec_higher_than_and_expr -> not_expr
 
-?maybe_parenthesized_expr : unparenthesized_prec_higher_than_and_expr | parenthesized_expr
+?nonassoc_expr : bitwise_or_expr
+    | bitwise_or_expr _IS [ _NOT ] _DISTINCT _FROM bitwise_or_expr -> distinct_expr
+    | bitwise_or_expr _IS [ _NOT ] ( boolean_literal | null_literal ) -> is_expr
+    | bitwise_or_expr [ _NOT ] _IN ( parenthesized_expr | parenthesized_list | subquery | unnest_expr ) -> in_expr
+    | bitwise_or_expr [ _NOT ] _BETWEEN bitwise_or_expr _AND bitwise_or_expr -> between_expr
+    | bitwise_or_expr [ _NOT ] _LIKE ( ANY | SOME | ALL ) ( parenthesized_list | unnest_expr ) -> qlike_expr
+    | bitwise_or_expr [ _NOT ] _LIKE bitwise_or_expr -> like_expr
+    | bitwise_or_expr ( _NE | _LT _GT ) bitwise_or_expr -> ne_expr
+    | bitwise_or_expr _GTE bitwise_or_expr -> gte_expr
+    | bitwise_or_expr _LTE bitwise_or_expr -> lte_expr
+    | bitwise_or_expr _GT bitwise_or_expr -> gt_expr
+    | bitwise_or_expr _LT bitwise_or_expr -> lt_expr
+    | bitwise_or_expr _EQ bitwise_or_expr -> eq_expr
 
-# In other words, parens used for grouping expressions, but not subqueries
-parenthesized_expr : _LPAR maybe_parenthesized_not_a_query_expr _RPAR
+?bitwise_or_expr : bitwise_xor_expr
+    | bitwise_or_expr _PIPE bitwise_xor_expr
 
-?maybe_parenthesized_not_a_query_expr : unparenthesized_prec_higher_than_and_expr
+?bitwise_xor_expr : bitwise_and_expr
+    | bitwise_xor_expr _CARET bitwise_and_expr
+
+?bitwise_and_expr : bitwise_shift_expr
+    | bitwise_and_expr _AMP bitwise_shift_expr
+
+?bitwise_shift_expr : add_sub_expr
+    | bitwise_shift_expr _LT _LT add_sub_expr -> bitwise_shl_expr
+    | bitwise_shift_expr _GT _GT add_sub_expr -> bitwise_shr_expr
+
+?add_sub_expr : mul_div_expr
+    | add_sub_expr _PLUS mul_div_expr -> add_expr
+    | add_sub_expr _MINUS mul_div_expr -> sub_expr
+
+?mul_div_expr : unary_expr
+    | mul_div_expr _STAR unary_expr -> mul_expr
+    | mul_div_expr _FSLASH unary_expr -> div_expr
+
+?unary_expr : atom_expr
+    | _PLUS atom_expr -> uplus_expr
+    | _MINUS atom_expr -> uminus_expr
+    | _TILDE atom_expr -> bitwise_not_expr
+
+?atom_expr : atom
+    | subscript_expr
+    | field_access_expr
+    | function_call_expr
+    | subquery
     | parenthesized_expr
-    | column_expr _OR and_expr -> or_expr
-    | and_expr _AND prec_higher_than_and_expr -> and_expr
 
-# This begins the chain of operators / atoms
-?unparenthesized_prec_higher_than_and_expr : is_distinct_from_expr
-    | _NOT prec_higher_than_and_expr -> not_expr
+subscript_expr : atom_expr _LBRACK column_expr _RBRACK
 
-?is_distinct_from_expr : is_not_expr
-    | prec_higher_than_and_expr _IS _DISTINCT _FROM prec_higher_than_and_expr
+field_access_expr : atom_expr _DOT ident
 
-?is_not_expr : is_expr
-    | prec_higher_than_and_expr _IS _NOT ( boolean_literal | null_literal )
-
-?is_expr : not_in_expr
-    | prec_higher_than_and_expr _IS ( boolean_literal | null_literal )
-
-?not_in_expr : in_expr
-    | prec_higher_than_and_expr _NOT _IN ( parenthesized_in_rhs | subquery | unnest_expr )
-
-?parenthesized_in_rhs : parenthesized_expr | parenthesized_list
+parenthesized_expr : _LPAR column_expr _RPAR
 
 parenthesized_list : _LPAR column_expr _COMMA column_expr ( _COMMA column_expr )* _RPAR
 
-?in_expr : not_between_expr
-    | prec_higher_than_and_expr _IN ( parenthesized_in_rhs | subquery | unnest_expr )
-
-?not_between_expr : between_expr
-    | prec_higher_than_and_expr _NOT _BETWEEN prec_higher_than_and_expr _AND prec_higher_than_and_expr
-
-?between_expr : not_qlike_expr
-    | prec_higher_than_and_expr _BETWEEN prec_higher_than_and_expr _AND prec_higher_than_and_expr
-
-?not_qlike_expr : qlike_expr
-    | prec_higher_than_and_expr _NOT _LIKE qlike_quantifier ( parenthesized_list | unnest_expr )
-
-qlike_quantifier : ANY | SOME | ALL
-
-?qlike_expr : not_like_expr
-    | prec_higher_than_and_expr _LIKE qlike_quantifier ( parenthesized_list | unnest_expr )
-
-?not_like_expr : like_expr
-    | prec_higher_than_and_expr _NOT _LIKE prec_higher_than_and_expr
-
-?like_expr : ne_expr
-    | prec_higher_than_and_expr _LIKE prec_higher_than_and_expr
-
-?ne_expr : gte_expr
-    | prec_higher_than_and_expr ( _NE | _LT _GT) prec_higher_than_and_expr
-
-?gte_expr : lte_expr
-    | prec_higher_than_and_expr _GTE prec_higher_than_and_expr
-
-?lte_expr : gt_expr
-    | prec_higher_than_and_expr _LTE prec_higher_than_and_expr
-
-?gt_expr : lt_expr
-    | prec_higher_than_and_expr _GT prec_higher_than_and_expr
-
-?lt_expr : eq_expr
-    | prec_higher_than_and_expr _LT prec_higher_than_and_expr
-
-?eq_expr : bitwise_or_expr
-    | prec_higher_than_and_expr _EQ prec_higher_than_and_expr
-
-?bitwise_or_expr : bitwise_xor_expr | prec_higher_than_and_expr _PIPE prec_higher_than_and_expr
-
-?bitwise_xor_expr : bitwise_and_expr | prec_higher_than_and_expr _CARET prec_higher_than_and_expr
-
-?bitwise_and_expr : bitwise_shr_expr | prec_higher_than_and_expr _AMP prec_higher_than_and_expr
-
-?bitwise_shr_expr : bitwise_shl_expr | prec_higher_than_and_expr _GT _GT prec_higher_than_and_expr
-
-?bitwise_shl_expr : sub_expr | prec_higher_than_and_expr _LT _LT prec_higher_than_and_expr
-
-?sub_expr : add_expr | prec_higher_than_and_expr _MINUS prec_higher_than_and_expr
-
-?add_expr : concat_expr | prec_higher_than_and_expr _PLUS prec_higher_than_and_expr
-
-?concat_expr : div_expr | prec_higher_than_and_expr _CONCAT prec_higher_than_and_expr
-
-?div_expr : mul_expr | prec_higher_than_and_expr _FSLASH prec_higher_than_and_expr
-
-?mul_expr : bitwise_not_expr_ | prec_higher_than_and_expr _STAR prec_higher_than_and_expr
-
-?bitwise_not_expr_ : uminus_expr_ | _TILDE prec_higher_than_and_expr -> bitwise_not_expr
-
-?uminus_expr_ : uplus_expr_ | _MINUS prec_higher_than_and_expr -> uminus_expr
-
-?uplus_expr_ : subscript_expr | _PLUS prec_higher_than_and_expr -> uplus_expr
-
-?subscript_expr : field_access_expr | prec_higher_than_and_expr _LBRACK column_expr _RBRACK
-
-?field_access_expr : atom_expr | prec_higher_than_and_expr _DOT ident
-
-# Now we don't really care about precedence anymore
-?atom_expr : literal
+?atom : literal
     | cast_expr
     | conditional_expr
-    | function_call_expr
     | keyword_subquery_expr
     | parameter
     | ident
@@ -529,7 +474,7 @@ else_expr : _ELSE column_expr
 # Ref: https://github.com/lark-parser/lark/blob/master/lark/grammars/python.lark#L145-L146
 function_call_expr : function_name function_args? nulls_modifier? having_modifier? order_by_modifier? limit_modifier? _RPAR ( _OVER window_expr )?
 
-function_name : field_access_expr _LPAR function_distinct?
+function_name : ( field_access_expr | ident ) _LPAR function_distinct?
 
 function_distinct : _DISTINCT
 
@@ -631,17 +576,18 @@ window_frame_unbounded_following : _UNBOUNDED _FOLLOWING
 
 ?query : query_expr ( _SEMI query_expr )* _SEMI?
 
+query_expr : query_start pipe_expr*
+
 ?query_start : select
     | aliased_subquery
     | pipe_from
 
-?aliased_subquery : subquery as_alias_as_required?
+?aliased_subquery.1 : subquery as_alias_as_required?
 
 subquery : _LPAR query_expr _RPAR | _LPAR subquery _RPAR
 
 pipe_from : _FROM from_clause
 
-query_expr : query_start pipe_expr*
 
 ?pipe_expr : _PIPE_OP pipe_operator
 

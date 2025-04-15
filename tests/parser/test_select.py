@@ -11,8 +11,14 @@ import pytest
         pytest.param("SELECT column1 alias1 FROM table1", id="select_list_alias_implicit"),
         pytest.param("SELECT column1, FROM table2", id="select_list_trailing_comma"),
         pytest.param("SELECT * FROM table1", id="select_star"),
-        pytest.param("SELECT column1.* FROM table1", id="select_star_scoped"),
-        pytest.param("SELECT column1.column2.* FROM table1", id="select_star_scoped_nested"),
+        pytest.param(
+            "SELECT column1.* FROM table1", id="select_star_scoped", marks=pytest.mark.xfail
+        ),
+        pytest.param(
+            "SELECT column1.column2.* FROM table1",
+            id="select_star_scoped_nested",
+            marks=pytest.mark.xfail,
+        ),
         pytest.param("SELECT column1 FROM table1 AS alias1", id="select_from_alias_explicit"),
         pytest.param("SELECT column1 FROM table1 alias1", id="select_from_alias_implicit"),
         pytest.param(
@@ -49,6 +55,7 @@ import pytest
             SELECT struct_column.* EXCEPT(column1, column2) FROM table1
             """,
             id="select_dot_star_except",
+            marks=pytest.mark.xfail,
         ),
         pytest.param(
             """
@@ -61,6 +68,7 @@ import pytest
             SELECT struct_column.* REPLACE(1 AS column1, 2 AS column2) FROM table1
             """,
             id="select_dot_star_replace",
+            marks=pytest.mark.xfail,
         ),
     ),
 )

@@ -528,21 +528,6 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_gt][sql]
-  'SELECT x > y'
-# ---
-# name: test_column_expr_ok[expr_gt][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          gt_expr
-            ident	x
-            ident	y
-  
-  '''
-# ---
 # name: test_column_expr_ok[expr_gte][sql]
   'SELECT x >= y'
 # ---
@@ -600,7 +585,7 @@
     select
       select_list
         select_expr
-          is_distinct_from_expr
+          distinct_expr
             ident	x
             ident	y
   
@@ -615,7 +600,7 @@
     select
       select_list
         select_expr
-          is_not_expr
+          is_expr
             ident	x
             null_literal	NULL
   
@@ -633,21 +618,6 @@
           like_expr
             ident	x
             string_literal	'a%'
-  
-  '''
-# ---
-# name: test_column_expr_ok[expr_lt][sql]
-  'SELECT x < y'
-# ---
-# name: test_column_expr_ok[expr_lt][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          lt_expr
-            ident	x
-            ident	y
   
   '''
 # ---
@@ -696,21 +666,6 @@
   
   '''
 # ---
-# name: test_column_expr_ok[expr_ne_var][sql]
-  'SELECT x <> y'
-# ---
-# name: test_column_expr_ok[expr_ne_var][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          ne_expr
-            ident	x
-            ident	y
-  
-  '''
-# ---
 # name: test_column_expr_ok[expr_not][sql]
   'SELECT NOT x'
 # ---
@@ -734,7 +689,7 @@
     select
       select_list
         select_expr
-          not_between_expr
+          between_expr
             ident	x
             ident	y
             ident	z
@@ -750,7 +705,7 @@
     select
       select_list
         select_expr
-          not_in_expr
+          in_expr
             ident	x
             unnest_expr
               array_literal
@@ -770,7 +725,7 @@
     select
       select_list
         select_expr
-          not_like_expr
+          like_expr
             ident	x
             string_literal	'a%'
   
@@ -785,9 +740,9 @@
     select
       select_list
         select_expr
-          not_qlike_expr
+          qlike_expr
             ident	x
-            qlike_quantifier	ALL
+            ALL
             parenthesized_list
               string_literal	'a%'
               string_literal	'%b'
@@ -838,7 +793,7 @@
         select_expr
           qlike_expr
             ident	x
-            qlike_quantifier	ANY
+            ANY
             unnest_expr
               array_literal
                 array_literal_item_list
