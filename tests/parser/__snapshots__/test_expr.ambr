@@ -666,6 +666,21 @@
   
   '''
 # ---
+# name: test_column_expr_ok[expr_ne_var][sql]
+  'SELECT x <> y'
+# ---
+# name: test_column_expr_ok[expr_ne_var][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          ne_expr
+            ident	x
+            ident	y
+  
+  '''
+# ---
 # name: test_column_expr_ok[expr_not][sql]
   'SELECT NOT x'
 # ---

@@ -102,7 +102,7 @@ def test_aggregate_function_call_ok(sql, assert_parse_tree):
         pytest.param("SELECT x NOT LIKE 'a%'", id="expr_not_like"),
         pytest.param("SELECT x LIKE 'a%'", id="expr_like"),
         pytest.param("SELECT x != y", id="expr_ne"),
-        pytest.param("SELECT x <> y", id="expr_ne_var", marks=pytest.mark.xfail),
+        pytest.param("SELECT x <> y", id="expr_ne_var"),
         pytest.param("SELECT x >= y", id="expr_gte"),
         pytest.param("SELECT x <= y", id="expr_lte"),
         pytest.param("SELECT x > y", id="expr_gt", marks=pytest.mark.xfail),

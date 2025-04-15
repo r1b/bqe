@@ -31,6 +31,7 @@ _LT : "<"
 _LTE : "<="
 _MINUS : "-"
 _NE : "!="
+_NE_VAR : "<>"
 _PERC : "%"
 _PIPE : "|"
 _PIPE_OP : "|>"
@@ -392,7 +393,7 @@ null_literal : NULL
     | bitwise_or_expr [ _NOT ] _BETWEEN bitwise_or_expr _AND bitwise_or_expr -> between_expr
     | bitwise_or_expr [ _NOT ] _LIKE ( ANY | SOME | ALL ) ( parenthesized_list | unnest_expr ) -> qlike_expr
     | bitwise_or_expr [ _NOT ] _LIKE bitwise_or_expr -> like_expr
-    | bitwise_or_expr ( _NE | _LT _GT ) bitwise_or_expr -> ne_expr
+    | bitwise_or_expr ( _NE | _NE_VAR ) bitwise_or_expr -> ne_expr
     | bitwise_or_expr _GTE bitwise_or_expr -> gte_expr
     | bitwise_or_expr _LTE bitwise_or_expr -> lte_expr
     | bitwise_or_expr _GT bitwise_or_expr -> gt_expr
