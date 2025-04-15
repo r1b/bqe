@@ -885,12 +885,12 @@ unpivot_nulls_modifier : unpivot_nulls_modifier_kind _NULLS
 
 unpivot_nulls_modifier_kind : _INCLUDE -> include_nulls | _EXCLUDE -> exclude_nulls
 
-unpivot_clause : path_expression_list _FOR path_expression _IN unpivot_value_list
+unpivot_clause : ( path_expression | path_expression_list ) _FOR path_expression _IN unpivot_value_list
 
-path_expression_list : path_expression | _LPAR path_expression ( _COMMA path_expression )* _RPAR
+path_expression_list : _LPAR path_expression ( _COMMA path_expression )* _RPAR
 
-unpivot_value_list : unpivot_value_item | _LPAR unpivot_value_item ( _COMMA unpivot_value_item )* _RPAR
+unpivot_value_list : _LPAR unpivot_value_item ( _COMMA unpivot_value_item )* _RPAR
 
-unpivot_value_item : path_expression_list unpivot_value_item_alias?
+unpivot_value_item : ( path_expression | path_expression_list ) unpivot_value_item_alias?
 
 unpivot_value_item_alias : [ _AS ] ( string_literal | integer_literal )

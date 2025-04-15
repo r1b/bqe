@@ -2850,18 +2850,17 @@
             ident	t
     pipe_unpivot
       unpivot_clause
-        path_expression_list
-          path_expression
-            ident	a
+        path_expression
+          ident	a
         path_expression
           ident	c
         unpivot_value_list
           unpivot_value_item
-            path_expression_list
-              path_expression
-                ident	x
-              path_expression
-                ident	y
+            path_expression
+              ident	x
+          unpivot_value_item
+            path_expression
+              ident	y
   
   '''
 # ---
@@ -2881,16 +2880,14 @@
             ident	t
     pipe_unpivot
       unpivot_clause
-        path_expression_list
-          path_expression
-            ident	a
+        path_expression
+          ident	a
         path_expression
           ident	b
         unpivot_value_list
           unpivot_value_item
-            path_expression_list
-              path_expression
-                ident	c
+            path_expression
+              ident	c
       as_alias
         ident	UNPIVOT
   
@@ -2914,18 +2911,17 @@
       unpivot_nulls_modifier
         exclude_nulls
       unpivot_clause
-        path_expression_list
-          path_expression
-            ident	a
+        path_expression
+          ident	a
         path_expression
           ident	c
         unpivot_value_list
           unpivot_value_item
-            path_expression_list
-              path_expression
-                ident	x
-              path_expression
-                ident	y
+            path_expression
+              ident	x
+          unpivot_value_item
+            path_expression
+              ident	y
       as_alias
         ident	unp
   
@@ -2954,9 +2950,8 @@
           ident	b
         unpivot_value_list
           unpivot_value_item
-            path_expression_list
-              path_expression
-                ident	x
+            path_expression
+              ident	x
   
   '''
 # ---
@@ -2978,18 +2973,17 @@
       unpivot_nulls_modifier
         include_nulls
       unpivot_clause
-        path_expression_list
-          path_expression
-            ident	a
+        path_expression
+          ident	a
         path_expression
           ident	c
         unpivot_value_list
           unpivot_value_item
-            path_expression_list
-              path_expression
-                ident	x
-              path_expression
-                ident	y
+            path_expression
+              ident	x
+          unpivot_value_item
+            path_expression
+              ident	y
       as_alias
         ident	unp
   
@@ -3011,22 +3005,19 @@
             ident	t
     pipe_unpivot
       unpivot_clause
-        path_expression_list
-          path_expression
-            ident	a
+        path_expression
+          ident	a
         path_expression
           ident	e
         unpivot_value_list
           unpivot_value_item
-            path_expression_list
-              path_expression
-                ident	w
+            path_expression
+              ident	w
             unpivot_value_item_alias
               integer_literal	1
           unpivot_value_item
-            path_expression_list
-              path_expression
-                ident	x
+            path_expression
+              ident	x
             unpivot_value_item_alias
               integer_literal	2
   
@@ -3064,9 +3055,8 @@
               path_expression
                 ident	f
           unpivot_value_item
-            path_expression_list
-              path_expression
-                ident	w
+            path_expression
+              ident	w
             unpivot_value_item_alias
               string_literal	'1'
           unpivot_value_item
@@ -3076,9 +3066,8 @@
             unpivot_value_item_alias
               string_literal	'2'
           unpivot_value_item
-            path_expression_list
-              path_expression
-                ident	y
+            path_expression
+              ident	y
             unpivot_value_item_alias
               string_literal	"3"
   
