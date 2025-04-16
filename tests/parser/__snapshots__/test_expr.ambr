@@ -617,6 +617,7 @@
         select_expr
           is_expr
             ident	x
+            not_modifier
             null_literal	NULL
   
   '''
@@ -736,6 +737,7 @@
         select_expr
           between_expr
             ident	x
+            not_modifier
             ident	y
             ident	z
   
@@ -752,6 +754,7 @@
         select_expr
           in_expr
             ident	x
+            not_modifier
             unnest_expr
               array_literal
                 array_literal_item_list
@@ -772,6 +775,7 @@
         select_expr
           like_expr
             ident	x
+            not_modifier
             string_literal	'a%'
   
   '''
@@ -787,7 +791,8 @@
         select_expr
           qlike_expr
             ident	x
-            ALL
+            not_modifier
+            qlike_quantifier	ALL
             parenthesized_list
               string_literal	'a%'
               string_literal	'%b'
@@ -838,7 +843,7 @@
         select_expr
           qlike_expr
             ident	x
-            ANY
+            qlike_quantifier	ANY
             unnest_expr
               array_literal
                 array_literal_item_list

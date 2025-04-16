@@ -415,18 +415,22 @@ null_literal : NULL
 ?prec_higher_than_and_expr : nonassoc_expr | _NOT prec_higher_than_and_expr -> not_expr
 
 ?nonassoc_expr : bitwise_or_expr
-    | bitwise_or_expr _IS [ _NOT ] _DISTINCT _FROM bitwise_or_expr -> distinct_expr
-    | bitwise_or_expr _IS [ _NOT ] ( boolean_literal | null_literal ) -> is_expr
-    | bitwise_or_expr [ _NOT ] _IN ( parenthesized_expr | parenthesized_list | subquery | unnest_expr ) -> in_expr
-    | bitwise_or_expr [ _NOT ] _BETWEEN bitwise_or_expr _AND bitwise_or_expr -> between_expr
-    | bitwise_or_expr [ _NOT ] _LIKE ( ANY | SOME | ALL ) ( parenthesized_list | unnest_expr ) -> qlike_expr
-    | bitwise_or_expr [ _NOT ] _LIKE bitwise_or_expr -> like_expr
+    | bitwise_or_expr _IS not_modifier? _DISTINCT _FROM bitwise_or_expr -> distinct_expr
+    | bitwise_or_expr _IS not_modifier? ( boolean_literal | null_literal ) -> is_expr
+    | bitwise_or_expr not_modifier? _IN ( parenthesized_expr | parenthesized_list | subquery | unnest_expr ) -> in_expr
+    | bitwise_or_expr not_modifier? _BETWEEN bitwise_or_expr _AND bitwise_or_expr -> between_expr
+    | bitwise_or_expr not_modifier? _LIKE qlike_quantifier ( parenthesized_list | unnest_expr ) -> qlike_expr
+    | bitwise_or_expr not_modifier? _LIKE bitwise_or_expr -> like_expr
     | bitwise_or_expr ( _NE | _NE_VAR ) bitwise_or_expr -> ne_expr
     | bitwise_or_expr _GTE bitwise_or_expr -> gte_expr
     | bitwise_or_expr _LTE bitwise_or_expr -> lte_expr
     | bitwise_or_expr _GT bitwise_or_expr -> gt_expr
     | bitwise_or_expr _LT bitwise_or_expr -> lt_expr
     | bitwise_or_expr _EQ bitwise_or_expr -> eq_expr
+
+not_modifier : _NOT
+
+qlike_quantifier : ANY | SOME | ALL
 
 ?bitwise_or_expr : bitwise_xor_expr
     | bitwise_or_expr _PIPE bitwise_xor_expr
