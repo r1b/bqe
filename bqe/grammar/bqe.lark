@@ -609,7 +609,11 @@ window_frame_unbounded_following : _UNBOUNDED _FOLLOWING
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#sql_syntax
 
-?query : query_expr ( _SEMI query_expr )* _SEMI?
+?query : query_statement _SEMI? | script
+
+?query_statement : query_expr
+
+script : query_statement _SEMI query_statement ( _SEMI query_statement )* _SEMI?
 
 query_expr : query_start pipe_expr*
 

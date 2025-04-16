@@ -4,7 +4,7 @@
 # ---
 # name: test_script_ok[script_multi][tree]
   '''
-  query
+  script
     query_expr
       select
         select_list
@@ -31,7 +31,7 @@
 # ---
 # name: test_script_ok[script_multi_with_trailing_semi][tree]
   '''
-  query
+  script
     query_expr
       select
         select_list
