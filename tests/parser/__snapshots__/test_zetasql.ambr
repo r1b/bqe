@@ -1054,20 +1054,22 @@
                       ident	t
         select_expr
           exists_subquery_expr
-            query_expr
-              pipe_from
-                from_clause
-                  from_item_table
-                    path_expression
-                      ident	t1
+            subquery
+              query_expr
+                pipe_from
+                  from_clause
+                    from_item_table
+                      path_expression
+                        ident	t1
         select_expr
           array_subquery_expr
-            query_expr
-              pipe_from
-                from_clause
-                  from_item_table
-                    path_expression
-                      ident	t2
+            subquery
+              query_expr
+                pipe_from
+                  from_clause
+                    from_item_table
+                      path_expression
+                        ident	t2
       from_clause
         from_item_subquery
           subquery

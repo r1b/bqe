@@ -185,3 +185,21 @@ def test_case_ok(sql, assert_parse_tree):
 )
 def test_cast_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param("SELECT (SELECT 1) + (SELECT 1)", id="subquery_sum"),
+        pytest.param(
+            "SELECT (SELECT (SELECT 1) + (SELECT 1)) AS a", id="subquery_sum_nested_alias"
+        ),
+        pytest.param("SELECT ((SELECT 1) + (SELECT 1)) - 1", id="subquery_in_parenthesized"),
+        pytest.param("SELECT 1 - (SELECT (1 << 8) + 1 AS a)", id="parenthesized_in_subquery"),
+        pytest.param("SELECT (SELECT 1) AS a", id="trailing_subquery_alias"),
+        pytest.param("(SELECT 1) AS a", id="top_level_subquery_alias"),
+        pytest.param("FROM (SELECT 1) AS a", id="from_subquery_alias"),
+    ),
+)
+def test_subquery_expr_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)

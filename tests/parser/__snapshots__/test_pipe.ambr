@@ -1298,6 +1298,32 @@
   
   '''
 # ---
+# name: test_pipe_ok[pipe_pg_subquery_quirks][sql]
+  'SELECT (((SELECT 2)) |> SELECT 2)'
+# ---
+# name: test_pipe_ok[pipe_pg_subquery_quirks][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          subquery
+            query_expr
+              subquery
+                query_expr
+                  subquery
+                    query_expr
+                      select
+                        select_list
+                          select_expr
+                            integer_literal	2
+              pipe_select
+                select_list
+                  select_expr
+                    integer_literal	2
+  
+  '''
+# ---
 # name: test_pipe_ok[pipe_select_named_window_multi][sql]
   'FROM table1 |> SELECT SUM(col1) OVER (w1), SUM(col2) OVER (w2) WINDOW w1 AS (PARTITION BY col3), w2 AS (PARTITION BY col4)'
 # ---

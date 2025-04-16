@@ -173,7 +173,6 @@ ident : UNQUOTED_IDENT | QUOTED_IDENT | keyword_as_ident
 
 path_expression : ident ( _DOT ident )*
 
-# This is the only case where we force inlining of terminals
 !keyword_as_ident : "AGGREGATE"i
     | "BIGNUMERIC"i
     | "CALL"i
@@ -471,6 +470,8 @@ parenthesized_expr : _LPAR column_expr _RPAR
 parenthesized_list : _LPAR column_expr _COMMA column_expr ( _COMMA column_expr )* _RPAR
 
 ?atom : literal
+    # 1 expected shift/reduce
+    # Ref: https://github.com/google/zetasql/blob/2025.03.1/zetasql/parser/zetasql.tm#L812
     | cast_expr
     | conditional_expr
     | keyword_subquery_expr
@@ -536,8 +537,8 @@ order_by_item_nulls : _NULLS ( FIRST | LAST )
 
 limit_modifier : _LIMIT column_expr
 
-keyword_subquery_expr : _ARRAY _LPAR query_expr _RPAR -> array_subquery_expr
-    | _EXISTS _LPAR query_expr _RPAR -> exists_subquery_expr
+keyword_subquery_expr : _ARRAY subquery -> array_subquery_expr
+    | _EXISTS subquery -> exists_subquery_expr
 
 # Window specification
 
@@ -612,12 +613,15 @@ query_expr : query_start pipe_expr*
     | aliased_subquery
     | pipe_from
 
+# reduce / reduce between top-level subquery and expr subquery
+# these become ambiguous when both parenthesized exprs & multiple nesting levels are allowed
+# priority here will expand nested subquery parens for as long as possible
+# Ref: https://github.com/postgres/postgres/blob/42c63ab/src/backend/parser/gram.y#L11125-L11136
 ?aliased_subquery.1 : subquery as_alias_as_required?
 
-subquery : _LPAR query_expr _RPAR | _LPAR subquery _RPAR
+subquery : _LPAR query_expr _RPAR
 
 pipe_from : _FROM from_clause
-
 
 ?pipe_expr : _PIPE_OP pipe_operator
 

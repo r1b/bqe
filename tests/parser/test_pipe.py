@@ -26,6 +26,11 @@ import pytest
             "FROM table1 |> SELECT SUM(col1) OVER (w1), SUM(col2) OVER (w2) WINDOW w1 AS (PARTITION BY col3), w2 AS (PARTITION BY col4)",
             id="pipe_select_named_window_multi",
         ),
+        pytest.param(
+            # Ref: https://github.com/postgres/postgres/blob/42c63ab/src/backend/parser/gram.y#L11125-L11136
+            "SELECT (((SELECT 2)) |> SELECT 2)",
+            id="pipe_pg_subquery_quirks",
+        ),
     ),
 )
 def test_pipe_ok(sql, assert_parse_tree):

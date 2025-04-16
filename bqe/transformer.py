@@ -20,3 +20,10 @@ class BqeTransformer(Transformer):
             children = lhs + rhs
             return Tree("path_expression", children)
         return Tree("dot_ident", args)
+
+    def subquery(self, args: list[Tree]):
+        """Collapse nested subqueries."""
+        child = args[0]
+        if child.data == "subquery":
+            return Tree("subquery", child.children)
+        return Tree("subquery", args)

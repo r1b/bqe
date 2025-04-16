@@ -1135,11 +1135,12 @@
       select_list
         select_expr
           array_subquery_expr
-            query_expr
-              select
-                select_list
-                  select_expr
-                    integer_literal	1
+            subquery
+              query_expr
+                select
+                  select_list
+                    select_expr
+                      integer_literal	1
   
   '''
 # ---
@@ -1153,11 +1154,182 @@
       select_list
         select_expr
           exists_subquery_expr
+            subquery
+              query_expr
+                select
+                  select_list
+                    select_expr
+                      integer_literal	1
+  
+  '''
+# ---
+# name: test_subquery_expr_ok[from_subquery_alias][sql]
+  'FROM (SELECT 1) AS a'
+# ---
+# name: test_subquery_expr_ok[from_subquery_alias][tree]
+  '''
+  query_expr
+    pipe_from
+      from_clause
+        from_item_subquery
+          subquery
             query_expr
               select
                 select_list
                   select_expr
                     integer_literal	1
+          as_alias
+            ident	a
+  
+  '''
+# ---
+# name: test_subquery_expr_ok[parenthesized_in_subquery][sql]
+  'SELECT 1 - (SELECT (1 << 8) + 1 AS a)'
+# ---
+# name: test_subquery_expr_ok[parenthesized_in_subquery][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          sub_expr
+            integer_literal	1
+            subquery
+              query_expr
+                select
+                  select_list
+                    select_expr
+                      add_expr
+                        parenthesized_expr
+                          bitwise_shl_expr
+                            integer_literal	1
+                            integer_literal	8
+                        integer_literal	1
+                      as_alias
+                        ident	a
+  
+  '''
+# ---
+# name: test_subquery_expr_ok[subquery_in_parenthesized][sql]
+  'SELECT ((SELECT 1) + (SELECT 1)) - 1'
+# ---
+# name: test_subquery_expr_ok[subquery_in_parenthesized][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          sub_expr
+            parenthesized_expr
+              add_expr
+                subquery
+                  query_expr
+                    select
+                      select_list
+                        select_expr
+                          integer_literal	1
+                subquery
+                  query_expr
+                    select
+                      select_list
+                        select_expr
+                          integer_literal	1
+            integer_literal	1
+  
+  '''
+# ---
+# name: test_subquery_expr_ok[subquery_sum][sql]
+  'SELECT (SELECT 1) + (SELECT 1)'
+# ---
+# name: test_subquery_expr_ok[subquery_sum][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          add_expr
+            subquery
+              query_expr
+                select
+                  select_list
+                    select_expr
+                      integer_literal	1
+            subquery
+              query_expr
+                select
+                  select_list
+                    select_expr
+                      integer_literal	1
+  
+  '''
+# ---
+# name: test_subquery_expr_ok[subquery_sum_nested_alias][sql]
+  'SELECT (SELECT (SELECT 1) + (SELECT 1)) AS a'
+# ---
+# name: test_subquery_expr_ok[subquery_sum_nested_alias][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    add_expr
+                      subquery
+                        query_expr
+                          select
+                            select_list
+                              select_expr
+                                integer_literal	1
+                      subquery
+                        query_expr
+                          select
+                            select_list
+                              select_expr
+                                integer_literal	1
+          as_alias
+            ident	a
+  
+  '''
+# ---
+# name: test_subquery_expr_ok[top_level_subquery_alias][sql]
+  '(SELECT 1) AS a'
+# ---
+# name: test_subquery_expr_ok[top_level_subquery_alias][tree]
+  '''
+  query_expr
+    aliased_subquery
+      subquery
+        query_expr
+          select
+            select_list
+              select_expr
+                integer_literal	1
+      as_alias_as_required
+        ident	a
+  
+  '''
+# ---
+# name: test_subquery_expr_ok[trailing_subquery_alias][sql]
+  'SELECT (SELECT 1) AS a'
+# ---
+# name: test_subquery_expr_ok[trailing_subquery_alias][tree]
+  '''
+  query_expr
+    select
+      select_list
+        select_expr
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+          as_alias
+            ident	a
   
   '''
 # ---
