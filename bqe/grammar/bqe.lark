@@ -841,7 +841,7 @@ set_operation_criteria : INNER
 
 # JOIN
 
-pipe_join : join_criteria? _JOIN from_item as_alias? on_or_using_clause?
+pipe_join : join_criteria? _JOIN from_item on_or_using_clause?
 
 join_criteria : CROSS | INNER | FULL OUTER? | LEFT OUTER? | RIGHT OUTER?
 
