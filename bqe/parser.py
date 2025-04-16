@@ -1,12 +1,10 @@
 import logging
-import os
 from lark import Lark, logger as lark_logger
 from lark.exceptions import UnexpectedInput
 
-from .settings import PACKAGE_ROOT
+from .settings import BQE_DEBUG, PACKAGE_ROOT
 from .transformer import BqeTransformer
 
-BQE_DEBUG = bool(os.environ.get("BQE_DEBUG"))
 
 if BQE_DEBUG:
     lark_logger.setLevel(logging.DEBUG)
