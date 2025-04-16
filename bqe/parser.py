@@ -1,11 +1,15 @@
 import logging
-from lark import Lark, logger
+import os
+from lark import Lark, logger as lark_logger
 from lark.exceptions import UnexpectedInput
 
 from .settings import PACKAGE_ROOT
 from .transformer import BqeTransformer
 
-logger.setLevel(logging.DEBUG)
+BQE_DEBUG = bool(os.environ.get("BQE_DEBUG"))
+
+if BQE_DEBUG:
+    lark_logger.setLevel(logging.DEBUG)
 
 GRAMMAR_PATH = PACKAGE_ROOT / "grammar" / "bqe.lark"
 
@@ -13,7 +17,7 @@ parser = Lark(
     GRAMMAR_PATH.read_text(),
     parser="lalr",
     start=["start_query", "start_pipe", "start_expr"],
-    debug=True,
+    debug=BQE_DEBUG,
 )
 transformer = BqeTransformer()
 
