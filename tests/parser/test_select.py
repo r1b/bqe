@@ -76,7 +76,6 @@ def test_select_ok(sql, assert_parse_tree):
     (
         pytest.param("SELECT ,", id="select_comma_only"),
         pytest.param("SELECT ,1", id="select_comma_leading"),
-        # FIXME: BQ says "Syntax error: SELECT list must not be empty at [1:8]"
         pytest.param(
             "SELECT from FROM table1", id="select_column_reserved_word", marks=pytest.mark.xfail
         ),

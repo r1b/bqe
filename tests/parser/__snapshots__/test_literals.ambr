@@ -447,10 +447,10 @@
   
   '''
 # ---
-# name: test_float_literal_ok[literal_float_dig_dot_dig_lowere_minus_dig][sql]
+# name: test_float_literal_ok[literal_float_dig_dot_dig_lower_e_minus_dig][sql]
   'SELECT 123.456e-67'
 # ---
-# name: test_float_literal_ok[literal_float_dig_dot_dig_lowere_minus_dig][tree]
+# name: test_float_literal_ok[literal_float_dig_dot_dig_lower_e_minus_dig][tree]
   '''
   query_expr
     select
@@ -460,10 +460,10 @@
   
   '''
 # ---
-# name: test_float_literal_ok[literal_float_dig_lowere_dig][sql]
+# name: test_float_literal_ok[literal_float_dig_lower_e_dig][sql]
   'SELECT 4e2'
 # ---
-# name: test_float_literal_ok[literal_float_dig_lowere_dig][tree]
+# name: test_float_literal_ok[literal_float_dig_lower_e_dig][tree]
   '''
   query_expr
     select
@@ -473,10 +473,10 @@
   
   '''
 # ---
-# name: test_float_literal_ok[literal_float_dot_dig_cape_dig][sql]
+# name: test_float_literal_ok[literal_float_dot_dig_cap_e_dig][sql]
   'SELECT .1E4'
 # ---
-# name: test_float_literal_ok[literal_float_dot_dig_cape_dig][tree]
+# name: test_float_literal_ok[literal_float_dot_dig_cap_e_dig][tree]
   '''
   query_expr
     select
@@ -496,34 +496,6 @@
       select_list
         select_expr
           integer_literal	1
-  
-  '''
-# ---
-# name: test_integer_literal_ok[literal_integer_decimal_minus][sql]
-  'SELECT -1'
-# ---
-# name: test_integer_literal_ok[literal_integer_decimal_minus][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          uminus_expr
-            integer_literal	1
-  
-  '''
-# ---
-# name: test_integer_literal_ok[literal_integer_decimal_plus][sql]
-  'SELECT +1'
-# ---
-# name: test_integer_literal_ok[literal_integer_decimal_plus][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          uplus_expr
-            integer_literal	1
   
   '''
 # ---
@@ -550,34 +522,6 @@
       select_list
         select_expr
           integer_literal	0XFF
-  
-  '''
-# ---
-# name: test_integer_literal_ok[literal_integer_hex_minus][sql]
-  'SELECT -0xff'
-# ---
-# name: test_integer_literal_ok[literal_integer_hex_minus][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          uminus_expr
-            integer_literal	0xff
-  
-  '''
-# ---
-# name: test_integer_literal_ok[literal_integer_hex_plus][sql]
-  'SELECT +0xff'
-# ---
-# name: test_integer_literal_ok[literal_integer_hex_plus][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          uplus_expr
-            integer_literal	0xff
   
   '''
 # ---

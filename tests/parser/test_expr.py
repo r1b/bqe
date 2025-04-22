@@ -59,7 +59,6 @@ def test_function_call_ok(sql, assert_parse_tree):
         pytest.param("SELECT FUNC(1,)", id="fcall_pos_comma_trailing"),
         pytest.param("SELECT FUNC(,name1 => 1)", id="fcall_named_comma_leading"),
         pytest.param("SELECT FUNC(name1 => 1,)", id="fcall_named_comma_trailing"),
-        # TODO: Explicit error for this one
         pytest.param("SELECT FUNC(name1 => 1, 2)", id="fcall_named_before_pos"),
     ),
 )

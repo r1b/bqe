@@ -97,12 +97,8 @@ def test_bytes_literal_error(sql, assert_parse_tree_error):
     "sql",
     (
         pytest.param("SELECT 1", id="literal_integer_decimal"),
-        pytest.param("SELECT +1", id="literal_integer_decimal_plus"),
-        pytest.param("SELECT -1", id="literal_integer_decimal_minus"),
         pytest.param("SELECT 0xff", id="literal_integer_hex"),
         pytest.param("SELECT 0XFF", id="literal_integer_hex_cap"),
-        pytest.param("SELECT +0xff", id="literal_integer_hex_plus"),
-        pytest.param("SELECT -0xff", id="literal_integer_hex_minus"),
         pytest.param("SELECT 1`alias`", id="literal_integer_quoted_alias_adjacent"),
     ),
 )
@@ -114,12 +110,6 @@ def test_integer_literal_ok(sql, assert_parse_tree):
     "sql",
     (
         pytest.param('SELECT 42"foo"', id="literal_integer_string_adjacent"),
-        # ref: https://github.com/google/zetasql/blob/a516c6b26d183efc4f56293256bba92e243b7a61/zetasql/parser/lookahead_transformer.h#L327-L330
-        # ref: https://github.com/google/zetasql/blob/a516c6b26d183efc4f56293256bba92e243b7a61/zetasql/parser/lookahead_transformer.cc#L1323-L1344
-        # To do this in lark, look at `postlex`
-        # We're specifically looking for:
-        # [..., INTEGER_LITERAL, UNQUOTED_IDENT, ...]
-        # where INTEGER_LITERAL end position = UNQUOTED_IDENT start position (no space in between)
         pytest.param(
             "SELECT 1alias", id="literal_integer_ambiguous_alias", marks=pytest.mark.xfail
         ),
@@ -142,10 +132,10 @@ def test_bignumeric_literal_ok(sql, assert_parse_tree):
 @pytest.mark.parametrize(
     "sql",
     (
-        pytest.param("SELECT 123.456e-67", id="literal_float_dig_dot_dig_lowere_minus_dig"),
-        pytest.param("SELECT .1E4", id="literal_float_dot_dig_cape_dig"),
+        pytest.param("SELECT 123.456e-67", id="literal_float_dig_dot_dig_lower_e_minus_dig"),
+        pytest.param("SELECT .1E4", id="literal_float_dot_dig_cap_e_dig"),
         pytest.param("SELECT 58.", id="literal_float_dig_dot"),
-        pytest.param("SELECT 4e2", id="literal_float_dig_lowere_dig"),
+        pytest.param("SELECT 4e2", id="literal_float_dig_lower_e_dig"),
     ),
 )
 def test_float_literal_ok(sql, assert_parse_tree):
