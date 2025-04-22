@@ -1,9 +1,8 @@
 # serializer version: 1
-# name: test_nonreserved_keyword_ok[select_kw_date_alias][sql]
-  'SELECT abc date'
-# ---
-# name: test_nonreserved_keyword_ok[select_kw_date_alias][tree]
+# name: test_nonreserved_keyword_ok[select_kw_date_alias]
   '''
+  SELECT abc date
+  
   query_expr
     select
       select_list
@@ -14,11 +13,10 @@
   
   '''
 # ---
-# name: test_nonreserved_keyword_ok[select_kw_date_column][sql]
-  'SELECT date abc'
-# ---
-# name: test_nonreserved_keyword_ok[select_kw_date_column][tree]
+# name: test_nonreserved_keyword_ok[select_kw_date_column]
   '''
+  SELECT date abc
+  
   query_expr
     select
       select_list
@@ -29,11 +27,10 @@
   
   '''
 # ---
-# name: test_nonreserved_keyword_ok[select_kw_date_double][sql]
-  'SELECT date date'
-# ---
-# name: test_nonreserved_keyword_ok[select_kw_date_double][tree]
+# name: test_nonreserved_keyword_ok[select_kw_date_double]
   '''
+  SELECT date date
+  
   query_expr
     select
       select_list
@@ -44,11 +41,10 @@
   
   '''
 # ---
-# name: test_nonreserved_keyword_ok[select_kw_format_alias][sql]
-  'SELECT abc format'
-# ---
-# name: test_nonreserved_keyword_ok[select_kw_format_alias][tree]
+# name: test_nonreserved_keyword_ok[select_kw_format_alias]
   '''
+  SELECT abc format
+  
   query_expr
     select
       select_list
@@ -59,11 +55,10 @@
   
   '''
 # ---
-# name: test_nonreserved_keyword_ok[select_kw_format_column][sql]
-  'SELECT format abc'
-# ---
-# name: test_nonreserved_keyword_ok[select_kw_format_column][tree]
+# name: test_nonreserved_keyword_ok[select_kw_format_column]
   '''
+  SELECT format abc
+  
   query_expr
     select
       select_list
@@ -74,11 +69,10 @@
   
   '''
 # ---
-# name: test_nonreserved_keyword_ok[select_kw_percent_alias][sql]
-  'SELECT abc percent'
-# ---
-# name: test_nonreserved_keyword_ok[select_kw_percent_alias][tree]
+# name: test_nonreserved_keyword_ok[select_kw_percent_alias]
   '''
+  SELECT abc percent
+  
   query_expr
     select
       select_list
@@ -89,11 +83,10 @@
   
   '''
 # ---
-# name: test_nonreserved_keyword_ok[select_kw_percent_column][sql]
-  'SELECT percent abc'
-# ---
-# name: test_nonreserved_keyword_ok[select_kw_percent_column][tree]
+# name: test_nonreserved_keyword_ok[select_kw_percent_column]
   '''
+  SELECT percent abc
+  
   query_expr
     select
       select_list

@@ -1,9 +1,8 @@
 # serializer version: 1
-# name: test_script_ok[script_multi][sql]
-  'SELECT col1 FROM table1; SELECT col2 FROM table2'
-# ---
-# name: test_script_ok[script_multi][tree]
+# name: test_script_ok[script_multi]
   '''
+  SELECT col1 FROM table1; SELECT col2 FROM table2
+  
   script
     query_expr
       select
@@ -26,11 +25,10 @@
   
   '''
 # ---
-# name: test_script_ok[script_multi_with_trailing_semi][sql]
-  'SELECT col1 FROM table1; SELECT col2 FROM table2;'
-# ---
-# name: test_script_ok[script_multi_with_trailing_semi][tree]
+# name: test_script_ok[script_multi_with_trailing_semi]
   '''
+  SELECT col1 FROM table1; SELECT col2 FROM table2;
+  
   script
     query_expr
       select
@@ -53,11 +51,10 @@
   
   '''
 # ---
-# name: test_script_ok[script_single][sql]
-  'SELECT col1 FROM table1;'
-# ---
-# name: test_script_ok[script_single][tree]
+# name: test_script_ok[script_single]
   '''
+  SELECT col1 FROM table1;
+  
   query_expr
     select
       select_list
@@ -70,11 +67,10 @@
   
   '''
 # ---
-# name: test_script_ok[script_top_level_from][sql]
-  'FROM table1;'
-# ---
-# name: test_script_ok[script_top_level_from][tree]
+# name: test_script_ok[script_top_level_from]
   '''
+  FROM table1;
+  
   query_expr
     pipe_from
       from_clause

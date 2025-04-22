@@ -10,8 +10,12 @@ from bqe.parser import parse
 def assert_parse_tree(snapshot):
     def assert_parse_tree_impl(sql, lax=False):
         tree = parse(sql, lax=lax)
-        assert snapshot(name="sql") == inspect.cleandoc(sql)
-        assert snapshot(name="tree") == tree.pretty()
+
+        pretty_sql = inspect.cleandoc(sql)
+        pretty_tree = tree.pretty()
+
+        # Tree.pretty has trailing newlines
+        assert snapshot == f"{pretty_sql}\n\n{pretty_tree}"
 
     return assert_parse_tree_impl
 

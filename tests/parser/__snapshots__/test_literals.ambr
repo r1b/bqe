@@ -1,9 +1,8 @@
 # serializer version: 1
-# name: test_array_literal_ok[literal_array_empty][sql]
-  'SELECT []'
-# ---
-# name: test_array_literal_ok[literal_array_empty][tree]
+# name: test_array_literal_ok[literal_array_empty]
   '''
+  SELECT []
+  
   query_expr
     select
       select_list
@@ -12,11 +11,10 @@
   
   '''
 # ---
-# name: test_array_literal_ok[literal_array_multi][sql]
-  'SELECT [1,2,3]'
-# ---
-# name: test_array_literal_ok[literal_array_multi][tree]
+# name: test_array_literal_ok[literal_array_multi]
   '''
+  SELECT [1,2,3]
+  
   query_expr
     select
       select_list
@@ -29,11 +27,10 @@
   
   '''
 # ---
-# name: test_array_literal_ok[literal_array_prefix][sql]
-  'SELECT ARRAY [1,2,3]'
-# ---
-# name: test_array_literal_ok[literal_array_prefix][tree]
+# name: test_array_literal_ok[literal_array_prefix]
   '''
+  SELECT ARRAY [1,2,3]
+  
   query_expr
     select
       select_list
@@ -47,11 +44,10 @@
   
   '''
 # ---
-# name: test_array_literal_ok[literal_array_prefix_compound_type][sql]
-  'SELECT ARRAY<STRUCT<a INT64>>[STRUCT(1)]'
-# ---
-# name: test_array_literal_ok[literal_array_prefix_compound_type][tree]
+# name: test_array_literal_ok[literal_array_prefix_compound_type]
   '''
+  SELECT ARRAY<STRUCT<a INT64>>[STRUCT(1)]
+  
   query_expr
     select
       select_list
@@ -75,11 +71,10 @@
   
   '''
 # ---
-# name: test_array_literal_ok[literal_array_prefix_nested_compound_type][sql]
-  'SELECT ARRAY<STRUCT<a STRUCT<b INT64>>>[STRUCT(STRUCT(1))]'
-# ---
-# name: test_array_literal_ok[literal_array_prefix_nested_compound_type][tree]
+# name: test_array_literal_ok[literal_array_prefix_nested_compound_type]
   '''
+  SELECT ARRAY<STRUCT<a STRUCT<b INT64>>>[STRUCT(STRUCT(1))]
+  
   query_expr
     select
       select_list
@@ -112,11 +107,10 @@
   
   '''
 # ---
-# name: test_array_literal_ok[literal_array_prefix_scalar_type][sql]
-  'SELECT ARRAY<INT64>[1,2,3]'
-# ---
-# name: test_array_literal_ok[literal_array_prefix_scalar_type][tree]
+# name: test_array_literal_ok[literal_array_prefix_scalar_type]
   '''
+  SELECT ARRAY<INT64>[1,2,3]
+  
   query_expr
     select
       select_list
@@ -133,11 +127,10 @@
   
   '''
 # ---
-# name: test_array_literal_ok[literal_array_single][sql]
-  'SELECT [1]'
-# ---
-# name: test_array_literal_ok[literal_array_single][tree]
+# name: test_array_literal_ok[literal_array_single]
   '''
+  SELECT [1]
+  
   query_expr
     select
       select_list
@@ -148,11 +141,10 @@
   
   '''
 # ---
-# name: test_bignumeric_literal_ok[literal_bignumeric][sql]
-  "SELECT BIGNUMERIC '42'"
-# ---
-# name: test_bignumeric_literal_ok[literal_bignumeric][tree]
+# name: test_bignumeric_literal_ok[literal_bignumeric]
   '''
+  SELECT BIGNUMERIC '42'
+  
   query_expr
     select
       select_list
@@ -161,11 +153,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_empty][sql]
-  'SELECT b""'
-# ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_empty][tree]
+# name: test_bytes_literal_ok[literal_bytes_dquot_empty]
   '''
+  SELECT b""
+  
   query_expr
     select
       select_list
@@ -174,11 +165,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_nonempty][sql]
-  'SELECT b"bytes"'
-# ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_nonempty][tree]
+# name: test_bytes_literal_ok[literal_bytes_dquot_nonempty]
   '''
+  SELECT b"bytes"
+  
   query_expr
     select
       select_list
@@ -187,11 +177,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_raw_cap][sql]
-  'SELECT BR"bytes"'
-# ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_raw_cap][tree]
+# name: test_bytes_literal_ok[literal_bytes_dquot_raw_cap]
   '''
+  SELECT BR"bytes"
+  
   query_expr
     select
       select_list
@@ -200,11 +189,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_raw_empty][sql]
-  'SELECT br""'
-# ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_raw_empty][tree]
+# name: test_bytes_literal_ok[literal_bytes_dquot_raw_empty]
   '''
+  SELECT br""
+  
   query_expr
     select
       select_list
@@ -213,11 +201,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_raw_nonempty][sql]
-  'SELECT rb"bytes"'
-# ---
-# name: test_bytes_literal_ok[literal_bytes_dquot_raw_nonempty][tree]
+# name: test_bytes_literal_ok[literal_bytes_dquot_raw_nonempty]
   '''
+  SELECT rb"bytes"
+  
   query_expr
     select
       select_list
@@ -226,11 +213,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_squot_empty][sql]
-  "SELECT b''"
-# ---
-# name: test_bytes_literal_ok[literal_bytes_squot_empty][tree]
+# name: test_bytes_literal_ok[literal_bytes_squot_empty]
   '''
+  SELECT b''
+  
   query_expr
     select
       select_list
@@ -239,11 +225,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_squot_nonempty][sql]
-  "SELECT b'bytes'"
-# ---
-# name: test_bytes_literal_ok[literal_bytes_squot_nonempty][tree]
+# name: test_bytes_literal_ok[literal_bytes_squot_nonempty]
   '''
+  SELECT b'bytes'
+  
   query_expr
     select
       select_list
@@ -252,11 +237,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_squot_raw_empty][sql]
-  "SELECT br''"
-# ---
-# name: test_bytes_literal_ok[literal_bytes_squot_raw_empty][tree]
+# name: test_bytes_literal_ok[literal_bytes_squot_raw_empty]
   '''
+  SELECT br''
+  
   query_expr
     select
       select_list
@@ -265,11 +249,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_squot_raw_nonempty][sql]
-  "SELECT br'bytes'"
-# ---
-# name: test_bytes_literal_ok[literal_bytes_squot_raw_nonempty][tree]
+# name: test_bytes_literal_ok[literal_bytes_squot_raw_nonempty]
   '''
+  SELECT br'bytes'
+  
   query_expr
     select
       select_list
@@ -278,11 +261,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_tdquot_empty][sql]
-  'SELECT b""""""'
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tdquot_empty][tree]
+# name: test_bytes_literal_ok[literal_bytes_tdquot_empty]
   '''
+  SELECT b""""""
+  
   query_expr
     select
       select_list
@@ -291,11 +273,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_tdquot_nonempty][sql]
-  'SELECT b"""We say: "hello"."""'
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tdquot_nonempty][tree]
+# name: test_bytes_literal_ok[literal_bytes_tdquot_nonempty]
   '''
+  SELECT b"""We say: "hello"."""
+  
   query_expr
     select
       select_list
@@ -304,11 +285,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_tdquot_raw_empty][sql]
-  'SELECT br""""""'
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tdquot_raw_empty][tree]
+# name: test_bytes_literal_ok[literal_bytes_tdquot_raw_empty]
   '''
+  SELECT br""""""
+  
   query_expr
     select
       select_list
@@ -317,11 +297,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_tdquot_raw_nonempty][sql]
-  'SELECT br"""We say: "hello"."""'
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tdquot_raw_nonempty][tree]
+# name: test_bytes_literal_ok[literal_bytes_tdquot_raw_nonempty]
   '''
+  SELECT br"""We say: "hello"."""
+  
   query_expr
     select
       select_list
@@ -330,11 +309,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_tsquot_empty][sql]
-  "SELECT b''''''"
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tsquot_empty][tree]
+# name: test_bytes_literal_ok[literal_bytes_tsquot_empty]
   '''
+  SELECT b''''''
+  
   query_expr
     select
       select_list
@@ -343,11 +321,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_tsquot_nonempty][sql]
-  "SELECT b'''We say: 'hello'.'''"
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tsquot_nonempty][tree]
+# name: test_bytes_literal_ok[literal_bytes_tsquot_nonempty]
   '''
+  SELECT b'''We say: 'hello'.'''
+  
   query_expr
     select
       select_list
@@ -356,11 +333,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_tsquot_raw_empty][sql]
-  "SELECT br''''''"
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tsquot_raw_empty][tree]
+# name: test_bytes_literal_ok[literal_bytes_tsquot_raw_empty]
   '''
+  SELECT br''''''
+  
   query_expr
     select
       select_list
@@ -369,11 +345,10 @@
   
   '''
 # ---
-# name: test_bytes_literal_ok[literal_bytes_tsquot_raw_nonempty][sql]
-  "SELECT br'''We say: 'hello'.'''"
-# ---
-# name: test_bytes_literal_ok[literal_bytes_tsquot_raw_nonempty][tree]
+# name: test_bytes_literal_ok[literal_bytes_tsquot_raw_nonempty]
   '''
+  SELECT br'''We say: 'hello'.'''
+  
   query_expr
     select
       select_list
@@ -382,11 +357,10 @@
   
   '''
 # ---
-# name: test_date_time_literal_ok[literal_date][sql]
-  "SELECT DATE '1970-01-01'"
-# ---
-# name: test_date_time_literal_ok[literal_date][tree]
+# name: test_date_time_literal_ok[literal_date]
   '''
+  SELECT DATE '1970-01-01'
+  
   query_expr
     select
       select_list
@@ -395,11 +369,10 @@
   
   '''
 # ---
-# name: test_date_time_literal_ok[literal_datetime][sql]
-  "SELECT DATETIME '1970-01-01 12:00:00.01'"
-# ---
-# name: test_date_time_literal_ok[literal_datetime][tree]
+# name: test_date_time_literal_ok[literal_datetime]
   '''
+  SELECT DATETIME '1970-01-01 12:00:00.01'
+  
   query_expr
     select
       select_list
@@ -408,11 +381,10 @@
   
   '''
 # ---
-# name: test_date_time_literal_ok[literal_time][sql]
-  "SELECT DATE '12:00:00.01'"
-# ---
-# name: test_date_time_literal_ok[literal_time][tree]
+# name: test_date_time_literal_ok[literal_time]
   '''
+  SELECT DATE '12:00:00.01'
+  
   query_expr
     select
       select_list
@@ -421,11 +393,10 @@
   
   '''
 # ---
-# name: test_date_time_literal_ok[literal_timestamp][sql]
-  "SELECT TIMESTAMP '1970-01-01 12:00:00.01-08'"
-# ---
-# name: test_date_time_literal_ok[literal_timestamp][tree]
+# name: test_date_time_literal_ok[literal_timestamp]
   '''
+  SELECT TIMESTAMP '1970-01-01 12:00:00.01-08'
+  
   query_expr
     select
       select_list
@@ -434,11 +405,10 @@
   
   '''
 # ---
-# name: test_float_literal_ok[literal_float_dig_dot][sql]
-  'SELECT 58.'
-# ---
-# name: test_float_literal_ok[literal_float_dig_dot][tree]
+# name: test_float_literal_ok[literal_float_dig_dot]
   '''
+  SELECT 58.
+  
   query_expr
     select
       select_list
@@ -447,11 +417,10 @@
   
   '''
 # ---
-# name: test_float_literal_ok[literal_float_dig_dot_dig_lower_e_minus_dig][sql]
-  'SELECT 123.456e-67'
-# ---
-# name: test_float_literal_ok[literal_float_dig_dot_dig_lower_e_minus_dig][tree]
+# name: test_float_literal_ok[literal_float_dig_dot_dig_lower_e_minus_dig]
   '''
+  SELECT 123.456e-67
+  
   query_expr
     select
       select_list
@@ -460,11 +429,10 @@
   
   '''
 # ---
-# name: test_float_literal_ok[literal_float_dig_lower_e_dig][sql]
-  'SELECT 4e2'
-# ---
-# name: test_float_literal_ok[literal_float_dig_lower_e_dig][tree]
+# name: test_float_literal_ok[literal_float_dig_lower_e_dig]
   '''
+  SELECT 4e2
+  
   query_expr
     select
       select_list
@@ -473,11 +441,10 @@
   
   '''
 # ---
-# name: test_float_literal_ok[literal_float_dot_dig_cap_e_dig][sql]
-  'SELECT .1E4'
-# ---
-# name: test_float_literal_ok[literal_float_dot_dig_cap_e_dig][tree]
+# name: test_float_literal_ok[literal_float_dot_dig_cap_e_dig]
   '''
+  SELECT .1E4
+  
   query_expr
     select
       select_list
@@ -486,11 +453,10 @@
   
   '''
 # ---
-# name: test_integer_literal_ok[literal_integer_decimal][sql]
-  'SELECT 1'
-# ---
-# name: test_integer_literal_ok[literal_integer_decimal][tree]
+# name: test_integer_literal_ok[literal_integer_decimal]
   '''
+  SELECT 1
+  
   query_expr
     select
       select_list
@@ -499,11 +465,10 @@
   
   '''
 # ---
-# name: test_integer_literal_ok[literal_integer_hex][sql]
-  'SELECT 0xff'
-# ---
-# name: test_integer_literal_ok[literal_integer_hex][tree]
+# name: test_integer_literal_ok[literal_integer_hex]
   '''
+  SELECT 0xff
+  
   query_expr
     select
       select_list
@@ -512,11 +477,10 @@
   
   '''
 # ---
-# name: test_integer_literal_ok[literal_integer_hex_cap][sql]
-  'SELECT 0XFF'
-# ---
-# name: test_integer_literal_ok[literal_integer_hex_cap][tree]
+# name: test_integer_literal_ok[literal_integer_hex_cap]
   '''
+  SELECT 0XFF
+  
   query_expr
     select
       select_list
@@ -525,11 +489,10 @@
   
   '''
 # ---
-# name: test_integer_literal_ok[literal_integer_quoted_alias_adjacent][sql]
-  'SELECT 1`alias`'
-# ---
-# name: test_integer_literal_ok[literal_integer_quoted_alias_adjacent][tree]
+# name: test_integer_literal_ok[literal_integer_quoted_alias_adjacent]
   '''
+  SELECT 1`alias`
+  
   query_expr
     select
       select_list
@@ -540,11 +503,10 @@
   
   '''
 # ---
-# name: test_interval_literal_ok[literal_interval][sql]
-  'SELECT INTERVAL 1 MONTH'
-# ---
-# name: test_interval_literal_ok[literal_interval][tree]
+# name: test_interval_literal_ok[literal_interval]
   '''
+  SELECT INTERVAL 1 MONTH
+  
   query_expr
     select
       select_list
@@ -555,11 +517,10 @@
   
   '''
 # ---
-# name: test_json_literal_ok[literal_json][sql]
-  "SELECT JSON '{}'"
-# ---
-# name: test_json_literal_ok[literal_json][tree]
+# name: test_json_literal_ok[literal_json]
   '''
+  SELECT JSON '{}'
+  
   query_expr
     select
       select_list
@@ -568,11 +529,10 @@
   
   '''
 # ---
-# name: test_numeric_literal_ok[literal_numeric][sql]
-  "SELECT NUMERIC '42'"
-# ---
-# name: test_numeric_literal_ok[literal_numeric][tree]
+# name: test_numeric_literal_ok[literal_numeric]
   '''
+  SELECT NUMERIC '42'
+  
   query_expr
     select
       select_list
@@ -581,11 +541,10 @@
   
   '''
 # ---
-# name: test_range_literal_ok[literal_range][sql]
-  "SELECT RANGE<DATE> '[1970-01-01, 1970-01-02)'"
-# ---
-# name: test_range_literal_ok[literal_range][tree]
+# name: test_range_literal_ok[literal_range]
   '''
+  SELECT RANGE<DATE> '[1970-01-01, 1970-01-02)'
+  
   query_expr
     select
       select_list
@@ -598,11 +557,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_dquot_empty][sql]
-  'SELECT ""'
-# ---
-# name: test_string_literal_ok[literal_string_dquot_empty][tree]
+# name: test_string_literal_ok[literal_string_dquot_empty]
   '''
+  SELECT ""
+  
   query_expr
     select
       select_list
@@ -611,11 +569,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_dquot_nonempty][sql]
-  'SELECT "string"'
-# ---
-# name: test_string_literal_ok[literal_string_dquot_nonempty][tree]
+# name: test_string_literal_ok[literal_string_dquot_nonempty]
   '''
+  SELECT "string"
+  
   query_expr
     select
       select_list
@@ -624,11 +581,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_dquot_raw_cap][sql]
-  'SELECT R"string"'
-# ---
-# name: test_string_literal_ok[literal_string_dquot_raw_cap][tree]
+# name: test_string_literal_ok[literal_string_dquot_raw_cap]
   '''
+  SELECT R"string"
+  
   query_expr
     select
       select_list
@@ -637,11 +593,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_dquot_raw_empty][sql]
-  'SELECT r""'
-# ---
-# name: test_string_literal_ok[literal_string_dquot_raw_empty][tree]
+# name: test_string_literal_ok[literal_string_dquot_raw_empty]
   '''
+  SELECT r""
+  
   query_expr
     select
       select_list
@@ -650,11 +605,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_dquot_raw_nonempty][sql]
-  'SELECT r"string"'
-# ---
-# name: test_string_literal_ok[literal_string_dquot_raw_nonempty][tree]
+# name: test_string_literal_ok[literal_string_dquot_raw_nonempty]
   '''
+  SELECT r"string"
+  
   query_expr
     select
       select_list
@@ -663,11 +617,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_squot_empty][sql]
-  "SELECT ''"
-# ---
-# name: test_string_literal_ok[literal_string_squot_empty][tree]
+# name: test_string_literal_ok[literal_string_squot_empty]
   '''
+  SELECT ''
+  
   query_expr
     select
       select_list
@@ -676,11 +629,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_squot_nonempty][sql]
-  "SELECT 'string'"
-# ---
-# name: test_string_literal_ok[literal_string_squot_nonempty][tree]
+# name: test_string_literal_ok[literal_string_squot_nonempty]
   '''
+  SELECT 'string'
+  
   query_expr
     select
       select_list
@@ -689,11 +641,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_squot_raw_empty][sql]
-  "SELECT r''"
-# ---
-# name: test_string_literal_ok[literal_string_squot_raw_empty][tree]
+# name: test_string_literal_ok[literal_string_squot_raw_empty]
   '''
+  SELECT r''
+  
   query_expr
     select
       select_list
@@ -702,11 +653,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_squot_raw_nonempty][sql]
-  "SELECT r'string'"
-# ---
-# name: test_string_literal_ok[literal_string_squot_raw_nonempty][tree]
+# name: test_string_literal_ok[literal_string_squot_raw_nonempty]
   '''
+  SELECT r'string'
+  
   query_expr
     select
       select_list
@@ -715,11 +665,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_tdquot_empty][sql]
-  'SELECT """"""'
-# ---
-# name: test_string_literal_ok[literal_string_tdquot_empty][tree]
+# name: test_string_literal_ok[literal_string_tdquot_empty]
   '''
+  SELECT """"""
+  
   query_expr
     select
       select_list
@@ -728,11 +677,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_tdquot_nonempty][sql]
-  'SELECT """We say: "hello"."""'
-# ---
-# name: test_string_literal_ok[literal_string_tdquot_nonempty][tree]
+# name: test_string_literal_ok[literal_string_tdquot_nonempty]
   '''
+  SELECT """We say: "hello"."""
+  
   query_expr
     select
       select_list
@@ -741,11 +689,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_tdquot_raw_empty][sql]
-  'SELECT r""""""'
-# ---
-# name: test_string_literal_ok[literal_string_tdquot_raw_empty][tree]
+# name: test_string_literal_ok[literal_string_tdquot_raw_empty]
   '''
+  SELECT r""""""
+  
   query_expr
     select
       select_list
@@ -754,11 +701,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_tdquot_raw_nonempty][sql]
-  'SELECT r"""We say: "hello"."""'
-# ---
-# name: test_string_literal_ok[literal_string_tdquot_raw_nonempty][tree]
+# name: test_string_literal_ok[literal_string_tdquot_raw_nonempty]
   '''
+  SELECT r"""We say: "hello"."""
+  
   query_expr
     select
       select_list
@@ -767,11 +713,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_tsquot_empty][sql]
-  "SELECT ''''''"
-# ---
-# name: test_string_literal_ok[literal_string_tsquot_empty][tree]
+# name: test_string_literal_ok[literal_string_tsquot_empty]
   '''
+  SELECT ''''''
+  
   query_expr
     select
       select_list
@@ -780,11 +725,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_tsquot_nonempty][sql]
-  "SELECT '''We say: 'hello'.'''"
-# ---
-# name: test_string_literal_ok[literal_string_tsquot_nonempty][tree]
+# name: test_string_literal_ok[literal_string_tsquot_nonempty]
   '''
+  SELECT '''We say: 'hello'.'''
+  
   query_expr
     select
       select_list
@@ -793,11 +737,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_tsquot_raw_empty][sql]
-  "SELECT r''''''"
-# ---
-# name: test_string_literal_ok[literal_string_tsquot_raw_empty][tree]
+# name: test_string_literal_ok[literal_string_tsquot_raw_empty]
   '''
+  SELECT r''''''
+  
   query_expr
     select
       select_list
@@ -806,11 +749,10 @@
   
   '''
 # ---
-# name: test_string_literal_ok[literal_string_tsquot_raw_nonempty][sql]
-  "SELECT r'''We say: 'hello'.'''"
-# ---
-# name: test_string_literal_ok[literal_string_tsquot_raw_nonempty][tree]
+# name: test_string_literal_ok[literal_string_tsquot_raw_nonempty]
   '''
+  SELECT r'''We say: 'hello'.'''
+  
   query_expr
     select
       select_list
@@ -819,11 +761,10 @@
   
   '''
 # ---
-# name: test_struct_literal_ok[literal_struct][sql]
-  'SELECT (1, 2)'
-# ---
-# name: test_struct_literal_ok[literal_struct][tree]
+# name: test_struct_literal_ok[literal_struct]
   '''
+  SELECT (1, 2)
+  
   query_expr
     select
       select_list
@@ -834,11 +775,10 @@
   
   '''
 # ---
-# name: test_struct_literal_ok[literal_struct_multi][sql]
-  'SELECT (1, 2, 3)'
-# ---
-# name: test_struct_literal_ok[literal_struct_multi][tree]
+# name: test_struct_literal_ok[literal_struct_multi]
   '''
+  SELECT (1, 2, 3)
+  
   query_expr
     select
       select_list
@@ -850,11 +790,10 @@
   
   '''
 # ---
-# name: test_struct_literal_ok[literal_struct_named][sql]
-  'SELECT STRUCT(1, 2, 3)'
-# ---
-# name: test_struct_literal_ok[literal_struct_named][tree]
+# name: test_struct_literal_ok[literal_struct_named]
   '''
+  SELECT STRUCT(1, 2, 3)
+  
   query_expr
     select
       select_list
@@ -871,11 +810,10 @@
   
   '''
 # ---
-# name: test_struct_literal_ok[literal_struct_named_alias][sql]
-  'SELECT STRUCT(1 AS a, 2 AS b, 3 AS c)'
-# ---
-# name: test_struct_literal_ok[literal_struct_named_alias][tree]
+# name: test_struct_literal_ok[literal_struct_named_alias]
   '''
+  SELECT STRUCT(1 AS a, 2 AS b, 3 AS c)
+  
   query_expr
     select
       select_list
@@ -898,11 +836,10 @@
   
   '''
 # ---
-# name: test_struct_literal_ok[literal_struct_named_compound_type_decl][sql]
-  'SELECT STRUCT<INT64, INT64, INT64>(1, 2, 3)'
-# ---
-# name: test_struct_literal_ok[literal_struct_named_compound_type_decl][tree]
+# name: test_struct_literal_ok[literal_struct_named_compound_type_decl]
   '''
+  SELECT STRUCT<INT64, INT64, INT64>(1, 2, 3)
+  
   query_expr
     select
       select_list
@@ -930,11 +867,10 @@
   
   '''
 # ---
-# name: test_struct_literal_ok[literal_struct_named_compound_type_decl_column][sql]
-  'SELECT STRUCT<a INT64, b INT64, c INT64>(1, 2, 3)'
-# ---
-# name: test_struct_literal_ok[literal_struct_named_compound_type_decl_column][tree]
+# name: test_struct_literal_ok[literal_struct_named_compound_type_decl_column]
   '''
+  SELECT STRUCT<a INT64, b INT64, c INT64>(1, 2, 3)
+  
   query_expr
     select
       select_list
@@ -965,11 +901,10 @@
   
   '''
 # ---
-# name: test_struct_literal_ok[literal_struct_named_compound_type_decl_nested][sql]
-  'SELECT STRUCT<a INT64, STRUCT<b INT64, c INT64>>(1, STRUCT(2, 3))'
-# ---
-# name: test_struct_literal_ok[literal_struct_named_compound_type_decl_nested][tree]
+# name: test_struct_literal_ok[literal_struct_named_compound_type_decl_nested]
   '''
+  SELECT STRUCT<a INT64, STRUCT<b INT64, c INT64>>(1, STRUCT(2, 3))
+  
   query_expr
     select
       select_list

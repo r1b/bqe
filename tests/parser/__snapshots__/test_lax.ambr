@@ -1,9 +1,8 @@
 # serializer version: 1
-# name: test_lax_ok[lax_expr_and][sql]
-  'a and b and c'
-# ---
-# name: test_lax_ok[lax_expr_and][tree]
+# name: test_lax_ok[lax_expr_and]
   '''
+  a and b and c
+  
   and_expr
     and_expr
       ident	a
@@ -12,11 +11,10 @@
   
   '''
 # ---
-# name: test_lax_ok[lax_expr_case][sql]
-  'case when a and b then c else d end'
-# ---
-# name: test_lax_ok[lax_expr_case][tree]
+# name: test_lax_ok[lax_expr_case]
   '''
+  case when a and b then c else d end
+  
   case_expr
     when_then_expr
       and_expr
@@ -28,11 +26,10 @@
   
   '''
 # ---
-# name: test_lax_ok[lax_expr_pipe_agg][sql]
-  '|> AGGREGATE GROUP BY a, b, ROLLUP(c,d)'
-# ---
-# name: test_lax_ok[lax_expr_pipe_agg][tree]
+# name: test_lax_ok[lax_expr_pipe_agg]
   '''
+  |> AGGREGATE GROUP BY a, b, ROLLUP(c,d)
+  
   pipe_agg
     group_by
       grouping_items
@@ -49,11 +46,10 @@
   
   '''
 # ---
-# name: test_lax_ok[lax_expr_pipe_select][sql]
-  '|> SELECT a, b, c'
-# ---
-# name: test_lax_ok[lax_expr_pipe_select][tree]
+# name: test_lax_ok[lax_expr_pipe_select]
   '''
+  |> SELECT a, b, c
+  
   pipe_select
     select_list
       select_expr

@@ -1,12 +1,9 @@
 # serializer version: 1
-# name: test_pipe_agg[zeta_pipe_agg][sql]
+# name: test_pipe_agg[zeta_pipe_agg]
   '''
   select 1 x
   |> AGGREGATE count(*), sum(x) as xx
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -38,15 +35,12 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_agg_list_trailing_comma][sql]
+# name: test_pipe_agg[zeta_pipe_agg_agg_list_trailing_comma]
   '''
   select 1
   |> AGGREGATE count(*),
   |> AGGREGATE count(*), GROUP BY x
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_agg_list_trailing_comma][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -79,14 +73,11 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_aliases][sql]
+# name: test_pipe_agg[zeta_pipe_agg_aliases]
   '''
   select 1
   |> AGGREGATE count(*) as x, count(*) z
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_aliases][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -117,14 +108,11 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_dot_star][sql]
+# name: test_pipe_agg[zeta_pipe_agg_dot_star]
   '''
   select 1
   |> AGGREGATE x, s.*, f(y).*, (a+b).*
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_dot_star][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -159,16 +147,13 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_except_replace][sql]
+# name: test_pipe_agg[zeta_pipe_agg_except_replace]
   '''
   select 1
   |> AGGREGATE x.* except (a,b),
                y.* replace (abc as def),
                z.* except (a) replace (1+2 as ccc)
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_except_replace][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -213,14 +198,11 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_group_and_order_by][sql]
+# name: test_pipe_agg[zeta_pipe_agg_group_and_order_by]
   '''
   select 1
   |> AGGREGATE 1 GROUP AND ORDER BY x, y DESC,
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_group_and_order_by][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -243,15 +225,12 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_group_and_order_by_aliased][sql]
+# name: test_pipe_agg[zeta_pipe_agg_group_and_order_by_aliased]
   '''
   from x
   |> AGGREGATE
      GROUP AND ORDER BY x+1 AS y ASC
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_group_and_order_by_aliased][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -272,15 +251,12 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_group_and_order_by_grouping_sets_kitchen_sink][sql]
+# name: test_pipe_agg[zeta_pipe_agg_group_and_order_by_grouping_sets_kitchen_sink]
   '''
   select 1
   |> AGGREGATE 1
      GROUP AND ORDER BY (),ROLLUP(x),CUBE(x),GROUPING SETS(x)
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_group_and_order_by_grouping_sets_kitchen_sink][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -312,14 +288,11 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_group_by][sql]
+# name: test_pipe_agg[zeta_pipe_agg_group_by]
   '''
   select 1
   |> AGGREGATE sum(z), 1+count(x+1) GROUP BY x, y+2, 3
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_group_by][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -362,15 +335,12 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_group_by_alias_explicit][sql]
+# name: test_pipe_agg[zeta_pipe_agg_group_by_alias_explicit]
   '''
   select 1
   |> AGGREGATE count(*) as x, count(*) z
      GROUP BY x AS y, z, 1 AS one, x+y AS xy
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_group_by_alias_explicit][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -419,15 +389,12 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_group_by_alias_implicit][sql]
+# name: test_pipe_agg[zeta_pipe_agg_group_by_alias_implicit]
   '''
   select 1
   |> AGGREGATE count(*) as x, count(*) z
      GROUP BY x y, x+y xy
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_group_by_alias_implicit][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -470,15 +437,12 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_group_by_empty][sql]
+# name: test_pipe_agg[zeta_pipe_agg_group_by_empty]
   '''
   select 1
   |> AGGREGATE sum(y) GROUP BY ()
   |> AGGREGATE sum(y) GROUP BY y, (), x
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_group_by_empty][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -521,7 +485,7 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_group_by_order_by_implicit][sql]
+# name: test_pipe_agg[zeta_pipe_agg_group_by_order_by_implicit]
   '''
   select 1
   |> AGGREGATE
@@ -533,10 +497,7 @@
         zz DESC NULLS LAST,
         a NULLS FIRST,
         aa NULLS LAST
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_group_by_order_by_implicit][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -574,15 +535,12 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_group_by_trailing_comma][sql]
+# name: test_pipe_agg[zeta_pipe_agg_group_by_trailing_comma]
   '''
   select 1
   |> AGGREGATE GROUP BY x,
   |> AGGREGATE GROUP BY x, y,
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_group_by_trailing_comma][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -603,16 +561,13 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_grouping_item_kitchen_sink][sql]
+# name: test_pipe_agg[zeta_pipe_agg_grouping_item_kitchen_sink]
   '''
   select 1
   |> AGGREGATE count(*) GROUP BY ROLLUP(x,y)
   |> AGGREGATE GROUP BY GROUPING SETS ((x), (y,z))
   |> AGGREGATE xyz GROUP BY GROUPING SETS(CUBE(x,y), (z,z), ROLLUP(a,b));
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_grouping_item_kitchen_sink][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -677,7 +632,7 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_order_by][sql]
+# name: test_pipe_agg[zeta_pipe_agg_order_by]
   '''
   from t
   |> aggregate count(*) ASC,
@@ -685,10 +640,7 @@
      avg(y) AS alias ASC NULLS FIRST,
      max(distinct z) DESC NULLS LAST,
      nosuffix()
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_order_by][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -752,15 +704,12 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_order_by_everywhere][sql]
+# name: test_pipe_agg[zeta_pipe_agg_order_by_everywhere]
   '''
   from t
   |> aggregate count(*) asc
      group by key asc
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_order_by_everywhere][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -786,14 +735,11 @@
   
   '''
 # ---
-# name: test_pipe_agg[zeta_pipe_agg_window_fail_analysis][sql]
+# name: test_pipe_agg[zeta_pipe_agg_window_fail_analysis]
   '''
   select 1
   |> AGGREGATE 1, x, sum(y) OVER ()
-  '''
-# ---
-# name: test_pipe_agg[zeta_pipe_agg_window_fail_analysis][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -823,11 +769,10 @@
   
   '''
 # ---
-# name: test_pipe_as[zeta_pipe_as][sql]
-  'SELECT 1 |> AS t'
-# ---
-# name: test_pipe_as[zeta_pipe_as][tree]
+# name: test_pipe_as[zeta_pipe_as]
   '''
+  SELECT 1 |> AS t
+  
   query_expr
     select
       select_list
@@ -838,11 +783,10 @@
   
   '''
 # ---
-# name: test_pipe_as[zeta_pipe_as_chained][sql]
-  'SELECT 1 |> AS t1 |> AS t2;'
-# ---
-# name: test_pipe_as[zeta_pipe_as_chained][tree]
+# name: test_pipe_as[zeta_pipe_as_chained]
   '''
+  SELECT 1 |> AS t1 |> AS t2;
+  
   query_expr
     select
       select_list
@@ -855,11 +799,10 @@
   
   '''
 # ---
-# name: test_pipe_as[zeta_pipe_as_input_aliased][sql]
-  'SELECT 1 x |> AS t'
-# ---
-# name: test_pipe_as[zeta_pipe_as_input_aliased][tree]
+# name: test_pipe_as[zeta_pipe_as_input_aliased]
   '''
+  SELECT 1 x |> AS t
+  
   query_expr
     select
       select_list
@@ -872,14 +815,11 @@
   
   '''
 # ---
-# name: test_pipe_as[zeta_pipe_as_scope_oopsie][sql]
+# name: test_pipe_as[zeta_pipe_as_scope_oopsie]
   '''
   FROM (SELECT 1 AS a |> AS t)
   |> SELECT t.a
-  '''
-# ---
-# name: test_pipe_as[zeta_pipe_as_scope_oopsie][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -903,15 +843,12 @@
   
   '''
 # ---
-# name: test_pipe_as[zeta_pipe_as_typical_usage_join][sql]
+# name: test_pipe_as[zeta_pipe_as_typical_usage_join]
   '''
   FROM t1
   |> JOIN t2 USING(key)
   |> AS t3
-  '''
-# ---
-# name: test_pipe_as[zeta_pipe_as_typical_usage_join][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -930,7 +867,7 @@
   
   '''
 # ---
-# name: test_pipe_call[zeta_pipe_call][sql]
+# name: test_pipe_call[zeta_pipe_call]
   '''
   select 1
   |> call f()
@@ -939,10 +876,7 @@
   # |> call f(TABLE t, (select 1))
   # |> call f(DESCRIPTOR(col))
   # |> call f(MODEL m, CONNECTION c)
-  '''
-# ---
-# name: test_pipe_call[zeta_pipe_call][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -976,17 +910,14 @@
   
   '''
 # ---
-# name: test_pipe_drop[zeta_pipe_drop][sql]
+# name: test_pipe_drop[zeta_pipe_drop]
   '''
   select x
   |> drop a
   |> drop a,
   |> drop a,b,c
   |> drop a,b,c,
-  '''
-# ---
-# name: test_pipe_drop[zeta_pipe_drop][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1019,6 +950,19 @@
   
   '''
 # ---
+# name: test_pipe_from[zeta_pipe_from]
+  '''
+  from t
+  
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	t
+  
+  '''
+# ---
 # name: test_pipe_from[zeta_pipe_from][sql]
   'from t'
 # ---
@@ -1030,6 +974,52 @@
         from_item_table
           path_expression
             ident	t
+  
+  '''
+# ---
+# name: test_pipe_from[zeta_pipe_from_expression_subquery]
+  '''
+  select (from t), EXISTS(from t1), ARRAY(from t2)
+  from (from t)
+  
+  query_expr
+    select
+      select_list
+        select_expr
+          subquery
+            query_expr
+              pipe_from
+                from_clause
+                  from_item_table
+                    path_expression
+                      ident	t
+        select_expr
+          exists_subquery_expr
+            subquery
+              query_expr
+                pipe_from
+                  from_clause
+                    from_item_table
+                      path_expression
+                        ident	t1
+        select_expr
+          array_subquery_expr
+            subquery
+              query_expr
+                pipe_from
+                  from_clause
+                    from_item_table
+                      path_expression
+                        ident	t2
+      from_clause
+        from_item_subquery
+          subquery
+            query_expr
+              pipe_from
+                from_clause
+                  from_item_table
+                    path_expression
+                      ident	t
   
   '''
 # ---
@@ -1082,6 +1072,26 @@
   
   '''
 # ---
+# name: test_pipe_from[zeta_pipe_from_subquery]
+  '''
+  from (select * from t)
+  
+  query_expr
+    pipe_from
+      from_clause
+        from_item_subquery
+          subquery
+            query_expr
+              select
+                select_list
+                  select_star
+                from_clause
+                  from_item_table
+                    path_expression
+                      ident	t
+  
+  '''
+# ---
 # name: test_pipe_from[zeta_pipe_from_subquery][sql]
   'from (select * from t)'
 # ---
@@ -1103,6 +1113,23 @@
   
   '''
 # ---
+# name: test_pipe_from[zeta_pipe_from_unnest_aliased]
+  '''
+  from unnest([1]) x
+  
+  query_expr
+    pipe_from
+      from_clause
+        from_item_unnest
+          unnest_expr
+            array_literal
+              array_literal_item_list
+                integer_literal	1
+          as_alias
+            ident	x
+  
+  '''
+# ---
 # name: test_pipe_from[zeta_pipe_from_unnest_aliased][sql]
   'from unnest([1]) x'
 # ---
@@ -1121,7 +1148,7 @@
   
   '''
 # ---
-# name: test_pipe_join[zeta_pipe_join][sql]
+# name: test_pipe_join[zeta_pipe_join]
   '''
   select 1 x
   |> join t2.x.y
@@ -1133,10 +1160,7 @@
   # |> natural join t7
   # |> hash join t7
   # |> lookup join t7
-  '''
-# ---
-# name: test_pipe_join[zeta_pipe_join][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1186,17 +1210,14 @@
   
   '''
 # ---
-# name: test_pipe_join[zeta_pipe_join_unnest][sql]
+# name: test_pipe_join[zeta_pipe_join_unnest]
   '''
   select 1 x
   # TODO: Add TVFs
   # |> join tvf((select 1))
   |> join unnest(y)
   |> join unnest(y.z) i WITH OFFSET o
-  '''
-# ---
-# name: test_pipe_join[zeta_pipe_join_unnest][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1222,7 +1243,7 @@
   
   '''
 # ---
-# name: test_pipe_named_window[zeta_pipe_named_window][sql]
+# name: test_pipe_named_window[zeta_pipe_named_window]
   '''
   from t
   |> select sum(x) over(w), count(*) over (w2)
@@ -1230,10 +1251,7 @@
             w2 AS (partition by a)
   |> extend max(y) over (w partition by x)
      window w AS (ORDER BY b ROWS CURRENT ROW)
-  '''
-# ---
-# name: test_pipe_named_window[zeta_pipe_named_window][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -1303,15 +1321,12 @@
   
   '''
 # ---
-# name: test_pipe_named_window[zeta_pipe_named_window_extend_trailing_comma][sql]
+# name: test_pipe_named_window[zeta_pipe_named_window_extend_trailing_comma]
   '''
   from t
   |> extend sum(x) over (w),
   window w AS (),
-  '''
-# ---
-# name: test_pipe_named_window[zeta_pipe_named_window_extend_trailing_comma][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -1339,15 +1354,12 @@
   
   '''
 # ---
-# name: test_pipe_named_window[zeta_pipe_named_window_select_trailing_comma][sql]
+# name: test_pipe_named_window[zeta_pipe_named_window_select_trailing_comma]
   '''
   from t
   |> select sum(x) over (w),
   window w AS (),
-  '''
-# ---
-# name: test_pipe_named_window[zeta_pipe_named_window_select_trailing_comma][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -1374,15 +1386,12 @@
   
   '''
 # ---
-# name: test_pipe_named_window[zeta_pipe_named_window_unused][sql]
+# name: test_pipe_named_window[zeta_pipe_named_window_unused]
   '''
   from t
   |> select sum(x)
      window w AS ()
-  '''
-# ---
-# name: test_pipe_named_window[zeta_pipe_named_window_unused][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -1406,7 +1415,7 @@
   
   '''
 # ---
-# name: test_pipe_order_by[zeta_pipe_order_by][sql]
+# name: test_pipe_order_by[zeta_pipe_order_by]
   '''
   select 1
   |> order by x
@@ -1415,10 +1424,7 @@
   # |> order by x COLLATE "abc"
   |> order by x NULLS FIRST
   # |> order by x COLLATE "abc" ASC NULLS LAST
-  '''
-# ---
-# name: test_pipe_order_by[zeta_pipe_order_by][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1469,15 +1475,12 @@
   
   '''
 # ---
-# name: test_pipe_order_by[zeta_pipe_order_by_trailing_comma][sql]
+# name: test_pipe_order_by[zeta_pipe_order_by_trailing_comma]
   '''
   select 1
   |> order by x,
   |> order by x, y,
-  '''
-# ---
-# name: test_pipe_order_by[zeta_pipe_order_by_trailing_comma][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1496,15 +1499,12 @@
   
   '''
 # ---
-# name: test_pipe_pivot[zeta_pipe_pivot_aliased_exprs_kitchen_sink][sql]
+# name: test_pipe_pivot[zeta_pipe_pivot_aliased_exprs_kitchen_sink]
   '''
   FROM t
   |> PIVOT(SUM(a) AS sum_a, SUM(aa) sum_aa, 2+COUNT(b+3)
            FOR t.x IN (z, x+y xpy, 1 AS one)) AS p
-  '''
-# ---
-# name: test_pipe_pivot[zeta_pipe_pivot_aliased_exprs_kitchen_sink][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -1564,14 +1564,11 @@
   
   '''
 # ---
-# name: test_pipe_pivot[zeta_pipe_pivot_multi_implicit_alias][sql]
+# name: test_pipe_pivot[zeta_pipe_pivot_multi_implicit_alias]
   '''
   FROM t
   |> PIVOT(SUM(a), SUM(b) FOR b IN (0)) pivot_table
-  '''
-# ---
-# name: test_pipe_pivot[zeta_pipe_pivot_multi_implicit_alias][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -1605,14 +1602,11 @@
   
   '''
 # ---
-# name: test_pipe_pivot[zeta_pipe_pivot_nonreserved_kw][sql]
+# name: test_pipe_pivot[zeta_pipe_pivot_nonreserved_kw]
   '''
   FROM t
   |> PIVOT(a FOR b IN (c)) AS PIVOT
-  '''
-# ---
-# name: test_pipe_pivot[zeta_pipe_pivot_nonreserved_kw][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -1634,14 +1628,11 @@
   
   '''
 # ---
-# name: test_pipe_pivot[zeta_pipe_pivot_single][sql]
+# name: test_pipe_pivot[zeta_pipe_pivot_single]
   '''
   FROM t
   |> PIVOT(SUM(a) FOR b IN (0, 1))
-  '''
-# ---
-# name: test_pipe_pivot[zeta_pipe_pivot_single][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -1665,6 +1656,40 @@
             integer_literal	0
           pivot_value_item
             integer_literal	1
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_extend_agg]
+  '''
+  select 1 x
+  |> extend count(*), sum(x) over ()
+  
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	count
+              function_args
+                star_arg
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	sum
+              function_args
+                pos_arg
+                  ident	x
+              window_expr
+                window_spec
   
   '''
 # ---
@@ -1702,6 +1727,61 @@
                   ident	x
               window_expr
                 window_spec
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_extend_modifiers]
+  '''
+  select 1
+  |> EXTEND x.*,
+            f(x).* except(a),
+            (1+x).* replace(a as b),
+            (sum(x) OVER ()).*
+  
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_dot_star
+            ident	x
+        pipe_selection_item
+          select_dot_star
+            function_call_expr
+              function_name
+                ident	f
+              function_args
+                pos_arg
+                  ident	x
+            select_except
+              select_except_list
+                select_except_item
+                  ident	a
+        pipe_selection_item
+          select_dot_star
+            parenthesized_expr
+              add_expr
+                integer_literal	1
+                ident	x
+            select_replace
+              select_replace_list
+                select_replace_item
+                  ident	a
+                  ident	b
+        pipe_selection_item
+          select_dot_star
+            parenthesized_expr
+              function_call_expr
+                function_name
+                  ident	sum
+                function_args
+                  pos_arg
+                    ident	x
+                window_expr
+                  window_spec
   
   '''
 # ---
@@ -1763,6 +1843,31 @@
   
   '''
 # ---
+# name: test_pipe_query[zeta_pipe_query_extend_quirks]
+  '''
+  select 1
+  |> EXTEND sum(x) OVER ().*
+  
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_dot_star
+            function_call_expr
+              function_name
+                ident	sum
+              function_args
+                pos_arg
+                  ident	x
+              window_expr
+                window_spec
+  
+  '''
+# ---
 # name: test_pipe_query[zeta_pipe_query_extend_quirks][sql]
   '''
   select 1
@@ -1788,6 +1893,35 @@
                   ident	x
               window_expr
                 window_spec
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_extend_trailing_commas]
+  '''
+  select 1 x,
+  |> extend 2,
+  |> extend 3, 4,
+  
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            integer_literal	2
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            integer_literal	3
+        pipe_selection_item
+          select_expr
+            integer_literal	4
   
   '''
 # ---
@@ -1823,6 +1957,32 @@
   
   '''
 # ---
+# name: test_pipe_query[zeta_pipe_query_from_subquery]
+  '''
+  select 5
+  from (
+    select 1
+    |> where true
+  )
+  
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	5
+      from_clause
+        from_item_subquery
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+              pipe_where
+                boolean_literal	true
+  
+  '''
+# ---
 # name: test_pipe_query[zeta_pipe_query_from_subquery][sql]
   '''
   select 5
@@ -1849,6 +2009,43 @@
                     integer_literal	1
               pipe_where
                 boolean_literal	true
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_limit]
+  '''
+  select 1 x
+  |> limit 10
+  |> limit 12 offset 22
+  |> limit @x offset @y
+  |> limit cast(@z as int64)
+  
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_limit
+      limit_expr
+        integer_literal	10
+    pipe_limit
+      limit_expr
+        integer_literal	12
+      offset_expr
+        integer_literal	22
+    pipe_limit
+      limit_expr
+        parameter	x
+      offset_expr
+        parameter	y
+    pipe_limit
+      limit_expr
+        cast_expr_kind_cast
+          cast_expr_target
+            parameter	z
+            ident	int64
   
   '''
 # ---
@@ -1889,6 +2086,83 @@
           cast_expr_target
             parameter	z
             ident	int64
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_projection]
+  '''
+  select 1 x
+  |> extend 2 y, 3 AS z
+  |> extend y+z AS yz, pb.f1.f2[3] f3, sqrt(y)
+  |> where true
+  |> extend 1,2,3 as `three`, 4 four
+  
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+          as_alias
+            ident	x
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            integer_literal	2
+            as_alias
+              ident	y
+        pipe_selection_item
+          select_expr
+            integer_literal	3
+            as_alias
+              ident	z
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            add_expr
+              ident	y
+              ident	z
+            as_alias
+              ident	yz
+        pipe_selection_item
+          select_expr
+            subscript_expr
+              path_expression
+                ident	pb
+                ident	f1
+                ident	f2
+              integer_literal	3
+            as_alias
+              ident	f3
+        pipe_selection_item
+          select_expr
+            function_call_expr
+              function_name
+                ident	sqrt
+              function_args
+                pos_arg
+                  ident	y
+    pipe_where
+      boolean_literal	true
+    pipe_extend
+      pipe_selection_item_list
+        pipe_selection_item
+          select_expr
+            integer_literal	1
+        pipe_selection_item
+          select_expr
+            integer_literal	2
+        pipe_selection_item
+          select_expr
+            integer_literal	3
+            as_alias
+              ident	`three`
+        pipe_selection_item
+          select_expr
+            integer_literal	4
+            as_alias
+              ident	four
   
   '''
 # ---
@@ -1972,6 +2246,79 @@
   
   '''
 # ---
+# name: test_pipe_query[zeta_pipe_query_select_forms]
+  '''
+  select 1
+  |> select 1,2,"abc"
+  |> select distinct x
+  |> select as struct x,y
+  |> select as value z
+  # |> select as c.TypeName z
+  |> select *, * except(abc), * replace(abc as def)
+  # |> select @{hint=1} *, * except(abc), * replace(abc as def)
+  |> select abc.def.*, abc.* except(x)
+  # |> select with anonymization 1,2
+  
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_select
+      select_list
+        select_expr
+          integer_literal	1
+        select_expr
+          integer_literal	2
+        select_expr
+          string_literal	"abc"
+    pipe_select
+      select_list
+        select_expr
+          ident	distinct
+          as_alias
+            ident	x
+    pipe_select
+      select_shape	struct
+      select_list
+        select_expr
+          ident	x
+        select_expr
+          ident	y
+    pipe_select
+      select_shape	value
+      select_list
+        select_expr
+          ident	z
+    pipe_select
+      select_list
+        select_star
+        select_star
+          select_except
+            select_except_list
+              select_except_item
+                ident	abc
+        select_star
+          select_replace
+            select_replace_list
+              select_replace_item
+                ident	abc
+                ident	def
+    pipe_select
+      select_list
+        select_dot_star
+          path_expression
+            ident	abc
+            ident	def
+        select_dot_star
+          ident	abc
+          select_except
+            select_except_list
+              select_except_item
+                ident	x
+  
+  '''
+# ---
 # name: test_pipe_query[zeta_pipe_query_select_forms][sql]
   '''
   select 1
@@ -2048,6 +2395,25 @@
   
   '''
 # ---
+# name: test_pipe_query[zeta_pipe_query_select_subquery]
+  '''
+  select (select 1 |> where true)
+  
+  query_expr
+    select
+      select_list
+        select_expr
+          subquery
+            query_expr
+              select
+                select_list
+                  select_expr
+                    integer_literal	1
+              pipe_where
+                boolean_literal	true
+  
+  '''
+# ---
 # name: test_pipe_query[zeta_pipe_query_select_subquery][sql]
   'select (select 1 |> where true)'
 # ---
@@ -2065,6 +2431,30 @@
                     integer_literal	1
               pipe_where
                 boolean_literal	true
+  
+  '''
+# ---
+# name: test_pipe_query[zeta_pipe_query_select_trailing_commas]
+  '''
+  select 1,
+  |> select 2,
+  |> select 3,4,
+  
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+    pipe_select
+      select_list
+        select_expr
+          integer_literal	2
+    pipe_select
+      select_list
+        select_expr
+          integer_literal	3
+        select_expr
+          integer_literal	4
   
   '''
 # ---
@@ -2095,6 +2485,25 @@
   
   '''
 # ---
+# name: test_pipe_query[zeta_pipe_query_simple]
+  '''
+  select 1,2,3
+  |> where true
+  
+  query_expr
+    select
+      select_list
+        select_expr
+          integer_literal	1
+        select_expr
+          integer_literal	2
+        select_expr
+          integer_literal	3
+    pipe_where
+      boolean_literal	true
+  
+  '''
+# ---
 # name: test_pipe_query[zeta_pipe_query_simple][sql]
   '''
   select 1,2,3
@@ -2117,15 +2526,12 @@
   
   '''
 # ---
-# name: test_pipe_rename[zeta_pipe_rename][sql]
+# name: test_pipe_rename[zeta_pipe_rename]
   '''
   select 1
   |> RENAME x AS y
   |> RENAME `a b` AS `d e`, x AS y, aaa bbb
-  '''
-# ---
-# name: test_pipe_rename[zeta_pipe_rename][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2154,15 +2560,12 @@
   
   '''
 # ---
-# name: test_pipe_rename[zeta_pipe_rename_trailing_commas][sql]
+# name: test_pipe_rename[zeta_pipe_rename_trailing_commas]
   '''
   select 1
   |> RENAME a b,
   |> RENAME a b, c AS d,
-  '''
-# ---
-# name: test_pipe_rename[zeta_pipe_rename_trailing_commas][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2187,15 +2590,12 @@
   
   '''
 # ---
-# name: test_pipe_set[zeta_pipe_set][sql]
+# name: test_pipe_set[zeta_pipe_set]
   '''
   select x
   |> SET x = 1+2
   |> set x = 1+2, y = 3, z = z
-  '''
-# ---
-# name: test_pipe_set[zeta_pipe_set][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2224,15 +2624,12 @@
   
   '''
 # ---
-# name: test_pipe_set[zeta_pipe_set_trailing_commas][sql]
+# name: test_pipe_set[zeta_pipe_set_trailing_commas]
   '''
   select x
   |> SET x = 1+2,
   |> set x = 1+2, y = 3, z = z,
-  '''
-# ---
-# name: test_pipe_set[zeta_pipe_set_trailing_commas][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2261,14 +2658,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation]
   '''
   select 1
   |> union all (select 2)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2289,16 +2683,13 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_by_name][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_by_name]
   '''
   select 1
   |> UNION ALL BY NAME (select 2)
   |> INTERSECT DISTINCT BY NAME ON (x) (select 3)
   |> EXCEPT ALL BY NAME ON (x) (select 4)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_by_name][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2350,16 +2741,13 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_complex_queries][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_complex_queries]
   '''
   select 1
   |> union all
   (select * from t |> where x),
   (select 1 |> where y)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_complex_queries][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2393,16 +2781,13 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_corresponding][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_corresponding]
   '''
   select 1
   |> UNION ALL CORRESPONDING (select 2)
   |> INTERSECT DISTINCT CORRESPONDING BY (x) (select 3)
   |> EXCEPT ALL STRICT CORRESPONDING BY (x) (select 4)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_corresponding][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2454,14 +2839,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_except_all][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_except_all]
   '''
   select 1
   |> except all (select 2)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_except_all][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2482,14 +2864,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_except_distinct][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_except_distinct]
   '''
   select 1
   |> except distinct (select 2)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_except_distinct][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2510,14 +2889,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_full][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_full]
   '''
   select 1
   |> FULL UNION ALL (select 2)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_full][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2539,14 +2915,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_full_outer][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_full_outer]
   '''
   select 1
   |> FULL OUTER UNION ALL (select 2)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_full_outer][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2570,14 +2943,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_inner][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_inner]
   '''
   select 1
   |> INNER UNION ALL (select 2)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_inner][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2599,14 +2969,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_all][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_all]
   '''
   select 1
   |> intersect all (select 2)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_all][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2627,14 +2994,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_distinct][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_distinct]
   '''
   select 1
   |> intersect distinct (select 2)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_distinct][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2655,14 +3019,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_left][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_left]
   '''
   select 1
   |> LEFT UNION ALL (select 2)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_left][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2684,14 +3045,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_left_outer][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_left_outer]
   '''
   select 1
   |> LEFT OUTER UNION ALL (select 2)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_left_outer][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2715,14 +3073,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_multiple_tables][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_multiple_tables]
   '''
   select 1
   |> union all (select 2), (select 3)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_multiple_tables][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2749,14 +3104,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_trailing_comma][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_trailing_comma]
   '''
   select 1
   |> UNION ALL (select 2),
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_trailing_comma][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2777,14 +3129,11 @@
   
   '''
 # ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_union_distinct][sql]
+# name: test_pipe_set_operation[zeta_pipe_set_operation_union_distinct]
   '''
   select 1
   |> union distinct (select 2)
-  '''
-# ---
-# name: test_pipe_set_operation[zeta_pipe_set_operation_union_distinct][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -2805,16 +3154,13 @@
   
   '''
 # ---
-# name: test_pipe_tablesample[zeta_pipe_tablesample][sql]
+# name: test_pipe_tablesample[zeta_pipe_tablesample]
   '''
   from t
   |> TABLESAMPLE SYSTEM (10 PERCENT)
   |> TABLESAMPLE SYSTEM (cast(10 as int64) PERCENT)
   |> TABLESAMPLE SYSTEM (@param1 PERCENT)
-  '''
-# ---
-# name: test_pipe_tablesample[zeta_pipe_tablesample][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -2836,14 +3182,11 @@
   
   '''
 # ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot][sql]
+# name: test_pipe_unpivot[zeta_pipe_unpivot]
   '''
   FROM t
   |> UNPIVOT (a FOR c IN (x, y))
-  '''
-# ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -2866,14 +3209,11 @@
   
   '''
 # ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot_alias_quirk][sql]
+# name: test_pipe_unpivot[zeta_pipe_unpivot_alias_quirk]
   '''
   FROM t
   |> UNPIVOT(a FOR b IN (c)) UNPIVOT
-  '''
-# ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot_alias_quirk][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -2895,14 +3235,11 @@
   
   '''
 # ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot_exclude_nulls][sql]
+# name: test_pipe_unpivot[zeta_pipe_unpivot_exclude_nulls]
   '''
   FROM t
   |> UNPIVOT EXCLUDE NULLS (a FOR c IN (x, y)) unp
-  '''
-# ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot_exclude_nulls][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -2929,14 +3266,11 @@
   
   '''
 # ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot_in_list][sql]
+# name: test_pipe_unpivot[zeta_pipe_unpivot_in_list]
   '''
   FROM t
   |> UNPIVOT((a) FOR b IN (x))
-  '''
-# ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot_in_list][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -2957,14 +3291,11 @@
   
   '''
 # ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot_include_nulls][sql]
+# name: test_pipe_unpivot[zeta_pipe_unpivot_include_nulls]
   '''
   FROM t
   |> UNPIVOT INCLUDE NULLS (a FOR c IN (x, y)) unp
-  '''
-# ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot_include_nulls][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -2991,14 +3322,11 @@
   
   '''
 # ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot_integer_labels][sql]
+# name: test_pipe_unpivot[zeta_pipe_unpivot_integer_labels]
   '''
   FROM t
   |> UNPIVOT(a FOR e IN (w AS 1, x AS 2))
-  '''
-# ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot_integer_labels][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -3025,14 +3353,11 @@
   
   '''
 # ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot_paths_and_labels][sql]
+# name: test_pipe_unpivot[zeta_pipe_unpivot_paths_and_labels]
   '''
   FROM t
   |> UNPIVOT((a, b.b) FOR a.b.c IN ((f), w AS '1', (x) '2', y "3"))
-  '''
-# ---
-# name: test_pipe_unpivot[zeta_pipe_unpivot_paths_and_labels][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause

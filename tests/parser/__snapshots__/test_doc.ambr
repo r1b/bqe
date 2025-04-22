@@ -1,14 +1,11 @@
 # serializer version: 1
-# name: test_doc_ok[doc_agg][sql]
+# name: test_doc_ok[doc_agg]
   '''
   SELECT 'apples' AS item, 2 AS sales
   |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
   |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
   |> AGGREGATE COUNT(*) AS num_items, SUM(sales) AS total_sales;
-  '''
-# ---
-# name: test_doc_ok[doc_agg][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -82,15 +79,12 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_agg_group_and_order_by][sql]
+# name: test_doc_ok[doc_agg_group_and_order_by]
   '''
   FROM Produce
   |> AGGREGATE SUM(sales) AS total_sales
      GROUP AND ORDER BY category, item DESC;
-  '''
-# ---
-# name: test_doc_ok[doc_agg_group_and_order_by][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -121,17 +115,14 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_agg_group_by][sql]
+# name: test_doc_ok[doc_agg_group_by]
   '''
   SELECT 'apples' AS item, 2 AS sales
   |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
   |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
   |> AGGREGATE COUNT(*) AS num_items, SUM(sales) AS total_sales
      GROUP BY item;
-  '''
-# ---
-# name: test_doc_ok[doc_agg_group_by][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -209,15 +200,12 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_agg_group_implicit_order_by][sql]
+# name: test_doc_ok[doc_agg_group_implicit_order_by]
   '''
   FROM Produce
   |> AGGREGATE SUM(sales) AS total_sales ASC
      GROUP BY item, category DESC;
-  '''
-# ---
-# name: test_doc_ok[doc_agg_group_implicit_order_by][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -248,16 +236,13 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_agg_group_then_order_by][sql]
+# name: test_doc_ok[doc_agg_group_then_order_by]
   '''
   FROM Produce
   |> AGGREGATE SUM(sales) AS total_sales
      GROUP BY category, item
   |> ORDER BY category, item DESC;
-  '''
-# ---
-# name: test_doc_ok[doc_agg_group_then_order_by][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -293,7 +278,7 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_as][sql]
+# name: test_doc_ok[doc_as]
   '''
   (
       SELECT "000123" AS id, "apples" AS item, 2 AS sales
@@ -305,10 +290,7 @@
   |> JOIN (SELECT 456 AS id, "yellow" AS color) AS t2
      ON CAST(t1.id AS INT64) = t2.id
   |> SELECT t2.id, total_sales, color;
-  '''
-# ---
-# name: test_doc_ok[doc_as][tree]
-  '''
+  
   query_expr
     aliased_subquery
       subquery
@@ -413,15 +395,12 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_call][sql]
+# name: test_doc_ok[doc_call]
   '''
   FROM input_table
   |> CALL tvf1(arg1)
   |> CALL tvf2(arg2, arg3);
-  '''
-# ---
-# name: test_doc_ok[doc_call][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -447,14 +426,11 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_drop][sql]
+# name: test_doc_ok[doc_drop]
   '''
   SELECT 'apples' AS item, 2 AS sales, 'fruit' AS category
   |> DROP sales, category;
-  '''
-# ---
-# name: test_doc_ok[doc_drop][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -479,15 +455,12 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_drop_nested][sql]
+# name: test_doc_ok[doc_drop_nested]
   '''
   FROM (SELECT 1 AS x, 2 AS y) AS t
   |> DROP x
   |> SELECT t.x AS original_x, y;
-  '''
-# ---
-# name: test_doc_ok[doc_drop_nested][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -523,7 +496,7 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_except_distinct_subquery][sql]
+# name: test_doc_ok[doc_except_distinct_subquery]
   '''
   SELECT * FROM UNNEST(ARRAY<INT64>[1, 2, 3, 3, 4]) AS number
   |> EXCEPT DISTINCT
@@ -532,10 +505,7 @@
     |> EXCEPT DISTINCT
         (SELECT * FROM UNNEST(ARRAY<INT64>[1, 4]) AS number)
   );
-  '''
-# ---
-# name: test_doc_ok[doc_except_distinct_subquery][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -607,15 +577,12 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_extend][sql]
+# name: test_doc_ok[doc_extend]
   '''
   SELECT 'apples' AS item, 2 AS sales
   |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
   |> EXTEND item IN ('carrots', 'oranges') AS is_orange;
-  '''
-# ---
-# name: test_doc_ok[doc_extend][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -659,15 +626,12 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_extend_named_window][sql]
+# name: test_doc_ok[doc_extend_named_window]
   '''
   FROM Produce
   |> EXTEND SUM(sales) OVER item_window AS category_total
      WINDOW item_window AS (PARTITION BY category);
-  '''
-# ---
-# name: test_doc_ok[doc_extend_named_window][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -698,16 +662,13 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_extend_window][sql]
+# name: test_doc_ok[doc_extend_window]
   '''
   SELECT 'apples' AS item, 2 AS sales
   |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
   |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
   |> EXTEND SUM(sales) OVER() AS total_sales;
-  '''
-# ---
-# name: test_doc_ok[doc_extend_window][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -772,16 +733,13 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_from][sql]
+# name: test_doc_ok[doc_from]
   '''
   FROM Produce AS p1
   |> JOIN Produce AS p2 USING (item)
   |> WHERE item = 'bananas'
   |> SELECT p1.item, p2.sales;
-  '''
-# ---
-# name: test_doc_ok[doc_from][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -816,17 +774,14 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_intersect_distinct][sql]
+# name: test_doc_ok[doc_intersect_distinct]
   '''
   SELECT 1 AS one_digit, 10 AS two_digit
   |> UNION ALL (SELECT 2, 20)
   |> UNION ALL (SELECT 3, 30)
   |> INTERSECT DISTINCT BY NAME
       (SELECT 10 AS two_digit, 1 AS one_digit);
-  '''
-# ---
-# name: test_doc_ok[doc_intersect_distinct][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -888,7 +843,7 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_join][sql]
+# name: test_doc_ok[doc_join]
   '''
   SELECT 'apples' AS item, 2 AS sales
   |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
@@ -899,10 +854,7 @@
        ) AS produce_data
      ON produce_sales.item = produce_data.item
   |> SELECT produce_sales.item, sales, id;
-  '''
-# ---
-# name: test_doc_ok[doc_join][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -973,17 +925,14 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_limit][sql]
+# name: test_doc_ok[doc_limit]
   '''
   SELECT 'apples' AS item, 2 AS sales
   |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
   |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
   |> ORDER BY item
   |> LIMIT 1;
-  '''
-# ---
-# name: test_doc_ok[doc_limit][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1041,17 +990,14 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_limit_offset][sql]
+# name: test_doc_ok[doc_limit_offset]
   '''
   SELECT 'apples' AS item, 2 AS sales
   |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
   |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
   |> ORDER BY item
   |> LIMIT 1 OFFSET 2;
-  '''
-# ---
-# name: test_doc_ok[doc_limit_offset][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1111,16 +1057,13 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_order_by][sql]
+# name: test_doc_ok[doc_order_by]
   '''
   SELECT 1 AS x
   |> UNION ALL (SELECT 3 AS x)
   |> UNION ALL (SELECT 2 AS x)
   |> ORDER BY x DESC;
-  '''
-# ---
-# name: test_doc_ok[doc_order_by][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1164,7 +1107,7 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_pivot][sql]
+# name: test_doc_ok[doc_pivot]
   '''
   SELECT "kale" AS product, 51 AS sales, "Q1" AS quarter
   |> UNION ALL (SELECT "kale" AS product, 4 AS sales, "Q1" AS quarter)
@@ -1172,10 +1115,7 @@
   |> UNION ALL (SELECT "apple" AS product, 8 AS sales, "Q1" AS quarter)
   |> UNION ALL (SELECT "apple" AS product, 10 AS sales, "Q2" AS quarter)
   |> PIVOT(SUM(sales) FOR quarter IN ('Q1', 'Q2'));
-  '''
-# ---
-# name: test_doc_ok[doc_pivot][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1299,7 +1239,7 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_query_comparison][sql]
+# name: test_doc_ok[doc_query_comparison]
   '''
   FROM Produce
   |> WHERE
@@ -1308,10 +1248,7 @@
   |> AGGREGATE COUNT(*) AS num_items, SUM(sales) AS total_sales
       GROUP BY item
   |> ORDER BY item DESC;
-  '''
-# ---
-# name: test_doc_ok[doc_query_comparison][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -1363,16 +1300,13 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_rename][sql]
+# name: test_doc_ok[doc_rename]
   '''
   SELECT 1 AS x, 2 AS y, 3 AS z
   |> AS t
   |> RENAME y AS renamed_y
   |> SELECT *, t.y AS t_y;
-  '''
-# ---
-# name: test_doc_ok[doc_rename][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1408,14 +1342,11 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_select][sql]
+# name: test_doc_ok[doc_select]
   '''
   FROM (SELECT 'apples' AS item, 2 AS sales)
   |> SELECT item AS fruit_name;
-  '''
-# ---
-# name: test_doc_ok[doc_select][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -1441,15 +1372,12 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_set][sql]
+# name: test_doc_ok[doc_set]
   '''
   SELECT 1 AS x, 11 AS y
   |> UNION ALL (SELECT 2 AS x, 22 AS y)
   |> SET x = x * x, y = 3;
-  '''
-# ---
-# name: test_doc_ok[doc_set][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1492,15 +1420,12 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_set_nested][sql]
+# name: test_doc_ok[doc_set_nested]
   '''
   FROM (SELECT 2 AS x, 3 AS y) AS t
   |> SET x = x * x, y = 8
   |> SELECT t.x AS original_x, x, y;
-  '''
-# ---
-# name: test_doc_ok[doc_set_nested][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -1544,14 +1469,11 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_tablesample][sql]
+# name: test_doc_ok[doc_tablesample]
   '''
   FROM LargeTable
   |> TABLESAMPLE SYSTEM (1 PERCENT);
-  '''
-# ---
-# name: test_doc_ok[doc_tablesample][tree]
-  '''
+  
   query_expr
     pipe_from
       from_clause
@@ -1564,14 +1486,11 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_union_all][sql]
+# name: test_doc_ok[doc_union_all]
   '''
   SELECT * FROM UNNEST(ARRAY<INT64>[1, 2, 3]) AS number
   |> UNION ALL (SELECT 1);
-  '''
-# ---
-# name: test_doc_ok[doc_union_all][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1605,15 +1524,12 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_union_all_by_name][sql]
+# name: test_doc_ok[doc_union_all_by_name]
   '''
   SELECT 1 AS one_digit, 10 AS two_digit
   |> UNION ALL BY NAME
       (SELECT 20 AS two_digit, 2 AS one_digit);
-  '''
-# ---
-# name: test_doc_ok[doc_union_all_by_name][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1647,15 +1563,12 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_union_all_not_by_name][sql]
+# name: test_doc_ok[doc_union_all_not_by_name]
   '''
   SELECT 1 AS one_digit, 10 AS two_digit
   |> UNION ALL
       (SELECT 20 AS two_digit, 2 AS one_digit);
-  '''
-# ---
-# name: test_doc_ok[doc_union_all_not_by_name][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1688,16 +1601,13 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_union_distinct_multi][sql]
+# name: test_doc_ok[doc_union_distinct_multi]
   '''
   SELECT * FROM UNNEST(ARRAY<INT64>[1, 2, 3]) AS number
   |> UNION DISTINCT
       (SELECT 1),
       (SELECT 2);
-  '''
-# ---
-# name: test_doc_ok[doc_union_distinct_multi][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1737,14 +1647,11 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_union_distinct_single][sql]
+# name: test_doc_ok[doc_union_distinct_single]
   '''
   SELECT * FROM UNNEST(ARRAY<INT64>[1, 2, 3]) AS number
   |> UNION DISTINCT (SELECT 1);
-  '''
-# ---
-# name: test_doc_ok[doc_union_distinct_single][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1778,15 +1685,12 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_unpivot][sql]
+# name: test_doc_ok[doc_unpivot]
   '''
   SELECT 'kale' as product, 55 AS Q1, 45 AS Q2
   |> UNION ALL (SELECT 'apple', 8, 10)
   |> UNPIVOT(sales FOR quarter IN (Q1, Q2));
-  '''
-# ---
-# name: test_doc_ok[doc_unpivot][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -1834,16 +1738,13 @@
   
   '''
 # ---
-# name: test_doc_ok[doc_where][sql]
+# name: test_doc_ok[doc_where]
   '''
   SELECT 'apples' AS item, 2 AS sales
   |> UNION ALL (SELECT 'bananas' AS item, 5 AS sales)
   |> UNION ALL (SELECT 'carrots' AS item, 8 AS sales)
   |> WHERE sales >= 3;
-  '''
-# ---
-# name: test_doc_ok[doc_where][tree]
-  '''
+  
   query_expr
     select
       select_list

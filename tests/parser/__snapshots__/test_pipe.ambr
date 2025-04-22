@@ -1,9 +1,8 @@
 # serializer version: 1
-# name: test_agg_ok[pipe_agg_group_and_order_by][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP AND ORDER BY col3'
-# ---
-# name: test_agg_ok[pipe_agg_group_and_order_by][tree]
+# name: test_agg_ok[pipe_agg_group_and_order_by]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP AND ORDER BY col3
+  
   query_expr
     pipe_from
       from_clause
@@ -31,11 +30,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_group_by_cube][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY CUBE (col3, (col4, col5))'
-# ---
-# name: test_agg_ok[pipe_agg_group_by_cube][tree]
+# name: test_agg_ok[pipe_agg_group_by_cube]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY CUBE (col3, (col4, col5))
+  
   query_expr
     pipe_from
       from_clause
@@ -68,11 +66,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_group_by_empty][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY ()'
-# ---
-# name: test_agg_ok[pipe_agg_group_by_empty][tree]
+# name: test_agg_ok[pipe_agg_group_by_empty]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY ()
+  
   query_expr
     pipe_from
       from_clause
@@ -99,11 +96,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_group_by_grouping_sets][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY GROUPING SETS (col3, (col4, col5), col6)'
-# ---
-# name: test_agg_ok[pipe_agg_group_by_grouping_sets][tree]
+# name: test_agg_ok[pipe_agg_group_by_grouping_sets]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY GROUPING SETS (col3, (col4, col5), col6)
+  
   query_expr
     pipe_from
       from_clause
@@ -138,11 +134,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_group_by_grouping_sets_rollup_cube][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY GROUPING SETS (col3, ROLLUP(col4, col5), CUBE(col6, col7))'
-# ---
-# name: test_agg_ok[pipe_agg_group_by_grouping_sets_rollup_cube][tree]
+# name: test_agg_ok[pipe_agg_group_by_grouping_sets_rollup_cube]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY GROUPING SETS (col3, ROLLUP(col4, col5), CUBE(col6, col7))
+  
   query_expr
     pipe_from
       from_clause
@@ -183,11 +178,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_group_by_multi_alias][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY col3 AS col4, col5 AS col6'
-# ---
-# name: test_agg_ok[pipe_agg_group_by_multi_alias][tree]
+# name: test_agg_ok[pipe_agg_group_by_multi_alias]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY col3 AS col4, col5 AS col6
+  
   query_expr
     pipe_from
       from_clause
@@ -220,11 +214,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_group_by_order_by][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY col3 AS col4 DESC, col5 AS col6 ASC NULLS LAST'
-# ---
-# name: test_agg_ok[pipe_agg_group_by_order_by][tree]
+# name: test_agg_ok[pipe_agg_group_by_order_by]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY col3 AS col4 DESC, col5 AS col6 ASC NULLS LAST
+  
   query_expr
     pipe_from
       from_clause
@@ -260,11 +253,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_group_by_rollup][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY ROLLUP (col3, col4)'
-# ---
-# name: test_agg_ok[pipe_agg_group_by_rollup][tree]
+# name: test_agg_ok[pipe_agg_group_by_rollup]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY ROLLUP (col3, col4)
+  
   query_expr
     pipe_from
       from_clause
@@ -295,11 +287,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_group_by_single][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY col3'
-# ---
-# name: test_agg_ok[pipe_agg_group_by_single][tree]
+# name: test_agg_ok[pipe_agg_group_by_single]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY col3
+  
   query_expr
     pipe_from
       from_clause
@@ -326,11 +317,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_group_by_single_alias][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY col3 AS col4'
-# ---
-# name: test_agg_ok[pipe_agg_group_by_single_alias][tree]
+# name: test_agg_ok[pipe_agg_group_by_single_alias]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2 GROUP BY col3 AS col4
+  
   query_expr
     pipe_from
       from_clause
@@ -359,11 +349,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_multi_alias][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2, SUM(col3) AS col4'
-# ---
-# name: test_agg_ok[pipe_agg_multi_alias][tree]
+# name: test_agg_ok[pipe_agg_multi_alias]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2, SUM(col3) AS col4
+  
   query_expr
     pipe_from
       from_clause
@@ -397,11 +386,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_order_by][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2 DESC, SUM(col3) AS col4 ASC NULLS LAST'
-# ---
-# name: test_agg_ok[pipe_agg_order_by][tree]
+# name: test_agg_ok[pipe_agg_order_by]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2 DESC, SUM(col3) AS col4 ASC NULLS LAST
+  
   query_expr
     pipe_from
       from_clause
@@ -438,11 +426,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_single][sql]
-  'FROM table1 |> AGGREGATE SUM(col1)'
-# ---
-# name: test_agg_ok[pipe_agg_single][tree]
+# name: test_agg_ok[pipe_agg_single]
   '''
+  FROM table1 |> AGGREGATE SUM(col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -463,11 +450,10 @@
   
   '''
 # ---
-# name: test_agg_ok[pipe_agg_single_alias][sql]
-  'FROM table1 |> AGGREGATE SUM(col1) AS col2'
-# ---
-# name: test_agg_ok[pipe_agg_single_alias][tree]
+# name: test_agg_ok[pipe_agg_single_alias]
   '''
+  FROM table1 |> AGGREGATE SUM(col1) AS col2
+  
   query_expr
     pipe_from
       from_clause
@@ -490,11 +476,10 @@
   
   '''
 # ---
-# name: test_as_ok[pipe_as_single][sql]
-  'FROM table1 |> AS table2'
-# ---
-# name: test_as_ok[pipe_as_single][tree]
+# name: test_as_ok[pipe_as_single]
   '''
+  FROM table1 |> AS table2
+  
   query_expr
     pipe_from
       from_clause
@@ -506,11 +491,10 @@
   
   '''
 # ---
-# name: test_call_ok[call][sql]
-  "FROM table1 |> CALL APPENDS('1970-01-01')"
-# ---
-# name: test_call_ok[call][tree]
+# name: test_call_ok[call]
   '''
+  FROM table1 |> CALL APPENDS('1970-01-01')
+  
   query_expr
     pipe_from
       from_clause
@@ -527,34 +511,10 @@
   
   '''
 # ---
-# name: test_call_ok[call_alias_explicit][sql]
-  "FROM table1 |> CALL APPENDS('1970-01-01') AS table2"
-# ---
-# name: test_call_ok[call_alias_explicit][tree]
+# name: test_call_ok[call_alias_explicit]
   '''
-  query_expr
-    pipe_from
-      from_clause
-        from_item_table
-          path_expression
-            ident	table1
-    pipe_call
-      function_call_expr
-        function_name
-          ident	APPENDS
-        function_args
-          pos_arg
-            string_literal	'1970-01-01'
-      as_alias
-        ident	table2
+  FROM table1 |> CALL APPENDS('1970-01-01') AS table2
   
-  '''
-# ---
-# name: test_call_ok[call_alias_implicit][sql]
-  "FROM table1 |> CALL APPENDS('1970-01-01') table2"
-# ---
-# name: test_call_ok[call_alias_implicit][tree]
-  '''
   query_expr
     pipe_from
       from_clause
@@ -573,11 +533,32 @@
   
   '''
 # ---
-# name: test_join_ok[join_cross][sql]
-  'FROM table1 |> CROSS JOIN table2 USING (col1)'
-# ---
-# name: test_join_ok[join_cross][tree]
+# name: test_call_ok[call_alias_implicit]
   '''
+  FROM table1 |> CALL APPENDS('1970-01-01') table2
+  
+  query_expr
+    pipe_from
+      from_clause
+        from_item_table
+          path_expression
+            ident	table1
+    pipe_call
+      function_call_expr
+        function_name
+          ident	APPENDS
+        function_args
+          pos_arg
+            string_literal	'1970-01-01'
+      as_alias
+        ident	table2
+  
+  '''
+# ---
+# name: test_join_ok[join_cross]
+  '''
+  FROM table1 |> CROSS JOIN table2 USING (col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -595,11 +576,10 @@
   
   '''
 # ---
-# name: test_join_ok[join_full][sql]
-  'FROM table1 |> FULL JOIN table2 USING (col1)'
-# ---
-# name: test_join_ok[join_full][tree]
+# name: test_join_ok[join_full]
   '''
+  FROM table1 |> FULL JOIN table2 USING (col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -617,11 +597,10 @@
   
   '''
 # ---
-# name: test_join_ok[join_full_outer][sql]
-  'FROM table1 |> FULL OUTER JOIN table2 USING (col1)'
-# ---
-# name: test_join_ok[join_full_outer][tree]
+# name: test_join_ok[join_full_outer]
   '''
+  FROM table1 |> FULL OUTER JOIN table2 USING (col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -641,11 +620,10 @@
   
   '''
 # ---
-# name: test_join_ok[join_inner][sql]
-  'FROM table1 |> INNER JOIN table2 USING (col1)'
-# ---
-# name: test_join_ok[join_inner][tree]
+# name: test_join_ok[join_inner]
   '''
+  FROM table1 |> INNER JOIN table2 USING (col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -663,11 +641,10 @@
   
   '''
 # ---
-# name: test_join_ok[join_left][sql]
-  'FROM table1 |> LEFT JOIN table2 USING (col1)'
-# ---
-# name: test_join_ok[join_left][tree]
+# name: test_join_ok[join_left]
   '''
+  FROM table1 |> LEFT JOIN table2 USING (col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -685,11 +662,10 @@
   
   '''
 # ---
-# name: test_join_ok[join_left_outer][sql]
-  'FROM table1 |> LEFT OUTER JOIN table2 USING (col1)'
-# ---
-# name: test_join_ok[join_left_outer][tree]
+# name: test_join_ok[join_left_outer]
   '''
+  FROM table1 |> LEFT OUTER JOIN table2 USING (col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -709,11 +685,10 @@
   
   '''
 # ---
-# name: test_join_ok[join_on_compound_expr][sql]
-  'FROM table1 |> JOIN table2 ON col1 = col2 AND col3 != col4'
-# ---
-# name: test_join_ok[join_on_compound_expr][tree]
+# name: test_join_ok[join_on_compound_expr]
   '''
+  FROM table1 |> JOIN table2 ON col1 = col2 AND col3 != col4
+  
   query_expr
     pipe_from
       from_clause
@@ -736,11 +711,10 @@
   
   '''
 # ---
-# name: test_join_ok[join_on_single_expr][sql]
-  'FROM table1 |> JOIN table2 ON col1 = col2'
-# ---
-# name: test_join_ok[join_on_single_expr][tree]
+# name: test_join_ok[join_on_single_expr]
   '''
+  FROM table1 |> JOIN table2 ON col1 = col2
+  
   query_expr
     pipe_from
       from_clause
@@ -759,11 +733,10 @@
   
   '''
 # ---
-# name: test_join_ok[join_right][sql]
-  'FROM table1 |> RIGHT JOIN table2 USING (col1)'
-# ---
-# name: test_join_ok[join_right][tree]
+# name: test_join_ok[join_right]
   '''
+  FROM table1 |> RIGHT JOIN table2 USING (col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -781,11 +754,10 @@
   
   '''
 # ---
-# name: test_join_ok[join_right_outer][sql]
-  'FROM table1 |> RIGHT OUTER JOIN table2 USING (col1)'
-# ---
-# name: test_join_ok[join_right_outer][tree]
+# name: test_join_ok[join_right_outer]
   '''
+  FROM table1 |> RIGHT OUTER JOIN table2 USING (col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -805,11 +777,10 @@
   
   '''
 # ---
-# name: test_join_ok[join_using_multi][sql]
-  'FROM table1 |> JOIN table2 USING (col1, col2)'
-# ---
-# name: test_join_ok[join_using_multi][tree]
+# name: test_join_ok[join_using_multi]
   '''
+  FROM table1 |> JOIN table2 USING (col1, col2)
+  
   query_expr
     pipe_from
       from_clause
@@ -827,11 +798,10 @@
   
   '''
 # ---
-# name: test_join_ok[join_using_single][sql]
-  'FROM table1 |> JOIN table2 USING (col1)'
-# ---
-# name: test_join_ok[join_using_single][tree]
+# name: test_join_ok[join_using_single]
   '''
+  FROM table1 |> JOIN table2 USING (col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -848,11 +818,10 @@
   
   '''
 # ---
-# name: test_limit_ok[pipe_limit_integer_literal][sql]
-  'FROM table1 |> LIMIT 1'
-# ---
-# name: test_limit_ok[pipe_limit_integer_literal][tree]
+# name: test_limit_ok[pipe_limit_integer_literal]
   '''
+  FROM table1 |> LIMIT 1
+  
   query_expr
     pipe_from
       from_clause
@@ -865,11 +834,10 @@
   
   '''
 # ---
-# name: test_limit_ok[pipe_limit_offset][sql]
-  'FROM table1 |> LIMIT 1 OFFSET 2'
-# ---
-# name: test_limit_ok[pipe_limit_offset][tree]
+# name: test_limit_ok[pipe_limit_offset]
   '''
+  FROM table1 |> LIMIT 1 OFFSET 2
+  
   query_expr
     pipe_from
       from_clause
@@ -884,11 +852,10 @@
   
   '''
 # ---
-# name: test_limit_ok[pipe_limit_param][sql]
-  'FROM table1 |> LIMIT @limit'
-# ---
-# name: test_limit_ok[pipe_limit_param][tree]
+# name: test_limit_ok[pipe_limit_param]
   '''
+  FROM table1 |> LIMIT @limit
+  
   query_expr
     pipe_from
       from_clause
@@ -901,11 +868,10 @@
   
   '''
 # ---
-# name: test_order_by_ok[order_by_multi][sql]
-  'FROM table1 |> ORDER BY col1, col2'
-# ---
-# name: test_order_by_ok[order_by_multi][tree]
+# name: test_order_by_ok[order_by_multi]
   '''
+  FROM table1 |> ORDER BY col1, col2
+  
   query_expr
     pipe_from
       from_clause
@@ -921,11 +887,10 @@
   
   '''
 # ---
-# name: test_order_by_ok[order_by_multi_kitchen_sink][sql]
-  'FROM table1 |> ORDER BY col1 ASC NULLS FIRST, col2 DESC NULLS LAST'
-# ---
-# name: test_order_by_ok[order_by_multi_kitchen_sink][tree]
+# name: test_order_by_ok[order_by_multi_kitchen_sink]
   '''
+  FROM table1 |> ORDER BY col1 ASC NULLS FIRST, col2 DESC NULLS LAST
+  
   query_expr
     pipe_from
       from_clause
@@ -945,11 +910,10 @@
   
   '''
 # ---
-# name: test_order_by_ok[order_by_multi_nulls][sql]
-  'FROM table1 |> ORDER BY col1 NULLS FIRST, col2 NULLS LAST'
-# ---
-# name: test_order_by_ok[order_by_multi_nulls][tree]
+# name: test_order_by_ok[order_by_multi_nulls]
   '''
+  FROM table1 |> ORDER BY col1 NULLS FIRST, col2 NULLS LAST
+  
   query_expr
     pipe_from
       from_clause
@@ -967,11 +931,10 @@
   
   '''
 # ---
-# name: test_order_by_ok[order_by_multi_sort][sql]
-  'FROM table1 |> ORDER BY col1 ASC, col2 DESC'
-# ---
-# name: test_order_by_ok[order_by_multi_sort][tree]
+# name: test_order_by_ok[order_by_multi_sort]
   '''
+  FROM table1 |> ORDER BY col1 ASC, col2 DESC
+  
   query_expr
     pipe_from
       from_clause
@@ -989,11 +952,10 @@
   
   '''
 # ---
-# name: test_order_by_ok[order_by_single][sql]
-  'FROM table1 |> ORDER BY col1'
-# ---
-# name: test_order_by_ok[order_by_single][tree]
+# name: test_order_by_ok[order_by_single]
   '''
+  FROM table1 |> ORDER BY col1
+  
   query_expr
     pipe_from
       from_clause
@@ -1007,11 +969,10 @@
   
   '''
 # ---
-# name: test_pipe_drop_ok[pipe_drop_multi][sql]
-  'FROM table1 |> DROP col1, col2'
-# ---
-# name: test_pipe_drop_ok[pipe_drop_multi][tree]
+# name: test_pipe_drop_ok[pipe_drop_multi]
   '''
+  FROM table1 |> DROP col1, col2
+  
   query_expr
     pipe_from
       from_clause
@@ -1027,11 +988,10 @@
   
   '''
 # ---
-# name: test_pipe_drop_ok[pipe_drop_single][sql]
-  'FROM table1 |> DROP col1'
-# ---
-# name: test_pipe_drop_ok[pipe_drop_single][tree]
+# name: test_pipe_drop_ok[pipe_drop_single]
   '''
+  FROM table1 |> DROP col1
+  
   query_expr
     pipe_from
       from_clause
@@ -1045,11 +1005,10 @@
   
   '''
 # ---
-# name: test_pipe_drop_ok[pipe_drop_single_trailing_comma][sql]
-  'FROM table1 |> DROP col1,'
-# ---
-# name: test_pipe_drop_ok[pipe_drop_single_trailing_comma][tree]
+# name: test_pipe_drop_ok[pipe_drop_single_trailing_comma]
   '''
+  FROM table1 |> DROP col1,
+  
   query_expr
     pipe_from
       from_clause
@@ -1063,11 +1022,10 @@
   
   '''
 # ---
-# name: test_pipe_extend_ok[pipe_extend_multi][sql]
-  'FROM table1 |> EXTEND POW(col1, 2) AS col2, EXP(col1, 2)'
-# ---
-# name: test_pipe_extend_ok[pipe_extend_multi][tree]
+# name: test_pipe_extend_ok[pipe_extend_multi]
   '''
+  FROM table1 |> EXTEND POW(col1, 2) AS col2, EXP(col1, 2)
+  
   query_expr
     pipe_from
       from_clause
@@ -1101,11 +1059,10 @@
   
   '''
 # ---
-# name: test_pipe_extend_ok[pipe_extend_named_window_multi][sql]
-  'FROM table1 |> EXTEND SUM(col1) OVER (w1), SUM(col2) OVER (w2) WINDOW w1 AS (PARTITION BY col3), w2 AS (PARTITION BY col4)'
-# ---
-# name: test_pipe_extend_ok[pipe_extend_named_window_multi][tree]
+# name: test_pipe_extend_ok[pipe_extend_named_window_multi]
   '''
+  FROM table1 |> EXTEND SUM(col1) OVER (w1), SUM(col2) OVER (w2) WINDOW w1 AS (PARTITION BY col3), w2 AS (PARTITION BY col4)
+  
   query_expr
     pipe_from
       from_clause
@@ -1152,11 +1109,10 @@
   
   '''
 # ---
-# name: test_pipe_extend_ok[pipe_extend_named_window_single][sql]
-  'FROM table1 |> EXTEND SUM(col1) OVER (w) WINDOW w AS (PARTITION BY col2)'
-# ---
-# name: test_pipe_extend_ok[pipe_extend_named_window_single][tree]
+# name: test_pipe_extend_ok[pipe_extend_named_window_single]
   '''
+  FROM table1 |> EXTEND SUM(col1) OVER (w) WINDOW w AS (PARTITION BY col2)
+  
   query_expr
     pipe_from
       from_clause
@@ -1186,11 +1142,10 @@
   
   '''
 # ---
-# name: test_pipe_extend_ok[pipe_extend_single][sql]
-  'FROM table1 |> EXTEND POW(col1, 2)'
-# ---
-# name: test_pipe_extend_ok[pipe_extend_single][tree]
+# name: test_pipe_extend_ok[pipe_extend_single]
   '''
+  FROM table1 |> EXTEND POW(col1, 2)
+  
   query_expr
     pipe_from
       from_clause
@@ -1212,11 +1167,10 @@
   
   '''
 # ---
-# name: test_pipe_extend_ok[pipe_extend_single_alias][sql]
-  'FROM table1 |> EXTEND POW(col1, 2) AS col2'
-# ---
-# name: test_pipe_extend_ok[pipe_extend_single_alias][tree]
+# name: test_pipe_extend_ok[pipe_extend_single_alias]
   '''
+  FROM table1 |> EXTEND POW(col1, 2) AS col2
+  
   query_expr
     pipe_from
       from_clause
@@ -1240,11 +1194,10 @@
   
   '''
 # ---
-# name: test_pipe_extend_ok[pipe_extend_single_trailing_comma][sql]
-  'FROM table1 |> EXTEND POW(col1, 2),'
-# ---
-# name: test_pipe_extend_ok[pipe_extend_single_trailing_comma][tree]
+# name: test_pipe_extend_ok[pipe_extend_single_trailing_comma]
   '''
+  FROM table1 |> EXTEND POW(col1, 2),
+  
   query_expr
     pipe_from
       from_clause
@@ -1266,11 +1219,10 @@
   
   '''
 # ---
-# name: test_pipe_ok[pipe_from][sql]
-  'FROM table1'
-# ---
-# name: test_pipe_ok[pipe_from][tree]
+# name: test_pipe_ok[pipe_from]
   '''
+  FROM table1
+  
   query_expr
     pipe_from
       from_clause
@@ -1280,11 +1232,10 @@
   
   '''
 # ---
-# name: test_pipe_ok[pipe_from_select][sql]
-  'FROM table1 |> SELECT col1'
-# ---
-# name: test_pipe_ok[pipe_from_select][tree]
+# name: test_pipe_ok[pipe_from_select]
   '''
+  FROM table1 |> SELECT col1
+  
   query_expr
     pipe_from
       from_clause
@@ -1298,11 +1249,10 @@
   
   '''
 # ---
-# name: test_pipe_ok[pipe_pg_subquery_quirks][sql]
-  'SELECT (((SELECT 2)) |> SELECT 2)'
-# ---
-# name: test_pipe_ok[pipe_pg_subquery_quirks][tree]
+# name: test_pipe_ok[pipe_pg_subquery_quirks]
   '''
+  SELECT (((SELECT 2)) |> SELECT 2)
+  
   query_expr
     select
       select_list
@@ -1324,11 +1274,10 @@
   
   '''
 # ---
-# name: test_pipe_ok[pipe_select_named_window_multi][sql]
-  'FROM table1 |> SELECT SUM(col1) OVER (w1), SUM(col2) OVER (w2) WINDOW w1 AS (PARTITION BY col3), w2 AS (PARTITION BY col4)'
-# ---
-# name: test_pipe_ok[pipe_select_named_window_multi][tree]
+# name: test_pipe_ok[pipe_select_named_window_multi]
   '''
+  FROM table1 |> SELECT SUM(col1) OVER (w1), SUM(col2) OVER (w2) WINDOW w1 AS (PARTITION BY col3), w2 AS (PARTITION BY col4)
+  
   query_expr
     pipe_from
       from_clause
@@ -1373,11 +1322,10 @@
   
   '''
 # ---
-# name: test_pipe_ok[pipe_select_named_window_reserved_conflict][sql]
-  'FROM table1 |> SELECT SUM(col1) OVER (w) WINDOW w AS (PARTITION BY date)'
-# ---
-# name: test_pipe_ok[pipe_select_named_window_reserved_conflict][tree]
+# name: test_pipe_ok[pipe_select_named_window_reserved_conflict]
   '''
+  FROM table1 |> SELECT SUM(col1) OVER (w) WINDOW w AS (PARTITION BY date)
+  
   query_expr
     pipe_from
       from_clause
@@ -1406,11 +1354,10 @@
   
   '''
 # ---
-# name: test_pipe_ok[pipe_select_named_window_single][sql]
-  'FROM table1 |> SELECT SUM(col1) OVER (w) WINDOW w AS (PARTITION BY col2)'
-# ---
-# name: test_pipe_ok[pipe_select_named_window_single][tree]
+# name: test_pipe_ok[pipe_select_named_window_single]
   '''
+  FROM table1 |> SELECT SUM(col1) OVER (w) WINDOW w AS (PARTITION BY col2)
+  
   query_expr
     pipe_from
       from_clause
@@ -1439,11 +1386,10 @@
   
   '''
 # ---
-# name: test_pipe_ok[pipe_select_select][sql]
-  'SELECT col1 FROM table1 |> SELECT col1'
-# ---
-# name: test_pipe_ok[pipe_select_select][tree]
+# name: test_pipe_ok[pipe_select_select]
   '''
+  SELECT col1 FROM table1 |> SELECT col1
+  
   query_expr
     select
       select_list
@@ -1460,11 +1406,10 @@
   
   '''
 # ---
-# name: test_pipe_ok[pipe_select_select_as_struct][sql]
-  'SELECT col1 FROM table1 |> SELECT AS STRUCT col1'
-# ---
-# name: test_pipe_ok[pipe_select_select_as_struct][tree]
+# name: test_pipe_ok[pipe_select_select_as_struct]
   '''
+  SELECT col1 FROM table1 |> SELECT AS STRUCT col1
+  
   query_expr
     select
       select_list
@@ -1482,11 +1427,10 @@
   
   '''
 # ---
-# name: test_pipe_ok[pipe_select_select_as_value][sql]
-  'SELECT col1 FROM table1 |> SELECT AS VALUE col1'
-# ---
-# name: test_pipe_ok[pipe_select_select_as_value][tree]
+# name: test_pipe_ok[pipe_select_select_as_value]
   '''
+  SELECT col1 FROM table1 |> SELECT AS VALUE col1
+  
   query_expr
     select
       select_list
@@ -1504,11 +1448,10 @@
   
   '''
 # ---
-# name: test_pipe_ok[pipe_subquery_select][sql]
-  '(SELECT col1 FROM table1) |> SELECT col1'
-# ---
-# name: test_pipe_ok[pipe_subquery_select][tree]
+# name: test_pipe_ok[pipe_subquery_select]
   '''
+  (SELECT col1 FROM table1) |> SELECT col1
+  
   query_expr
     subquery
       query_expr
@@ -1527,11 +1470,10 @@
   
   '''
 # ---
-# name: test_pipe_rename_ok[pipe_rename_multi][sql]
-  'FROM table1 |> RENAME col1 AS col2, col3 AS col4'
-# ---
-# name: test_pipe_rename_ok[pipe_rename_multi][tree]
+# name: test_pipe_rename_ok[pipe_rename_multi]
   '''
+  FROM table1 |> RENAME col1 AS col2, col3 AS col4
+  
   query_expr
     pipe_from
       from_clause
@@ -1551,11 +1493,10 @@
   
   '''
 # ---
-# name: test_pipe_rename_ok[pipe_rename_single][sql]
-  'FROM table1 |> RENAME col1 AS col2'
-# ---
-# name: test_pipe_rename_ok[pipe_rename_single][tree]
+# name: test_pipe_rename_ok[pipe_rename_single]
   '''
+  FROM table1 |> RENAME col1 AS col2
+  
   query_expr
     pipe_from
       from_clause
@@ -1571,11 +1512,10 @@
   
   '''
 # ---
-# name: test_pipe_rename_ok[pipe_rename_single_trailing_comma][sql]
-  'FROM table1 |> RENAME col1 AS col2,'
-# ---
-# name: test_pipe_rename_ok[pipe_rename_single_trailing_comma][tree]
+# name: test_pipe_rename_ok[pipe_rename_single_trailing_comma]
   '''
+  FROM table1 |> RENAME col1 AS col2,
+  
   query_expr
     pipe_from
       from_clause
@@ -1591,11 +1531,10 @@
   
   '''
 # ---
-# name: test_pipe_set_ok[pipe_set_multi][sql]
-  'FROM table1 |> SET col1 = POW(col1, 2), col2 = EXP(col1, 2)'
-# ---
-# name: test_pipe_set_ok[pipe_set_multi][tree]
+# name: test_pipe_set_ok[pipe_set_multi]
   '''
+  FROM table1 |> SET col1 = POW(col1, 2), col2 = EXP(col1, 2)
+  
   query_expr
     pipe_from
       from_clause
@@ -1627,11 +1566,10 @@
   
   '''
 # ---
-# name: test_pipe_set_ok[pipe_set_single][sql]
-  'FROM table1 |> SET col1 = POW(col1, 2)'
-# ---
-# name: test_pipe_set_ok[pipe_set_single][tree]
+# name: test_pipe_set_ok[pipe_set_single]
   '''
+  FROM table1 |> SET col1 = POW(col1, 2)
+  
   query_expr
     pipe_from
       from_clause
@@ -1653,11 +1591,10 @@
   
   '''
 # ---
-# name: test_pipe_set_ok[pipe_set_single_trailing_comma][sql]
-  'FROM table1 |> SET col1 = POW(col1, 2),'
-# ---
-# name: test_pipe_set_ok[pipe_set_single_trailing_comma][tree]
+# name: test_pipe_set_ok[pipe_set_single_trailing_comma]
   '''
+  FROM table1 |> SET col1 = POW(col1, 2),
+  
   query_expr
     pipe_from
       from_clause
@@ -1679,11 +1616,10 @@
   
   '''
 # ---
-# name: test_pivot_ok[pivot][sql]
-  "FROM table1 |> PIVOT (SUM(col1) FOR quarter in ('Q1', 'Q2'))"
-# ---
-# name: test_pivot_ok[pivot][tree]
+# name: test_pivot_ok[pivot]
   '''
+  FROM table1 |> PIVOT (SUM(col1) FOR quarter in ('Q1', 'Q2'))
+  
   query_expr
     pipe_from
       from_clause
@@ -1710,11 +1646,10 @@
   
   '''
 # ---
-# name: test_pivot_ok[pivot_aliased][sql]
-  "FROM table1 |> PIVOT (SUM(col1) FOR quarter in ('Q1', 'Q2')) AS col2"
-# ---
-# name: test_pivot_ok[pivot_aliased][tree]
+# name: test_pivot_ok[pivot_aliased]
   '''
+  FROM table1 |> PIVOT (SUM(col1) FOR quarter in ('Q1', 'Q2')) AS col2
+  
   query_expr
     pipe_from
       from_clause
@@ -1743,11 +1678,10 @@
   
   '''
 # ---
-# name: test_set_operation_ok[set_operation_all_single][sql]
-  'FROM table1 |> UNION ALL (SELECT 1)'
-# ---
-# name: test_set_operation_ok[set_operation_all_single][tree]
+# name: test_set_operation_ok[set_operation_all_single]
   '''
+  FROM table1 |> UNION ALL (SELECT 1)
+  
   query_expr
     pipe_from
       from_clause
@@ -1769,11 +1703,10 @@
   
   '''
 # ---
-# name: test_set_operation_ok[set_operation_by_name][sql]
-  'FROM table1 |> EXCEPT ALL BY NAME (SELECT 1 as col1)'
-# ---
-# name: test_set_operation_ok[set_operation_by_name][tree]
+# name: test_set_operation_ok[set_operation_by_name]
   '''
+  FROM table1 |> EXCEPT ALL BY NAME (SELECT 1 as col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -1798,11 +1731,10 @@
   
   '''
 # ---
-# name: test_set_operation_ok[set_operation_by_name_on_multi][sql]
-  'FROM table1 |> EXCEPT ALL BY NAME ON (col1,col2) (SELECT 1 as col1)'
-# ---
-# name: test_set_operation_ok[set_operation_by_name_on_multi][tree]
+# name: test_set_operation_ok[set_operation_by_name_on_multi]
   '''
+  FROM table1 |> EXCEPT ALL BY NAME ON (col1,col2) (SELECT 1 as col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -1830,11 +1762,10 @@
   
   '''
 # ---
-# name: test_set_operation_ok[set_operation_by_name_on_single][sql]
-  'FROM table1 |> EXCEPT ALL BY NAME ON (col1) (SELECT 1 as col1)'
-# ---
-# name: test_set_operation_ok[set_operation_by_name_on_single][tree]
+# name: test_set_operation_ok[set_operation_by_name_on_single]
   '''
+  FROM table1 |> EXCEPT ALL BY NAME ON (col1) (SELECT 1 as col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -1861,11 +1792,10 @@
   
   '''
 # ---
-# name: test_set_operation_ok[set_operation_corresponding][sql]
-  'FROM table1 |> UNION ALL CORRESPONDING (SELECT 1 as col1)'
-# ---
-# name: test_set_operation_ok[set_operation_corresponding][tree]
+# name: test_set_operation_ok[set_operation_corresponding]
   '''
+  FROM table1 |> UNION ALL CORRESPONDING (SELECT 1 as col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -1890,11 +1820,10 @@
   
   '''
 # ---
-# name: test_set_operation_ok[set_operation_distinct_multi][sql]
-  'FROM table1 |> INTERSECT DISTINCT (SELECT 1), (SELECT 2)'
-# ---
-# name: test_set_operation_ok[set_operation_distinct_multi][tree]
+# name: test_set_operation_ok[set_operation_distinct_multi]
   '''
+  FROM table1 |> INTERSECT DISTINCT (SELECT 1), (SELECT 2)
+  
   query_expr
     pipe_from
       from_clause
@@ -1922,11 +1851,10 @@
   
   '''
 # ---
-# name: test_set_operation_ok[set_operation_strict_corresponding][sql]
-  'FROM table1 |> UNION ALL STRICT CORRESPONDING (SELECT 1 as col1)'
-# ---
-# name: test_set_operation_ok[set_operation_strict_corresponding][tree]
+# name: test_set_operation_ok[set_operation_strict_corresponding]
   '''
+  FROM table1 |> UNION ALL STRICT CORRESPONDING (SELECT 1 as col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -1951,11 +1879,10 @@
   
   '''
 # ---
-# name: test_set_operation_ok[set_operation_strict_corresponding_by][sql]
-  'FROM table1 |> EXCEPT ALL STRICT CORRESPONDING BY (col1) (SELECT 1 as col1)'
-# ---
-# name: test_set_operation_ok[set_operation_strict_corresponding_by][tree]
+# name: test_set_operation_ok[set_operation_strict_corresponding_by]
   '''
+  FROM table1 |> EXCEPT ALL STRICT CORRESPONDING BY (col1) (SELECT 1 as col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -1982,11 +1909,10 @@
   
   '''
 # ---
-# name: test_set_operation_ok[set_operation_with_criteria_full][sql]
-  'FROM table1 |> FULL UNION ALL BY NAME (SELECT 1 as col1)'
-# ---
-# name: test_set_operation_ok[set_operation_with_criteria_full][tree]
+# name: test_set_operation_ok[set_operation_with_criteria_full]
   '''
+  FROM table1 |> FULL UNION ALL BY NAME (SELECT 1 as col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -2012,11 +1938,10 @@
   
   '''
 # ---
-# name: test_set_operation_ok[set_operation_with_criteria_inner][sql]
-  'FROM table1 |> INNER UNION ALL BY NAME (SELECT 1 as col1)'
-# ---
-# name: test_set_operation_ok[set_operation_with_criteria_inner][tree]
+# name: test_set_operation_ok[set_operation_with_criteria_inner]
   '''
+  FROM table1 |> INNER UNION ALL BY NAME (SELECT 1 as col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -2042,11 +1967,10 @@
   
   '''
 # ---
-# name: test_set_operation_ok[set_operation_with_criteria_left][sql]
-  'FROM table1 |> LEFT UNION ALL BY NAME (SELECT 1 as col1)'
-# ---
-# name: test_set_operation_ok[set_operation_with_criteria_left][tree]
+# name: test_set_operation_ok[set_operation_with_criteria_left]
   '''
+  FROM table1 |> LEFT UNION ALL BY NAME (SELECT 1 as col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -2072,11 +1996,10 @@
   
   '''
 # ---
-# name: test_set_operation_ok[set_operation_with_criteria_left_outer][sql]
-  'FROM table1 |> LEFT OUTER UNION ALL BY NAME (SELECT 1 as col1)'
-# ---
-# name: test_set_operation_ok[set_operation_with_criteria_left_outer][tree]
+# name: test_set_operation_ok[set_operation_with_criteria_left_outer]
   '''
+  FROM table1 |> LEFT OUTER UNION ALL BY NAME (SELECT 1 as col1)
+  
   query_expr
     pipe_from
       from_clause
@@ -2104,11 +2027,10 @@
   
   '''
 # ---
-# name: test_tablesample_ok[tablesample][sql]
-  'FROM table1 |> TABLESAMPLE SYSTEM (10 percent)'
-# ---
-# name: test_tablesample_ok[tablesample][tree]
+# name: test_tablesample_ok[tablesample]
   '''
+  FROM table1 |> TABLESAMPLE SYSTEM (10 percent)
+  
   query_expr
     pipe_from
       from_clause
@@ -2121,11 +2043,10 @@
   
   '''
 # ---
-# name: test_unpivot_ok[unpivot][sql]
-  'FROM table1 |> UNPIVOT (col1 FOR quarter IN (q1, q2))'
-# ---
-# name: test_unpivot_ok[unpivot][tree]
+# name: test_unpivot_ok[unpivot]
   '''
+  FROM table1 |> UNPIVOT (col1 FOR quarter IN (q1, q2))
+  
   query_expr
     pipe_from
       from_clause
@@ -2148,11 +2069,10 @@
   
   '''
 # ---
-# name: test_unpivot_ok[unpivot_aliased][sql]
-  'FROM table1 |> UNPIVOT (col1 FOR quarter IN (q1, q2)) AS col2'
-# ---
-# name: test_unpivot_ok[unpivot_aliased][tree]
+# name: test_unpivot_ok[unpivot_aliased]
   '''
+  FROM table1 |> UNPIVOT (col1 FOR quarter IN (q1, q2)) AS col2
+  
   query_expr
     pipe_from
       from_clause
@@ -2177,11 +2097,10 @@
   
   '''
 # ---
-# name: test_where_ok[pipe_where_single][sql]
-  'FROM table1 |> WHERE col1'
-# ---
-# name: test_where_ok[pipe_where_single][tree]
+# name: test_where_ok[pipe_where_single]
   '''
+  FROM table1 |> WHERE col1
+  
   query_expr
     pipe_from
       from_clause
@@ -2193,11 +2112,10 @@
   
   '''
 # ---
-# name: test_window_ok[window_frame_range][sql]
-  'FROM table1 |> SELECT SUM(col1) OVER (RANGE BETWEEN 1 PRECEDING AND 1 FOLLOWING)'
-# ---
-# name: test_window_ok[window_frame_range][tree]
+# name: test_window_ok[window_frame_range]
   '''
+  FROM table1 |> SELECT SUM(col1) OVER (RANGE BETWEEN 1 PRECEDING AND 1 FOLLOWING)
+  
   query_expr
     pipe_from
       from_clause
@@ -2226,11 +2144,10 @@
   
   '''
 # ---
-# name: test_window_ok[window_frame_rows][sql]
-  'FROM table1 |> SELECT SUM(col1) OVER (ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)'
-# ---
-# name: test_window_ok[window_frame_rows][tree]
+# name: test_window_ok[window_frame_rows]
   '''
+  FROM table1 |> SELECT SUM(col1) OVER (ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+  
   query_expr
     pipe_from
       from_clause
@@ -2257,11 +2174,10 @@
   
   '''
 # ---
-# name: test_window_ok[window_order_by_multi][sql]
-  'FROM table1 |> SELECT SUM(col1) OVER (ORDER BY col2, col3)'
-# ---
-# name: test_window_ok[window_order_by_multi][tree]
+# name: test_window_ok[window_order_by_multi]
   '''
+  FROM table1 |> SELECT SUM(col1) OVER (ORDER BY col2, col3)
+  
   query_expr
     pipe_from
       from_clause
@@ -2288,11 +2204,10 @@
   
   '''
 # ---
-# name: test_window_ok[window_order_by_single][sql]
-  'FROM table1 |> SELECT SUM(col1) OVER (ORDER BY col2)'
-# ---
-# name: test_window_ok[window_order_by_single][tree]
+# name: test_window_ok[window_order_by_single]
   '''
+  FROM table1 |> SELECT SUM(col1) OVER (ORDER BY col2)
+  
   query_expr
     pipe_from
       from_clause
@@ -2317,11 +2232,10 @@
   
   '''
 # ---
-# name: test_window_ok[window_parition_and_order_by][sql]
-  'FROM table1 |> SELECT SUM(col1) OVER (PARTITION BY col2 ORDER BY col3)'
-# ---
-# name: test_window_ok[window_parition_and_order_by][tree]
+# name: test_window_ok[window_parition_and_order_by]
   '''
+  FROM table1 |> SELECT SUM(col1) OVER (PARTITION BY col2 ORDER BY col3)
+  
   query_expr
     pipe_from
       from_clause
@@ -2348,11 +2262,10 @@
   
   '''
 # ---
-# name: test_window_ok[window_partition_by_multi][sql]
-  'FROM table1 |> SELECT SUM(col1) OVER (PARTITION BY col2, col3)'
-# ---
-# name: test_window_ok[window_partition_by_multi][tree]
+# name: test_window_ok[window_partition_by_multi]
   '''
+  FROM table1 |> SELECT SUM(col1) OVER (PARTITION BY col2, col3)
+  
   query_expr
     pipe_from
       from_clause
@@ -2376,11 +2289,10 @@
   
   '''
 # ---
-# name: test_window_ok[window_partition_by_single][sql]
-  'FROM table1 |> SELECT SUM(col1) OVER (PARTITION BY col2)'
-# ---
-# name: test_window_ok[window_partition_by_single][tree]
+# name: test_window_ok[window_partition_by_single]
   '''
+  FROM table1 |> SELECT SUM(col1) OVER (PARTITION BY col2)
+  
   query_expr
     pipe_from
       from_clause
@@ -2403,11 +2315,10 @@
   
   '''
 # ---
-# name: test_window_ok[window_simple][sql]
-  'FROM table1 |> SELECT SUM(col1) OVER ()'
-# ---
-# name: test_window_ok[window_simple][tree]
+# name: test_window_ok[window_simple]
   '''
+  FROM table1 |> SELECT SUM(col1) OVER ()
+  
   query_expr
     pipe_from
       from_clause

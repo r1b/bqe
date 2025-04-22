@@ -1,13 +1,10 @@
 # serializer version: 1
-# name: test_comment_ok[comment_c_expr][sql]
+# name: test_comment_ok[comment_c_expr]
   '''
   SELECT
       1, /* one */
       2
-  '''
-# ---
-# name: test_comment_ok[comment_c_expr][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -18,14 +15,11 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_c_leading][sql]
+# name: test_comment_ok[comment_c_leading]
   '''
   /* TODO: SELECT 2 */
   SELECT 1
-  '''
-# ---
-# name: test_comment_ok[comment_c_leading][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -34,14 +28,11 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_c_trailing][sql]
+# name: test_comment_ok[comment_c_trailing]
   '''
   SELECT 1
   /* one */
-  '''
-# ---
-# name: test_comment_ok[comment_c_trailing][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -50,15 +41,12 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_sh_expr][sql]
+# name: test_comment_ok[comment_sh_expr]
   '''
   SELECT
       1, # one
       2
-  '''
-# ---
-# name: test_comment_ok[comment_sh_expr][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -69,14 +57,11 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_sh_leading][sql]
+# name: test_comment_ok[comment_sh_leading]
   '''
   # TODO: SELECT 2
   SELECT 1
-  '''
-# ---
-# name: test_comment_ok[comment_sh_leading][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -85,14 +70,11 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_sh_trailing][sql]
+# name: test_comment_ok[comment_sh_trailing]
   '''
   SELECT 1
   # one
-  '''
-# ---
-# name: test_comment_ok[comment_sh_trailing][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -101,15 +83,12 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_sql_expr][sql]
+# name: test_comment_ok[comment_sql_expr]
   '''
   SELECT
       1, -- one
       2
-  '''
-# ---
-# name: test_comment_ok[comment_sql_expr][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -120,14 +99,11 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_sql_leading][sql]
+# name: test_comment_ok[comment_sql_leading]
   '''
   -- myfile.sql
   SELECT 1
-  '''
-# ---
-# name: test_comment_ok[comment_sql_leading][tree]
-  '''
+  
   query_expr
     select
       select_list
@@ -136,14 +112,11 @@
   
   '''
 # ---
-# name: test_comment_ok[comment_sql_trailing][sql]
+# name: test_comment_ok[comment_sql_trailing]
   '''
   SELECT 1
   -- one
-  '''
-# ---
-# name: test_comment_ok[comment_sql_trailing][tree]
-  '''
+  
   query_expr
     select
       select_list
