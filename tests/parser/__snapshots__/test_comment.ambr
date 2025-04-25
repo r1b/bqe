@@ -7,12 +7,12 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
         select_expr
           integer_literal	2
-  
   '''
 # ---
 # name: test_comment_ok[comment_c_leading]
@@ -22,10 +22,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
-  
   '''
 # ---
 # name: test_comment_ok[comment_c_trailing]
@@ -35,10 +35,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
-  
   '''
 # ---
 # name: test_comment_ok[comment_sh_expr]
@@ -49,12 +49,12 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
         select_expr
           integer_literal	2
-  
   '''
 # ---
 # name: test_comment_ok[comment_sh_leading]
@@ -64,10 +64,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
-  
   '''
 # ---
 # name: test_comment_ok[comment_sh_trailing]
@@ -77,10 +77,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
-  
   '''
 # ---
 # name: test_comment_ok[comment_sql_expr]
@@ -91,12 +91,12 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
         select_expr
           integer_literal	2
-  
   '''
 # ---
 # name: test_comment_ok[comment_sql_leading]
@@ -106,10 +106,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
-  
   '''
 # ---
 # name: test_comment_ok[comment_sql_trailing]
@@ -119,9 +119,9 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
-  
   '''
 # ---

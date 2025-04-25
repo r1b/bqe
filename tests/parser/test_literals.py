@@ -24,7 +24,7 @@ import pytest
     ),
 )
 def test_string_literal_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)
 
 
 @pytest.mark.parametrize(
@@ -72,7 +72,7 @@ def test_string_literal_error(sql, assert_parse_tree_error):
     ),
 )
 def test_bytes_literal_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)
 
 
 @pytest.mark.parametrize(
@@ -103,7 +103,7 @@ def test_bytes_literal_error(sql, assert_parse_tree_error):
     ),
 )
 def test_integer_literal_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)
 
 
 @pytest.mark.parametrize(

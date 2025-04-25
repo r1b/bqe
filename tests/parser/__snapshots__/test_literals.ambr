@@ -5,10 +5,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           array_literal
-  
   '''
 # ---
 # name: test_array_literal_ok[literal_array_multi]
@@ -17,6 +17,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           array_literal
@@ -24,7 +25,6 @@
               integer_literal	1
               integer_literal	2
               integer_literal	3
-  
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix]
@@ -33,6 +33,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           array_literal
@@ -41,7 +42,6 @@
               integer_literal	1
               integer_literal	2
               integer_literal	3
-  
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix_compound_type]
@@ -50,6 +50,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           array_literal
@@ -68,7 +69,6 @@
                 named_struct_literal_item_list
                   named_struct_literal_item
                     integer_literal	1
-  
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix_nested_compound_type]
@@ -77,6 +77,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           array_literal
@@ -104,7 +105,6 @@
                       named_struct_literal_item_list
                         named_struct_literal_item
                           integer_literal	1
-  
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix_scalar_type]
@@ -113,6 +113,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           array_literal
@@ -124,7 +125,6 @@
               integer_literal	1
               integer_literal	2
               integer_literal	3
-  
   '''
 # ---
 # name: test_array_literal_ok[literal_array_single]
@@ -133,12 +133,12 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           array_literal
             array_literal_item_list
               integer_literal	1
-  
   '''
 # ---
 # name: test_bignumeric_literal_ok[literal_bignumeric]
@@ -147,10 +147,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bignumeric_literal	'42'
-  
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_empty]
@@ -159,10 +159,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	b""
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(b"")
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_nonempty]
@@ -171,10 +177,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	b"bytes"
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(b"bytes")
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_raw_cap]
@@ -183,10 +195,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	BR"bytes"
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(BR"bytes")
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_raw_empty]
@@ -195,10 +213,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	br""
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(br"")
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_raw_nonempty]
@@ -207,10 +231,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	rb"bytes"
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(rb"bytes")
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_squot_empty]
@@ -219,10 +249,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	b''
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(b'')
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_squot_nonempty]
@@ -231,10 +267,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	b'bytes'
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(b'bytes')
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_squot_raw_empty]
@@ -243,10 +285,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	br''
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(br'')
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_squot_raw_nonempty]
@@ -255,10 +303,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	br'bytes'
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(br'bytes')
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tdquot_empty]
@@ -267,10 +321,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	b""""""
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(b"""""")
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tdquot_nonempty]
@@ -279,10 +339,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	b"""We say: "hello"."""
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(b"""We say: "hello".""")
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tdquot_raw_empty]
@@ -291,10 +357,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	br""""""
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(br"""""")
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tdquot_raw_nonempty]
@@ -303,10 +375,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	br"""We say: "hello"."""
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(br"""We say: "hello".""")
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tsquot_empty]
@@ -315,10 +393,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	b''''''
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(b'''''')
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tsquot_nonempty]
@@ -327,10 +411,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	b'''We say: 'hello'.'''
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(b'''We say: 'hello'.''')
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tsquot_raw_empty]
@@ -339,10 +429,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	br''''''
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(br'''''')
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tsquot_raw_nonempty]
@@ -351,10 +447,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           bytes_literal	br'''We say: 'hello'.'''
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BytesLiteral(br'''We say: 'hello'.''')
   '''
 # ---
 # name: test_date_time_literal_ok[literal_date]
@@ -363,10 +465,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           date_literal	'1970-01-01'
-  
   '''
 # ---
 # name: test_date_time_literal_ok[literal_datetime]
@@ -375,10 +477,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           datetime_literal	'1970-01-01 12:00:00.01'
-  
   '''
 # ---
 # name: test_date_time_literal_ok[literal_time]
@@ -387,10 +489,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           date_literal	'12:00:00.01'
-  
   '''
 # ---
 # name: test_date_time_literal_ok[literal_timestamp]
@@ -399,10 +501,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           timestamp_literal	'1970-01-01 12:00:00.01-08'
-  
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dig_dot]
@@ -411,10 +513,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           float_literal	58.
-  
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dig_dot_dig_lower_e_minus_dig]
@@ -423,10 +525,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           float_literal	123.456e-67
-  
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dig_lower_e_dig]
@@ -435,10 +537,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           float_literal	4e2
-  
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dot_dig_cap_e_dig]
@@ -447,10 +549,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           float_literal	.1E4
-  
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_decimal]
@@ -459,10 +561,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          IntegerLiteral(1)
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_hex]
@@ -471,10 +579,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	0xff
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          IntegerLiteral(0xff)
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_hex_cap]
@@ -483,10 +597,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	0XFF
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          IntegerLiteral(0XFF)
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_quoted_alias_adjacent]
@@ -495,12 +615,20 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
           as_alias
             ident	`alias`
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          IntegerLiteral(1)
+          Alias
+            Ident(`alias`)
   '''
 # ---
 # name: test_interval_literal_ok[literal_interval]
@@ -509,12 +637,12 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           interval_literal
             integer_literal	1
             datetime_part	MONTH
-  
   '''
 # ---
 # name: test_json_literal_ok[literal_json]
@@ -523,10 +651,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           json_literal	'{}'
-  
   '''
 # ---
 # name: test_numeric_literal_ok[literal_numeric]
@@ -535,10 +663,10 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           numeric_literal	'42'
-  
   '''
 # ---
 # name: test_range_literal_ok[literal_range]
@@ -547,6 +675,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           range_literal
@@ -554,7 +683,6 @@
               type
                 type_name	DATE
             range_value	'[1970-01-01, 1970-01-02)'
-  
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_empty]
@@ -563,10 +691,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	""
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral("")
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_nonempty]
@@ -575,10 +709,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	"string"
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral("string")
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_raw_cap]
@@ -587,10 +727,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	R"string"
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral(R"string")
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_raw_empty]
@@ -599,10 +745,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	r""
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral(r"")
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_raw_nonempty]
@@ -611,10 +763,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	r"string"
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral(r"string")
   '''
 # ---
 # name: test_string_literal_ok[literal_string_squot_empty]
@@ -623,10 +781,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	''
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral('')
   '''
 # ---
 # name: test_string_literal_ok[literal_string_squot_nonempty]
@@ -635,10 +799,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	'string'
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral('string')
   '''
 # ---
 # name: test_string_literal_ok[literal_string_squot_raw_empty]
@@ -647,10 +817,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	r''
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral(r'')
   '''
 # ---
 # name: test_string_literal_ok[literal_string_squot_raw_nonempty]
@@ -659,10 +835,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	r'string'
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral(r'string')
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tdquot_empty]
@@ -671,10 +853,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	""""""
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral("""""")
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tdquot_nonempty]
@@ -683,10 +871,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	"""We say: "hello"."""
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral("""We say: "hello".""")
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tdquot_raw_empty]
@@ -695,10 +889,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	r""""""
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral(r"""""")
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tdquot_raw_nonempty]
@@ -707,10 +907,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	r"""We say: "hello"."""
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral(r"""We say: "hello".""")
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tsquot_empty]
@@ -719,10 +925,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	''''''
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral('''''')
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tsquot_nonempty]
@@ -731,10 +943,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	'''We say: 'hello'.'''
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral('''We say: 'hello'.''')
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tsquot_raw_empty]
@@ -743,10 +961,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	r''''''
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral(r'''''')
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tsquot_raw_nonempty]
@@ -755,10 +979,16 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	r'''We say: 'hello'.'''
   
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StringLiteral(r'''We say: 'hello'.''')
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct]
@@ -767,12 +997,12 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           struct_literal
             integer_literal	1
             integer_literal	2
-  
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_multi]
@@ -781,13 +1011,13 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           struct_literal
             integer_literal	1
             integer_literal	2
             integer_literal	3
-  
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named]
@@ -796,6 +1026,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           named_struct_literal
@@ -807,7 +1038,6 @@
                 integer_literal	2
               named_struct_literal_item
                 integer_literal	3
-  
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named_alias]
@@ -816,6 +1046,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           named_struct_literal
@@ -833,7 +1064,6 @@
                 integer_literal	3
                 as_alias
                   ident	c
-  
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named_compound_type_decl]
@@ -842,6 +1072,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           named_struct_literal
@@ -864,7 +1095,6 @@
                 integer_literal	2
               named_struct_literal_item
                 integer_literal	3
-  
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named_compound_type_decl_column]
@@ -873,6 +1103,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           named_struct_literal
@@ -898,7 +1129,6 @@
                 integer_literal	2
               named_struct_literal_item
                 integer_literal	3
-  
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named_compound_type_decl_nested]
@@ -907,6 +1137,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           named_struct_literal
@@ -940,6 +1171,5 @@
                       integer_literal	2
                     named_struct_literal_item
                       integer_literal	3
-  
   '''
 # ---

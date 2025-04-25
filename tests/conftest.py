@@ -3,19 +3,26 @@ import inspect
 import pytest
 from lark.exceptions import UnexpectedInput
 
-from bqe.parser import parse
+from bqe.ast import pretty
+from bqe.parser import parse, transform
 
 
 @pytest.fixture
 def assert_parse_tree(snapshot):
-    def assert_parse_tree_impl(sql, lax=False):
+    def assert_parse_tree_impl(sql, lax=False, with_ast=False):
         tree = parse(sql, lax=lax)
 
         pretty_sql = inspect.cleandoc(sql)
-        pretty_tree = tree.pretty()
+        pretty_tree = tree.pretty().rstrip("\n")
 
-        # Tree.pretty has trailing newlines
-        assert snapshot == f"{pretty_sql}\n\n{pretty_tree}"
+        context = [pretty_sql, pretty_tree]
+
+        if with_ast:
+            # TODO: This is a temporary flag for incrementally building out the AST
+            ast = transform(tree)
+            context.append(pretty(ast))
+
+        assert snapshot == "\n\n".join(context)
 
     return assert_parse_tree_impl
 

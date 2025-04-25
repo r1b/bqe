@@ -639,7 +639,9 @@ pipe_from : _FROM from_clause
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list
 
-select : _SELECT select_mode? select_shape? select_list select_from?
+select : select_metadata select_list select_from?
+
+select_metadata : _SELECT select_mode? select_shape?
 
 select_mode : ALL | DISTINCT
 

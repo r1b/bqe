@@ -3,7 +3,7 @@ from lark import Lark, logger as lark_logger
 from lark.exceptions import UnexpectedInput
 
 from .settings import BQE_DEBUG, PACKAGE_ROOT
-from .transformer import BqeTransformer
+from .transformer import AstTransformer, ParserTransformer
 
 
 if BQE_DEBUG:
@@ -17,13 +17,19 @@ parser = Lark(
     start=["start_query", "start_pipe", "start_expr"],
     debug=BQE_DEBUG,
 )
-transformer = BqeTransformer()
+
+parser_transformer = ParserTransformer()
+ast_transformer = AstTransformer()
+
+
+def transform(tree):
+    return ast_transformer.transform(tree)
 
 
 def parse(sql: str, *, lax=False):
     """Parse SQL. If `lax` is `True`, attempt to parse multiple forms."""
     tree = parse_lax(sql) if lax else parse_strict(sql)
-    tree = transformer.transform(tree)
+    tree = parser_transformer.transform(tree)
     return tree
 
 

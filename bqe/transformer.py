@@ -1,15 +1,16 @@
-from lark import Transformer, Tree
+from lark import Transformer, Tree, v_args
+from bqe import ast
 
 
-class BqeTransformer(Transformer):
-    def ident(self, args: list[Tree]):
+class ParserTransformer(Transformer):
+    def ident(self, args):
         """Rewrite keyword_as_ident to ident"""
         child = args[0]
         if isinstance(child, Tree) and child.data == "keyword_as_ident":
             return Tree("ident", child.children)
         return Tree("ident", args)
 
-    def field_access_expr(self, args: list[Tree]):
+    def field_access_expr(self, args):
         """Rewrite left-recursive field_access_expr to path_expression.
         When a non-ident lhs is encountered, rewrite to dot_ident."""
         parent, child = args
@@ -21,9 +22,63 @@ class BqeTransformer(Transformer):
             return Tree("path_expression", children)
         return Tree("dot_ident", args)
 
-    def subquery(self, args: list[Tree]):
+    def subquery(self, args):
         """Collapse nested subqueries."""
         child = args[0]
         if child.data == "subquery":
             return Tree("subquery", child.children)
         return Tree("subquery", args)
+
+
+class AstTransformer(Transformer):
+    @v_args(inline=True)
+    def query_expr(self, query_start, *pipe_exprs):
+        return ast.Query(query_start, pipe_exprs if pipe_exprs else None)
+
+    @v_args(inline=True)
+    def select(self, select_metadata: Tree, select_list, from_clause=None):
+        select_as = next(select_metadata.find_data("select_shape"), None)
+
+        if select_as is None:
+            cls = ast.Select
+        else:
+            select_as = str(select_as).upper()
+            if select_as == "STRUCT":
+                cls = ast.SelectAsStruct
+            elif select_as == "VALUE":
+                cls = ast.SelectAsValue
+            else:
+                raise ValueError("Unexpected select_as: ", select_as)
+
+        all_or_distinct = next(select_metadata.find_data("select_mode"), "ALL")
+        all_or_distinct = str(all_or_distinct).upper()
+        distinct = all_or_distinct == "DISTINCT"
+
+        return cls(select_list, from_clause, distinct=distinct)
+
+    def select_list(self, select_columns):
+        return ast.SelectList(select_columns)
+
+    @v_args(inline=True)
+    def select_expr(self, expr, alias=None):
+        return ast.SelectColumn(expr, alias)
+
+    @v_args(inline=True)
+    def as_alias(self, ident):
+        return ast.Alias(ident)
+
+    @v_args(inline=True)
+    def ident(self, value):
+        return ast.Ident(str(value))
+
+    @v_args(inline=True)
+    def integer_literal(self, value):
+        return ast.IntegerLiteral(str(value))
+
+    @v_args(inline=True)
+    def string_literal(self, value):
+        return ast.StringLiteral(str(value))
+
+    @v_args(inline=True)
+    def bytes_literal(self, value):
+        return ast.BytesLiteral(str(value))

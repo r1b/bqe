@@ -6,6 +6,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -32,7 +33,6 @@
                     ident	x
               as_alias
                 ident	xx
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_agg_list_trailing_comma]
@@ -43,6 +43,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -70,7 +71,6 @@
         grouping_items
           grouping_item
             ident	x
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_aliases]
@@ -80,6 +80,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -105,7 +106,6 @@
                   star_arg
               as_alias
                 ident	z
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_dot_star]
@@ -115,6 +115,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -144,7 +145,6 @@
                 add_expr
                   ident	a
                   ident	b
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_except_replace]
@@ -156,6 +156,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -195,7 +196,6 @@
                       integer_literal	1
                       integer_literal	2
                     ident	ccc
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_group_and_order_by]
@@ -205,6 +205,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -222,7 +223,6 @@
           grouping_item
             ident	y
             order_by_item_sort	DESC
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_group_and_order_by_aliased]
@@ -248,7 +248,6 @@
             as_alias
               ident	y
             order_by_item_sort	ASC
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_group_and_order_by_grouping_sets_kitchen_sink]
@@ -259,6 +258,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -285,7 +285,6 @@
             grouping_set_list
               grouping_set
                 ident	x
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_group_by]
@@ -295,6 +294,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -332,7 +332,6 @@
               integer_literal	2
           grouping_item
             integer_literal	3
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_group_by_alias_explicit]
@@ -343,6 +342,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -386,7 +386,6 @@
               ident	y
             as_alias
               ident	xy
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_group_by_alias_implicit]
@@ -397,6 +396,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -434,7 +434,6 @@
               ident	y
             as_alias
               ident	xy
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_group_by_empty]
@@ -445,6 +444,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -482,7 +482,6 @@
             grouping_item_empty
           grouping_item
             ident	x
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_group_by_order_by_implicit]
@@ -500,6 +499,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -532,7 +532,6 @@
           grouping_item
             ident	aa
             order_by_item_nulls	LAST
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_group_by_trailing_comma]
@@ -543,6 +542,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -558,7 +558,6 @@
             ident	x
           grouping_item
             ident	y
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_grouping_item_kitchen_sink]
@@ -570,6 +569,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -629,7 +629,6 @@
                     ident	a
                   rollup_item
                     ident	b
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_order_by]
@@ -701,7 +700,6 @@
               function_call_expr
                 function_name
                   ident	nosuffix
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_order_by_everywhere]
@@ -732,7 +730,6 @@
           grouping_item
             ident	key
             order_by_item_sort	asc
-  
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_window_fail_analysis]
@@ -742,6 +739,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -766,7 +764,6 @@
                     ident	y
                 window_expr
                   window_spec
-  
   '''
 # ---
 # name: test_pipe_as[zeta_pipe_as]
@@ -775,12 +772,12 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
     pipe_as
       ident	t
-  
   '''
 # ---
 # name: test_pipe_as[zeta_pipe_as_chained]
@@ -789,6 +786,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -796,7 +794,6 @@
       ident	t1
     pipe_as
       ident	t2
-  
   '''
 # ---
 # name: test_pipe_as[zeta_pipe_as_input_aliased]
@@ -805,6 +802,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -812,7 +810,6 @@
             ident	x
     pipe_as
       ident	t
-  
   '''
 # ---
 # name: test_pipe_as[zeta_pipe_as_scope_oopsie]
@@ -827,6 +824,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
@@ -840,7 +838,6 @@
           path_expression
             ident	t
             ident	a
-  
   '''
 # ---
 # name: test_pipe_as[zeta_pipe_as_typical_usage_join]
@@ -864,7 +861,6 @@
           ident	key
     pipe_as
       ident	t3
-  
   '''
 # ---
 # name: test_pipe_call[zeta_pipe_call]
@@ -879,6 +875,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -907,7 +904,6 @@
           named_arg
             ident	named
             integer_literal	5
-  
   '''
 # ---
 # name: test_pipe_drop[zeta_pipe_drop]
@@ -920,6 +916,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           ident	x
@@ -947,7 +944,6 @@
           ident	b
         drop_item
           ident	c
-  
   '''
 # ---
 # name: test_pipe_from[zeta_pipe_from]
@@ -960,21 +956,6 @@
         from_item_table
           path_expression
             ident	t
-  
-  '''
-# ---
-# name: test_pipe_from[zeta_pipe_from][sql]
-  'from t'
-# ---
-# name: test_pipe_from[zeta_pipe_from][tree]
-  '''
-  query_expr
-    pipe_from
-      from_clause
-        from_item_table
-          path_expression
-            ident	t
-  
   '''
 # ---
 # name: test_pipe_from[zeta_pipe_from_expression_subquery]
@@ -984,6 +965,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           subquery
@@ -1020,56 +1002,6 @@
                   from_item_table
                     path_expression
                       ident	t
-  
-  '''
-# ---
-# name: test_pipe_from[zeta_pipe_from_expression_subquery][sql]
-  '''
-  select (from t), EXISTS(from t1), ARRAY(from t2)
-  from (from t)
-  '''
-# ---
-# name: test_pipe_from[zeta_pipe_from_expression_subquery][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          subquery
-            query_expr
-              pipe_from
-                from_clause
-                  from_item_table
-                    path_expression
-                      ident	t
-        select_expr
-          exists_subquery_expr
-            subquery
-              query_expr
-                pipe_from
-                  from_clause
-                    from_item_table
-                      path_expression
-                        ident	t1
-        select_expr
-          array_subquery_expr
-            subquery
-              query_expr
-                pipe_from
-                  from_clause
-                    from_item_table
-                      path_expression
-                        ident	t2
-      from_clause
-        from_item_subquery
-          subquery
-            query_expr
-              pipe_from
-                from_clause
-                  from_item_table
-                    path_expression
-                      ident	t
-  
   '''
 # ---
 # name: test_pipe_from[zeta_pipe_from_subquery]
@@ -1083,34 +1015,13 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_star
                 from_clause
                   from_item_table
                     path_expression
                       ident	t
-  
-  '''
-# ---
-# name: test_pipe_from[zeta_pipe_from_subquery][sql]
-  'from (select * from t)'
-# ---
-# name: test_pipe_from[zeta_pipe_from_subquery][tree]
-  '''
-  query_expr
-    pipe_from
-      from_clause
-        from_item_subquery
-          subquery
-            query_expr
-              select
-                select_list
-                  select_star
-                from_clause
-                  from_item_table
-                    path_expression
-                      ident	t
-  
   '''
 # ---
 # name: test_pipe_from[zeta_pipe_from_unnest_aliased]
@@ -1127,25 +1038,6 @@
                 integer_literal	1
           as_alias
             ident	x
-  
-  '''
-# ---
-# name: test_pipe_from[zeta_pipe_from_unnest_aliased][sql]
-  'from unnest([1]) x'
-# ---
-# name: test_pipe_from[zeta_pipe_from_unnest_aliased][tree]
-  '''
-  query_expr
-    pipe_from
-      from_clause
-        from_item_unnest
-          unnest_expr
-            array_literal
-              array_literal_item_list
-                integer_literal	1
-          as_alias
-            ident	x
-  
   '''
 # ---
 # name: test_pipe_join[zeta_pipe_join]
@@ -1163,6 +1055,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1195,6 +1088,7 @@
         subquery
           query_expr
             select
+              select_metadata
               select_list
                 select_expr
                   ident	zzz
@@ -1207,7 +1101,6 @@
       from_item_table
         path_expression
           ident	t6
-  
   '''
 # ---
 # name: test_pipe_join[zeta_pipe_join_unnest]
@@ -1220,6 +1113,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1240,7 +1134,6 @@
         from_unnest_offset_expr
           as_alias
             ident	o
-  
   '''
 # ---
 # name: test_pipe_named_window[zeta_pipe_named_window]
@@ -1318,7 +1211,6 @@
                 window_frame_kind	ROWS
                 window_frame_start
                   window_frame_current_row
-  
   '''
 # ---
 # name: test_pipe_named_window[zeta_pipe_named_window_extend_trailing_comma]
@@ -1351,7 +1243,6 @@
           ident	w
           window_expr
             window_spec
-  
   '''
 # ---
 # name: test_pipe_named_window[zeta_pipe_named_window_select_trailing_comma]
@@ -1383,7 +1274,6 @@
           ident	w
           window_expr
             window_spec
-  
   '''
 # ---
 # name: test_pipe_named_window[zeta_pipe_named_window_unused]
@@ -1412,7 +1302,6 @@
           ident	w
           window_expr
             window_spec
-  
   '''
 # ---
 # name: test_pipe_order_by[zeta_pipe_order_by]
@@ -1427,6 +1316,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1472,7 +1362,6 @@
         order_by_item
           ident	x
           order_by_item_nulls	FIRST
-  
   '''
 # ---
 # name: test_pipe_order_by[zeta_pipe_order_by_trailing_comma]
@@ -1483,6 +1372,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1496,7 +1386,6 @@
           ident	x
         order_by_item
           ident	y
-  
   '''
 # ---
 # name: test_pipe_pivot[zeta_pipe_pivot_aliased_exprs_kitchen_sink]
@@ -1561,7 +1450,6 @@
               ident	one
       as_alias
         ident	p
-  
   '''
 # ---
 # name: test_pipe_pivot[zeta_pipe_pivot_multi_implicit_alias]
@@ -1599,7 +1487,6 @@
             integer_literal	0
       as_alias
         ident	pivot_table
-  
   '''
 # ---
 # name: test_pipe_pivot[zeta_pipe_pivot_nonreserved_kw]
@@ -1625,7 +1512,6 @@
             ident	c
       as_alias
         ident	PIVOT
-  
   '''
 # ---
 # name: test_pipe_pivot[zeta_pipe_pivot_single]
@@ -1656,7 +1542,6 @@
             integer_literal	0
           pivot_value_item
             integer_literal	1
-  
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_extend_agg]
@@ -1666,6 +1551,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1690,44 +1576,6 @@
                   ident	x
               window_expr
                 window_spec
-  
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_extend_agg][sql]
-  '''
-  select 1 x
-  |> extend count(*), sum(x) over ()
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_extend_agg][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	1
-          as_alias
-            ident	x
-    pipe_extend
-      pipe_selection_item_list
-        pipe_selection_item
-          select_expr
-            function_call_expr
-              function_name
-                ident	count
-              function_args
-                star_arg
-        pipe_selection_item
-          select_expr
-            function_call_expr
-              function_name
-                ident	sum
-              function_args
-                pos_arg
-                  ident	x
-              window_expr
-                window_spec
-  
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_extend_modifiers]
@@ -1740,6 +1588,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1782,65 +1631,6 @@
                     ident	x
                 window_expr
                   window_spec
-  
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_extend_modifiers][sql]
-  '''
-  select 1
-  |> EXTEND x.*,
-            f(x).* except(a),
-            (1+x).* replace(a as b),
-            (sum(x) OVER ()).*
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_extend_modifiers][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	1
-    pipe_extend
-      pipe_selection_item_list
-        pipe_selection_item
-          select_dot_star
-            ident	x
-        pipe_selection_item
-          select_dot_star
-            function_call_expr
-              function_name
-                ident	f
-              function_args
-                pos_arg
-                  ident	x
-            select_except
-              select_except_list
-                select_except_item
-                  ident	a
-        pipe_selection_item
-          select_dot_star
-            parenthesized_expr
-              add_expr
-                integer_literal	1
-                ident	x
-            select_replace
-              select_replace_list
-                select_replace_item
-                  ident	a
-                  ident	b
-        pipe_selection_item
-          select_dot_star
-            parenthesized_expr
-              function_call_expr
-                function_name
-                  ident	sum
-                function_args
-                  pos_arg
-                    ident	x
-                window_expr
-                  window_spec
-  
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_extend_quirks]
@@ -1850,6 +1640,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1865,35 +1656,6 @@
                   ident	x
               window_expr
                 window_spec
-  
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_extend_quirks][sql]
-  '''
-  select 1
-  |> EXTEND sum(x) OVER ().*
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_extend_quirks][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	1
-    pipe_extend
-      pipe_selection_item_list
-        pipe_selection_item
-          select_dot_star
-            function_call_expr
-              function_name
-                ident	sum
-              function_args
-                pos_arg
-                  ident	x
-              window_expr
-                window_spec
-  
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_extend_trailing_commas]
@@ -1904,6 +1666,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1922,39 +1685,6 @@
         pipe_selection_item
           select_expr
             integer_literal	4
-  
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_extend_trailing_commas][sql]
-  '''
-  select 1 x,
-  |> extend 2,
-  |> extend 3, 4,
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_extend_trailing_commas][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	1
-          as_alias
-            ident	x
-    pipe_extend
-      pipe_selection_item_list
-        pipe_selection_item
-          select_expr
-            integer_literal	2
-    pipe_extend
-      pipe_selection_item_list
-        pipe_selection_item
-          select_expr
-            integer_literal	3
-        pipe_selection_item
-          select_expr
-            integer_literal	4
-  
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_from_subquery]
@@ -1967,6 +1697,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	5
@@ -1975,41 +1706,12 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
               pipe_where
                 boolean_literal	true
-  
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_from_subquery][sql]
-  '''
-  select 5
-  from (
-    select 1
-    |> where true
-  )
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_from_subquery][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	5
-      from_clause
-        from_item_subquery
-          subquery
-            query_expr
-              select
-                select_list
-                  select_expr
-                    integer_literal	1
-              pipe_where
-                boolean_literal	true
-  
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_limit]
@@ -2022,6 +1724,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2046,47 +1749,6 @@
           cast_expr_target
             parameter	z
             ident	int64
-  
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_limit][sql]
-  '''
-  select 1 x
-  |> limit 10
-  |> limit 12 offset 22
-  |> limit @x offset @y
-  |> limit cast(@z as int64)
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_limit][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	1
-          as_alias
-            ident	x
-    pipe_limit
-      limit_expr
-        integer_literal	10
-    pipe_limit
-      limit_expr
-        integer_literal	12
-      offset_expr
-        integer_literal	22
-    pipe_limit
-      limit_expr
-        parameter	x
-      offset_expr
-        parameter	y
-    pipe_limit
-      limit_expr
-        cast_expr_kind_cast
-          cast_expr_target
-            parameter	z
-            ident	int64
-  
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_projection]
@@ -2099,6 +1761,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2163,87 +1826,6 @@
             integer_literal	4
             as_alias
               ident	four
-  
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_projection][sql]
-  '''
-  select 1 x
-  |> extend 2 y, 3 AS z
-  |> extend y+z AS yz, pb.f1.f2[3] f3, sqrt(y)
-  |> where true
-  |> extend 1,2,3 as `three`, 4 four
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_projection][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	1
-          as_alias
-            ident	x
-    pipe_extend
-      pipe_selection_item_list
-        pipe_selection_item
-          select_expr
-            integer_literal	2
-            as_alias
-              ident	y
-        pipe_selection_item
-          select_expr
-            integer_literal	3
-            as_alias
-              ident	z
-    pipe_extend
-      pipe_selection_item_list
-        pipe_selection_item
-          select_expr
-            add_expr
-              ident	y
-              ident	z
-            as_alias
-              ident	yz
-        pipe_selection_item
-          select_expr
-            subscript_expr
-              path_expression
-                ident	pb
-                ident	f1
-                ident	f2
-              integer_literal	3
-            as_alias
-              ident	f3
-        pipe_selection_item
-          select_expr
-            function_call_expr
-              function_name
-                ident	sqrt
-              function_args
-                pos_arg
-                  ident	y
-    pipe_where
-      boolean_literal	true
-    pipe_extend
-      pipe_selection_item_list
-        pipe_selection_item
-          select_expr
-            integer_literal	1
-        pipe_selection_item
-          select_expr
-            integer_literal	2
-        pipe_selection_item
-          select_expr
-            integer_literal	3
-            as_alias
-              ident	`three`
-        pipe_selection_item
-          select_expr
-            integer_literal	4
-            as_alias
-              ident	four
-  
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_select_forms]
@@ -2261,6 +1843,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2316,83 +1899,6 @@
             select_except_list
               select_except_item
                 ident	x
-  
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_select_forms][sql]
-  '''
-  select 1
-  |> select 1,2,"abc"
-  |> select distinct x
-  |> select as struct x,y
-  |> select as value z
-  # |> select as c.TypeName z
-  |> select *, * except(abc), * replace(abc as def)
-  # |> select @{hint=1} *, * except(abc), * replace(abc as def)
-  |> select abc.def.*, abc.* except(x)
-  # |> select with anonymization 1,2
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_select_forms][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	1
-    pipe_select
-      select_list
-        select_expr
-          integer_literal	1
-        select_expr
-          integer_literal	2
-        select_expr
-          string_literal	"abc"
-    pipe_select
-      select_list
-        select_expr
-          ident	distinct
-          as_alias
-            ident	x
-    pipe_select
-      select_shape	struct
-      select_list
-        select_expr
-          ident	x
-        select_expr
-          ident	y
-    pipe_select
-      select_shape	value
-      select_list
-        select_expr
-          ident	z
-    pipe_select
-      select_list
-        select_star
-        select_star
-          select_except
-            select_except_list
-              select_except_item
-                ident	abc
-        select_star
-          select_replace
-            select_replace_list
-              select_replace_item
-                ident	abc
-                ident	def
-    pipe_select
-      select_list
-        select_dot_star
-          path_expression
-            ident	abc
-            ident	def
-        select_dot_star
-          ident	abc
-          select_except
-            select_except_list
-              select_except_item
-                ident	x
-  
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_select_subquery]
@@ -2401,37 +1907,18 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
               pipe_where
                 boolean_literal	true
-  
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_select_subquery][sql]
-  'select (select 1 |> where true)'
-# ---
-# name: test_pipe_query[zeta_pipe_query_select_subquery][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          subquery
-            query_expr
-              select
-                select_list
-                  select_expr
-                    integer_literal	1
-              pipe_where
-                boolean_literal	true
-  
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_select_trailing_commas]
@@ -2442,6 +1929,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2455,34 +1943,6 @@
           integer_literal	3
         select_expr
           integer_literal	4
-  
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_select_trailing_commas][sql]
-  '''
-  select 1,
-  |> select 2,
-  |> select 3,4,
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_select_trailing_commas][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	1
-    pipe_select
-      select_list
-        select_expr
-          integer_literal	2
-    pipe_select
-      select_list
-        select_expr
-          integer_literal	3
-        select_expr
-          integer_literal	4
-  
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_simple]
@@ -2492,6 +1952,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2501,29 +1962,6 @@
           integer_literal	3
     pipe_where
       boolean_literal	true
-  
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_simple][sql]
-  '''
-  select 1,2,3
-  |> where true
-  '''
-# ---
-# name: test_pipe_query[zeta_pipe_query_simple][tree]
-  '''
-  query_expr
-    select
-      select_list
-        select_expr
-          integer_literal	1
-        select_expr
-          integer_literal	2
-        select_expr
-          integer_literal	3
-    pipe_where
-      boolean_literal	true
-  
   '''
 # ---
 # name: test_pipe_rename[zeta_pipe_rename]
@@ -2534,6 +1972,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2557,7 +1996,6 @@
           ident	aaa
           as_alias
             ident	bbb
-  
   '''
 # ---
 # name: test_pipe_rename[zeta_pipe_rename_trailing_commas]
@@ -2568,6 +2006,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2587,7 +2026,6 @@
           ident	c
           as_alias
             ident	d
-  
   '''
 # ---
 # name: test_pipe_set[zeta_pipe_set]
@@ -2598,6 +2036,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           ident	x
@@ -2621,7 +2060,6 @@
         set_item
           ident	z
           ident	z
-  
   '''
 # ---
 # name: test_pipe_set[zeta_pipe_set_trailing_commas]
@@ -2632,6 +2070,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           ident	x
@@ -2655,7 +2094,6 @@
         set_item
           ident	z
           ident	z
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation]
@@ -2665,6 +2103,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2677,10 +2116,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_by_name]
@@ -2692,6 +2131,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2705,6 +2145,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
@@ -2720,6 +2161,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	3
@@ -2735,10 +2177,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	4
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_complex_queries]
@@ -2750,6 +2192,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2762,6 +2205,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_star
                 from_clause
@@ -2773,12 +2217,12 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
               pipe_where
                 ident	y
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_corresponding]
@@ -2790,6 +2234,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2803,6 +2248,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
@@ -2818,6 +2264,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	3
@@ -2833,10 +2280,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	4
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_except_all]
@@ -2846,6 +2293,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2858,10 +2306,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_except_distinct]
@@ -2871,6 +2319,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2883,10 +2332,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_full]
@@ -2896,6 +2345,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2909,10 +2359,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_full_outer]
@@ -2922,6 +2372,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2937,10 +2388,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_inner]
@@ -2950,6 +2401,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2963,10 +2415,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_all]
@@ -2976,6 +2428,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -2988,10 +2441,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_distinct]
@@ -3001,6 +2454,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -3013,10 +2467,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_left]
@@ -3026,6 +2480,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -3039,10 +2494,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_left_outer]
@@ -3052,6 +2507,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -3067,10 +2523,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_multiple_tables]
@@ -3080,6 +2536,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -3092,16 +2549,17 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	3
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_trailing_comma]
@@ -3111,6 +2569,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -3123,10 +2582,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_union_distinct]
@@ -3136,6 +2595,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -3148,10 +2608,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_tablesample[zeta_pipe_tablesample]
@@ -3179,7 +2639,6 @@
     pipe_tablesample
       tablesample_perc
         parameter	param1
-  
   '''
 # ---
 # name: test_pipe_unpivot[zeta_pipe_unpivot]
@@ -3206,7 +2665,6 @@
           unpivot_value_item
             path_expression
               ident	y
-  
   '''
 # ---
 # name: test_pipe_unpivot[zeta_pipe_unpivot_alias_quirk]
@@ -3232,7 +2690,6 @@
               ident	c
       as_alias
         ident	UNPIVOT
-  
   '''
 # ---
 # name: test_pipe_unpivot[zeta_pipe_unpivot_exclude_nulls]
@@ -3263,7 +2720,6 @@
               ident	y
       as_alias
         ident	unp
-  
   '''
 # ---
 # name: test_pipe_unpivot[zeta_pipe_unpivot_in_list]
@@ -3288,7 +2744,6 @@
           unpivot_value_item
             path_expression
               ident	x
-  
   '''
 # ---
 # name: test_pipe_unpivot[zeta_pipe_unpivot_include_nulls]
@@ -3319,7 +2774,6 @@
               ident	y
       as_alias
         ident	unp
-  
   '''
 # ---
 # name: test_pipe_unpivot[zeta_pipe_unpivot_integer_labels]
@@ -3350,7 +2804,6 @@
               ident	x
             unpivot_value_item_alias
               integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_unpivot[zeta_pipe_unpivot_paths_and_labels]
@@ -3397,6 +2850,5 @@
               ident	y
             unpivot_value_item_alias
               string_literal	"3"
-  
   '''
 # ---

@@ -8,7 +8,6 @@
       ident	a
       ident	b
     ident	c
-  
   '''
 # ---
 # name: test_lax_ok[lax_expr_case]
@@ -23,7 +22,6 @@
       ident	c
     else_expr
       ident	d
-  
   '''
 # ---
 # name: test_lax_ok[lax_expr_pipe_agg]
@@ -43,7 +41,6 @@
               ident	c
             rollup_item
               ident	d
-  
   '''
 # ---
 # name: test_lax_ok[lax_expr_pipe_select]
@@ -58,6 +55,5 @@
         ident	b
       select_expr
         ident	c
-  
   '''
 # ---

@@ -27,7 +27,6 @@
         grouping_items
           grouping_item
             ident	col3
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_cube]
@@ -63,7 +62,6 @@
                 struct_literal
                   ident	col4
                   ident	col5
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_empty]
@@ -93,7 +91,6 @@
         grouping_items
           grouping_item
             grouping_item_empty
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_grouping_sets]
@@ -131,7 +128,6 @@
                   ident	col5
               grouping_set
                 ident	col6
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_grouping_sets_rollup_cube]
@@ -175,7 +171,6 @@
                     ident	col6
                   cube_item
                     ident	col7
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_multi_alias]
@@ -211,7 +206,6 @@
             ident	col5
             as_alias
               ident	col6
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_order_by]
@@ -250,7 +244,6 @@
               ident	col6
             order_by_item_sort	ASC
             order_by_item_nulls	LAST
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_rollup]
@@ -284,7 +277,6 @@
                 ident	col3
               rollup_item
                 ident	col4
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_single]
@@ -314,7 +306,6 @@
         grouping_items
           grouping_item
             ident	col3
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_single_alias]
@@ -346,7 +337,6 @@
             ident	col3
             as_alias
               ident	col4
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_multi_alias]
@@ -383,7 +373,6 @@
                     ident	col3
               as_alias
                 ident	col4
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_order_by]
@@ -423,7 +412,6 @@
                 ident	col4
           order_by_item_sort	ASC
           order_by_item_nulls	LAST
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_single]
@@ -447,7 +435,6 @@
                 function_args
                   pos_arg
                     ident	col1
-  
   '''
 # ---
 # name: test_agg_ok[pipe_agg_single_alias]
@@ -473,7 +460,6 @@
                     ident	col1
               as_alias
                 ident	col2
-  
   '''
 # ---
 # name: test_as_ok[pipe_as_single]
@@ -488,7 +474,6 @@
             ident	table1
     pipe_as
       ident	table2
-  
   '''
 # ---
 # name: test_call_ok[call]
@@ -508,7 +493,6 @@
         function_args
           pos_arg
             string_literal	'1970-01-01'
-  
   '''
 # ---
 # name: test_call_ok[call_alias_explicit]
@@ -530,7 +514,6 @@
             string_literal	'1970-01-01'
       as_alias
         ident	table2
-  
   '''
 # ---
 # name: test_call_ok[call_alias_implicit]
@@ -552,7 +535,6 @@
             string_literal	'1970-01-01'
       as_alias
         ident	table2
-  
   '''
 # ---
 # name: test_join_ok[join_cross]
@@ -573,7 +555,6 @@
       on_or_using_clause
         using_clause
           ident	col1
-  
   '''
 # ---
 # name: test_join_ok[join_full]
@@ -594,7 +575,6 @@
       on_or_using_clause
         using_clause
           ident	col1
-  
   '''
 # ---
 # name: test_join_ok[join_full_outer]
@@ -617,7 +597,6 @@
       on_or_using_clause
         using_clause
           ident	col1
-  
   '''
 # ---
 # name: test_join_ok[join_inner]
@@ -638,7 +617,6 @@
       on_or_using_clause
         using_clause
           ident	col1
-  
   '''
 # ---
 # name: test_join_ok[join_left]
@@ -659,7 +637,6 @@
       on_or_using_clause
         using_clause
           ident	col1
-  
   '''
 # ---
 # name: test_join_ok[join_left_outer]
@@ -682,7 +659,6 @@
       on_or_using_clause
         using_clause
           ident	col1
-  
   '''
 # ---
 # name: test_join_ok[join_on_compound_expr]
@@ -708,7 +684,6 @@
             ne_expr
               ident	col3
               ident	col4
-  
   '''
 # ---
 # name: test_join_ok[join_on_single_expr]
@@ -730,7 +705,6 @@
           eq_expr
             ident	col1
             ident	col2
-  
   '''
 # ---
 # name: test_join_ok[join_right]
@@ -751,7 +725,6 @@
       on_or_using_clause
         using_clause
           ident	col1
-  
   '''
 # ---
 # name: test_join_ok[join_right_outer]
@@ -774,7 +747,6 @@
       on_or_using_clause
         using_clause
           ident	col1
-  
   '''
 # ---
 # name: test_join_ok[join_using_multi]
@@ -795,7 +767,6 @@
         using_clause
           ident	col1
           ident	col2
-  
   '''
 # ---
 # name: test_join_ok[join_using_single]
@@ -815,7 +786,6 @@
       on_or_using_clause
         using_clause
           ident	col1
-  
   '''
 # ---
 # name: test_limit_ok[pipe_limit_integer_literal]
@@ -831,7 +801,6 @@
     pipe_limit
       limit_expr
         integer_literal	1
-  
   '''
 # ---
 # name: test_limit_ok[pipe_limit_offset]
@@ -849,7 +818,6 @@
         integer_literal	1
       offset_expr
         integer_literal	2
-  
   '''
 # ---
 # name: test_limit_ok[pipe_limit_param]
@@ -865,7 +833,6 @@
     pipe_limit
       limit_expr
         parameter	limit
-  
   '''
 # ---
 # name: test_order_by_ok[order_by_multi]
@@ -884,7 +851,6 @@
           ident	col1
         order_by_item
           ident	col2
-  
   '''
 # ---
 # name: test_order_by_ok[order_by_multi_kitchen_sink]
@@ -907,7 +873,6 @@
           ident	col2
           order_by_item_sort	DESC
           order_by_item_nulls	LAST
-  
   '''
 # ---
 # name: test_order_by_ok[order_by_multi_nulls]
@@ -928,7 +893,6 @@
         order_by_item
           ident	col2
           order_by_item_nulls	LAST
-  
   '''
 # ---
 # name: test_order_by_ok[order_by_multi_sort]
@@ -949,7 +913,6 @@
         order_by_item
           ident	col2
           order_by_item_sort	DESC
-  
   '''
 # ---
 # name: test_order_by_ok[order_by_single]
@@ -966,7 +929,6 @@
       order_by_items
         order_by_item
           ident	col1
-  
   '''
 # ---
 # name: test_pipe_drop_ok[pipe_drop_multi]
@@ -985,7 +947,6 @@
           ident	col1
         drop_item
           ident	col2
-  
   '''
 # ---
 # name: test_pipe_drop_ok[pipe_drop_single]
@@ -1002,7 +963,6 @@
       drop_list
         drop_item
           ident	col1
-  
   '''
 # ---
 # name: test_pipe_drop_ok[pipe_drop_single_trailing_comma]
@@ -1019,7 +979,6 @@
       drop_list
         drop_item
           ident	col1
-  
   '''
 # ---
 # name: test_pipe_extend_ok[pipe_extend_multi]
@@ -1056,7 +1015,6 @@
                   ident	col1
                 pos_arg
                   integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_extend_ok[pipe_extend_named_window_multi]
@@ -1106,7 +1064,6 @@
             window_spec
               window_partition_by
                 ident	col4
-  
   '''
 # ---
 # name: test_pipe_extend_ok[pipe_extend_named_window_single]
@@ -1139,7 +1096,6 @@
             window_spec
               window_partition_by
                 ident	col2
-  
   '''
 # ---
 # name: test_pipe_extend_ok[pipe_extend_single]
@@ -1164,7 +1120,6 @@
                   ident	col1
                 pos_arg
                   integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_extend_ok[pipe_extend_single_alias]
@@ -1191,7 +1146,6 @@
                   integer_literal	2
             as_alias
               ident	col2
-  
   '''
 # ---
 # name: test_pipe_extend_ok[pipe_extend_single_trailing_comma]
@@ -1216,7 +1170,6 @@
                   ident	col1
                 pos_arg
                   integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_ok[pipe_from]
@@ -1229,7 +1182,6 @@
         from_item_table
           path_expression
             ident	table1
-  
   '''
 # ---
 # name: test_pipe_ok[pipe_from_select]
@@ -1246,7 +1198,6 @@
       select_list
         select_expr
           ident	col1
-  
   '''
 # ---
 # name: test_pipe_ok[pipe_pg_subquery_quirks]
@@ -1255,6 +1206,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           subquery
@@ -1264,6 +1216,7 @@
                   subquery
                     query_expr
                       select
+                        select_metadata
                         select_list
                           select_expr
                             integer_literal	2
@@ -1271,7 +1224,6 @@
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_ok[pipe_select_named_window_multi]
@@ -1319,7 +1271,6 @@
             window_spec
               window_partition_by
                 ident	col4
-  
   '''
 # ---
 # name: test_pipe_ok[pipe_select_named_window_reserved_conflict]
@@ -1351,7 +1302,6 @@
             window_spec
               window_partition_by
                 ident	date
-  
   '''
 # ---
 # name: test_pipe_ok[pipe_select_named_window_single]
@@ -1383,7 +1333,6 @@
             window_spec
               window_partition_by
                 ident	col2
-  
   '''
 # ---
 # name: test_pipe_ok[pipe_select_select]
@@ -1392,6 +1341,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           ident	col1
@@ -1403,7 +1353,6 @@
       select_list
         select_expr
           ident	col1
-  
   '''
 # ---
 # name: test_pipe_ok[pipe_select_select_as_struct]
@@ -1412,6 +1361,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           ident	col1
@@ -1424,7 +1374,6 @@
       select_list
         select_expr
           ident	col1
-  
   '''
 # ---
 # name: test_pipe_ok[pipe_select_select_as_value]
@@ -1433,6 +1382,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           ident	col1
@@ -1445,7 +1395,6 @@
       select_list
         select_expr
           ident	col1
-  
   '''
 # ---
 # name: test_pipe_ok[pipe_subquery_select]
@@ -1456,6 +1405,7 @@
     subquery
       query_expr
         select
+          select_metadata
           select_list
             select_expr
               ident	col1
@@ -1467,7 +1417,6 @@
       select_list
         select_expr
           ident	col1
-  
   '''
 # ---
 # name: test_pipe_rename_ok[pipe_rename_multi]
@@ -1490,7 +1439,6 @@
           ident	col3
           as_alias
             ident	col4
-  
   '''
 # ---
 # name: test_pipe_rename_ok[pipe_rename_single]
@@ -1509,7 +1457,6 @@
           ident	col1
           as_alias
             ident	col2
-  
   '''
 # ---
 # name: test_pipe_rename_ok[pipe_rename_single_trailing_comma]
@@ -1528,7 +1475,6 @@
           ident	col1
           as_alias
             ident	col2
-  
   '''
 # ---
 # name: test_pipe_set_ok[pipe_set_multi]
@@ -1563,7 +1509,6 @@
                 ident	col1
               pos_arg
                 integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_ok[pipe_set_single]
@@ -1588,7 +1533,6 @@
                 ident	col1
               pos_arg
                 integer_literal	2
-  
   '''
 # ---
 # name: test_pipe_set_ok[pipe_set_single_trailing_comma]
@@ -1613,7 +1557,6 @@
                 ident	col1
               pos_arg
                 integer_literal	2
-  
   '''
 # ---
 # name: test_pivot_ok[pivot]
@@ -1643,7 +1586,6 @@
             string_literal	'Q1'
           pivot_value_item
             string_literal	'Q2'
-  
   '''
 # ---
 # name: test_pivot_ok[pivot_aliased]
@@ -1675,7 +1617,6 @@
             string_literal	'Q2'
       as_alias
         ident	col2
-  
   '''
 # ---
 # name: test_set_operation_ok[set_operation_all_single]
@@ -1697,10 +1638,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
-  
   '''
 # ---
 # name: test_set_operation_ok[set_operation_by_name]
@@ -1723,12 +1664,12 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
-  
   '''
 # ---
 # name: test_set_operation_ok[set_operation_by_name_on_multi]
@@ -1754,12 +1695,12 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
-  
   '''
 # ---
 # name: test_set_operation_ok[set_operation_by_name_on_single]
@@ -1784,12 +1725,12 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
-  
   '''
 # ---
 # name: test_set_operation_ok[set_operation_corresponding]
@@ -1812,12 +1753,12 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
-  
   '''
 # ---
 # name: test_set_operation_ok[set_operation_distinct_multi]
@@ -1839,16 +1780,17 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_set_operation_ok[set_operation_strict_corresponding]
@@ -1871,12 +1813,12 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
-  
   '''
 # ---
 # name: test_set_operation_ok[set_operation_strict_corresponding_by]
@@ -1901,12 +1843,12 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
-  
   '''
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_full]
@@ -1930,12 +1872,12 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
-  
   '''
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_inner]
@@ -1959,12 +1901,12 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
-  
   '''
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_left]
@@ -1988,12 +1930,12 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
-  
   '''
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_left_outer]
@@ -2019,12 +1961,12 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
-  
   '''
 # ---
 # name: test_tablesample_ok[tablesample]
@@ -2040,7 +1982,6 @@
     pipe_tablesample
       tablesample_perc
         integer_literal	10
-  
   '''
 # ---
 # name: test_unpivot_ok[unpivot]
@@ -2066,7 +2007,6 @@
           unpivot_value_item
             path_expression
               ident	q2
-  
   '''
 # ---
 # name: test_unpivot_ok[unpivot_aliased]
@@ -2094,7 +2034,6 @@
               ident	q2
       as_alias
         ident	col2
-  
   '''
 # ---
 # name: test_where_ok[pipe_where_single]
@@ -2109,7 +2048,6 @@
             ident	table1
     pipe_where
       ident	col1
-  
   '''
 # ---
 # name: test_window_ok[window_frame_range]
@@ -2141,7 +2079,6 @@
                         integer_literal	1
                       window_frame_numeric_following
                         integer_literal	1
-  
   '''
 # ---
 # name: test_window_ok[window_frame_rows]
@@ -2171,7 +2108,6 @@
                     window_frame_between_unbounded_preceding
                       window_frame_unbounded_preceding
                       window_frame_unbounded_following
-  
   '''
 # ---
 # name: test_window_ok[window_order_by_multi]
@@ -2201,7 +2137,6 @@
                       ident	col2
                     order_by_item
                       ident	col3
-  
   '''
 # ---
 # name: test_window_ok[window_order_by_single]
@@ -2229,7 +2164,6 @@
                   order_by_items
                     order_by_item
                       ident	col2
-  
   '''
 # ---
 # name: test_window_ok[window_parition_and_order_by]
@@ -2259,7 +2193,6 @@
                   order_by_items
                     order_by_item
                       ident	col3
-  
   '''
 # ---
 # name: test_window_ok[window_partition_by_multi]
@@ -2286,7 +2219,6 @@
                 window_partition_by
                   ident	col2
                   ident	col3
-  
   '''
 # ---
 # name: test_window_ok[window_partition_by_single]
@@ -2312,7 +2244,6 @@
               window_spec
                 window_partition_by
                   ident	col2
-  
   '''
 # ---
 # name: test_window_ok[window_simple]
@@ -2336,6 +2267,5 @@
                 ident	col1
             window_expr
               window_spec
-  
   '''
 # ---

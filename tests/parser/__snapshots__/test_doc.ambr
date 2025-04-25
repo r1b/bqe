@@ -8,6 +8,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	'apples'
@@ -26,6 +27,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -44,6 +46,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -76,7 +79,6 @@
                     ident	sales
               as_alias
                 ident	total_sales
-  
   '''
 # ---
 # name: test_doc_ok[doc_agg_group_and_order_by]
@@ -112,7 +114,6 @@
           grouping_item
             ident	item
             order_by_item_sort	DESC
-  
   '''
 # ---
 # name: test_doc_ok[doc_agg_group_by]
@@ -125,6 +126,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	'apples'
@@ -143,6 +145,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -161,6 +164,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -197,7 +201,6 @@
         grouping_items
           grouping_item
             ident	item
-  
   '''
 # ---
 # name: test_doc_ok[doc_agg_group_implicit_order_by]
@@ -233,7 +236,6 @@
           grouping_item
             ident	category
             order_by_item_sort	DESC
-  
   '''
 # ---
 # name: test_doc_ok[doc_agg_group_then_order_by]
@@ -275,7 +277,6 @@
         order_by_item
           ident	item
           order_by_item_sort	DESC
-  
   '''
 # ---
 # name: test_doc_ok[doc_as]
@@ -296,6 +297,7 @@
       subquery
         query_expr
           select
+            select_metadata
             select_list
               select_expr
                 string_literal	"000123"
@@ -318,6 +320,7 @@
                 subquery
                   query_expr
                     select
+                      select_metadata
                       select_list
                         select_expr
                           string_literal	"000456"
@@ -359,6 +362,7 @@
         subquery
           query_expr
             select
+              select_metadata
               select_list
                 select_expr
                   integer_literal	456
@@ -392,7 +396,6 @@
           ident	total_sales
         select_expr
           ident	color
-  
   '''
 # ---
 # name: test_doc_ok[doc_call]
@@ -423,7 +426,6 @@
             ident	arg2
           pos_arg
             ident	arg3
-  
   '''
 # ---
 # name: test_doc_ok[doc_drop]
@@ -433,6 +435,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	'apples'
@@ -452,7 +455,6 @@
           ident	sales
         drop_item
           ident	category
-  
   '''
 # ---
 # name: test_doc_ok[doc_drop_nested]
@@ -468,6 +470,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
@@ -493,7 +496,6 @@
             ident	original_x
         select_expr
           ident	y
-  
   '''
 # ---
 # name: test_doc_ok[doc_except_distinct_subquery]
@@ -508,6 +510,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_star
       from_clause
@@ -535,6 +538,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_star
                 from_clause
@@ -559,6 +563,7 @@
                     subquery
                       query_expr
                         select
+                          select_metadata
                           select_list
                             select_star
                           from_clause
@@ -574,7 +579,6 @@
                                     integer_literal	4
                               as_alias
                                 ident	number
-  
   '''
 # ---
 # name: test_doc_ok[doc_extend]
@@ -585,6 +589,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	'apples'
@@ -603,6 +608,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -623,7 +629,6 @@
                 string_literal	'oranges'
             as_alias
               ident	is_orange
-  
   '''
 # ---
 # name: test_doc_ok[doc_extend_named_window]
@@ -659,7 +664,6 @@
             window_spec
               window_partition_by
                 ident	category
-  
   '''
 # ---
 # name: test_doc_ok[doc_extend_window]
@@ -671,6 +675,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	'apples'
@@ -689,6 +694,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -707,6 +713,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -730,7 +737,6 @@
                 window_spec
             as_alias
               ident	total_sales
-  
   '''
 # ---
 # name: test_doc_ok[doc_from]
@@ -771,7 +777,6 @@
           path_expression
             ident	p2
             ident	sales
-  
   '''
 # ---
 # name: test_doc_ok[doc_intersect_distinct]
@@ -784,6 +789,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -802,6 +808,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
@@ -816,6 +823,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	3
@@ -831,6 +839,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	10
@@ -840,7 +849,6 @@
                     integer_literal	1
                     as_alias
                       ident	one_digit
-  
   '''
 # ---
 # name: test_doc_ok[doc_join]
@@ -857,6 +865,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	'apples'
@@ -875,6 +884,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -892,6 +902,7 @@
         subquery
           query_expr
             select
+              select_metadata
               select_list
                 select_expr
                   string_literal	"apples"
@@ -922,7 +933,6 @@
           ident	sales
         select_expr
           ident	id
-  
   '''
 # ---
 # name: test_doc_ok[doc_limit]
@@ -935,6 +945,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	'apples'
@@ -953,6 +964,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -971,6 +983,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -987,7 +1000,6 @@
     pipe_limit
       limit_expr
         integer_literal	1
-  
   '''
 # ---
 # name: test_doc_ok[doc_limit_offset]
@@ -1000,6 +1012,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	'apples'
@@ -1018,6 +1031,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -1036,6 +1050,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -1054,7 +1069,6 @@
         integer_literal	1
       offset_expr
         integer_literal	2
-  
   '''
 # ---
 # name: test_doc_ok[doc_order_by]
@@ -1066,6 +1080,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1080,6 +1095,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	3
@@ -1094,6 +1110,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
@@ -1104,7 +1121,6 @@
         order_by_item
           ident	x
           order_by_item_sort	DESC
-  
   '''
 # ---
 # name: test_doc_ok[doc_pivot]
@@ -1118,6 +1134,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	"kale"
@@ -1140,6 +1157,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	"kale"
@@ -1162,6 +1180,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	"kale"
@@ -1184,6 +1203,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	"apple"
@@ -1206,6 +1226,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	"apple"
@@ -1236,7 +1257,6 @@
             string_literal	'Q1'
           pivot_value_item
             string_literal	'Q2'
-  
   '''
 # ---
 # name: test_doc_ok[doc_query_comparison]
@@ -1297,7 +1317,6 @@
         order_by_item
           ident	item
           order_by_item_sort	DESC
-  
   '''
 # ---
 # name: test_doc_ok[doc_rename]
@@ -1309,6 +1328,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1339,7 +1359,6 @@
             ident	y
           as_alias
             ident	t_y
-  
   '''
 # ---
 # name: test_doc_ok[doc_select]
@@ -1354,6 +1373,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'apples'
@@ -1369,7 +1389,6 @@
           ident	item
           as_alias
             ident	fruit_name
-  
   '''
 # ---
 # name: test_doc_ok[doc_set]
@@ -1380,6 +1399,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1398,6 +1418,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
@@ -1417,7 +1438,6 @@
         set_item
           ident	y
           integer_literal	3
-  
   '''
 # ---
 # name: test_doc_ok[doc_set_nested]
@@ -1433,6 +1453,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
@@ -1466,7 +1487,6 @@
           ident	x
         select_expr
           ident	y
-  
   '''
 # ---
 # name: test_doc_ok[doc_tablesample]
@@ -1483,7 +1503,6 @@
     pipe_tablesample
       tablesample_perc
         integer_literal	1
-  
   '''
 # ---
 # name: test_doc_ok[doc_union_all]
@@ -1493,6 +1512,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_star
       from_clause
@@ -1518,10 +1538,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
-  
   '''
 # ---
 # name: test_doc_ok[doc_union_all_by_name]
@@ -1532,6 +1552,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1551,6 +1572,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	20
@@ -1560,7 +1582,6 @@
                     integer_literal	2
                     as_alias
                       ident	one_digit
-  
   '''
 # ---
 # name: test_doc_ok[doc_union_all_not_by_name]
@@ -1571,6 +1592,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           integer_literal	1
@@ -1589,6 +1611,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	20
@@ -1598,7 +1621,6 @@
                     integer_literal	2
                     as_alias
                       ident	one_digit
-  
   '''
 # ---
 # name: test_doc_ok[doc_union_distinct_multi]
@@ -1610,6 +1632,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_star
       from_clause
@@ -1635,16 +1658,17 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	2
-  
   '''
 # ---
 # name: test_doc_ok[doc_union_distinct_single]
@@ -1654,6 +1678,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_star
       from_clause
@@ -1679,10 +1704,10 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     integer_literal	1
-  
   '''
 # ---
 # name: test_doc_ok[doc_unpivot]
@@ -1693,6 +1718,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	'kale'
@@ -1715,6 +1741,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'apple'
@@ -1735,7 +1762,6 @@
           unpivot_value_item
             path_expression
               ident	Q2
-  
   '''
 # ---
 # name: test_doc_ok[doc_where]
@@ -1747,6 +1773,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           string_literal	'apples'
@@ -1765,6 +1792,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -1783,6 +1811,7 @@
           subquery
             query_expr
               select
+                select_metadata
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -1796,6 +1825,5 @@
       gte_expr
         ident	sales
         integer_literal	3
-  
   '''
 # ---

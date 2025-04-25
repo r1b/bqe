@@ -6,6 +6,7 @@
   script
     query_expr
       select
+        select_metadata
         select_list
           select_expr
             ident	col1
@@ -15,6 +16,7 @@
               ident	table1
     query_expr
       select
+        select_metadata
         select_list
           select_expr
             ident	col2
@@ -22,7 +24,6 @@
           from_item_table
             path_expression
               ident	table2
-  
   '''
 # ---
 # name: test_script_ok[script_multi_with_trailing_semi]
@@ -32,6 +33,7 @@
   script
     query_expr
       select
+        select_metadata
         select_list
           select_expr
             ident	col1
@@ -41,6 +43,7 @@
               ident	table1
     query_expr
       select
+        select_metadata
         select_list
           select_expr
             ident	col2
@@ -48,7 +51,6 @@
           from_item_table
             path_expression
               ident	table2
-  
   '''
 # ---
 # name: test_script_ok[script_single]
@@ -57,6 +59,7 @@
   
   query_expr
     select
+      select_metadata
       select_list
         select_expr
           ident	col1
@@ -64,7 +67,6 @@
         from_item_table
           path_expression
             ident	table1
-  
   '''
 # ---
 # name: test_script_ok[script_top_level_from]
@@ -77,6 +79,5 @@
         from_item_table
           path_expression
             ident	table1
-  
   '''
 # ---
