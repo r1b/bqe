@@ -10,7 +10,7 @@ def pretty(node: "Node", indent="  ", nl="\n"):
         return prefix + s
 
     def _pretty(node: "Node", depth: int):
-        result = render(node.__class__.__name__, depth)
+        result = render(type(node).__name__, depth)
 
         args = []
 
