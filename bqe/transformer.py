@@ -1,4 +1,4 @@
-from lark import Transformer, Tree, v_args
+from lark import Token, Transformer, Tree, v_args
 from bqe import ast
 
 
@@ -82,3 +82,73 @@ class AstTransformer(Transformer):
     @v_args(inline=True)
     def bytes_literal(self, value):
         return ast.BytesLiteral(str(value))
+
+    @v_args(inline=True)
+    def numeric_literal(self, value):
+        return ast.NumericLiteral(str(value))
+
+    @v_args(inline=True)
+    def bignumeric_literal(self, value):
+        return ast.BigNumericLiteral(str(value))
+
+    @v_args(inline=True)
+    def float_literal(self, value):
+        return ast.FloatLiteral(str(value))
+
+    @v_args(inline=True)
+    def date_literal(self, value):
+        return ast.DateLiteral(str(value))
+
+    @v_args(inline=True)
+    def datetime_literal(self, value):
+        return ast.DatetimeLiteral(str(value))
+
+    @v_args(inline=True)
+    def timestamp_literal(self, value):
+        return ast.TimestampLiteral(str(value))
+
+    @v_args(inline=True)
+    def range_literal(self, range_type, value):
+        if range_type == "DATE":
+            return ast.DateRangeLiteral(value)
+        elif range_type == "DATETIME":
+            return ast.DatetimeRangeLiteral(value)
+        elif range_type == "TIMESTAMP":
+            return ast.TimestampRangeLiteral(value)
+        else:
+            raise ValueError("Unexpected range_type: ", range_type)
+
+    @v_args(inline=True)
+    def range_type(self, type_: Tree):
+        # TODO: Hack until we actually care about structured types
+        return str(next(type_.scan_values(lambda v: isinstance(v, Token))))
+
+    @v_args(inline=True)
+    def range_value(self, value):
+        return str(value)
+
+    @v_args(inline=True)
+    def json_literal(self, value):
+        return ast.JsonLiteral(str(value))
+
+    @v_args(inline=True)
+    def array_literal(self, prefix, elements=None):
+        return ast.ArrayLiteral(elements or [])
+
+    def array_literal_item_list(self, elements):
+        return [ast.ArrayLiteralElement(element) for element in elements]
+
+    def struct_literal(self, elements):
+        elements = [ast.StructLiteralElement(element) for element in elements]
+        return ast.StructLiteral(elements)
+
+    @v_args(inline=True)
+    def named_struct_literal(self, prefix, elements):
+        return ast.StructLiteral(elements)
+
+    def named_struct_literal_item_list(self, elements):
+        return elements
+
+    @v_args(inline=True)
+    def named_struct_literal_item(self, expr, alias=None):
+        return ast.StructLiteralElement(expr, alias)

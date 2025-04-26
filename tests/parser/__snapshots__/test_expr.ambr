@@ -713,6 +713,7 @@
             not_modifier
             unnest_expr
               array_literal
+                array_literal_prefix
                 array_literal_item_list
                   integer_literal	1
                   integer_literal	2
@@ -797,6 +798,7 @@
             qlike_quantifier	ANY
             unnest_expr
               array_literal
+                array_literal_prefix
                 array_literal_item_list
                   string_literal	'a%'
                   string_literal	'%b'

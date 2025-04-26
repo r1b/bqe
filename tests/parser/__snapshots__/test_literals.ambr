@@ -9,6 +9,13 @@
       select_list
         select_expr
           array_literal
+            array_literal_prefix
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          ArrayLiteral
   '''
 # ---
 # name: test_array_literal_ok[literal_array_multi]
@@ -21,10 +28,23 @@
       select_list
         select_expr
           array_literal
+            array_literal_prefix
             array_literal_item_list
               integer_literal	1
               integer_literal	2
               integer_literal	3
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          ArrayLiteral
+            ArrayLiteralElement
+              IntegerLiteral(1)
+            ArrayLiteralElement
+              IntegerLiteral(2)
+            ArrayLiteralElement
+              IntegerLiteral(3)
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix]
@@ -42,6 +62,18 @@
               integer_literal	1
               integer_literal	2
               integer_literal	3
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          ArrayLiteral
+            ArrayLiteralElement
+              IntegerLiteral(1)
+            ArrayLiteralElement
+              IntegerLiteral(2)
+            ArrayLiteralElement
+              IntegerLiteral(3)
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix_compound_type]
@@ -69,6 +101,16 @@
                 named_struct_literal_item_list
                   named_struct_literal_item
                     integer_literal	1
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          ArrayLiteral
+            ArrayLiteralElement
+              StructLiteral
+                StructLiteralElement
+                  IntegerLiteral(1)
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix_nested_compound_type]
@@ -105,6 +147,18 @@
                       named_struct_literal_item_list
                         named_struct_literal_item
                           integer_literal	1
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          ArrayLiteral
+            ArrayLiteralElement
+              StructLiteral
+                StructLiteralElement
+                  StructLiteral
+                    StructLiteralElement
+                      IntegerLiteral(1)
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix_scalar_type]
@@ -125,6 +179,18 @@
               integer_literal	1
               integer_literal	2
               integer_literal	3
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          ArrayLiteral
+            ArrayLiteralElement
+              IntegerLiteral(1)
+            ArrayLiteralElement
+              IntegerLiteral(2)
+            ArrayLiteralElement
+              IntegerLiteral(3)
   '''
 # ---
 # name: test_array_literal_ok[literal_array_single]
@@ -137,8 +203,17 @@
       select_list
         select_expr
           array_literal
+            array_literal_prefix
             array_literal_item_list
               integer_literal	1
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          ArrayLiteral
+            ArrayLiteralElement
+              IntegerLiteral(1)
   '''
 # ---
 # name: test_bignumeric_literal_ok[literal_bignumeric]
@@ -151,6 +226,12 @@
       select_list
         select_expr
           bignumeric_literal	'42'
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BigNumericLiteral('42')
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_empty]
@@ -469,6 +550,12 @@
       select_list
         select_expr
           date_literal	'1970-01-01'
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          DateLiteral('1970-01-01')
   '''
 # ---
 # name: test_date_time_literal_ok[literal_datetime]
@@ -481,6 +568,12 @@
       select_list
         select_expr
           datetime_literal	'1970-01-01 12:00:00.01'
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          DatetimeLiteral('1970-01-01 12:00:00.01')
   '''
 # ---
 # name: test_date_time_literal_ok[literal_time]
@@ -493,6 +586,12 @@
       select_list
         select_expr
           date_literal	'12:00:00.01'
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          DateLiteral('12:00:00.01')
   '''
 # ---
 # name: test_date_time_literal_ok[literal_timestamp]
@@ -505,6 +604,12 @@
       select_list
         select_expr
           timestamp_literal	'1970-01-01 12:00:00.01-08'
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          TimestampLiteral('1970-01-01 12:00:00.01-08')
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dig_dot]
@@ -517,6 +622,12 @@
       select_list
         select_expr
           float_literal	58.
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          FloatLiteral(58.)
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dig_dot_dig_lower_e_minus_dig]
@@ -529,6 +640,12 @@
       select_list
         select_expr
           float_literal	123.456e-67
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          FloatLiteral(123.456e-67)
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dig_lower_e_dig]
@@ -541,6 +658,12 @@
       select_list
         select_expr
           float_literal	4e2
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          FloatLiteral(4e2)
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dot_dig_cap_e_dig]
@@ -553,6 +676,12 @@
       select_list
         select_expr
           float_literal	.1E4
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          FloatLiteral(.1E4)
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_decimal]
@@ -641,6 +770,12 @@
       select_list
         select_expr
           json_literal	'{}'
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          JsonLiteral('{}')
   '''
 # ---
 # name: test_numeric_literal_ok[literal_numeric]
@@ -653,9 +788,15 @@
       select_list
         select_expr
           numeric_literal	'42'
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          NumericLiteral('42')
   '''
 # ---
-# name: test_range_literal_ok[literal_range]
+# name: test_range_literal_ok[literal_range_date]
   '''
   SELECT RANGE<DATE> '[1970-01-01, 1970-01-02)'
   
@@ -669,6 +810,56 @@
               type
                 type_name	DATE
             range_value	'[1970-01-01, 1970-01-02)'
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          DateRangeLiteral('[1970-01-01, 1970-01-02)')
+  '''
+# ---
+# name: test_range_literal_ok[literal_range_datetime]
+  '''
+  SELECT RANGE<DATETIME> '[1970-01-01 00:00:00, 1970-01-02 00:00:00)'
+  
+  query_expr
+    select
+      select_metadata
+      select_list
+        select_expr
+          range_literal
+            range_type
+              type
+                type_name	DATETIME
+            range_value	'[1970-01-01 00:00:00, 1970-01-02 00:00:00)'
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          DatetimeRangeLiteral('[1970-01-01 00:00:00, 1970-01-02 00:00:00)')
+  '''
+# ---
+# name: test_range_literal_ok[literal_range_timestamp]
+  '''
+  SELECT RANGE<TIMESTAMP> '[1970-01-01 00:00:00.45-08, 1970-01-02 00:00:00.45-08)'
+  
+  query_expr
+    select
+      select_metadata
+      select_list
+        select_expr
+          range_literal
+            range_type
+              type
+                type_name	TIMESTAMP
+            range_value	'[1970-01-01 00:00:00.45-08, 1970-01-02 00:00:00.45-08)'
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          TimestampRangeLiteral('[1970-01-01 00:00:00.45-08, 1970-01-02 00:00:00.45-08)')
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_empty]
@@ -989,6 +1180,16 @@
           struct_literal
             integer_literal	1
             integer_literal	2
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StructLiteral
+            StructLiteralElement
+              IntegerLiteral(1)
+            StructLiteralElement
+              IntegerLiteral(2)
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_multi]
@@ -1004,6 +1205,18 @@
             integer_literal	1
             integer_literal	2
             integer_literal	3
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StructLiteral
+            StructLiteralElement
+              IntegerLiteral(1)
+            StructLiteralElement
+              IntegerLiteral(2)
+            StructLiteralElement
+              IntegerLiteral(3)
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named]
@@ -1024,6 +1237,18 @@
                 integer_literal	2
               named_struct_literal_item
                 integer_literal	3
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StructLiteral
+            StructLiteralElement
+              IntegerLiteral(1)
+            StructLiteralElement
+              IntegerLiteral(2)
+            StructLiteralElement
+              IntegerLiteral(3)
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named_alias]
@@ -1050,6 +1275,24 @@
                 integer_literal	3
                 as_alias
                   ident	c
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StructLiteral
+            StructLiteralElement
+              IntegerLiteral(1)
+              Alias
+                Ident(a)
+            StructLiteralElement
+              IntegerLiteral(2)
+              Alias
+                Ident(b)
+            StructLiteralElement
+              IntegerLiteral(3)
+              Alias
+                Ident(c)
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named_compound_type_decl]
@@ -1081,6 +1324,18 @@
                 integer_literal	2
               named_struct_literal_item
                 integer_literal	3
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StructLiteral
+            StructLiteralElement
+              IntegerLiteral(1)
+            StructLiteralElement
+              IntegerLiteral(2)
+            StructLiteralElement
+              IntegerLiteral(3)
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named_compound_type_decl_column]
@@ -1115,6 +1370,18 @@
                 integer_literal	2
               named_struct_literal_item
                 integer_literal	3
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StructLiteral
+            StructLiteralElement
+              IntegerLiteral(1)
+            StructLiteralElement
+              IntegerLiteral(2)
+            StructLiteralElement
+              IntegerLiteral(3)
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named_compound_type_decl_nested]
@@ -1157,5 +1424,19 @@
                       integer_literal	2
                     named_struct_literal_item
                       integer_literal	3
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          StructLiteral
+            StructLiteralElement
+              IntegerLiteral(1)
+            StructLiteralElement
+              StructLiteral
+                StructLiteralElement
+                  IntegerLiteral(2)
+                StructLiteralElement
+                  IntegerLiteral(3)
   '''
 # ---

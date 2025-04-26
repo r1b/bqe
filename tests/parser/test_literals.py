@@ -121,12 +121,12 @@ def test_integer_literal_error(sql, assert_parse_tree_error):
 
 @pytest.mark.parametrize("sql", (pytest.param("SELECT NUMERIC '42'", id="literal_numeric"),))
 def test_numeric_literal_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)
 
 
 @pytest.mark.parametrize("sql", (pytest.param("SELECT BIGNUMERIC '42'", id="literal_bignumeric"),))
 def test_bignumeric_literal_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)
 
 
 @pytest.mark.parametrize(
@@ -139,7 +139,7 @@ def test_bignumeric_literal_ok(sql, assert_parse_tree):
     ),
 )
 def test_float_literal_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)
 
 
 @pytest.mark.parametrize(
@@ -160,7 +160,7 @@ def test_float_literal_ok(sql, assert_parse_tree):
     ),
 )
 def test_array_literal_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)
 
 
 @pytest.mark.parametrize(
@@ -173,19 +173,30 @@ def test_array_literal_ok(sql, assert_parse_tree):
     ),
 )
 def test_date_time_literal_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)
 
 
 @pytest.mark.parametrize(
-    "sql", (pytest.param("SELECT RANGE<DATE> '[1970-01-01, 1970-01-02)'", id="literal_range"),)
+    "sql",
+    (
+        pytest.param("SELECT RANGE<DATE> '[1970-01-01, 1970-01-02)'", id="literal_range_date"),
+        pytest.param(
+            "SELECT RANGE<DATETIME> '[1970-01-01 00:00:00, 1970-01-02 00:00:00)'",
+            id="literal_range_datetime",
+        ),
+        pytest.param(
+            "SELECT RANGE<TIMESTAMP> '[1970-01-01 00:00:00.45-08, 1970-01-02 00:00:00.45-08)'",
+            id="literal_range_timestamp",
+        ),
+    ),
 )
 def test_range_literal_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)
 
 
 @pytest.mark.parametrize("sql", (pytest.param("SELECT JSON '{}'", id="literal_json"),))
 def test_json_literal_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)
 
 
 @pytest.mark.parametrize(
@@ -210,4 +221,4 @@ def test_json_literal_ok(sql, assert_parse_tree):
     ),
 )
 def test_struct_literal_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)

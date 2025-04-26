@@ -351,11 +351,11 @@ FLOAT_LITERAL : /[\+\-]?[0-9]+\.[0-9]*([Ee][\+\-]?[0-9]+)?/
 
 # Arrays
 
-array_literal : array_literal_prefix? _LBRACK array_literal_item_list? _RBRACK
+array_literal : array_literal_prefix array_literal_item_list? _RBRACK
 
 array_literal_item_list : column_expr ( _COMMA column_expr )*
 
-array_literal_prefix : _ARRAY | array_type
+array_literal_prefix : ( _ARRAY | array_type )? _LBRACK
 
 # Date / time
 

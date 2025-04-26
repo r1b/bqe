@@ -1034,6 +1034,7 @@
         from_item_unnest
           unnest_expr
             array_literal
+              array_literal_prefix
               array_literal_item_list
                 integer_literal	1
           as_alias

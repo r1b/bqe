@@ -109,6 +109,9 @@ class Ident(Node):
         self.value = value
 
 
+# Literals
+
+
 class IntegerLiteral(Node):
     _value = "value"
 
@@ -130,3 +133,100 @@ class BytesLiteral(Node):
 
     def __init__(self, value: str):
         self.value = value
+
+
+class NumericLiteral(Node):
+    _value = "value"
+
+    def __init__(self, value: str):
+        self.value = value
+
+
+class BigNumericLiteral(Node):
+    _value = "value"
+
+    def __init__(self, value: str):
+        self.value = value
+
+
+class FloatLiteral(Node):
+    _value = "value"
+
+    def __init__(self, value: str):
+        self.value = value
+
+
+class DateLiteral(Node):
+    _value = "value"
+
+    def __init__(self, value: str):
+        self.value = value
+
+
+class DatetimeLiteral(Node):
+    _value = "value"
+
+    def __init__(self, value: str):
+        self.value = value
+
+
+class TimestampLiteral(Node):
+    _value = "value"
+
+    def __init__(self, value: str):
+        self.value = value
+
+
+class RangeLiteral(Node):
+    _value = "value"
+
+    def __init__(self, value: str):
+        self.value = value
+
+
+class DateRangeLiteral(RangeLiteral):
+    pass
+
+
+class DatetimeRangeLiteral(RangeLiteral):
+    pass
+
+
+class TimestampRangeLiteral(RangeLiteral):
+    pass
+
+
+class JsonLiteral(Node):
+    _value = "value"
+
+    def __init__(self, value: str):
+        self.value = value
+
+
+class ArrayLiteral(Node):
+    _children = ("elements",)
+
+    def __init__(self, elements: list[Node]):
+        self.elements = elements
+
+
+class ArrayLiteralElement(Node):
+    _children = ("expr",)
+
+    def __init__(self, expr: Node):
+        self.expr = expr
+
+
+class StructLiteral(Node):
+    _children = ("elements",)
+
+    def __init__(self, elements: list[Node]):
+        self.elements = elements
+
+
+class StructLiteralElement(Node):
+    _children = ("expr", "alias")
+
+    def __init__(self, expr: Node, alias: Optional[Node] = None):
+        self.expr = expr
+        self.alias = alias
