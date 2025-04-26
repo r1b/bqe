@@ -234,6 +234,42 @@
           BigNumericLiteral('42')
   '''
 # ---
+# name: test_boolean_literal_ok[literal_boolean_false]
+  '''
+  SELECT False
+  
+  query_expr
+    select
+      select_metadata
+      select_list
+        select_expr
+          boolean_literal	False
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BooleanLiteral(FALSE)
+  '''
+# ---
+# name: test_boolean_literal_ok[literal_boolean_true]
+  '''
+  SELECT tRue
+  
+  query_expr
+    select
+      select_metadata
+      select_list
+        select_expr
+          boolean_literal	tRue
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          BooleanLiteral(TRUE)
+  '''
+# ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_empty]
   '''
   SELECT b""
@@ -776,6 +812,24 @@
       SelectList
         SelectColumn
           JsonLiteral('{}')
+  '''
+# ---
+# name: test_null_literal_ok[literal_null]
+  '''
+  SELECT null
+  
+  query_expr
+    select
+      select_metadata
+      select_list
+        select_expr
+          null_literal	null
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          NullLiteral
   '''
 # ---
 # name: test_numeric_literal_ok[literal_numeric]

@@ -71,6 +71,8 @@ class AstTransformer(Transformer):
     def ident(self, value):
         return ast.Ident(str(value))
 
+    # Literals
+
     @v_args(inline=True)
     def integer_literal(self, value):
         return ast.IntegerLiteral(str(value))
@@ -152,3 +154,11 @@ class AstTransformer(Transformer):
     @v_args(inline=True)
     def named_struct_literal_item(self, expr, alias=None):
         return ast.StructLiteralElement(expr, alias)
+
+    @v_args(inline=True)
+    def boolean_literal(self, value):
+        return ast.BooleanLiteral(str(value).upper())
+
+    @v_args(inline=True)
+    def null_literal(self, _):
+        return ast.NullLiteral()

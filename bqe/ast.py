@@ -16,7 +16,8 @@ def pretty(node: "Node", indent="  ", nl="\n"):
 
         if node._value:
             value = getattr(node, node._value)
-            args.append(str(value))
+            if value is not None:
+                args.append(str(value))
 
         if node._options:
             for option_name in node._options:
@@ -41,8 +42,8 @@ def pretty(node: "Node", indent="  ", nl="\n"):
 
 
 class Node:
-    _children: tuple[Optional[str], ...] = ()
-    _options: tuple[Optional[str], ...] = ()
+    _children: tuple[str, ...] = ()
+    _options: tuple[str, ...] = ()
     _value: Optional[str] = None
 
 
@@ -230,3 +231,17 @@ class StructLiteralElement(Node):
     def __init__(self, expr: Node, alias: Optional[Node] = None):
         self.expr = expr
         self.alias = alias
+
+
+class BooleanLiteral(Node):
+    _value = "value"
+
+    def __init__(self, value: str):
+        self.value = value
+
+
+class NullLiteral(Node):
+    _value = "value"
+
+    def __init__(self):
+        self.value = None

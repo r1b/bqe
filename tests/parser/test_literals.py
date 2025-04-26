@@ -222,3 +222,22 @@ def test_json_literal_ok(sql, assert_parse_tree):
 )
 def test_struct_literal_ok(sql, assert_parse_tree):
     assert_parse_tree(sql, with_ast=True)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param("SELECT tRue", id="literal_boolean_true"),
+        pytest.param("SELECT False", id="literal_boolean_false"),
+    ),
+)
+def test_boolean_literal_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql, with_ast=True)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (pytest.param("SELECT null", id="literal_null"),),
+)
+def test_null_literal_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql, with_ast=True)
