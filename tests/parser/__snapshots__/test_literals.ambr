@@ -631,20 +631,6 @@
             Ident(`alias`)
   '''
 # ---
-# name: test_interval_literal_ok[literal_interval]
-  '''
-  SELECT INTERVAL 1 MONTH
-  
-  query_expr
-    select
-      select_metadata
-      select_list
-        select_expr
-          interval_literal
-            integer_literal	1
-            datetime_part	MONTH
-  '''
-# ---
 # name: test_json_literal_ok[literal_json]
   '''
   SELECT JSON '{}'

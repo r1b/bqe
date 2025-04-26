@@ -283,7 +283,6 @@ type_parameter : integer_literal
     | datetime_literal
     | timestamp_literal
     | range_literal
-    | interval_literal
     | json_literal
     | boolean_literal
     | null_literal
@@ -373,12 +372,6 @@ timestamp_literal : _TIMESTAMP STRING_LITERAL
 range_literal : range_type range_value
 
 range_value : STRING_LITERAL
-
-# Interval
-
-interval_literal : _INTERVAL column_expr datetime_part
-
-datetime_part : UNQUOTED_IDENT
 
 # JSON
 

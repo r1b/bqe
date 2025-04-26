@@ -183,11 +183,6 @@ def test_range_literal_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
 
 
-@pytest.mark.parametrize("sql", (pytest.param("SELECT INTERVAL 1 MONTH", id="literal_interval"),))
-def test_interval_literal_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
-
-
 @pytest.mark.parametrize("sql", (pytest.param("SELECT JSON '{}'", id="literal_json"),))
 def test_json_literal_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
