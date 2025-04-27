@@ -2,6 +2,8 @@ from typing import Optional
 
 
 def pretty(node: "Node", indent="  ", nl="\n"):
+    """Pretty-print an AST."""
+
     def render(s: str, depth: int):
         prefix = ""
         if depth > 0:

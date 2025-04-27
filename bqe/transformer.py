@@ -3,6 +3,9 @@ from bqe import ast
 
 
 class ParserTransformer(Transformer):
+    """First-pass transformer. Use this to clean up stuff that is meaningless after parsing.
+    Operates on `lark.Tree`."""
+
     def ident(self, args):
         """Rewrite keyword_as_ident to ident"""
         child = args[0]
@@ -23,7 +26,7 @@ class ParserTransformer(Transformer):
         return Tree("dot_ident", args)
 
     def subquery(self, args):
-        """Collapse nested subqueries."""
+        """Collapse nested subqueries. TODO: This doesn't belong here"""
         child = args[0]
         if child.data == "subquery":
             return Tree("subquery", child.children)
@@ -31,6 +34,9 @@ class ParserTransformer(Transformer):
 
 
 class AstTransformer(Transformer):
+    """Second-pass transformer. Use this to construct an AST.
+    Operates on `ast.Node`."""
+
     # Queries
 
     @v_args(inline=True)
