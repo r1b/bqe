@@ -645,7 +645,7 @@ select_list : select_item ( _COMMA select_item )* _COMMA?
 
 ?select_item : select_star | select_dot_star | select_expr
 
-select_star : _STAR select_except? select_replace?
+select_star : _STAR [ select_except ] [ select_replace ]
 
 select_except : _EXCEPT _LPAR select_except_list _RPAR
 
@@ -659,7 +659,7 @@ select_replace_list : select_replace_item ( _COMMA select_replace_item )*
 
 select_replace_item : column_expr _AS ident
 
-select_dot_star : atom_expr _DOT _STAR select_except? select_replace?
+select_dot_star : atom_expr _DOT _STAR [ select_except ] [ select_replace ]
 
 select_expr : column_expr as_alias?
 
@@ -675,19 +675,19 @@ as_alias : [ _AS ] ident
 
 from_clause : from_item
 
-?from_item : path_expression as_alias? time_travel? -> from_item_table
+?from_item : path_expression [ as_alias ] [ time_travel ] -> from_item_table
     | from_item_subquery
     | from_item_unnest
 
-from_item_subquery : subquery as_alias?
+from_item_subquery : subquery [ as_alias ]
 
 time_travel : _FOR _SYSTEM_TIME _AS _OF column_expr
 
-from_item_unnest : unnest_expr as_alias? from_unnest_offset_expr?
+from_item_unnest : unnest_expr [ as_alias ] [ from_unnest_offset_expr ]
 
 unnest_expr : _UNNEST _LPAR column_expr _RPAR
 
-from_unnest_offset_expr : _WITH _OFFSET as_alias?
+from_unnest_offset_expr : _WITH _OFFSET [ as_alias ]
 
 ################################################################################
 # Pipe

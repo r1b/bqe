@@ -68,7 +68,7 @@ import pytest
     ),
 )
 def test_select_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)
 
 
 @pytest.mark.parametrize(
@@ -101,7 +101,7 @@ def test_select_error(sql, assert_parse_tree_error):
     ),
 )
 def test_subquery_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)
 
 
 @pytest.mark.parametrize(
@@ -124,4 +124,4 @@ def test_subquery_ok(sql, assert_parse_tree):
     ),
 )
 def test_unnest_ok(sql, assert_parse_tree):
-    assert_parse_tree(sql)
+    assert_parse_tree(sql, with_ast=True)

@@ -903,6 +903,8 @@
             ident	`project1`
             ident	dataset1
             ident	table1
+          None
+          None
   '''
 # ---
 # name: test_dotted_expr_ok[dotted_table_expr_single]
@@ -920,6 +922,8 @@
           path_expression
             ident	dataset1
             ident	table1
+          None
+          None
   '''
 # ---
 # name: test_function_call_ok[fcall_kitchen_sink]

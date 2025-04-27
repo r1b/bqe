@@ -93,6 +93,8 @@
         from_item_table
           path_expression
             ident	Produce
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -215,6 +217,8 @@
         from_item_table
           path_expression
             ident	Produce
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -251,6 +255,8 @@
         from_item_table
           path_expression
             ident	Produce
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -410,6 +416,8 @@
         from_item_table
           path_expression
             ident	input_table
+          None
+          None
     pipe_call
       function_call_expr
         function_name
@@ -513,6 +521,8 @@
       select_metadata
       select_list
         select_star
+          None
+          None
       from_clause
         from_item_unnest
           unnest_expr
@@ -529,6 +539,7 @@
                 integer_literal	4
           as_alias
             ident	number
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -541,6 +552,8 @@
                 select_metadata
                 select_list
                   select_star
+                    None
+                    None
                 from_clause
                   from_item_unnest
                     unnest_expr
@@ -554,6 +567,7 @@
                           integer_literal	2
                     as_alias
                       ident	number
+                    None
               pipe_set_operation
                 set_operation
                   set_operation_metadata
@@ -566,6 +580,8 @@
                           select_metadata
                           select_list
                             select_star
+                              None
+                              None
                           from_clause
                             from_item_unnest
                               unnest_expr
@@ -579,6 +595,7 @@
                                     integer_literal	4
                               as_alias
                                 ident	number
+                              None
   '''
 # ---
 # name: test_doc_ok[doc_extend]
@@ -643,6 +660,8 @@
         from_item_table
           path_expression
             ident	Produce
+          None
+          None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -754,12 +773,14 @@
             ident	Produce
           as_alias
             ident	p1
+          None
     pipe_join
       from_item_table
         path_expression
           ident	Produce
         as_alias
           ident	p2
+        None
       on_or_using_clause
         using_clause
           ident	item
@@ -1275,6 +1296,8 @@
         from_item_table
           path_expression
             ident	Produce
+          None
+          None
     pipe_where
       and_expr
         ne_expr
@@ -1353,6 +1376,8 @@
     pipe_select
       select_list
         select_star
+          None
+          None
         select_expr
           path_expression
             ident	t
@@ -1383,6 +1408,7 @@
                     integer_literal	2
                     as_alias
                       ident	sales
+          None
     pipe_select
       select_list
         select_expr
@@ -1500,6 +1526,8 @@
         from_item_table
           path_expression
             ident	LargeTable
+          None
+          None
     pipe_tablesample
       tablesample_perc
         integer_literal	1
@@ -1515,6 +1543,8 @@
       select_metadata
       select_list
         select_star
+          None
+          None
       from_clause
         from_item_unnest
           unnest_expr
@@ -1529,6 +1559,7 @@
                 integer_literal	3
           as_alias
             ident	number
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1635,6 +1666,8 @@
       select_metadata
       select_list
         select_star
+          None
+          None
       from_clause
         from_item_unnest
           unnest_expr
@@ -1649,6 +1682,7 @@
                 integer_literal	3
           as_alias
             ident	number
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1681,6 +1715,8 @@
       select_metadata
       select_list
         select_star
+          None
+          None
       from_clause
         from_item_unnest
           unnest_expr
@@ -1695,6 +1731,7 @@
                 integer_literal	3
           as_alias
             ident	number
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata

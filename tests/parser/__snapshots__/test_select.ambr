@@ -14,6 +14,18 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    SelectAsStruct(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_as_value]
@@ -31,6 +43,18 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    SelectAsValue(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_distinct]
@@ -48,6 +72,18 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_dot_star_except]
@@ -66,10 +102,28 @@
                 ident	column1
               select_except_item
                 ident	column2
+          None
       from_clause
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectDotStar
+          Ident(struct_column)
+          ExceptModifierList
+            ExceptModifierItem
+              Ident(column1)
+            ExceptModifierItem
+              Ident(column2)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_dot_star_replace]
@@ -82,6 +136,7 @@
       select_list
         select_dot_star
           ident	struct_column
+          None
           select_replace
             select_replace_list
               select_replace_item
@@ -94,6 +149,25 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectDotStar
+          Ident(struct_column)
+          ReplaceModifierList
+            ReplaceModifierItem
+              IntegerLiteral(1)
+              Ident(column1)
+            ReplaceModifierItem
+              IntegerLiteral(2)
+              Ident(column2)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_from_alias_explicit]
@@ -112,6 +186,19 @@
             ident	table1
           as_alias
             ident	alias1
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
+          Alias
+            Ident(alias1)
   '''
 # ---
 # name: test_select_ok[select_from_alias_implicit]
@@ -130,6 +217,19 @@
             ident	table1
           as_alias
             ident	alias1
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
+          Alias
+            Ident(alias1)
   '''
 # ---
 # name: test_select_ok[select_from_time_travel]
@@ -146,8 +246,21 @@
         from_item_table
           path_expression
             ident	table1
+          None
           time_travel
             string_literal	'1970-01-01'
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
+          TimeTravel
+            StringLiteral('1970-01-01')
   '''
 # ---
 # name: test_select_ok[select_list_alias_explicit]
@@ -166,6 +279,20 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+          Alias
+            Ident(alias1)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_list_alias_implicit]
@@ -184,6 +311,20 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+          Alias
+            Ident(alias1)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_list_multi]
@@ -202,6 +343,20 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+        SelectColumn
+          Ident(column2)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_list_single]
@@ -218,6 +373,18 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_list_trailing_comma]
@@ -234,6 +401,18 @@
         from_item_table
           path_expression
             ident	table2
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table2)
   '''
 # ---
 # name: test_select_ok[select_literal]
@@ -246,6 +425,12 @@
       select_list
         select_expr
           integer_literal	1
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          IntegerLiteral(1)
   '''
 # ---
 # name: test_select_ok[select_star]
@@ -257,10 +442,23 @@
       select_metadata
       select_list
         select_star
+          None
+          None
       from_clause
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectStar
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_star_except]
@@ -278,10 +476,27 @@
                 ident	column1
               select_except_item
                 ident	column2
+          None
       from_clause
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectStar
+          ExceptModifierList
+            ExceptModifierItem
+              Ident(column1)
+            ExceptModifierItem
+              Ident(column2)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_star_replace]
@@ -293,6 +508,7 @@
       select_metadata
       select_list
         select_star
+          None
           select_replace
             select_replace_list
               select_replace_item
@@ -305,6 +521,24 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectStar
+          ReplaceModifierList
+            ReplaceModifierItem
+              IntegerLiteral(1)
+              Ident(column1)
+            ReplaceModifierItem
+              IntegerLiteral(2)
+              Ident(column2)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_star_scoped]
@@ -317,10 +551,24 @@
       select_list
         select_dot_star
           ident	column1
+          None
+          None
       from_clause
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectDotStar
+          Ident(column1)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_star_scoped_nested]
@@ -335,10 +583,26 @@
           path_expression
             ident	column1
             ident	column2
+          None
+          None
       from_clause
         from_item_table
           path_expression
             ident	table1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectDotStar
+          PathExpression
+            Ident(column1)
+            Ident(column2)
+      FromClause
+        TablePathExpression
+          PathExpression
+            Ident(table1)
   '''
 # ---
 # name: test_select_ok[select_subqueries]
@@ -355,6 +619,8 @@
       select_metadata
       select_list
         select_star
+          None
+          None
         select_expr
           ident	column1
         select_expr
@@ -380,8 +646,40 @@
                   from_item_table
                     path_expression
                       ident	table2
+                    None
+                    None
           as_alias
             ident	alias2
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectStar
+        SelectColumn
+          Ident(column1)
+        SelectColumn
+          Subquery
+            Query
+              Select(distinct=False)
+                SelectList
+                  SelectColumn
+                    IntegerLiteral(1)
+          Alias
+            Ident(column2)
+      FromClause
+        TableSubquery
+          Subquery
+            Query
+              Select(distinct=False)
+                SelectList
+                  SelectColumn
+                    Ident(column7)
+                FromClause
+                  TablePathExpression
+                    PathExpression
+                      Ident(table2)
+          Alias
+            Ident(alias2)
   '''
 # ---
 # name: test_subquery_ok[select_from_subquery]
@@ -407,6 +705,27 @@
                   from_item_table
                     path_expression
                       ident	table1
+                    None
+                    None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TableSubquery
+          Subquery
+            Query
+              Select(distinct=False)
+                SelectList
+                  SelectColumn
+                    Ident(column1)
+                FromClause
+                  TablePathExpression
+                    PathExpression
+                      Ident(table1)
   '''
 # ---
 # name: test_subquery_ok[select_from_subquery_aliased]
@@ -432,8 +751,30 @@
                   from_item_table
                     path_expression
                       ident	table1
+                    None
+                    None
           as_alias
             ident	table2
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TableSubquery
+          Subquery
+            Query
+              Select(distinct=False)
+                SelectList
+                  SelectColumn
+                    Ident(column1)
+                FromClause
+                  TablePathExpression
+                    PathExpression
+                      Ident(table1)
+          Alias
+            Ident(table2)
   '''
 # ---
 # name: test_subquery_ok[subquery]
@@ -448,6 +789,14 @@
           select_list
             select_expr
               integer_literal	1
+  
+  Query
+    Subquery
+      Query
+        Select(distinct=False)
+          SelectList
+            SelectColumn
+              IntegerLiteral(1)
   '''
 # ---
 # name: test_subquery_ok[subquery_nested]
@@ -474,6 +823,24 @@
                               select_list
                                 select_expr
                                   integer_literal	1
+  
+  Query
+    Subquery
+      Query
+        Select(distinct=False)
+          SelectList
+            SelectColumn
+              Subquery
+                Query
+                  Select(distinct=False)
+                    SelectList
+                      SelectColumn
+                        Subquery
+                          Query
+                            Select(distinct=False)
+                              SelectList
+                                SelectColumn
+                                  IntegerLiteral(1)
   '''
 # ---
 # name: test_unnest_ok[unnest]
@@ -490,6 +857,18 @@
         from_item_unnest
           unnest_expr
             ident	array1
+          None
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TableUnnestExpression
+          UnnestExpression
+            Ident(array1)
   '''
 # ---
 # name: test_unnest_ok[unnest_alias]
@@ -508,6 +887,19 @@
             ident	array1
           as_alias
             ident	alias1
+          None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TableUnnestExpression
+          UnnestExpression
+            Ident(array1)
+          Alias
+            Ident(alias1)
   '''
 # ---
 # name: test_unnest_ok[unnest_alias_with_offset_alias]
@@ -529,6 +921,21 @@
           from_unnest_offset_expr
             as_alias
               ident	alias2
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TableUnnestExpression
+          UnnestExpression
+            Ident(array1)
+          Alias
+            Ident(alias1)
+          WithOffset
+            Alias
+              Ident(alias2)
   '''
 # ---
 # name: test_unnest_ok[unnest_with_offset]
@@ -545,7 +952,19 @@
         from_item_unnest
           unnest_expr
             ident	array1
-          from_unnest_offset_expr
+          None
+          from_unnest_offset_expr	None
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TableUnnestExpression
+          UnnestExpression
+            Ident(array1)
+          WithOffset
   '''
 # ---
 # name: test_unnest_ok[unnest_with_offset_alias]
@@ -562,8 +981,22 @@
         from_item_unnest
           unnest_expr
             ident	array1
+          None
           from_unnest_offset_expr
             as_alias
               ident	alias1
+  
+  Query
+    Select(distinct=False)
+      SelectList
+        SelectColumn
+          Ident(column1)
+      FromClause
+        TableUnnestExpression
+          UnnestExpression
+            Ident(array1)
+          WithOffset
+            Alias
+              Ident(alias1)
   '''
 # ---

@@ -31,9 +31,17 @@ class ParserTransformer(Transformer):
 
 
 class AstTransformer(Transformer):
+    # Queries
+
     @v_args(inline=True)
     def query_expr(self, query_start, *pipe_exprs):
         return ast.Query(query_start, pipe_exprs if pipe_exprs else None)
+
+    @v_args(inline=True)
+    def subquery(self, query_expr):
+        return ast.Subquery(query_expr)
+
+    # SELECT
 
     @v_args(inline=True)
     def select(self, select_metadata: Tree, select_list, from_clause=None):
@@ -42,6 +50,8 @@ class AstTransformer(Transformer):
         if select_as is None:
             cls = ast.Select
         else:
+            # FIXME
+            select_as = select_as.children[0]
             select_as = str(select_as).upper()
             if select_as == "STRUCT":
                 cls = ast.SelectAsStruct
@@ -64,12 +74,75 @@ class AstTransformer(Transformer):
         return ast.SelectColumn(expr, alias)
 
     @v_args(inline=True)
+    def select_star(self, except_modifiers, replace_modifiers):
+        return ast.SelectStar(except_modifiers, replace_modifiers)
+
+    @v_args(inline=True)
+    def select_dot_star(self, path, except_modifiers, replace_modifiers):
+        return ast.SelectDotStar(path, except_modifiers, replace_modifiers)
+
+    @v_args(inline=True)
+    def select_except(self, except_modifiers):
+        return except_modifiers
+
+    def select_except_list(self, except_items):
+        return ast.ExceptModifierList(except_items)
+
+    @v_args(inline=True)
+    def select_except_item(self, ident):
+        return ast.ExceptModifierItem(ident)
+
+    @v_args(inline=True)
+    def select_replace(self, replace_modifiers):
+        return replace_modifiers
+
+    def select_replace_list(self, replace_items):
+        return ast.ReplaceModifierList(replace_items)
+
+    @v_args(inline=True)
+    def select_replace_item(self, expr, alias):
+        return ast.ReplaceModifierItem(expr, alias)
+
+    @v_args(inline=True)
+    def from_clause(self, expr):
+        return ast.FromClause(expr)
+
+    @v_args(inline=True)
+    def from_item_table(self, path, alias, time_travel):
+        return ast.TablePathExpression(path, alias, time_travel)
+
+    @v_args(inline=True)
+    def time_travel(self, expr):
+        return ast.TimeTravel(expr)
+
+    @v_args(inline=True)
+    def from_item_subquery(self, subquery, alias):
+        return ast.TableSubquery(subquery, alias)
+
+    @v_args(inline=True)
+    def from_item_unnest(self, unnest_expr, alias, with_offset):
+        return ast.TableUnnestExpression(unnest_expr, alias, with_offset)
+
+    @v_args(inline=True)
+    def unnest_expr(self, expr):
+        return ast.UnnestExpression(expr)
+
+    @v_args(inline=True)
+    def from_unnest_offset_expr(self, alias):
+        return ast.WithOffset(alias)
+
+    # Names
+
+    @v_args(inline=True)
     def as_alias(self, ident):
         return ast.Alias(ident)
 
     @v_args(inline=True)
     def ident(self, value):
         return ast.Ident(str(value))
+
+    def path_expression(self, components):
+        return ast.PathExpression(components)
 
     # Literals
 

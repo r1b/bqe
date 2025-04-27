@@ -129,6 +129,8 @@
           pipe_selection_item
             select_dot_star
               ident	s
+              None
+              None
         pipe_selection_item_with_order
           pipe_selection_item
             select_dot_star
@@ -138,6 +140,8 @@
                 function_args
                   pos_arg
                     ident	y
+              None
+              None
         pipe_selection_item_with_order
           pipe_selection_item
             select_dot_star
@@ -145,6 +149,8 @@
                 add_expr
                   ident	a
                   ident	b
+              None
+              None
   '''
 # ---
 # name: test_pipe_agg[zeta_pipe_agg_except_replace]
@@ -172,10 +178,12 @@
                     ident	a
                   select_except_item
                     ident	b
+              None
         pipe_selection_item_with_order
           pipe_selection_item
             select_dot_star
               ident	y
+              None
               select_replace
                 select_replace_list
                   select_replace_item
@@ -237,6 +245,8 @@
         from_item_table
           path_expression
             ident	x
+          None
+          None
     pipe_agg
       group_by
         group_by_and_order_by
@@ -646,6 +656,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -714,6 +726,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -832,6 +846,7 @@
                       ident	a
               pipe_as
                 ident	t
+          None
     pipe_select
       select_list
         select_expr
@@ -852,10 +867,14 @@
         from_item_table
           path_expression
             ident	t1
+          None
+          None
     pipe_join
       from_item_table
         path_expression
           ident	t2
+        None
+        None
       on_or_using_clause
         using_clause
           ident	key
@@ -956,6 +975,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
   '''
 # ---
 # name: test_pipe_from[zeta_pipe_from_expression_subquery]
@@ -975,6 +996,8 @@
                   from_item_table
                     path_expression
                       ident	t
+                    None
+                    None
         select_expr
           exists_subquery_expr
             subquery
@@ -984,6 +1007,8 @@
                     from_item_table
                       path_expression
                         ident	t1
+                      None
+                      None
         select_expr
           array_subquery_expr
             subquery
@@ -993,6 +1018,8 @@
                     from_item_table
                       path_expression
                         ident	t2
+                      None
+                      None
       from_clause
         from_item_subquery
           subquery
@@ -1002,6 +1029,9 @@
                   from_item_table
                     path_expression
                       ident	t
+                    None
+                    None
+          None
   '''
 # ---
 # name: test_pipe_from[zeta_pipe_from_subquery]
@@ -1018,10 +1048,15 @@
                 select_metadata
                 select_list
                   select_star
+                    None
+                    None
                 from_clause
                   from_item_table
                     path_expression
                       ident	t
+                    None
+                    None
+          None
   '''
 # ---
 # name: test_pipe_from[zeta_pipe_from_unnest_aliased]
@@ -1039,6 +1074,7 @@
                 integer_literal	1
           as_alias
             ident	x
+          None
   '''
 # ---
 # name: test_pipe_join[zeta_pipe_join]
@@ -1068,10 +1104,14 @@
           ident	t2
           ident	x
           ident	y
+        None
+        None
     pipe_join
       from_item_table
         path_expression
           ident	t3
+        None
+        None
       on_or_using_clause
         using_clause
           ident	x
@@ -1080,6 +1120,8 @@
       from_item_table
         path_expression
           ident	t4
+        None
+        None
       on_or_using_clause
         on_clause
           boolean_literal	true
@@ -1097,11 +1139,16 @@
                 from_item_table
                   path_expression
                     ident	zzz
+                  None
+                  None
+        None
     pipe_join
       join_criteria	cross
       from_item_table
         path_expression
           ident	t6
+        None
+        None
   '''
 # ---
 # name: test_pipe_join[zeta_pipe_join_unnest]
@@ -1124,6 +1171,8 @@
       from_item_unnest
         unnest_expr
           ident	y
+        None
+        None
     pipe_join
       from_item_unnest
         unnest_expr
@@ -1152,6 +1201,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -1226,6 +1277,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -1258,6 +1311,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -1289,6 +1344,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -1401,6 +1458,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_pivot
       pivot_clause
         pivot_item_list
@@ -1464,6 +1523,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_pivot
       pivot_clause
         pivot_item_list
@@ -1501,6 +1562,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_pivot
       pivot_clause
         pivot_item_list
@@ -1526,6 +1589,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_pivot
       pivot_clause
         pivot_item_list
@@ -1598,6 +1663,8 @@
         pipe_selection_item
           select_dot_star
             ident	x
+            None
+            None
         pipe_selection_item
           select_dot_star
             function_call_expr
@@ -1610,12 +1677,14 @@
               select_except_list
                 select_except_item
                   ident	a
+            None
         pipe_selection_item
           select_dot_star
             parenthesized_expr
               add_expr
                 integer_literal	1
                 ident	x
+            None
             select_replace
               select_replace_list
                 select_replace_item
@@ -1632,6 +1701,8 @@
                     ident	x
                 window_expr
                   window_spec
+            None
+            None
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_extend_quirks]
@@ -1657,6 +1728,8 @@
                   ident	x
               window_expr
                 window_spec
+            None
+            None
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_extend_trailing_commas]
@@ -1713,6 +1786,7 @@
                     integer_literal	1
               pipe_where
                 boolean_literal	true
+          None
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_limit]
@@ -1877,12 +1951,16 @@
     pipe_select
       select_list
         select_star
+          None
+          None
         select_star
           select_except
             select_except_list
               select_except_item
                 ident	abc
+          None
         select_star
+          None
           select_replace
             select_replace_list
               select_replace_item
@@ -1894,12 +1972,15 @@
           path_expression
             ident	abc
             ident	def
+          None
+          None
         select_dot_star
           ident	abc
           select_except
             select_except_list
               select_except_item
                 ident	x
+          None
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_select_subquery]
@@ -2209,10 +2290,14 @@
                 select_metadata
                 select_list
                   select_star
+                    None
+                    None
                 from_clause
                   from_item_table
                     path_expression
                       ident	t
+                    None
+                    None
               pipe_where
                 ident	x
           subquery
@@ -2628,6 +2713,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_tablesample
       tablesample_perc
         integer_literal	10
@@ -2653,6 +2740,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_unpivot
       unpivot_clause
         path_expression
@@ -2679,6 +2768,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_unpivot
       unpivot_clause
         path_expression
@@ -2704,6 +2795,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_unpivot
       unpivot_nulls_modifier
         exclude_nulls
@@ -2734,6 +2827,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_unpivot
       unpivot_clause
         path_expression_list
@@ -2758,6 +2853,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_unpivot
       unpivot_nulls_modifier
         include_nulls
@@ -2788,6 +2885,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_unpivot
       unpivot_clause
         path_expression
@@ -2818,6 +2917,8 @@
         from_item_table
           path_expression
             ident	t
+          None
+          None
     pipe_unpivot
       unpivot_clause
         path_expression_list

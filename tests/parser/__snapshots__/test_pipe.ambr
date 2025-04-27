@@ -9,6 +9,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -39,6 +41,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -74,6 +78,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -103,6 +109,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -140,6 +148,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -183,6 +193,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -218,6 +230,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -256,6 +270,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -289,6 +305,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -318,6 +336,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -349,6 +369,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -385,6 +407,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -424,6 +448,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -447,6 +473,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -472,6 +500,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_as
       ident	table2
   '''
@@ -486,6 +516,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_call
       function_call_expr
         function_name
@@ -505,6 +537,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_call
       function_call_expr
         function_name
@@ -526,6 +560,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_call
       function_call_expr
         function_name
@@ -547,11 +583,15 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_join
       join_criteria	CROSS
       from_item_table
         path_expression
           ident	table2
+        None
+        None
       on_or_using_clause
         using_clause
           ident	col1
@@ -567,11 +607,15 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_join
       join_criteria	FULL
       from_item_table
         path_expression
           ident	table2
+        None
+        None
       on_or_using_clause
         using_clause
           ident	col1
@@ -587,6 +631,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_join
       join_criteria
         FULL
@@ -594,6 +640,8 @@
       from_item_table
         path_expression
           ident	table2
+        None
+        None
       on_or_using_clause
         using_clause
           ident	col1
@@ -609,11 +657,15 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_join
       join_criteria	INNER
       from_item_table
         path_expression
           ident	table2
+        None
+        None
       on_or_using_clause
         using_clause
           ident	col1
@@ -629,11 +681,15 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_join
       join_criteria	LEFT
       from_item_table
         path_expression
           ident	table2
+        None
+        None
       on_or_using_clause
         using_clause
           ident	col1
@@ -649,6 +705,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_join
       join_criteria
         LEFT
@@ -656,6 +714,8 @@
       from_item_table
         path_expression
           ident	table2
+        None
+        None
       on_or_using_clause
         using_clause
           ident	col1
@@ -671,10 +731,14 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_join
       from_item_table
         path_expression
           ident	table2
+        None
+        None
       on_or_using_clause
         on_clause
           and_expr
@@ -696,10 +760,14 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_join
       from_item_table
         path_expression
           ident	table2
+        None
+        None
       on_or_using_clause
         on_clause
           eq_expr
@@ -717,11 +785,15 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_join
       join_criteria	RIGHT
       from_item_table
         path_expression
           ident	table2
+        None
+        None
       on_or_using_clause
         using_clause
           ident	col1
@@ -737,6 +809,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_join
       join_criteria
         RIGHT
@@ -744,6 +818,8 @@
       from_item_table
         path_expression
           ident	table2
+        None
+        None
       on_or_using_clause
         using_clause
           ident	col1
@@ -759,10 +835,14 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_join
       from_item_table
         path_expression
           ident	table2
+        None
+        None
       on_or_using_clause
         using_clause
           ident	col1
@@ -779,10 +859,14 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_join
       from_item_table
         path_expression
           ident	table2
+        None
+        None
       on_or_using_clause
         using_clause
           ident	col1
@@ -798,6 +882,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_limit
       limit_expr
         integer_literal	1
@@ -813,6 +899,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_limit
       limit_expr
         integer_literal	1
@@ -830,6 +918,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_limit
       limit_expr
         parameter	limit
@@ -845,6 +935,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_order_by
       order_by_items
         order_by_item
@@ -863,6 +955,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_order_by
       order_by_items
         order_by_item
@@ -885,6 +979,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_order_by
       order_by_items
         order_by_item
@@ -905,6 +1001,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_order_by
       order_by_items
         order_by_item
@@ -925,6 +1023,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_order_by
       order_by_items
         order_by_item
@@ -941,6 +1041,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_drop
       drop_list
         drop_item
@@ -959,6 +1061,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_drop
       drop_list
         drop_item
@@ -975,6 +1079,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_drop
       drop_list
         drop_item
@@ -991,6 +1097,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -1027,6 +1135,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -1076,6 +1186,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -1108,6 +1220,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -1132,6 +1246,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -1158,6 +1274,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -1182,6 +1300,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
   '''
 # ---
 # name: test_pipe_ok[pipe_from_select]
@@ -1194,6 +1314,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -1236,6 +1358,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -1283,6 +1407,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -1314,6 +1440,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -1349,6 +1477,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -1369,6 +1499,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_shape	STRUCT
       select_list
@@ -1390,6 +1522,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_shape	VALUE
       select_list
@@ -1413,6 +1547,8 @@
             from_item_table
               path_expression
                 ident	table1
+              None
+              None
     pipe_select
       select_list
         select_expr
@@ -1429,6 +1565,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_rename
       rename_list
         rename_item
@@ -1451,6 +1589,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_rename
       rename_list
         rename_item
@@ -1469,6 +1609,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_rename
       rename_list
         rename_item
@@ -1487,6 +1629,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set
       set_list
         set_item
@@ -1521,6 +1665,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set
       set_list
         set_item
@@ -1545,6 +1691,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set
       set_list
         set_item
@@ -1569,6 +1717,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_pivot
       pivot_clause
         pivot_item_list
@@ -1598,6 +1748,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_pivot
       pivot_clause
         pivot_item_list
@@ -1629,6 +1781,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1654,6 +1808,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1682,6 +1838,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1713,6 +1871,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1743,6 +1903,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1771,6 +1933,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1803,6 +1967,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1831,6 +1997,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1861,6 +2029,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1890,6 +2060,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1919,6 +2091,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1948,6 +2122,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1979,6 +2155,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_tablesample
       tablesample_perc
         integer_literal	10
@@ -1994,6 +2172,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_unpivot
       unpivot_clause
         path_expression
@@ -2019,6 +2199,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_unpivot
       unpivot_clause
         path_expression
@@ -2046,6 +2228,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_where
       ident	col1
   '''
@@ -2060,6 +2244,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -2091,6 +2277,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -2120,6 +2308,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -2149,6 +2339,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -2176,6 +2368,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -2205,6 +2399,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -2231,6 +2427,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
@@ -2256,6 +2454,8 @@
         from_item_table
           path_expression
             ident	table1
+          None
+          None
     pipe_select
       select_list
         select_expr
