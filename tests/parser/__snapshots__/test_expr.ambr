@@ -5,7 +5,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -15,6 +16,7 @@
             function_args
               pos_arg
                 ident	col1
+      None
   '''
 # ---
 # name: test_aggregate_function_call_ok[agg_fcall_having_max]
@@ -23,7 +25,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -35,6 +38,7 @@
             having_modifier
               having_max
               ident	col2
+      None
   '''
 # ---
 # name: test_aggregate_function_call_ok[agg_fcall_having_min]
@@ -43,7 +47,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -55,6 +60,7 @@
             having_modifier
               having_min
               ident	col2
+      None
   '''
 # ---
 # name: test_aggregate_function_call_ok[agg_fcall_ignore_nulls]
@@ -63,7 +69,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -74,6 +81,7 @@
                 ident	col1
             nulls_modifier
               ignore_nulls
+      None
   '''
 # ---
 # name: test_aggregate_function_call_ok[agg_fcall_limit]
@@ -82,7 +90,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -93,6 +102,7 @@
                 ident	col1
             limit_modifier
               integer_literal	1
+      None
   '''
 # ---
 # name: test_aggregate_function_call_ok[agg_fcall_order_by]
@@ -101,7 +111,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -115,6 +126,7 @@
                 order_by_item
                   ident	col2
                   order_by_item_sort	DESC
+      None
   '''
 # ---
 # name: test_aggregate_function_call_ok[agg_fcall_respect_nulls]
@@ -123,7 +135,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -134,6 +147,7 @@
                 ident	col1
             nulls_modifier
               respect_nulls
+      None
   '''
 # ---
 # name: test_and_or_not_ok[expr_and_or_not]
@@ -142,7 +156,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           or_expr
@@ -151,6 +166,7 @@
               ident	y
               not_expr
                 ident	z
+      None
   '''
 # ---
 # name: test_and_or_not_ok[expr_and_or_not_parens]
@@ -159,7 +175,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           and_expr
@@ -169,6 +186,7 @@
                 ident	y
             not_expr
               ident	z
+      None
   '''
 # ---
 # name: test_between_ok[expr_between]
@@ -177,7 +195,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           and_expr
@@ -186,6 +205,7 @@
               ident	a
               ident	b
             ident	c
+      None
   '''
 # ---
 # name: test_case_ok[case_match_multi]
@@ -194,7 +214,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           case_match_expr
@@ -205,6 +226,7 @@
             when_then_expr
               integer_literal	2
               integer_literal	2
+      None
   '''
 # ---
 # name: test_case_ok[case_match_multi_else]
@@ -213,7 +235,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           case_match_expr
@@ -226,6 +249,7 @@
               integer_literal	2
             else_expr
               integer_literal	3
+      None
   '''
 # ---
 # name: test_case_ok[case_match_single]
@@ -234,7 +258,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           case_match_expr
@@ -242,6 +267,7 @@
             when_then_expr
               integer_literal	1
               integer_literal	1
+      None
   '''
 # ---
 # name: test_case_ok[case_multi]
@@ -250,7 +276,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           case_expr
@@ -260,6 +287,7 @@
             when_then_expr
               integer_literal	2
               integer_literal	2
+      None
   '''
 # ---
 # name: test_case_ok[case_multi_else]
@@ -268,7 +296,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           case_expr
@@ -280,6 +309,7 @@
               integer_literal	2
             else_expr
               integer_literal	3
+      None
   '''
 # ---
 # name: test_case_ok[case_single]
@@ -288,13 +318,15 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           case_expr
             when_then_expr
               integer_literal	1
               integer_literal	1
+      None
   '''
 # ---
 # name: test_cast_ok[cast]
@@ -303,13 +335,15 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           cast_expr_kind_cast
             cast_expr_target
               string_literal	'1'
               ident	INT64
+      None
   '''
 # ---
 # name: test_cast_ok[cast_format]
@@ -318,7 +352,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           cast_expr_kind_cast
@@ -327,6 +362,7 @@
               ident	STRING
             cast_expr_format
               string_literal	'ASCII'
+      None
   '''
 # ---
 # name: test_cast_ok[cast_safe]
@@ -335,13 +371,15 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           cast_expr_kind_safe_cast
             cast_expr_target
               string_literal	'1'
               ident	INT64
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_add]
@@ -350,12 +388,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           add_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_and]
@@ -364,12 +404,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           and_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_between]
@@ -378,13 +420,15 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           between_expr
             ident	x
             ident	y
             ident	z
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_bitwise_and]
@@ -393,12 +437,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bitwise_and_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_bitwise_not]
@@ -407,11 +453,13 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bitwise_not_expr
             ident	x
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_bitwise_or]
@@ -420,12 +468,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bitwise_or_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_bitwise_shr]
@@ -434,12 +484,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bitwise_shr_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_bitwise_xor]
@@ -448,12 +500,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bitwise_xor_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_div]
@@ -462,12 +516,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           div_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_eq]
@@ -476,12 +532,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           eq_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_field_access]
@@ -490,12 +548,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           path_expression
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_gt]
@@ -504,12 +564,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           gt_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_gte]
@@ -518,12 +580,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           gte_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_in]
@@ -532,7 +596,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           in_expr
@@ -541,6 +606,7 @@
               integer_literal	1
               integer_literal	2
               integer_literal	3
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_is]
@@ -549,12 +615,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           is_expr
             ident	x
             boolean_literal	TRUE
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_is_distinct_from]
@@ -563,12 +631,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           distinct_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_is_not]
@@ -577,13 +647,15 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           is_expr
             ident	x
             not_modifier
             null_literal	NULL
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_like]
@@ -592,12 +664,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           like_expr
             ident	x
             string_literal	'a%'
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_lt]
@@ -606,12 +680,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           lt_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_lte]
@@ -620,12 +696,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           lte_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_mul]
@@ -634,12 +712,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           mul_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_ne]
@@ -648,12 +728,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ne_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_ne_var]
@@ -662,12 +744,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ne_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_not]
@@ -676,11 +760,13 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           not_expr
             ident	x
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_not_between]
@@ -689,7 +775,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           between_expr
@@ -697,6 +784,7 @@
             not_modifier
             ident	y
             ident	z
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_not_in]
@@ -705,7 +793,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           in_expr
@@ -718,6 +807,7 @@
                   integer_literal	1
                   integer_literal	2
                   integer_literal	3
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_not_like]
@@ -726,13 +816,15 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           like_expr
             ident	x
             not_modifier
             string_literal	'a%'
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_not_qlike]
@@ -741,7 +833,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           qlike_expr
@@ -751,6 +844,7 @@
             parenthesized_list
               string_literal	'a%'
               string_literal	'%b'
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_or]
@@ -759,12 +853,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           or_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_parens]
@@ -773,7 +869,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           or_expr
@@ -782,6 +879,7 @@
                 ident	x
                 ident	y
             ident	z
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_qlike]
@@ -790,7 +888,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           qlike_expr
@@ -802,6 +901,7 @@
                 array_literal_item_list
                   string_literal	'a%'
                   string_literal	'%b'
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_sub]
@@ -810,12 +910,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           sub_expr
             ident	x
             ident	y
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_subscript]
@@ -824,12 +926,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           subscript_expr
             ident	x
             integer_literal	0
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_uminus]
@@ -838,11 +942,13 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           uminus_expr
             ident	x
+      None
   '''
 # ---
 # name: test_column_expr_ok[expr_uplus]
@@ -851,11 +957,13 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           uplus_expr
             ident	x
+      None
   '''
 # ---
 # name: test_dotted_expr_ok[dotted_column_expr_multi]
@@ -864,13 +972,15 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           path_expression
             ident	column1
             ident	column2
             ident	column3
+      None
   '''
 # ---
 # name: test_dotted_expr_ok[dotted_column_expr_single]
@@ -879,12 +989,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           path_expression
             ident	column1
             ident	column2
+      None
   '''
 # ---
 # name: test_dotted_expr_ok[dotted_table_expr_multi]
@@ -893,7 +1005,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	column1
@@ -913,7 +1026,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	column1
@@ -932,7 +1046,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -944,6 +1059,7 @@
               named_arg
                 ident	name2
                 integer_literal	2
+      None
   '''
 # ---
 # name: test_function_call_ok[fcall_named_arg_multi]
@@ -952,7 +1068,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -965,6 +1082,7 @@
               named_arg
                 ident	name2
                 integer_literal	2
+      None
   '''
 # ---
 # name: test_function_call_ok[fcall_named_arg_single]
@@ -973,7 +1091,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -983,6 +1102,7 @@
               named_arg
                 ident	name1
                 integer_literal	1
+      None
   '''
 # ---
 # name: test_function_call_ok[fcall_path_expr]
@@ -991,7 +1111,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -1002,6 +1123,7 @@
             function_args
               pos_arg
                 integer_literal	42
+      None
   '''
 # ---
 # name: test_function_call_ok[fcall_pos_arg_multi]
@@ -1010,7 +1132,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -1021,6 +1144,7 @@
                 integer_literal	1
               pos_arg
                 integer_literal	2
+      None
   '''
 # ---
 # name: test_function_call_ok[fcall_pos_arg_none]
@@ -1029,12 +1153,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
             function_name
               ident	FUNC
+      None
   '''
 # ---
 # name: test_function_call_ok[fcall_pos_arg_single]
@@ -1043,7 +1169,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -1052,6 +1179,7 @@
             function_args
               pos_arg
                 integer_literal	1
+      None
   '''
 # ---
 # name: test_function_call_ok[fcall_star_expr]
@@ -1060,7 +1188,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           function_call_expr
@@ -1068,6 +1197,7 @@
               ident	FUNC
             function_args
               star_arg
+      None
   '''
 # ---
 # name: test_keyword_subquery_ok[keyword_subquery_array]
@@ -1076,17 +1206,21 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           array_subquery_expr
             subquery
               query_expr
                 select
-                  select_metadata
+                  None
+                  None
                   select_list
                     select_expr
                       integer_literal	1
+                  None
+      None
   '''
 # ---
 # name: test_keyword_subquery_ok[keyword_subquery_exists]
@@ -1095,17 +1229,21 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           exists_subquery_expr
             subquery
               query_expr
                 select
-                  select_metadata
+                  None
+                  None
                   select_list
                     select_expr
                       integer_literal	1
+                  None
+      None
   '''
 # ---
 # name: test_subquery_expr_ok[from_subquery_alias]
@@ -1119,10 +1257,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
+                None
           as_alias
             ident	a
   '''
@@ -1133,7 +1273,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           sub_expr
@@ -1141,7 +1282,8 @@
             subquery
               query_expr
                 select
-                  select_metadata
+                  None
+                  None
                   select_list
                     select_expr
                       add_expr
@@ -1152,6 +1294,8 @@
                         integer_literal	1
                       as_alias
                         ident	a
+                  None
+      None
   '''
 # ---
 # name: test_subquery_expr_ok[subquery_in_parenthesized]
@@ -1160,7 +1304,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           sub_expr
@@ -1169,18 +1314,23 @@
                 subquery
                   query_expr
                     select
-                      select_metadata
+                      None
+                      None
                       select_list
                         select_expr
                           integer_literal	1
+                      None
                 subquery
                   query_expr
                     select
-                      select_metadata
+                      None
+                      None
                       select_list
                         select_expr
                           integer_literal	1
+                      None
             integer_literal	1
+      None
   '''
 # ---
 # name: test_subquery_expr_ok[subquery_sum]
@@ -1189,24 +1339,30 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           add_expr
             subquery
               query_expr
                 select
-                  select_metadata
+                  None
+                  None
                   select_list
                     select_expr
                       integer_literal	1
+                  None
             subquery
               query_expr
                 select
-                  select_metadata
+                  None
+                  None
                   select_list
                     select_expr
                       integer_literal	1
+                  None
+      None
   '''
 # ---
 # name: test_subquery_expr_ok[subquery_sum_nested_alias]
@@ -1215,32 +1371,40 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     add_expr
                       subquery
                         query_expr
                           select
-                            select_metadata
+                            None
+                            None
                             select_list
                               select_expr
                                 integer_literal	1
+                            None
                       subquery
                         query_expr
                           select
-                            select_metadata
+                            None
+                            None
                             select_list
                               select_expr
                                 integer_literal	1
+                            None
+                None
           as_alias
             ident	a
+      None
   '''
 # ---
 # name: test_subquery_expr_ok[top_level_subquery_alias]
@@ -1252,10 +1416,12 @@
       subquery
         query_expr
           select
-            select_metadata
+            None
+            None
             select_list
               select_expr
                 integer_literal	1
+            None
       as_alias_as_required
         ident	a
   '''
@@ -1266,18 +1432,22 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
+                None
           as_alias
             ident	a
+      None
   '''
 # ---
 # name: test_subscript_expr_ok[subscript_expr_integer_literal_multi]
@@ -1286,7 +1456,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           subscript_expr
@@ -1294,6 +1465,7 @@
               ident	column1
               integer_literal	0
             integer_literal	1
+      None
   '''
 # ---
 # name: test_subscript_expr_ok[subscript_expr_integer_literal_single]
@@ -1302,12 +1474,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           subscript_expr
             ident	column1
             integer_literal	0
+      None
   '''
 # ---
 # name: test_subscript_expr_ok[subscript_expr_kitchen_sink]
@@ -1316,7 +1490,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           subscript_expr
@@ -1335,6 +1510,7 @@
                       integer_literal	0
               ident	column3
             string_literal	'key1'
+      None
   '''
 # ---
 # name: test_subscript_expr_ok[subscript_expr_offset]
@@ -1343,7 +1519,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           subscript_expr
@@ -1354,6 +1531,7 @@
               function_args
                 pos_arg
                   integer_literal	2
+      None
   '''
 # ---
 # name: test_subscript_expr_ok[subscript_expr_path_expr_nested]
@@ -1362,7 +1540,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           subscript_expr
@@ -1372,6 +1551,7 @@
                 ident	column2
               integer_literal	0
             integer_literal	1
+      None
   '''
 # ---
 # name: test_subscript_expr_ok[subscript_expr_string_literal]
@@ -1380,11 +1560,13 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           subscript_expr
             ident	column1
             string_literal	'key1'
+      None
   '''
 # ---

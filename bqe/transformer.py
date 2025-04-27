@@ -44,15 +44,10 @@ class AstTransformer(Transformer):
     # SELECT
 
     @v_args(inline=True)
-    def select(self, select_metadata: Tree, select_list, from_clause=None):
-        select_as = next(select_metadata.find_data("select_shape"), None)
-
+    def select(self, all_or_distinct, select_as, select_list, from_clause):
         if select_as is None:
             cls = ast.Select
         else:
-            # FIXME
-            select_as = select_as.children[0]
-            select_as = str(select_as).upper()
             if select_as == "STRUCT":
                 cls = ast.SelectAsStruct
             elif select_as == "VALUE":
@@ -60,11 +55,18 @@ class AstTransformer(Transformer):
             else:
                 raise ValueError("Unexpected select_as: ", select_as)
 
-        all_or_distinct = next(select_metadata.find_data("select_mode"), "ALL")
-        all_or_distinct = str(all_or_distinct).upper()
+        all_or_distinct = all_or_distinct or "ALL"
         distinct = all_or_distinct == "DISTINCT"
 
         return cls(select_list, from_clause, distinct=distinct)
+
+    @v_args(inline=True)
+    def select_mode(self, all_or_distinct):
+        return str(all_or_distinct).upper()
+
+    @v_args(inline=True)
+    def select_shape(self, select_as):
+        return str(select_as).upper()
 
     def select_list(self, select_columns):
         return ast.SelectList(select_columns)
@@ -208,6 +210,7 @@ class AstTransformer(Transformer):
 
     @v_args(inline=True)
     def array_literal(self, prefix, elements=None):
+        # TODO: Handle type
         return ast.ArrayLiteral(elements or [])
 
     def array_literal_item_list(self, elements):
@@ -219,6 +222,7 @@ class AstTransformer(Transformer):
 
     @v_args(inline=True)
     def named_struct_literal(self, prefix, elements):
+        # TODO: Handle type
         return ast.StructLiteral(elements)
 
     def named_struct_literal_item_list(self, elements):

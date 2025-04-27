@@ -8,7 +8,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	'apples'
@@ -18,6 +19,7 @@
           integer_literal	2
           as_alias
             ident	sales
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -27,7 +29,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -37,6 +40,7 @@
                     integer_literal	5
                     as_alias
                       ident	sales
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -46,7 +50,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -56,6 +61,7 @@
                     integer_literal	8
                     as_alias
                       ident	sales
+                None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -128,7 +134,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	'apples'
@@ -138,6 +145,7 @@
           integer_literal	2
           as_alias
             ident	sales
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -147,7 +155,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -157,6 +166,7 @@
                     integer_literal	5
                     as_alias
                       ident	sales
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -166,7 +176,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -176,6 +187,7 @@
                     integer_literal	8
                     as_alias
                       ident	sales
+                None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -303,7 +315,8 @@
       subquery
         query_expr
           select
-            select_metadata
+            None
+            None
             select_list
               select_expr
                 string_literal	"000123"
@@ -317,6 +330,7 @@
                 integer_literal	2
                 as_alias
                   ident	sales
+            None
           pipe_set_operation
             set_operation
               set_operation_metadata
@@ -326,7 +340,8 @@
                 subquery
                   query_expr
                     select
-                      select_metadata
+                      None
+                      None
                       select_list
                         select_expr
                           string_literal	"000456"
@@ -340,6 +355,7 @@
                           integer_literal	5
                           as_alias
                             ident	sales
+                      None
       as_alias_as_required
         ident	sales_table
     pipe_agg
@@ -368,7 +384,8 @@
         subquery
           query_expr
             select
-              select_metadata
+              None
+              None
               select_list
                 select_expr
                   integer_literal	456
@@ -378,6 +395,7 @@
                   string_literal	"yellow"
                   as_alias
                     ident	color
+              None
         as_alias
           ident	t2
       on_or_using_clause
@@ -443,7 +461,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	'apples'
@@ -457,6 +476,7 @@
           string_literal	'fruit'
           as_alias
             ident	category
+      None
     pipe_drop
       drop_list
         drop_item
@@ -478,7 +498,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
@@ -488,6 +509,7 @@
                     integer_literal	2
                     as_alias
                       ident	y
+                None
           as_alias
             ident	t
     pipe_drop
@@ -518,7 +540,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_star
           None
@@ -549,7 +572,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_star
                     None
@@ -577,7 +601,8 @@
                     subquery
                       query_expr
                         select
-                          select_metadata
+                          None
+                          None
                           select_list
                             select_star
                               None
@@ -606,7 +631,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	'apples'
@@ -616,6 +642,7 @@
           integer_literal	2
           as_alias
             ident	sales
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -625,7 +652,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -635,6 +663,7 @@
                     integer_literal	8
                     as_alias
                       ident	sales
+                None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -694,7 +723,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	'apples'
@@ -704,6 +734,7 @@
           integer_literal	2
           as_alias
             ident	sales
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -713,7 +744,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -723,6 +755,7 @@
                     integer_literal	5
                     as_alias
                       ident	sales
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -732,7 +765,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -742,6 +776,7 @@
                     integer_literal	8
                     as_alias
                       ident	sales
+                None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -810,7 +845,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
@@ -820,6 +856,7 @@
           integer_literal	10
           as_alias
             ident	two_digit
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -829,12 +866,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
                   select_expr
                     integer_literal	20
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -844,12 +883,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	3
                   select_expr
                     integer_literal	30
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -860,7 +901,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	10
@@ -870,6 +912,7 @@
                     integer_literal	1
                     as_alias
                       ident	one_digit
+                None
   '''
 # ---
 # name: test_doc_ok[doc_join]
@@ -886,7 +929,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	'apples'
@@ -896,6 +940,7 @@
           integer_literal	2
           as_alias
             ident	sales
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -905,7 +950,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -915,6 +961,7 @@
                     integer_literal	5
                     as_alias
                       ident	sales
+                None
     pipe_as
       ident	produce_sales
     pipe_join
@@ -923,7 +970,8 @@
         subquery
           query_expr
             select
-              select_metadata
+              None
+              None
               select_list
                 select_expr
                   string_literal	"apples"
@@ -933,6 +981,7 @@
                   integer_literal	123
                   as_alias
                     ident	id
+              None
         as_alias
           ident	produce_data
       on_or_using_clause
@@ -966,7 +1015,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	'apples'
@@ -976,6 +1026,7 @@
           integer_literal	2
           as_alias
             ident	sales
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -985,7 +1036,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -995,6 +1047,7 @@
                     integer_literal	5
                     as_alias
                       ident	sales
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1004,7 +1057,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -1014,6 +1068,7 @@
                     integer_literal	8
                     as_alias
                       ident	sales
+                None
     pipe_order_by
       order_by_items
         order_by_item
@@ -1033,7 +1088,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	'apples'
@@ -1043,6 +1099,7 @@
           integer_literal	2
           as_alias
             ident	sales
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1052,7 +1109,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -1062,6 +1120,7 @@
                     integer_literal	5
                     as_alias
                       ident	sales
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1071,7 +1130,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -1081,6 +1141,7 @@
                     integer_literal	8
                     as_alias
                       ident	sales
+                None
     pipe_order_by
       order_by_items
         order_by_item
@@ -1101,12 +1162,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
           as_alias
             ident	x
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1116,12 +1179,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	3
                     as_alias
                       ident	x
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1131,12 +1196,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
                     as_alias
                       ident	x
+                None
     pipe_order_by
       order_by_items
         order_by_item
@@ -1155,7 +1222,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	"kale"
@@ -1169,6 +1237,7 @@
           string_literal	"Q1"
           as_alias
             ident	quarter
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1178,7 +1247,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	"kale"
@@ -1192,6 +1262,7 @@
                     string_literal	"Q1"
                     as_alias
                       ident	quarter
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1201,7 +1272,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	"kale"
@@ -1215,6 +1287,7 @@
                     string_literal	"Q2"
                     as_alias
                       ident	quarter
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1224,7 +1297,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	"apple"
@@ -1238,6 +1312,7 @@
                     string_literal	"Q1"
                     as_alias
                       ident	quarter
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1247,7 +1322,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	"apple"
@@ -1261,6 +1337,7 @@
                     string_literal	"Q2"
                     as_alias
                       ident	quarter
+                None
     pipe_pivot
       pivot_clause
         pivot_item_list
@@ -1351,7 +1428,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
@@ -1365,6 +1443,7 @@
           integer_literal	3
           as_alias
             ident	z
+      None
     pipe_as
       ident	t
     pipe_rename
@@ -1398,7 +1477,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'apples'
@@ -1408,6 +1488,7 @@
                     integer_literal	2
                     as_alias
                       ident	sales
+                None
           None
     pipe_select
       select_list
@@ -1425,7 +1506,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
@@ -1435,6 +1517,7 @@
           integer_literal	11
           as_alias
             ident	y
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1444,7 +1527,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
@@ -1454,6 +1538,7 @@
                     integer_literal	22
                     as_alias
                       ident	y
+                None
     pipe_set
       set_list
         set_item
@@ -1479,7 +1564,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
@@ -1489,6 +1575,7 @@
                     integer_literal	3
                     as_alias
                       ident	y
+                None
           as_alias
             ident	t
     pipe_set
@@ -1540,7 +1627,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_star
           None
@@ -1569,10 +1657,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
+                None
   '''
 # ---
 # name: test_doc_ok[doc_union_all_by_name]
@@ -1583,7 +1673,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
@@ -1593,6 +1684,7 @@
           integer_literal	10
           as_alias
             ident	two_digit
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1603,7 +1695,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	20
@@ -1613,6 +1706,7 @@
                     integer_literal	2
                     as_alias
                       ident	one_digit
+                None
   '''
 # ---
 # name: test_doc_ok[doc_union_all_not_by_name]
@@ -1623,7 +1717,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
@@ -1633,6 +1728,7 @@
           integer_literal	10
           as_alias
             ident	two_digit
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1642,7 +1738,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	20
@@ -1652,6 +1749,7 @@
                     integer_literal	2
                     as_alias
                       ident	one_digit
+                None
   '''
 # ---
 # name: test_doc_ok[doc_union_distinct_multi]
@@ -1663,7 +1761,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_star
           None
@@ -1692,17 +1791,21 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
+                None
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_doc_ok[doc_union_distinct_single]
@@ -1712,7 +1815,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_star
           None
@@ -1741,10 +1845,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
+                None
   '''
 # ---
 # name: test_doc_ok[doc_unpivot]
@@ -1755,7 +1861,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	'kale'
@@ -1769,6 +1876,7 @@
           integer_literal	45
           as_alias
             ident	Q2
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1778,7 +1886,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'apple'
@@ -1786,6 +1895,7 @@
                     integer_literal	8
                   select_expr
                     integer_literal	10
+                None
     pipe_unpivot
       unpivot_clause
         path_expression
@@ -1810,7 +1920,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	'apples'
@@ -1820,6 +1931,7 @@
           integer_literal	2
           as_alias
             ident	sales
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1829,7 +1941,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -1839,6 +1952,7 @@
                     integer_literal	5
                     as_alias
                       ident	sales
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -1848,7 +1962,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     string_literal	'carrots'
@@ -1858,6 +1973,7 @@
                     integer_literal	8
                     as_alias
                       ident	sales
+                None
     pipe_where
       gte_expr
         ident	sales

@@ -5,12 +5,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	abc
           as_alias
             ident	date
+      None
   '''
 # ---
 # name: test_nonreserved_keyword_ok[select_kw_date_column]
@@ -19,12 +21,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	date
           as_alias
             ident	abc
+      None
   '''
 # ---
 # name: test_nonreserved_keyword_ok[select_kw_date_double]
@@ -33,12 +37,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	date
           as_alias
             ident	date
+      None
   '''
 # ---
 # name: test_nonreserved_keyword_ok[select_kw_format_alias]
@@ -47,12 +53,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	abc
           as_alias
             ident	format
+      None
   '''
 # ---
 # name: test_nonreserved_keyword_ok[select_kw_format_column]
@@ -61,12 +69,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	format
           as_alias
             ident	abc
+      None
   '''
 # ---
 # name: test_nonreserved_keyword_ok[select_kw_percent_alias]
@@ -75,12 +85,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	abc
           as_alias
             ident	percent
+      None
   '''
 # ---
 # name: test_nonreserved_keyword_ok[select_kw_percent_column]
@@ -89,11 +101,13 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	percent
           as_alias
             ident	abc
+      None
   '''
 # ---

@@ -5,11 +5,13 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           array_literal
             array_literal_prefix
+      None
   
   Query
     Select(distinct=False)
@@ -24,7 +26,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           array_literal
@@ -33,6 +36,7 @@
               integer_literal	1
               integer_literal	2
               integer_literal	3
+      None
   
   Query
     Select(distinct=False)
@@ -53,7 +57,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           array_literal
@@ -62,6 +67,7 @@
               integer_literal	1
               integer_literal	2
               integer_literal	3
+      None
   
   Query
     Select(distinct=False)
@@ -82,7 +88,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           array_literal
@@ -101,6 +108,7 @@
                 named_struct_literal_item_list
                   named_struct_literal_item
                     integer_literal	1
+      None
   
   Query
     Select(distinct=False)
@@ -119,7 +127,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           array_literal
@@ -147,6 +156,7 @@
                       named_struct_literal_item_list
                         named_struct_literal_item
                           integer_literal	1
+      None
   
   Query
     Select(distinct=False)
@@ -167,7 +177,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           array_literal
@@ -179,6 +190,7 @@
               integer_literal	1
               integer_literal	2
               integer_literal	3
+      None
   
   Query
     Select(distinct=False)
@@ -199,13 +211,15 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           array_literal
             array_literal_prefix
             array_literal_item_list
               integer_literal	1
+      None
   
   Query
     Select(distinct=False)
@@ -222,10 +236,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bignumeric_literal	'42'
+      None
   
   Query
     Select(distinct=False)
@@ -240,10 +256,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           boolean_literal	False
+      None
   
   Query
     Select(distinct=False)
@@ -258,10 +276,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           boolean_literal	tRue
+      None
   
   Query
     Select(distinct=False)
@@ -276,10 +296,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	b""
+      None
   
   Query
     Select(distinct=False)
@@ -294,10 +316,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	b"bytes"
+      None
   
   Query
     Select(distinct=False)
@@ -312,10 +336,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	BR"bytes"
+      None
   
   Query
     Select(distinct=False)
@@ -330,10 +356,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	br""
+      None
   
   Query
     Select(distinct=False)
@@ -348,10 +376,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	rb"bytes"
+      None
   
   Query
     Select(distinct=False)
@@ -366,10 +396,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	b''
+      None
   
   Query
     Select(distinct=False)
@@ -384,10 +416,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	b'bytes'
+      None
   
   Query
     Select(distinct=False)
@@ -402,10 +436,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	br''
+      None
   
   Query
     Select(distinct=False)
@@ -420,10 +456,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	br'bytes'
+      None
   
   Query
     Select(distinct=False)
@@ -438,10 +476,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	b""""""
+      None
   
   Query
     Select(distinct=False)
@@ -456,10 +496,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	b"""We say: "hello"."""
+      None
   
   Query
     Select(distinct=False)
@@ -474,10 +516,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	br""""""
+      None
   
   Query
     Select(distinct=False)
@@ -492,10 +536,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	br"""We say: "hello"."""
+      None
   
   Query
     Select(distinct=False)
@@ -510,10 +556,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	b''''''
+      None
   
   Query
     Select(distinct=False)
@@ -528,10 +576,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	b'''We say: 'hello'.'''
+      None
   
   Query
     Select(distinct=False)
@@ -546,10 +596,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	br''''''
+      None
   
   Query
     Select(distinct=False)
@@ -564,10 +616,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           bytes_literal	br'''We say: 'hello'.'''
+      None
   
   Query
     Select(distinct=False)
@@ -582,10 +636,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           date_literal	'1970-01-01'
+      None
   
   Query
     Select(distinct=False)
@@ -600,10 +656,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           datetime_literal	'1970-01-01 12:00:00.01'
+      None
   
   Query
     Select(distinct=False)
@@ -618,10 +676,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           date_literal	'12:00:00.01'
+      None
   
   Query
     Select(distinct=False)
@@ -636,10 +696,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           timestamp_literal	'1970-01-01 12:00:00.01-08'
+      None
   
   Query
     Select(distinct=False)
@@ -654,10 +716,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           float_literal	58.
+      None
   
   Query
     Select(distinct=False)
@@ -672,10 +736,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           float_literal	123.456e-67
+      None
   
   Query
     Select(distinct=False)
@@ -690,10 +756,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           float_literal	4e2
+      None
   
   Query
     Select(distinct=False)
@@ -708,10 +776,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           float_literal	.1E4
+      None
   
   Query
     Select(distinct=False)
@@ -726,10 +796,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
   
   Query
     Select(distinct=False)
@@ -744,10 +816,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	0xff
+      None
   
   Query
     Select(distinct=False)
@@ -762,10 +836,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	0XFF
+      None
   
   Query
     Select(distinct=False)
@@ -780,12 +856,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
           as_alias
             ident	`alias`
+      None
   
   Query
     Select(distinct=False)
@@ -802,10 +880,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           json_literal	'{}'
+      None
   
   Query
     Select(distinct=False)
@@ -820,10 +900,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           null_literal	null
+      None
   
   Query
     Select(distinct=False)
@@ -838,10 +920,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           numeric_literal	'42'
+      None
   
   Query
     Select(distinct=False)
@@ -856,7 +940,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           range_literal
@@ -864,6 +949,7 @@
               type
                 type_name	DATE
             range_value	'[1970-01-01, 1970-01-02)'
+      None
   
   Query
     Select(distinct=False)
@@ -878,7 +964,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           range_literal
@@ -886,6 +973,7 @@
               type
                 type_name	DATETIME
             range_value	'[1970-01-01 00:00:00, 1970-01-02 00:00:00)'
+      None
   
   Query
     Select(distinct=False)
@@ -900,7 +988,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           range_literal
@@ -908,6 +997,7 @@
               type
                 type_name	TIMESTAMP
             range_value	'[1970-01-01 00:00:00.45-08, 1970-01-02 00:00:00.45-08)'
+      None
   
   Query
     Select(distinct=False)
@@ -922,10 +1012,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	""
+      None
   
   Query
     Select(distinct=False)
@@ -940,10 +1032,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	"string"
+      None
   
   Query
     Select(distinct=False)
@@ -958,10 +1052,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	R"string"
+      None
   
   Query
     Select(distinct=False)
@@ -976,10 +1072,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	r""
+      None
   
   Query
     Select(distinct=False)
@@ -994,10 +1092,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	r"string"
+      None
   
   Query
     Select(distinct=False)
@@ -1012,10 +1112,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	''
+      None
   
   Query
     Select(distinct=False)
@@ -1030,10 +1132,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	'string'
+      None
   
   Query
     Select(distinct=False)
@@ -1048,10 +1152,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	r''
+      None
   
   Query
     Select(distinct=False)
@@ -1066,10 +1172,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	r'string'
+      None
   
   Query
     Select(distinct=False)
@@ -1084,10 +1192,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	""""""
+      None
   
   Query
     Select(distinct=False)
@@ -1102,10 +1212,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	"""We say: "hello"."""
+      None
   
   Query
     Select(distinct=False)
@@ -1120,10 +1232,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	r""""""
+      None
   
   Query
     Select(distinct=False)
@@ -1138,10 +1252,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	r"""We say: "hello"."""
+      None
   
   Query
     Select(distinct=False)
@@ -1156,10 +1272,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	''''''
+      None
   
   Query
     Select(distinct=False)
@@ -1174,10 +1292,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	'''We say: 'hello'.'''
+      None
   
   Query
     Select(distinct=False)
@@ -1192,10 +1312,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	r''''''
+      None
   
   Query
     Select(distinct=False)
@@ -1210,10 +1332,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           string_literal	r'''We say: 'hello'.'''
+      None
   
   Query
     Select(distinct=False)
@@ -1228,12 +1352,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           struct_literal
             integer_literal	1
             integer_literal	2
+      None
   
   Query
     Select(distinct=False)
@@ -1252,13 +1378,15 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           struct_literal
             integer_literal	1
             integer_literal	2
             integer_literal	3
+      None
   
   Query
     Select(distinct=False)
@@ -1279,7 +1407,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           named_struct_literal
@@ -1291,6 +1420,7 @@
                 integer_literal	2
               named_struct_literal_item
                 integer_literal	3
+      None
   
   Query
     Select(distinct=False)
@@ -1311,7 +1441,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           named_struct_literal
@@ -1329,6 +1460,7 @@
                 integer_literal	3
                 as_alias
                   ident	c
+      None
   
   Query
     Select(distinct=False)
@@ -1355,7 +1487,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           named_struct_literal
@@ -1378,6 +1511,7 @@
                 integer_literal	2
               named_struct_literal_item
                 integer_literal	3
+      None
   
   Query
     Select(distinct=False)
@@ -1398,7 +1532,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           named_struct_literal
@@ -1424,6 +1559,7 @@
                 integer_literal	2
               named_struct_literal_item
                 integer_literal	3
+      None
   
   Query
     Select(distinct=False)
@@ -1444,7 +1580,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           named_struct_literal
@@ -1478,6 +1615,7 @@
                       integer_literal	2
                     named_struct_literal_item
                       integer_literal	3
+      None
   
   Query
     Select(distinct=False)

@@ -1328,7 +1328,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           subquery
@@ -1338,14 +1339,17 @@
                   subquery
                     query_expr
                       select
-                        select_metadata
+                        None
+                        None
                         select_list
                           select_expr
                             integer_literal	2
+                        None
               pipe_select
                 select_list
                   select_expr
                     integer_literal	2
+      None
   '''
 # ---
 # name: test_pipe_ok[pipe_select_named_window_multi]
@@ -1469,7 +1473,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	col1
@@ -1491,7 +1496,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	col1
@@ -1514,7 +1520,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	col1
@@ -1539,7 +1546,8 @@
     subquery
       query_expr
         select
-          select_metadata
+          None
+          None
           select_list
             select_expr
               ident	col1
@@ -1792,10 +1800,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
+                None
   '''
 # ---
 # name: test_set_operation_ok[set_operation_by_name]
@@ -1820,12 +1830,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
+                None
   '''
 # ---
 # name: test_set_operation_ok[set_operation_by_name_on_multi]
@@ -1853,12 +1865,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
+                None
   '''
 # ---
 # name: test_set_operation_ok[set_operation_by_name_on_single]
@@ -1885,12 +1899,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
+                None
   '''
 # ---
 # name: test_set_operation_ok[set_operation_corresponding]
@@ -1915,12 +1931,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
+                None
   '''
 # ---
 # name: test_set_operation_ok[set_operation_distinct_multi]
@@ -1944,17 +1962,21 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
+                None
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_set_operation_ok[set_operation_strict_corresponding]
@@ -1979,12 +2001,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
+                None
   '''
 # ---
 # name: test_set_operation_ok[set_operation_strict_corresponding_by]
@@ -2011,12 +2035,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
+                None
   '''
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_full]
@@ -2042,12 +2068,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
+                None
   '''
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_inner]
@@ -2073,12 +2101,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
+                None
   '''
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_left]
@@ -2104,12 +2134,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
+                None
   '''
 # ---
 # name: test_set_operation_ok[set_operation_with_criteria_left_outer]
@@ -2137,12 +2169,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	col1
+                None
   '''
 # ---
 # name: test_tablesample_ok[tablesample]

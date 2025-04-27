@@ -6,7 +6,8 @@
   script
     query_expr
       select
-        select_metadata
+        None
+        None
         select_list
           select_expr
             ident	col1
@@ -18,7 +19,8 @@
             None
     query_expr
       select
-        select_metadata
+        None
+        None
         select_list
           select_expr
             ident	col2
@@ -37,7 +39,8 @@
   script
     query_expr
       select
-        select_metadata
+        None
+        None
         select_list
           select_expr
             ident	col1
@@ -49,7 +52,8 @@
             None
     query_expr
       select
-        select_metadata
+        None
+        None
         select_list
           select_expr
             ident	col2
@@ -67,7 +71,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	col1

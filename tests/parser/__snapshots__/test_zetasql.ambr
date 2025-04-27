@@ -6,12 +6,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
           as_alias
             ident	x
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -43,10 +45,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -80,10 +84,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -115,10 +121,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -162,10 +170,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -213,10 +223,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -268,10 +280,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -304,10 +318,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -352,10 +368,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -406,10 +424,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -454,10 +474,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -509,10 +531,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       group_by
         grouping_items
@@ -552,10 +576,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       group_by
         grouping_items
@@ -579,10 +605,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -753,10 +781,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -786,10 +816,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_as
       ident	t
   '''
@@ -800,10 +832,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_as
       ident	t1
     pipe_as
@@ -816,12 +850,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
           as_alias
             ident	x
+      None
     pipe_as
       ident	t
   '''
@@ -838,12 +874,14 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
                     as_alias
                       ident	a
+                None
               pipe_as
                 ident	t
           None
@@ -894,10 +932,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_call
       function_call_expr
         function_name
@@ -935,10 +975,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	x
+      None
     pipe_drop
       drop_list
         drop_item
@@ -986,7 +1028,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           subquery
@@ -1045,7 +1088,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_star
                     None
@@ -1092,12 +1136,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
           as_alias
             ident	x
+      None
     pipe_join
       from_item_table
         path_expression
@@ -1131,7 +1177,8 @@
         subquery
           query_expr
             select
-              select_metadata
+              None
+              None
               select_list
                 select_expr
                   ident	zzz
@@ -1161,12 +1208,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
           as_alias
             ident	x
+      None
     pipe_join
       from_item_unnest
         unnest_expr
@@ -1374,10 +1423,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_order_by
       order_by_items
         order_by_item
@@ -1430,10 +1481,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_order_by
       order_by_items
         order_by_item
@@ -1617,12 +1670,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
           as_alias
             ident	x
+      None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -1654,10 +1709,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -1712,10 +1769,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -1740,12 +1799,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
           as_alias
             ident	x
+      None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -1771,7 +1832,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	5
@@ -1780,10 +1842,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
+                None
               pipe_where
                 boolean_literal	true
           None
@@ -1799,12 +1863,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
           as_alias
             ident	x
+      None
     pipe_limit
       limit_expr
         integer_literal	10
@@ -1836,12 +1902,14 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
           as_alias
             ident	x
+      None
     pipe_extend
       pipe_selection_item_list
         pipe_selection_item
@@ -1918,10 +1986,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_select
       select_list
         select_expr
@@ -1989,18 +2059,22 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
+                None
               pipe_where
                 boolean_literal	true
+      None
   '''
 # ---
 # name: test_pipe_query[zeta_pipe_query_select_trailing_commas]
@@ -2011,10 +2085,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_select
       select_list
         select_expr
@@ -2034,7 +2110,8 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
@@ -2042,6 +2119,7 @@
           integer_literal	2
         select_expr
           integer_literal	3
+      None
     pipe_where
       boolean_literal	true
   '''
@@ -2054,10 +2132,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_rename
       rename_list
         rename_item
@@ -2088,10 +2168,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_rename
       rename_list
         rename_item
@@ -2118,10 +2200,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	x
+      None
     pipe_set
       set_list
         set_item
@@ -2152,10 +2236,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           ident	x
+      None
     pipe_set
       set_list
         set_item
@@ -2185,10 +2271,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2198,10 +2286,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_by_name]
@@ -2213,10 +2303,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2227,10 +2319,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2243,10 +2337,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	3
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2259,10 +2355,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	4
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_complex_queries]
@@ -2274,10 +2372,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2287,7 +2387,8 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_star
                     None
@@ -2303,10 +2404,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	1
+                None
               pipe_where
                 ident	y
   '''
@@ -2320,10 +2423,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2334,10 +2439,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2350,10 +2457,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	3
+                None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2366,10 +2475,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	4
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_except_all]
@@ -2379,10 +2490,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2392,10 +2505,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_except_distinct]
@@ -2405,10 +2520,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2418,10 +2535,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_full]
@@ -2431,10 +2550,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2445,10 +2566,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_full_outer]
@@ -2458,10 +2581,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2474,10 +2599,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_inner]
@@ -2487,10 +2614,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2501,10 +2630,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_all]
@@ -2514,10 +2645,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2527,10 +2660,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_intersect_distinct]
@@ -2540,10 +2675,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2553,10 +2690,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_left]
@@ -2566,10 +2705,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2580,10 +2721,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_left_outer]
@@ -2593,10 +2736,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2609,10 +2754,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_multiple_tables]
@@ -2622,10 +2769,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2635,17 +2784,21 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	3
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_trailing_comma]
@@ -2655,10 +2808,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2668,10 +2823,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_pipe_set_operation[zeta_pipe_set_operation_union_distinct]
@@ -2681,10 +2838,12 @@
   
   query_expr
     select
-      select_metadata
+      None
+      None
       select_list
         select_expr
           integer_literal	1
+      None
     pipe_set_operation
       set_operation
         set_operation_metadata
@@ -2694,10 +2853,12 @@
           subquery
             query_expr
               select
-                select_metadata
+                None
+                None
                 select_list
                   select_expr
                     integer_literal	2
+                None
   '''
 # ---
 # name: test_pipe_tablesample[zeta_pipe_tablesample]
