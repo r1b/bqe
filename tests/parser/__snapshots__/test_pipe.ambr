@@ -64,8 +64,10 @@
                 ident	col3
               cube_item
                 struct_literal
-                  ident	col4
-                  ident	col5
+                  struct_literal_item
+                    ident	col4
+                  struct_literal_item
+                    ident	col5
   '''
 # ---
 # name: test_agg_ok[pipe_agg_group_by_empty]
@@ -132,8 +134,10 @@
                 ident	col3
               grouping_set
                 struct_literal
-                  ident	col4
-                  ident	col5
+                  struct_literal_item
+                    ident	col4
+                  struct_literal_item
+                    ident	col5
               grouping_set
                 ident	col6
   '''

@@ -555,11 +555,16 @@
                   type
                     type_name	INT64
               array_literal_item_list
-                integer_literal	1
-                integer_literal	2
-                integer_literal	3
-                integer_literal	3
-                integer_literal	4
+                array_literal_item
+                  integer_literal	1
+                array_literal_item
+                  integer_literal	2
+                array_literal_item
+                  integer_literal	3
+                array_literal_item
+                  integer_literal	3
+                array_literal_item
+                  integer_literal	4
           as_alias
             ident	number
           None
@@ -587,8 +592,10 @@
                             type
                               type_name	INT64
                         array_literal_item_list
-                          integer_literal	1
-                          integer_literal	2
+                          array_literal_item
+                            integer_literal	1
+                          array_literal_item
+                            integer_literal	2
                     as_alias
                       ident	number
                     None
@@ -616,8 +623,10 @@
                                       type
                                         type_name	INT64
                                   array_literal_item_list
-                                    integer_literal	1
-                                    integer_literal	4
+                                    array_literal_item
+                                      integer_literal	1
+                                    array_literal_item
+                                      integer_literal	4
                               as_alias
                                 ident	number
                               None
@@ -1642,9 +1651,12 @@
                   type
                     type_name	INT64
               array_literal_item_list
-                integer_literal	1
-                integer_literal	2
-                integer_literal	3
+                array_literal_item
+                  integer_literal	1
+                array_literal_item
+                  integer_literal	2
+                array_literal_item
+                  integer_literal	3
           as_alias
             ident	number
           None
@@ -1776,9 +1788,12 @@
                   type
                     type_name	INT64
               array_literal_item_list
-                integer_literal	1
-                integer_literal	2
-                integer_literal	3
+                array_literal_item
+                  integer_literal	1
+                array_literal_item
+                  integer_literal	2
+                array_literal_item
+                  integer_literal	3
           as_alias
             ident	number
           None
@@ -1830,9 +1845,12 @@
                   type
                     type_name	INT64
               array_literal_item_list
-                integer_literal	1
-                integer_literal	2
-                integer_literal	3
+                array_literal_item
+                  integer_literal	1
+                array_literal_item
+                  integer_literal	2
+                array_literal_item
+                  integer_literal	3
           as_alias
             ident	number
           None

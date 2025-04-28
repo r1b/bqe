@@ -20,7 +20,7 @@ def assert_parse_tree(snapshot):
         if with_ast:
             # TODO: This is a temporary flag for incrementally building out the AST
             ast = transform(tree)
-            context.append(pretty(ast))
+            context.append(pretty(ast, sql=sql))
 
         assert snapshot == "\n\n".join(context)
 

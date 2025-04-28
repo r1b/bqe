@@ -639,8 +639,10 @@
                   ident	x
               grouping_set
                 struct_literal
-                  ident	y
-                  ident	z
+                  struct_literal_item
+                    ident	y
+                  struct_literal_item
+                    ident	z
     pipe_agg
       pipe_selection_item_list_with_order
         pipe_selection_item_with_order
@@ -659,8 +661,10 @@
                     ident	y
               grouping_set
                 struct_literal
-                  ident	z
-                  ident	z
+                  struct_literal_item
+                    ident	z
+                  struct_literal_item
+                    ident	z
               grouping_set
                 rollup_list
                   rollup_item
@@ -1115,7 +1119,8 @@
             array_literal
               array_literal_prefix
               array_literal_item_list
-                integer_literal	1
+                array_literal_item
+                  integer_literal	1
           as_alias
             ident	x
           None

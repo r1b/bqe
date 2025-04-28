@@ -353,7 +353,9 @@ FLOAT_LITERAL : /[\+\-]?[0-9]+\.[0-9]*([Ee][\+\-]?[0-9]+)?/
 
 array_literal : array_literal_prefix array_literal_item_list? _RBRACK
 
-array_literal_item_list : column_expr ( _COMMA column_expr )*
+array_literal_item_list : array_literal_item ( _COMMA array_literal_item )*
+
+array_literal_item : column_expr
 
 array_literal_prefix : ( _ARRAY | array_type )? _LBRACK
 
@@ -379,7 +381,9 @@ json_literal : _JSON STRING_LITERAL
 
 # Structs
 
-struct_literal : _LPAR column_expr _COMMA column_expr ( _COMMA column_expr )* _RPAR
+struct_literal : _LPAR struct_literal_item _COMMA struct_literal_item ( _COMMA struct_literal_item )* _RPAR
+
+struct_literal_item : column_expr
 
 named_struct_literal : named_struct_literal_prefix _LPAR named_struct_literal_item_list _RPAR
 

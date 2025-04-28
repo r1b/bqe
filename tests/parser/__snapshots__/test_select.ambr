@@ -17,15 +17,15 @@
           None
           None
   
-  Query
-    SelectAsStruct(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [0-36] {SELECT AS STRUCT...umn1 FROM table1}
+    SelectAsStruct(distinct=False) [0-36] {SELECT AS STRUCT...umn1 FROM table1}
+      SelectList [17-24] {column1}
+        SelectColumn [17-24] {column1}
+          Ident(column1) [17-24] {column1}
+      FromClause [30-36] {table1}
+        TablePathExpression [30-36] {table1}
+          PathExpression [30-36] {table1}
+            Ident(table1) [30-36] {table1}
   '''
 # ---
 # name: test_select_ok[select_as_value]
@@ -46,15 +46,15 @@
           None
           None
   
-  Query
-    SelectAsValue(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [0-35] {SELECT AS VALUE ...umn1 FROM table1}
+    SelectAsValue(distinct=False) [0-35] {SELECT AS VALUE ...umn1 FROM table1}
+      SelectList [16-23] {column1}
+        SelectColumn [16-23] {column1}
+          Ident(column1) [16-23] {column1}
+      FromClause [29-35] {table1}
+        TablePathExpression [29-35] {table1}
+          PathExpression [29-35] {table1}
+            Ident(table1) [29-35] {table1}
   '''
 # ---
 # name: test_select_ok[select_distinct]
@@ -75,15 +75,15 @@
           None
           None
   
-  Query
-    Select(distinct=True)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [13-48] {SELECT DISTINCT ...umn1 FROM table1}
+    Select(distinct=True) [13-48] {SELECT DISTINCT ...umn1 FROM table1}
+      SelectList [29-36] {column1}
+        SelectColumn [29-36] {column1}
+          Ident(column1) [29-36] {column1}
+      FromClause [42-48] {table1}
+        TablePathExpression [42-48] {table1}
+          PathExpression [42-48] {table1}
+            Ident(table1) [42-48] {table1}
   '''
 # ---
 # name: test_select_ok[select_dot_star_except]
@@ -111,20 +111,20 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectDotStar
-          Ident(struct_column)
-          ExceptModifierList
-            ExceptModifierItem
-              Ident(column1)
-            ExceptModifierItem
-              Ident(column2)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [13-72] {SELECT struct_co...mn2) FROM table1}
+    Select(distinct=False) [13-72] {SELECT struct_co...mn2) FROM table1}
+      SelectList [20-60] {struct_column.* ...olumn1, column2)}
+        SelectDotStar [20-60] {struct_column.* ...olumn1, column2)}
+          Ident(struct_column) [20-33] {struct_column}
+          ExceptModifierList [43-59] {column1, column2}
+            ExceptModifierItem [43-50] {column1}
+              Ident(column1) [43-50] {column1}
+            ExceptModifierItem [52-59] {column2}
+              Ident(column2) [52-59] {column2}
+      FromClause [66-72] {table1}
+        TablePathExpression [66-72] {table1}
+          PathExpression [66-72] {table1}
+            Ident(table1) [66-72] {table1}
   '''
 # ---
 # name: test_select_ok[select_dot_star_replace]
@@ -154,22 +154,22 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectDotStar
-          Ident(struct_column)
-          ReplaceModifierList
-            ReplaceModifierItem
-              IntegerLiteral(1)
-              Ident(column1)
-            ReplaceModifierItem
-              IntegerLiteral(2)
-              Ident(column2)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [13-83] {SELECT struct_co...mn2) FROM table1}
+    Select(distinct=False) [13-83] {SELECT struct_co...mn2) FROM table1}
+      SelectList [20-71] {struct_column.* ...1, 2 AS column2)}
+        SelectDotStar [20-71] {struct_column.* ...1, 2 AS column2)}
+          Ident(struct_column) [20-33] {struct_column}
+          ReplaceModifierList [44-70] {1 AS column1, 2 AS column2}
+            ReplaceModifierItem [44-56] {1 AS column1}
+              IntegerLiteral(1) [44-45] {1}
+              Ident(column1) [49-56] {column1}
+            ReplaceModifierItem [58-70] {2 AS column2}
+              IntegerLiteral(2) [58-59] {2}
+              Ident(column2) [63-70] {column2}
+      FromClause [77-83] {table1}
+        TablePathExpression [77-83] {table1}
+          PathExpression [77-83] {table1}
+            Ident(table1) [77-83] {table1}
   '''
 # ---
 # name: test_select_ok[select_from_alias_explicit]
@@ -191,17 +191,17 @@
             ident	alias1
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
-          Alias
-            Ident(alias1)
+  Query [0-36] {SELECT column1 F...table1 AS alias1}
+    Select(distinct=False) [0-36] {SELECT column1 F...table1 AS alias1}
+      SelectList [7-14] {column1}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+      FromClause [20-36] {table1 AS alias1}
+        TablePathExpression [20-36] {table1 AS alias1}
+          PathExpression [20-26] {table1}
+            Ident(table1) [20-26] {table1}
+          Alias [27-36] {AS alias1}
+            Ident(alias1) [30-36] {alias1}
   '''
 # ---
 # name: test_select_ok[select_from_alias_implicit]
@@ -223,17 +223,17 @@
             ident	alias1
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
-          Alias
-            Ident(alias1)
+  Query [0-33] {SELECT column1 F...OM table1 alias1}
+    Select(distinct=False) [0-33] {SELECT column1 F...OM table1 alias1}
+      SelectList [7-14] {column1}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+      FromClause [20-33] {table1 alias1}
+        TablePathExpression [20-33] {table1 alias1}
+          PathExpression [20-26] {table1}
+            Ident(table1) [20-26] {table1}
+          Alias [27-33] {alias1}
+            Ident(alias1) [27-33] {alias1}
   '''
 # ---
 # name: test_select_ok[select_from_time_travel]
@@ -255,17 +255,17 @@
           time_travel
             string_literal	'1970-01-01'
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
-          TimeTravel
-            StringLiteral('1970-01-01')
+  Query [0-61] {SELECT column1 F... OF '1970-01-01'}
+    Select(distinct=False) [0-61] {SELECT column1 F... OF '1970-01-01'}
+      SelectList [7-14] {column1}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+      FromClause [20-61] {table1 FOR SYSTE... OF '1970-01-01'}
+        TablePathExpression [20-61] {table1 FOR SYSTE... OF '1970-01-01'}
+          PathExpression [20-26] {table1}
+            Ident(table1) [20-26] {table1}
+          TimeTravel [27-61] {FOR SYSTEM_TIME ... OF '1970-01-01'}
+            StringLiteral('1970-01-01') [49-61] {'1970-01-01'}
   '''
 # ---
 # name: test_select_ok[select_list_alias_explicit]
@@ -288,17 +288,17 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-          Alias
-            Ident(alias1)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [0-36] {SELECT column1 A...ias1 FROM table1}
+    Select(distinct=False) [0-36] {SELECT column1 A...ias1 FROM table1}
+      SelectList [7-24] {column1 AS alias1}
+        SelectColumn [7-24] {column1 AS alias1}
+          Ident(column1) [7-14] {column1}
+          Alias [15-24] {AS alias1}
+            Ident(alias1) [18-24] {alias1}
+      FromClause [30-36] {table1}
+        TablePathExpression [30-36] {table1}
+          PathExpression [30-36] {table1}
+            Ident(table1) [30-36] {table1}
   '''
 # ---
 # name: test_select_ok[select_list_alias_implicit]
@@ -321,17 +321,17 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-          Alias
-            Ident(alias1)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [0-33] {SELECT column1 a...ias1 FROM table1}
+    Select(distinct=False) [0-33] {SELECT column1 a...ias1 FROM table1}
+      SelectList [7-21] {column1 alias1}
+        SelectColumn [7-21] {column1 alias1}
+          Ident(column1) [7-14] {column1}
+          Alias [15-21] {alias1}
+            Ident(alias1) [15-21] {alias1}
+      FromClause [27-33] {table1}
+        TablePathExpression [27-33] {table1}
+          PathExpression [27-33] {table1}
+            Ident(table1) [27-33] {table1}
   '''
 # ---
 # name: test_select_ok[select_list_multi]
@@ -354,17 +354,17 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-        SelectColumn
-          Ident(column2)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [0-35] {SELECT column1, ...umn2 FROM table1}
+    Select(distinct=False) [0-35] {SELECT column1, ...umn2 FROM table1}
+      SelectList [7-23] {column1, column2}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+        SelectColumn [16-23] {column2}
+          Ident(column2) [16-23] {column2}
+      FromClause [29-35] {table1}
+        TablePathExpression [29-35] {table1}
+          PathExpression [29-35] {table1}
+            Ident(table1) [29-35] {table1}
   '''
 # ---
 # name: test_select_ok[select_list_single]
@@ -385,15 +385,15 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [0-26] {SELECT column1 FROM table1}
+    Select(distinct=False) [0-26] {SELECT column1 FROM table1}
+      SelectList [7-14] {column1}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+      FromClause [20-26] {table1}
+        TablePathExpression [20-26] {table1}
+          PathExpression [20-26] {table1}
+            Ident(table1) [20-26] {table1}
   '''
 # ---
 # name: test_select_ok[select_list_trailing_comma]
@@ -414,15 +414,15 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table2)
+  Query [0-27] {SELECT column1, FROM table2}
+    Select(distinct=False) [0-27] {SELECT column1, FROM table2}
+      SelectList [7-15] {column1,}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+      FromClause [21-27] {table2}
+        TablePathExpression [21-27] {table2}
+          PathExpression [21-27] {table2}
+            Ident(table2) [21-27] {table2}
   '''
 # ---
 # name: test_select_ok[select_literal]
@@ -438,11 +438,11 @@
           integer_literal	1
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          IntegerLiteral(1)
+  Query [0-8] {SELECT 1}
+    Select(distinct=False) [0-8] {SELECT 1}
+      SelectList [7-8] {1}
+        SelectColumn [7-8] {1}
+          IntegerLiteral(1) [7-8] {1}
   '''
 # ---
 # name: test_select_ok[select_star]
@@ -464,14 +464,14 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectStar
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [0-20] {SELECT * FROM table1}
+    Select(distinct=False) [0-20] {SELECT * FROM table1}
+      SelectList [7-8] {*}
+        SelectStar [7-8] {*}
+      FromClause [14-20] {table1}
+        TablePathExpression [14-20] {table1}
+          PathExpression [14-20] {table1}
+            Ident(table1) [14-20] {table1}
   '''
 # ---
 # name: test_select_ok[select_star_except]
@@ -498,19 +498,19 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectStar
-          ExceptModifierList
-            ExceptModifierItem
-              Ident(column1)
-            ExceptModifierItem
-              Ident(column2)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [13-58] {SELECT * EXCEPT(...mn2) FROM table1}
+    Select(distinct=False) [13-58] {SELECT * EXCEPT(...mn2) FROM table1}
+      SelectList [20-46] {* EXCEPT(column1, column2)}
+        SelectStar [20-46] {* EXCEPT(column1, column2)}
+          ExceptModifierList [29-45] {column1, column2}
+            ExceptModifierItem [29-36] {column1}
+              Ident(column1) [29-36] {column1}
+            ExceptModifierItem [38-45] {column2}
+              Ident(column2) [38-45] {column2}
+      FromClause [52-58] {table1}
+        TablePathExpression [52-58] {table1}
+          PathExpression [52-58] {table1}
+            Ident(table1) [52-58] {table1}
   '''
 # ---
 # name: test_select_ok[select_star_replace]
@@ -539,21 +539,21 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectStar
-          ReplaceModifierList
-            ReplaceModifierItem
-              IntegerLiteral(1)
-              Ident(column1)
-            ReplaceModifierItem
-              IntegerLiteral(2)
-              Ident(column2)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [13-69] {SELECT * REPLACE...mn2) FROM table1}
+    Select(distinct=False) [13-69] {SELECT * REPLACE...mn2) FROM table1}
+      SelectList [20-57] {* REPLACE(1 AS c...1, 2 AS column2)}
+        SelectStar [20-57] {* REPLACE(1 AS c...1, 2 AS column2)}
+          ReplaceModifierList [30-56] {1 AS column1, 2 AS column2}
+            ReplaceModifierItem [30-42] {1 AS column1}
+              IntegerLiteral(1) [30-31] {1}
+              Ident(column1) [35-42] {column1}
+            ReplaceModifierItem [44-56] {2 AS column2}
+              IntegerLiteral(2) [44-45] {2}
+              Ident(column2) [49-56] {column2}
+      FromClause [63-69] {table1}
+        TablePathExpression [63-69] {table1}
+          PathExpression [63-69] {table1}
+            Ident(table1) [63-69] {table1}
   '''
 # ---
 # name: test_select_ok[select_star_scoped]
@@ -576,15 +576,15 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectDotStar
-          Ident(column1)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [0-28] {SELECT column1.* FROM table1}
+    Select(distinct=False) [0-28] {SELECT column1.* FROM table1}
+      SelectList [7-16] {column1.*}
+        SelectDotStar [7-16] {column1.*}
+          Ident(column1) [7-14] {column1}
+      FromClause [22-28] {table1}
+        TablePathExpression [22-28] {table1}
+          PathExpression [22-28] {table1}
+            Ident(table1) [22-28] {table1}
   '''
 # ---
 # name: test_select_ok[select_star_scoped_nested]
@@ -609,17 +609,17 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectDotStar
-          PathExpression
-            Ident(column1)
-            Ident(column2)
-      FromClause
-        TablePathExpression
-          PathExpression
-            Ident(table1)
+  Query [0-36] {SELECT column1.c...n2.* FROM table1}
+    Select(distinct=False) [0-36] {SELECT column1.c...n2.* FROM table1}
+      SelectList [7-24] {column1.column2.*}
+        SelectDotStar [7-24] {column1.column2.*}
+          PathExpression [7-22] {column1.column2}
+            Ident(column1) [7-14] {column1}
+            Ident(column2) [15-22] {column2}
+      FromClause [30-36] {table1}
+        TablePathExpression [30-36] {table1}
+          PathExpression [30-36] {table1}
+            Ident(table1) [30-36] {table1}
   '''
 # ---
 # name: test_select_ok[select_subqueries]
@@ -672,35 +672,35 @@
           as_alias
             ident	alias2
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectStar
-        SelectColumn
-          Ident(column1)
-        SelectColumn
-          Subquery
-            Query
-              Select(distinct=False)
-                SelectList
-                  SelectColumn
-                    IntegerLiteral(1)
-          Alias
-            Ident(column2)
-      FromClause
-        TableSubquery
-          Subquery
-            Query
-              Select(distinct=False)
-                SelectList
-                  SelectColumn
-                    Ident(column7)
-                FromClause
-                  TablePathExpression
-                    PathExpression
-                      Ident(table2)
-          Alias
-            Ident(alias2)
+  Query [13-173] {SELECT *, column...able2) AS alias2}
+    Select(distinct=False) [13-173] {SELECT *, column...able2) AS alias2}
+      SelectList [36-101] {*, column1, (SEL...CT 1) AS column2}
+        SelectStar [36-37] {*}
+        SelectColumn [55-62] {column1}
+          Ident(column1) [55-62] {column1}
+        SelectColumn [80-101] {(SELECT 1) AS column2}
+          Subquery [80-90] {(SELECT 1)}
+            Query [81-89] {SELECT 1}
+              Select(distinct=False) [81-89] {SELECT 1}
+                SelectList [88-89] {1}
+                  SelectColumn [88-89] {1}
+                    IntegerLiteral(1) [88-89] {1}
+          Alias [91-101] {AS column2}
+            Ident(column2) [94-101] {column2}
+      FromClause [135-173] {(SELECT column7 ...able2) AS alias2}
+        TableSubquery [135-173] {(SELECT column7 ...able2) AS alias2}
+          Subquery [135-163] {(SELECT column7 FROM table2)}
+            Query [136-162] {SELECT column7 FROM table2}
+              Select(distinct=False) [136-162] {SELECT column7 FROM table2}
+                SelectList [143-150] {column7}
+                  SelectColumn [143-150] {column7}
+                    Ident(column7) [143-150] {column7}
+                FromClause [156-162] {table2}
+                  TablePathExpression [156-162] {table2}
+                    PathExpression [156-162] {table2}
+                      Ident(table2) [156-162] {table2}
+          Alias [164-173] {AS alias2}
+            Ident(alias2) [167-173] {alias2}
   '''
 # ---
 # name: test_subquery_ok[select_from_subquery]
@@ -732,23 +732,23 @@
                     None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TableSubquery
-          Subquery
-            Query
-              Select(distinct=False)
-                SelectList
-                  SelectColumn
-                    Ident(column1)
-                FromClause
-                  TablePathExpression
-                    PathExpression
-                      Ident(table1)
+  Query [0-48] {SELECT column1 F...mn1 FROM table1)}
+    Select(distinct=False) [0-48] {SELECT column1 F...mn1 FROM table1)}
+      SelectList [7-14] {column1}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+      FromClause [20-48] {(SELECT column1 FROM table1)}
+        TableSubquery [20-48] {(SELECT column1 FROM table1)}
+          Subquery [20-48] {(SELECT column1 FROM table1)}
+            Query [21-47] {SELECT column1 FROM table1}
+              Select(distinct=False) [21-47] {SELECT column1 FROM table1}
+                SelectList [28-35] {column1}
+                  SelectColumn [28-35] {column1}
+                    Ident(column1) [28-35] {column1}
+                FromClause [41-47] {table1}
+                  TablePathExpression [41-47] {table1}
+                    PathExpression [41-47] {table1}
+                      Ident(table1) [41-47] {table1}
   '''
 # ---
 # name: test_subquery_ok[select_from_subquery_aliased]
@@ -781,25 +781,25 @@
           as_alias
             ident	table2
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TableSubquery
-          Subquery
-            Query
-              Select(distinct=False)
-                SelectList
-                  SelectColumn
-                    Ident(column1)
-                FromClause
-                  TablePathExpression
-                    PathExpression
-                      Ident(table1)
-          Alias
-            Ident(table2)
+  Query [0-58] {SELECT column1 F...able1) AS table2}
+    Select(distinct=False) [0-58] {SELECT column1 F...able1) AS table2}
+      SelectList [7-14] {column1}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+      FromClause [20-58] {(SELECT column1 ...able1) AS table2}
+        TableSubquery [20-58] {(SELECT column1 ...able1) AS table2}
+          Subquery [20-48] {(SELECT column1 FROM table1)}
+            Query [21-47] {SELECT column1 FROM table1}
+              Select(distinct=False) [21-47] {SELECT column1 FROM table1}
+                SelectList [28-35] {column1}
+                  SelectColumn [28-35] {column1}
+                    Ident(column1) [28-35] {column1}
+                FromClause [41-47] {table1}
+                  TablePathExpression [41-47] {table1}
+                    PathExpression [41-47] {table1}
+                      Ident(table1) [41-47] {table1}
+          Alias [49-58] {AS table2}
+            Ident(table2) [52-58] {table2}
   '''
 # ---
 # name: test_subquery_ok[subquery]
@@ -817,13 +817,13 @@
               integer_literal	1
           None
   
-  Query
-    Subquery
-      Query
-        Select(distinct=False)
-          SelectList
-            SelectColumn
-              IntegerLiteral(1)
+  Query [0-10] {(SELECT 1)}
+    Subquery [0-10] {(SELECT 1)}
+      Query [1-9] {SELECT 1}
+        Select(distinct=False) [1-9] {SELECT 1}
+          SelectList [8-9] {1}
+            SelectColumn [8-9] {1}
+              IntegerLiteral(1) [8-9] {1}
   '''
 # ---
 # name: test_subquery_ok[subquery_nested]
@@ -857,23 +857,23 @@
                     None
           None
   
-  Query
-    Subquery
-      Query
-        Select(distinct=False)
-          SelectList
-            SelectColumn
-              Subquery
-                Query
-                  Select(distinct=False)
-                    SelectList
-                      SelectColumn
-                        Subquery
-                          Query
-                            Select(distinct=False)
-                              SelectList
-                                SelectColumn
-                                  IntegerLiteral(1)
+  Query [0-28] {(SELECT (SELECT (SELECT 1)))}
+    Subquery [0-28] {(SELECT (SELECT (SELECT 1)))}
+      Query [1-27] {SELECT (SELECT (SELECT 1))}
+        Select(distinct=False) [1-27] {SELECT (SELECT (SELECT 1))}
+          SelectList [8-27] {(SELECT (SELECT 1))}
+            SelectColumn [8-27] {(SELECT (SELECT 1))}
+              Subquery [8-27] {(SELECT (SELECT 1))}
+                Query [9-26] {SELECT (SELECT 1)}
+                  Select(distinct=False) [9-26] {SELECT (SELECT 1)}
+                    SelectList [16-26] {(SELECT 1)}
+                      SelectColumn [16-26] {(SELECT 1)}
+                        Subquery [16-26] {(SELECT 1)}
+                          Query [17-25] {SELECT 1}
+                            Select(distinct=False) [17-25] {SELECT 1}
+                              SelectList [24-25] {1}
+                                SelectColumn [24-25] {1}
+                                  IntegerLiteral(1) [24-25] {1}
   '''
 # ---
 # name: test_unnest_ok[unnest]
@@ -894,15 +894,15 @@
           None
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TableUnnestExpression
-          UnnestExpression
-            Ident(array1)
+  Query [0-34] {SELECT column1 F...M UNNEST(array1)}
+    Select(distinct=False) [0-34] {SELECT column1 F...M UNNEST(array1)}
+      SelectList [7-14] {column1}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+      FromClause [20-34] {UNNEST(array1)}
+        TableUnnestExpression [20-34] {UNNEST(array1)}
+          UnnestExpression [20-34] {UNNEST(array1)}
+            Ident(array1) [27-33] {array1}
   '''
 # ---
 # name: test_unnest_ok[unnest_alias]
@@ -924,17 +924,17 @@
             ident	alias1
           None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TableUnnestExpression
-          UnnestExpression
-            Ident(array1)
-          Alias
-            Ident(alias1)
+  Query [0-44] {SELECT column1 F...rray1) AS alias1}
+    Select(distinct=False) [0-44] {SELECT column1 F...rray1) AS alias1}
+      SelectList [7-14] {column1}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+      FromClause [20-44] {UNNEST(array1) AS alias1}
+        TableUnnestExpression [20-44] {UNNEST(array1) AS alias1}
+          UnnestExpression [20-34] {UNNEST(array1)}
+            Ident(array1) [27-33] {array1}
+          Alias [35-44] {AS alias1}
+            Ident(alias1) [38-44] {alias1}
   '''
 # ---
 # name: test_unnest_ok[unnest_alias_with_offset_alias]
@@ -958,20 +958,20 @@
             as_alias
               ident	alias2
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TableUnnestExpression
-          UnnestExpression
-            Ident(array1)
-          Alias
-            Ident(alias1)
-          WithOffset
-            Alias
-              Ident(alias2)
+  Query [0-66] {SELECT column1 F...OFFSET AS alias2}
+    Select(distinct=False) [0-66] {SELECT column1 F...OFFSET AS alias2}
+      SelectList [7-14] {column1}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+      FromClause [20-66] {UNNEST(array1) A...OFFSET AS alias2}
+        TableUnnestExpression [20-66] {UNNEST(array1) A...OFFSET AS alias2}
+          UnnestExpression [20-34] {UNNEST(array1)}
+            Ident(array1) [27-33] {array1}
+          Alias [35-44] {AS alias1}
+            Ident(alias1) [38-44] {alias1}
+          WithOffset [45-66] {WITH OFFSET AS alias2}
+            Alias [57-66] {AS alias2}
+              Ident(alias2) [60-66] {alias2}
   '''
 # ---
 # name: test_unnest_ok[unnest_with_offset]
@@ -992,16 +992,16 @@
           None
           from_unnest_offset_expr	None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TableUnnestExpression
-          UnnestExpression
-            Ident(array1)
-          WithOffset
+  Query [0-46] {SELECT column1 F...ay1) WITH OFFSET}
+    Select(distinct=False) [0-46] {SELECT column1 F...ay1) WITH OFFSET}
+      SelectList [7-14] {column1}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+      FromClause [20-46] {UNNEST(array1) WITH OFFSET}
+        TableUnnestExpression [20-46] {UNNEST(array1) WITH OFFSET}
+          UnnestExpression [20-34] {UNNEST(array1)}
+            Ident(array1) [27-33] {array1}
+          WithOffset [35-46] {WITH OFFSET}
   '''
 # ---
 # name: test_unnest_ok[unnest_with_offset_alias]
@@ -1024,17 +1024,17 @@
             as_alias
               ident	alias1
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          Ident(column1)
-      FromClause
-        TableUnnestExpression
-          UnnestExpression
-            Ident(array1)
-          WithOffset
-            Alias
-              Ident(alias1)
+  Query [0-56] {SELECT column1 F...OFFSET AS alias1}
+    Select(distinct=False) [0-56] {SELECT column1 F...OFFSET AS alias1}
+      SelectList [7-14] {column1}
+        SelectColumn [7-14] {column1}
+          Ident(column1) [7-14] {column1}
+      FromClause [20-56] {UNNEST(array1) W...OFFSET AS alias1}
+        TableUnnestExpression [20-56] {UNNEST(array1) W...OFFSET AS alias1}
+          UnnestExpression [20-34] {UNNEST(array1)}
+            Ident(array1) [27-33] {array1}
+          WithOffset [35-56] {WITH OFFSET AS alias1}
+            Alias [47-56] {AS alias1}
+              Ident(alias1) [50-56] {alias1}
   '''
 # ---

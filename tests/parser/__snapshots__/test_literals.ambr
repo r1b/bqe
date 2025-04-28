@@ -13,11 +13,11 @@
             array_literal_prefix
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          ArrayLiteral
+  Query [0-9] {SELECT []}
+    Select(distinct=False) [0-9] {SELECT []}
+      SelectList [7-9] {[]}
+        SelectColumn [7-9] {[]}
+          ArrayLiteral [7-9] {[]}
   '''
 # ---
 # name: test_array_literal_ok[literal_array_multi]
@@ -33,22 +33,25 @@
           array_literal
             array_literal_prefix
             array_literal_item_list
-              integer_literal	1
-              integer_literal	2
-              integer_literal	3
+              array_literal_item
+                integer_literal	1
+              array_literal_item
+                integer_literal	2
+              array_literal_item
+                integer_literal	3
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          ArrayLiteral
-            ArrayLiteralElement
-              IntegerLiteral(1)
-            ArrayLiteralElement
-              IntegerLiteral(2)
-            ArrayLiteralElement
-              IntegerLiteral(3)
+  Query [0-14] {SELECT [1,2,3]}
+    Select(distinct=False) [0-14] {SELECT [1,2,3]}
+      SelectList [7-14] {[1,2,3]}
+        SelectColumn [7-14] {[1,2,3]}
+          ArrayLiteral [7-14] {[1,2,3]}
+            ArrayLiteralElement [8-9] {1}
+              IntegerLiteral(1) [8-9] {1}
+            ArrayLiteralElement [10-11] {2}
+              IntegerLiteral(2) [10-11] {2}
+            ArrayLiteralElement [12-13] {3}
+              IntegerLiteral(3) [12-13] {3}
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix]
@@ -64,22 +67,25 @@
           array_literal
             array_literal_prefix
             array_literal_item_list
-              integer_literal	1
-              integer_literal	2
-              integer_literal	3
+              array_literal_item
+                integer_literal	1
+              array_literal_item
+                integer_literal	2
+              array_literal_item
+                integer_literal	3
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          ArrayLiteral
-            ArrayLiteralElement
-              IntegerLiteral(1)
-            ArrayLiteralElement
-              IntegerLiteral(2)
-            ArrayLiteralElement
-              IntegerLiteral(3)
+  Query [0-20] {SELECT ARRAY [1,2,3]}
+    Select(distinct=False) [0-20] {SELECT ARRAY [1,2,3]}
+      SelectList [7-20] {ARRAY [1,2,3]}
+        SelectColumn [7-20] {ARRAY [1,2,3]}
+          ArrayLiteral [7-20] {ARRAY [1,2,3]}
+            ArrayLiteralElement [14-15] {1}
+              IntegerLiteral(1) [14-15] {1}
+            ArrayLiteralElement [16-17] {2}
+              IntegerLiteral(2) [16-17] {2}
+            ArrayLiteralElement [18-19] {3}
+              IntegerLiteral(3) [18-19] {3}
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix_compound_type]
@@ -103,22 +109,23 @@
                         type
                           type_name	INT64
             array_literal_item_list
-              named_struct_literal
-                named_struct_literal_prefix
-                named_struct_literal_item_list
-                  named_struct_literal_item
-                    integer_literal	1
+              array_literal_item
+                named_struct_literal
+                  named_struct_literal_prefix
+                  named_struct_literal_item_list
+                    named_struct_literal_item
+                      integer_literal	1
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          ArrayLiteral
-            ArrayLiteralElement
-              StructLiteral
-                StructLiteralElement
-                  IntegerLiteral(1)
+  Query [0-40] {SELECT ARRAY<STR...T64>>[STRUCT(1)]}
+    Select(distinct=False) [0-40] {SELECT ARRAY<STR...T64>>[STRUCT(1)]}
+      SelectList [7-40] {ARRAY<STRUCT<a I...T64>>[STRUCT(1)]}
+        SelectColumn [7-40] {ARRAY<STRUCT<a I...T64>>[STRUCT(1)]}
+          ArrayLiteral [7-40] {ARRAY<STRUCT<a I...T64>>[STRUCT(1)]}
+            ArrayLiteralElement [30-39] {STRUCT(1)}
+              StructLiteral [30-39] {STRUCT(1)}
+                StructLiteralElement [37-38] {1}
+                  IntegerLiteral(1) [37-38] {1}
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix_nested_compound_type]
@@ -147,28 +154,29 @@
                                 type
                                   type_name	INT64
             array_literal_item_list
-              named_struct_literal
-                named_struct_literal_prefix
-                named_struct_literal_item_list
-                  named_struct_literal_item
-                    named_struct_literal
-                      named_struct_literal_prefix
-                      named_struct_literal_item_list
-                        named_struct_literal_item
-                          integer_literal	1
+              array_literal_item
+                named_struct_literal
+                  named_struct_literal_prefix
+                  named_struct_literal_item_list
+                    named_struct_literal_item
+                      named_struct_literal
+                        named_struct_literal_prefix
+                        named_struct_literal_item_list
+                          named_struct_literal_item
+                            integer_literal	1
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          ArrayLiteral
-            ArrayLiteralElement
-              StructLiteral
-                StructLiteralElement
-                  StructLiteral
-                    StructLiteralElement
-                      IntegerLiteral(1)
+  Query [0-58] {SELECT ARRAY<STR...RUCT(STRUCT(1))]}
+    Select(distinct=False) [0-58] {SELECT ARRAY<STR...RUCT(STRUCT(1))]}
+      SelectList [7-58] {ARRAY<STRUCT<a S...RUCT(STRUCT(1))]}
+        SelectColumn [7-58] {ARRAY<STRUCT<a S...RUCT(STRUCT(1))]}
+          ArrayLiteral [7-58] {ARRAY<STRUCT<a S...RUCT(STRUCT(1))]}
+            ArrayLiteralElement [40-57] {STRUCT(STRUCT(1))}
+              StructLiteral [40-57] {STRUCT(STRUCT(1))}
+                StructLiteralElement [47-56] {STRUCT(1)}
+                  StructLiteral [47-56] {STRUCT(1)}
+                    StructLiteralElement [54-55] {1}
+                      IntegerLiteral(1) [54-55] {1}
   '''
 # ---
 # name: test_array_literal_ok[literal_array_prefix_scalar_type]
@@ -187,22 +195,25 @@
                 type
                   type_name	INT64
             array_literal_item_list
-              integer_literal	1
-              integer_literal	2
-              integer_literal	3
+              array_literal_item
+                integer_literal	1
+              array_literal_item
+                integer_literal	2
+              array_literal_item
+                integer_literal	3
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          ArrayLiteral
-            ArrayLiteralElement
-              IntegerLiteral(1)
-            ArrayLiteralElement
-              IntegerLiteral(2)
-            ArrayLiteralElement
-              IntegerLiteral(3)
+  Query [0-26] {SELECT ARRAY<INT64>[1,2,3]}
+    Select(distinct=False) [0-26] {SELECT ARRAY<INT64>[1,2,3]}
+      SelectList [7-26] {ARRAY<INT64>[1,2,3]}
+        SelectColumn [7-26] {ARRAY<INT64>[1,2,3]}
+          ArrayLiteral [7-26] {ARRAY<INT64>[1,2,3]}
+            ArrayLiteralElement [20-21] {1}
+              IntegerLiteral(1) [20-21] {1}
+            ArrayLiteralElement [22-23] {2}
+              IntegerLiteral(2) [22-23] {2}
+            ArrayLiteralElement [24-25] {3}
+              IntegerLiteral(3) [24-25] {3}
   '''
 # ---
 # name: test_array_literal_ok[literal_array_single]
@@ -218,16 +229,17 @@
           array_literal
             array_literal_prefix
             array_literal_item_list
-              integer_literal	1
+              array_literal_item
+                integer_literal	1
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          ArrayLiteral
-            ArrayLiteralElement
-              IntegerLiteral(1)
+  Query [0-10] {SELECT [1]}
+    Select(distinct=False) [0-10] {SELECT [1]}
+      SelectList [7-10] {[1]}
+        SelectColumn [7-10] {[1]}
+          ArrayLiteral [7-10] {[1]}
+            ArrayLiteralElement [8-9] {1}
+              IntegerLiteral(1) [8-9] {1}
   '''
 # ---
 # name: test_bignumeric_literal_ok[literal_bignumeric]
@@ -243,11 +255,11 @@
           bignumeric_literal	'42'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BigNumericLiteral('42')
+  Query [0-22] {SELECT BIGNUMERIC '42'}
+    Select(distinct=False) [0-22] {SELECT BIGNUMERIC '42'}
+      SelectList [7-22] {BIGNUMERIC '42'}
+        SelectColumn [7-22] {BIGNUMERIC '42'}
+          BigNumericLiteral('42') [7-22] {BIGNUMERIC '42'}
   '''
 # ---
 # name: test_boolean_literal_ok[literal_boolean_false]
@@ -263,11 +275,11 @@
           boolean_literal	False
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BooleanLiteral(FALSE)
+  Query [0-12] {SELECT False}
+    Select(distinct=False) [0-12] {SELECT False}
+      SelectList [7-12] {False}
+        SelectColumn [7-12] {False}
+          BooleanLiteral(FALSE) [7-12] {False}
   '''
 # ---
 # name: test_boolean_literal_ok[literal_boolean_true]
@@ -283,11 +295,11 @@
           boolean_literal	tRue
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BooleanLiteral(TRUE)
+  Query [0-11] {SELECT tRue}
+    Select(distinct=False) [0-11] {SELECT tRue}
+      SelectList [7-11] {tRue}
+        SelectColumn [7-11] {tRue}
+          BooleanLiteral(TRUE) [7-11] {tRue}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_empty]
@@ -303,11 +315,11 @@
           bytes_literal	b""
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(b"")
+  Query [0-10] {SELECT b""}
+    Select(distinct=False) [0-10] {SELECT b""}
+      SelectList [7-10] {b""}
+        SelectColumn [7-10] {b""}
+          BytesLiteral(b"") [7-10] {b""}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_nonempty]
@@ -323,11 +335,11 @@
           bytes_literal	b"bytes"
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(b"bytes")
+  Query [0-15] {SELECT b"bytes"}
+    Select(distinct=False) [0-15] {SELECT b"bytes"}
+      SelectList [7-15] {b"bytes"}
+        SelectColumn [7-15] {b"bytes"}
+          BytesLiteral(b"bytes") [7-15] {b"bytes"}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_raw_cap]
@@ -343,11 +355,11 @@
           bytes_literal	BR"bytes"
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(BR"bytes")
+  Query [0-16] {SELECT BR"bytes"}
+    Select(distinct=False) [0-16] {SELECT BR"bytes"}
+      SelectList [7-16] {BR"bytes"}
+        SelectColumn [7-16] {BR"bytes"}
+          BytesLiteral(BR"bytes") [7-16] {BR"bytes"}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_raw_empty]
@@ -363,11 +375,11 @@
           bytes_literal	br""
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(br"")
+  Query [0-11] {SELECT br""}
+    Select(distinct=False) [0-11] {SELECT br""}
+      SelectList [7-11] {br""}
+        SelectColumn [7-11] {br""}
+          BytesLiteral(br"") [7-11] {br""}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_dquot_raw_nonempty]
@@ -383,11 +395,11 @@
           bytes_literal	rb"bytes"
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(rb"bytes")
+  Query [0-16] {SELECT rb"bytes"}
+    Select(distinct=False) [0-16] {SELECT rb"bytes"}
+      SelectList [7-16] {rb"bytes"}
+        SelectColumn [7-16] {rb"bytes"}
+          BytesLiteral(rb"bytes") [7-16] {rb"bytes"}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_squot_empty]
@@ -403,11 +415,11 @@
           bytes_literal	b''
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(b'')
+  Query [0-10] {SELECT b''}
+    Select(distinct=False) [0-10] {SELECT b''}
+      SelectList [7-10] {b''}
+        SelectColumn [7-10] {b''}
+          BytesLiteral(b'') [7-10] {b''}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_squot_nonempty]
@@ -423,11 +435,11 @@
           bytes_literal	b'bytes'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(b'bytes')
+  Query [0-15] {SELECT b'bytes'}
+    Select(distinct=False) [0-15] {SELECT b'bytes'}
+      SelectList [7-15] {b'bytes'}
+        SelectColumn [7-15] {b'bytes'}
+          BytesLiteral(b'bytes') [7-15] {b'bytes'}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_squot_raw_empty]
@@ -443,11 +455,11 @@
           bytes_literal	br''
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(br'')
+  Query [0-11] {SELECT br''}
+    Select(distinct=False) [0-11] {SELECT br''}
+      SelectList [7-11] {br''}
+        SelectColumn [7-11] {br''}
+          BytesLiteral(br'') [7-11] {br''}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_squot_raw_nonempty]
@@ -463,11 +475,11 @@
           bytes_literal	br'bytes'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(br'bytes')
+  Query [0-16] {SELECT br'bytes'}
+    Select(distinct=False) [0-16] {SELECT br'bytes'}
+      SelectList [7-16] {br'bytes'}
+        SelectColumn [7-16] {br'bytes'}
+          BytesLiteral(br'bytes') [7-16] {br'bytes'}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tdquot_empty]
@@ -483,11 +495,11 @@
           bytes_literal	b""""""
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(b"""""")
+  Query [0-14] {SELECT b""""""}
+    Select(distinct=False) [0-14] {SELECT b""""""}
+      SelectList [7-14] {b""""""}
+        SelectColumn [7-14] {b""""""}
+          BytesLiteral(b"""""") [7-14] {b""""""}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tdquot_nonempty]
@@ -503,11 +515,11 @@
           bytes_literal	b"""We say: "hello"."""
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(b"""We say: "hello".""")
+  Query [0-30] {SELECT b"""We say: "hello"."""}
+    Select(distinct=False) [0-30] {SELECT b"""We say: "hello"."""}
+      SelectList [7-30] {b"""We say: "hello"."""}
+        SelectColumn [7-30] {b"""We say: "hello"."""}
+          BytesLiteral(b"""We say: "hello".""") [7-30] {b"""We say: "hello"."""}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tdquot_raw_empty]
@@ -523,11 +535,11 @@
           bytes_literal	br""""""
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(br"""""")
+  Query [0-15] {SELECT br""""""}
+    Select(distinct=False) [0-15] {SELECT br""""""}
+      SelectList [7-15] {br""""""}
+        SelectColumn [7-15] {br""""""}
+          BytesLiteral(br"""""") [7-15] {br""""""}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tdquot_raw_nonempty]
@@ -543,11 +555,11 @@
           bytes_literal	br"""We say: "hello"."""
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(br"""We say: "hello".""")
+  Query [0-31] {SELECT br"""We say: "hello"."""}
+    Select(distinct=False) [0-31] {SELECT br"""We say: "hello"."""}
+      SelectList [7-31] {br"""We say: "hello"."""}
+        SelectColumn [7-31] {br"""We say: "hello"."""}
+          BytesLiteral(br"""We say: "hello".""") [7-31] {br"""We say: "hello"."""}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tsquot_empty]
@@ -563,11 +575,11 @@
           bytes_literal	b''''''
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(b'''''')
+  Query [0-14] {SELECT b''''''}
+    Select(distinct=False) [0-14] {SELECT b''''''}
+      SelectList [7-14] {b''''''}
+        SelectColumn [7-14] {b''''''}
+          BytesLiteral(b'''''') [7-14] {b''''''}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tsquot_nonempty]
@@ -583,11 +595,11 @@
           bytes_literal	b'''We say: 'hello'.'''
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(b'''We say: 'hello'.''')
+  Query [0-30] {SELECT b'''We say: 'hello'.'''}
+    Select(distinct=False) [0-30] {SELECT b'''We say: 'hello'.'''}
+      SelectList [7-30] {b'''We say: 'hello'.'''}
+        SelectColumn [7-30] {b'''We say: 'hello'.'''}
+          BytesLiteral(b'''We say: 'hello'.''') [7-30] {b'''We say: 'hello'.'''}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tsquot_raw_empty]
@@ -603,11 +615,11 @@
           bytes_literal	br''''''
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(br'''''')
+  Query [0-15] {SELECT br''''''}
+    Select(distinct=False) [0-15] {SELECT br''''''}
+      SelectList [7-15] {br''''''}
+        SelectColumn [7-15] {br''''''}
+          BytesLiteral(br'''''') [7-15] {br''''''}
   '''
 # ---
 # name: test_bytes_literal_ok[literal_bytes_tsquot_raw_nonempty]
@@ -623,11 +635,11 @@
           bytes_literal	br'''We say: 'hello'.'''
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          BytesLiteral(br'''We say: 'hello'.''')
+  Query [0-31] {SELECT br'''We say: 'hello'.'''}
+    Select(distinct=False) [0-31] {SELECT br'''We say: 'hello'.'''}
+      SelectList [7-31] {br'''We say: 'hello'.'''}
+        SelectColumn [7-31] {br'''We say: 'hello'.'''}
+          BytesLiteral(br'''We say: 'hello'.''') [7-31] {br'''We say: 'hello'.'''}
   '''
 # ---
 # name: test_date_time_literal_ok[literal_date]
@@ -643,11 +655,11 @@
           date_literal	'1970-01-01'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          DateLiteral('1970-01-01')
+  Query [0-24] {SELECT DATE '1970-01-01'}
+    Select(distinct=False) [0-24] {SELECT DATE '1970-01-01'}
+      SelectList [7-24] {DATE '1970-01-01'}
+        SelectColumn [7-24] {DATE '1970-01-01'}
+          DateLiteral('1970-01-01') [7-24] {DATE '1970-01-01'}
   '''
 # ---
 # name: test_date_time_literal_ok[literal_datetime]
@@ -663,11 +675,11 @@
           datetime_literal	'1970-01-01 12:00:00.01'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          DatetimeLiteral('1970-01-01 12:00:00.01')
+  Query [0-40] {SELECT DATETIME ...-01 12:00:00.01'}
+    Select(distinct=False) [0-40] {SELECT DATETIME ...-01 12:00:00.01'}
+      SelectList [7-40] {DATETIME '1970-0...-01 12:00:00.01'}
+        SelectColumn [7-40] {DATETIME '1970-0...-01 12:00:00.01'}
+          DatetimeLiteral('1970-01-01 12:00:00.01') [7-40] {DATETIME '1970-0...-01 12:00:00.01'}
   '''
 # ---
 # name: test_date_time_literal_ok[literal_time]
@@ -683,11 +695,11 @@
           date_literal	'12:00:00.01'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          DateLiteral('12:00:00.01')
+  Query [0-25] {SELECT DATE '12:00:00.01'}
+    Select(distinct=False) [0-25] {SELECT DATE '12:00:00.01'}
+      SelectList [7-25] {DATE '12:00:00.01'}
+        SelectColumn [7-25] {DATE '12:00:00.01'}
+          DateLiteral('12:00:00.01') [7-25] {DATE '12:00:00.01'}
   '''
 # ---
 # name: test_date_time_literal_ok[literal_timestamp]
@@ -703,11 +715,11 @@
           timestamp_literal	'1970-01-01 12:00:00.01-08'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          TimestampLiteral('1970-01-01 12:00:00.01-08')
+  Query [0-44] {SELECT TIMESTAMP... 12:00:00.01-08'}
+    Select(distinct=False) [0-44] {SELECT TIMESTAMP... 12:00:00.01-08'}
+      SelectList [7-44] {TIMESTAMP '1970-... 12:00:00.01-08'}
+        SelectColumn [7-44] {TIMESTAMP '1970-... 12:00:00.01-08'}
+          TimestampLiteral('1970-01-01 12:00:00.01-08') [7-44] {TIMESTAMP '1970-... 12:00:00.01-08'}
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dig_dot]
@@ -723,11 +735,11 @@
           float_literal	58.
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          FloatLiteral(58.)
+  Query [0-10] {SELECT 58.}
+    Select(distinct=False) [0-10] {SELECT 58.}
+      SelectList [7-10] {58.}
+        SelectColumn [7-10] {58.}
+          FloatLiteral(58.) [7-10] {58.}
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dig_dot_dig_lower_e_minus_dig]
@@ -743,11 +755,11 @@
           float_literal	123.456e-67
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          FloatLiteral(123.456e-67)
+  Query [0-18] {SELECT 123.456e-67}
+    Select(distinct=False) [0-18] {SELECT 123.456e-67}
+      SelectList [7-18] {123.456e-67}
+        SelectColumn [7-18] {123.456e-67}
+          FloatLiteral(123.456e-67) [7-18] {123.456e-67}
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dig_lower_e_dig]
@@ -763,11 +775,11 @@
           float_literal	4e2
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          FloatLiteral(4e2)
+  Query [0-10] {SELECT 4e2}
+    Select(distinct=False) [0-10] {SELECT 4e2}
+      SelectList [7-10] {4e2}
+        SelectColumn [7-10] {4e2}
+          FloatLiteral(4e2) [7-10] {4e2}
   '''
 # ---
 # name: test_float_literal_ok[literal_float_dot_dig_cap_e_dig]
@@ -783,11 +795,11 @@
           float_literal	.1E4
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          FloatLiteral(.1E4)
+  Query [0-11] {SELECT .1E4}
+    Select(distinct=False) [0-11] {SELECT .1E4}
+      SelectList [7-11] {.1E4}
+        SelectColumn [7-11] {.1E4}
+          FloatLiteral(.1E4) [7-11] {.1E4}
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_decimal]
@@ -803,11 +815,11 @@
           integer_literal	1
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          IntegerLiteral(1)
+  Query [0-8] {SELECT 1}
+    Select(distinct=False) [0-8] {SELECT 1}
+      SelectList [7-8] {1}
+        SelectColumn [7-8] {1}
+          IntegerLiteral(1) [7-8] {1}
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_hex]
@@ -823,11 +835,11 @@
           integer_literal	0xff
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          IntegerLiteral(0xff)
+  Query [0-11] {SELECT 0xff}
+    Select(distinct=False) [0-11] {SELECT 0xff}
+      SelectList [7-11] {0xff}
+        SelectColumn [7-11] {0xff}
+          IntegerLiteral(0xff) [7-11] {0xff}
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_hex_cap]
@@ -843,11 +855,11 @@
           integer_literal	0XFF
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          IntegerLiteral(0XFF)
+  Query [0-11] {SELECT 0XFF}
+    Select(distinct=False) [0-11] {SELECT 0XFF}
+      SelectList [7-11] {0XFF}
+        SelectColumn [7-11] {0XFF}
+          IntegerLiteral(0XFF) [7-11] {0XFF}
   '''
 # ---
 # name: test_integer_literal_ok[literal_integer_quoted_alias_adjacent]
@@ -865,13 +877,13 @@
             ident	`alias`
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          IntegerLiteral(1)
-          Alias
-            Ident(`alias`)
+  Query [0-15] {SELECT 1`alias`}
+    Select(distinct=False) [0-15] {SELECT 1`alias`}
+      SelectList [7-15] {1`alias`}
+        SelectColumn [7-15] {1`alias`}
+          IntegerLiteral(1) [7-8] {1}
+          Alias [8-15] {`alias`}
+            Ident(`alias`) [8-15] {`alias`}
   '''
 # ---
 # name: test_json_literal_ok[literal_json]
@@ -887,11 +899,11 @@
           json_literal	'{}'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          JsonLiteral('{}')
+  Query [0-16] {SELECT JSON '{}'}
+    Select(distinct=False) [0-16] {SELECT JSON '{}'}
+      SelectList [7-16] {JSON '{}'}
+        SelectColumn [7-16] {JSON '{}'}
+          JsonLiteral('{}') [7-16] {JSON '{}'}
   '''
 # ---
 # name: test_null_literal_ok[literal_null]
@@ -907,11 +919,11 @@
           null_literal	null
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          NullLiteral
+  Query [0-11] {SELECT null}
+    Select(distinct=False) [0-11] {SELECT null}
+      SelectList [7-11] {null}
+        SelectColumn [7-11] {null}
+          NullLiteral [7-11] {null}
   '''
 # ---
 # name: test_numeric_literal_ok[literal_numeric]
@@ -927,11 +939,11 @@
           numeric_literal	'42'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          NumericLiteral('42')
+  Query [0-19] {SELECT NUMERIC '42'}
+    Select(distinct=False) [0-19] {SELECT NUMERIC '42'}
+      SelectList [7-19] {NUMERIC '42'}
+        SelectColumn [7-19] {NUMERIC '42'}
+          NumericLiteral('42') [7-19] {NUMERIC '42'}
   '''
 # ---
 # name: test_range_literal_ok[literal_range_date]
@@ -951,11 +963,11 @@
             range_value	'[1970-01-01, 1970-01-02)'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          DateRangeLiteral('[1970-01-01, 1970-01-02)')
+  Query [0-45] {SELECT RANGE<DAT...01, 1970-01-02)'}
+    Select(distinct=False) [0-45] {SELECT RANGE<DAT...01, 1970-01-02)'}
+      SelectList [7-45] {RANGE<DATE> '[19...01, 1970-01-02)'}
+        SelectColumn [7-45] {RANGE<DATE> '[19...01, 1970-01-02)'}
+          DateRangeLiteral('[1970-01-01, 1970-01-02)') [7-45] {RANGE<DATE> '[19...01, 1970-01-02)'}
   '''
 # ---
 # name: test_range_literal_ok[literal_range_datetime]
@@ -975,11 +987,11 @@
             range_value	'[1970-01-01 00:00:00, 1970-01-02 00:00:00)'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          DatetimeRangeLiteral('[1970-01-01 00:00:00, 1970-01-02 00:00:00)')
+  Query [0-67] {SELECT RANGE<DAT...01-02 00:00:00)'}
+    Select(distinct=False) [0-67] {SELECT RANGE<DAT...01-02 00:00:00)'}
+      SelectList [7-67] {RANGE<DATETIME> ...01-02 00:00:00)'}
+        SelectColumn [7-67] {RANGE<DATETIME> ...01-02 00:00:00)'}
+          DatetimeRangeLiteral('[1970-01-01 00:00:00, 1970-01-02 00:00:00)') [7-67] {RANGE<DATETIME> ...01-02 00:00:00)'}
   '''
 # ---
 # name: test_range_literal_ok[literal_range_timestamp]
@@ -999,11 +1011,11 @@
             range_value	'[1970-01-01 00:00:00.45-08, 1970-01-02 00:00:00.45-08)'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          TimestampRangeLiteral('[1970-01-01 00:00:00.45-08, 1970-01-02 00:00:00.45-08)')
+  Query [0-80] {SELECT RANGE<TIM...00:00:00.45-08)'}
+    Select(distinct=False) [0-80] {SELECT RANGE<TIM...00:00:00.45-08)'}
+      SelectList [7-80] {RANGE<TIMESTAMP>...00:00:00.45-08)'}
+        SelectColumn [7-80] {RANGE<TIMESTAMP>...00:00:00.45-08)'}
+          TimestampRangeLiteral('[1970-01-01 00:00:00.45-08, 1970-01-02 00:00:00.45-08)') [7-80] {RANGE<TIMESTAMP>...00:00:00.45-08)'}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_empty]
@@ -1019,11 +1031,11 @@
           string_literal	""
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral("")
+  Query [0-9] {SELECT ""}
+    Select(distinct=False) [0-9] {SELECT ""}
+      SelectList [7-9] {""}
+        SelectColumn [7-9] {""}
+          StringLiteral("") [7-9] {""}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_nonempty]
@@ -1039,11 +1051,11 @@
           string_literal	"string"
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral("string")
+  Query [0-15] {SELECT "string"}
+    Select(distinct=False) [0-15] {SELECT "string"}
+      SelectList [7-15] {"string"}
+        SelectColumn [7-15] {"string"}
+          StringLiteral("string") [7-15] {"string"}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_raw_cap]
@@ -1059,11 +1071,11 @@
           string_literal	R"string"
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral(R"string")
+  Query [0-16] {SELECT R"string"}
+    Select(distinct=False) [0-16] {SELECT R"string"}
+      SelectList [7-16] {R"string"}
+        SelectColumn [7-16] {R"string"}
+          StringLiteral(R"string") [7-16] {R"string"}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_raw_empty]
@@ -1079,11 +1091,11 @@
           string_literal	r""
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral(r"")
+  Query [0-10] {SELECT r""}
+    Select(distinct=False) [0-10] {SELECT r""}
+      SelectList [7-10] {r""}
+        SelectColumn [7-10] {r""}
+          StringLiteral(r"") [7-10] {r""}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_dquot_raw_nonempty]
@@ -1099,11 +1111,11 @@
           string_literal	r"string"
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral(r"string")
+  Query [0-16] {SELECT r"string"}
+    Select(distinct=False) [0-16] {SELECT r"string"}
+      SelectList [7-16] {r"string"}
+        SelectColumn [7-16] {r"string"}
+          StringLiteral(r"string") [7-16] {r"string"}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_squot_empty]
@@ -1119,11 +1131,11 @@
           string_literal	''
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral('')
+  Query [0-9] {SELECT ''}
+    Select(distinct=False) [0-9] {SELECT ''}
+      SelectList [7-9] {''}
+        SelectColumn [7-9] {''}
+          StringLiteral('') [7-9] {''}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_squot_nonempty]
@@ -1139,11 +1151,11 @@
           string_literal	'string'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral('string')
+  Query [0-15] {SELECT 'string'}
+    Select(distinct=False) [0-15] {SELECT 'string'}
+      SelectList [7-15] {'string'}
+        SelectColumn [7-15] {'string'}
+          StringLiteral('string') [7-15] {'string'}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_squot_raw_empty]
@@ -1159,11 +1171,11 @@
           string_literal	r''
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral(r'')
+  Query [0-10] {SELECT r''}
+    Select(distinct=False) [0-10] {SELECT r''}
+      SelectList [7-10] {r''}
+        SelectColumn [7-10] {r''}
+          StringLiteral(r'') [7-10] {r''}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_squot_raw_nonempty]
@@ -1179,11 +1191,11 @@
           string_literal	r'string'
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral(r'string')
+  Query [0-16] {SELECT r'string'}
+    Select(distinct=False) [0-16] {SELECT r'string'}
+      SelectList [7-16] {r'string'}
+        SelectColumn [7-16] {r'string'}
+          StringLiteral(r'string') [7-16] {r'string'}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tdquot_empty]
@@ -1199,11 +1211,11 @@
           string_literal	""""""
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral("""""")
+  Query [0-13] {SELECT """"""}
+    Select(distinct=False) [0-13] {SELECT """"""}
+      SelectList [7-13] {""""""}
+        SelectColumn [7-13] {""""""}
+          StringLiteral("""""") [7-13] {""""""}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tdquot_nonempty]
@@ -1219,11 +1231,11 @@
           string_literal	"""We say: "hello"."""
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral("""We say: "hello".""")
+  Query [0-29] {SELECT """We say: "hello"."""}
+    Select(distinct=False) [0-29] {SELECT """We say: "hello"."""}
+      SelectList [7-29] {"""We say: "hello"."""}
+        SelectColumn [7-29] {"""We say: "hello"."""}
+          StringLiteral("""We say: "hello".""") [7-29] {"""We say: "hello"."""}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tdquot_raw_empty]
@@ -1239,11 +1251,11 @@
           string_literal	r""""""
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral(r"""""")
+  Query [0-14] {SELECT r""""""}
+    Select(distinct=False) [0-14] {SELECT r""""""}
+      SelectList [7-14] {r""""""}
+        SelectColumn [7-14] {r""""""}
+          StringLiteral(r"""""") [7-14] {r""""""}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tdquot_raw_nonempty]
@@ -1259,11 +1271,11 @@
           string_literal	r"""We say: "hello"."""
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral(r"""We say: "hello".""")
+  Query [0-30] {SELECT r"""We say: "hello"."""}
+    Select(distinct=False) [0-30] {SELECT r"""We say: "hello"."""}
+      SelectList [7-30] {r"""We say: "hello"."""}
+        SelectColumn [7-30] {r"""We say: "hello"."""}
+          StringLiteral(r"""We say: "hello".""") [7-30] {r"""We say: "hello"."""}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tsquot_empty]
@@ -1279,11 +1291,11 @@
           string_literal	''''''
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral('''''')
+  Query [0-13] {SELECT ''''''}
+    Select(distinct=False) [0-13] {SELECT ''''''}
+      SelectList [7-13] {''''''}
+        SelectColumn [7-13] {''''''}
+          StringLiteral('''''') [7-13] {''''''}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tsquot_nonempty]
@@ -1299,11 +1311,11 @@
           string_literal	'''We say: 'hello'.'''
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral('''We say: 'hello'.''')
+  Query [0-29] {SELECT '''We say: 'hello'.'''}
+    Select(distinct=False) [0-29] {SELECT '''We say: 'hello'.'''}
+      SelectList [7-29] {'''We say: 'hello'.'''}
+        SelectColumn [7-29] {'''We say: 'hello'.'''}
+          StringLiteral('''We say: 'hello'.''') [7-29] {'''We say: 'hello'.'''}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tsquot_raw_empty]
@@ -1319,11 +1331,11 @@
           string_literal	r''''''
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral(r'''''')
+  Query [0-14] {SELECT r''''''}
+    Select(distinct=False) [0-14] {SELECT r''''''}
+      SelectList [7-14] {r''''''}
+        SelectColumn [7-14] {r''''''}
+          StringLiteral(r'''''') [7-14] {r''''''}
   '''
 # ---
 # name: test_string_literal_ok[literal_string_tsquot_raw_nonempty]
@@ -1339,11 +1351,11 @@
           string_literal	r'''We say: 'hello'.'''
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StringLiteral(r'''We say: 'hello'.''')
+  Query [0-30] {SELECT r'''We say: 'hello'.'''}
+    Select(distinct=False) [0-30] {SELECT r'''We say: 'hello'.'''}
+      SelectList [7-30] {r'''We say: 'hello'.'''}
+        SelectColumn [7-30] {r'''We say: 'hello'.'''}
+          StringLiteral(r'''We say: 'hello'.''') [7-30] {r'''We say: 'hello'.'''}
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct]
@@ -1357,19 +1369,21 @@
       select_list
         select_expr
           struct_literal
-            integer_literal	1
-            integer_literal	2
+            struct_literal_item
+              integer_literal	1
+            struct_literal_item
+              integer_literal	2
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StructLiteral
-            StructLiteralElement
-              IntegerLiteral(1)
-            StructLiteralElement
-              IntegerLiteral(2)
+  Query [0-13] {SELECT (1, 2)}
+    Select(distinct=False) [0-13] {SELECT (1, 2)}
+      SelectList [7-13] {(1, 2)}
+        SelectColumn [7-13] {(1, 2)}
+          StructLiteral [7-13] {(1, 2)}
+            StructLiteralElement [8-9] {1}
+              IntegerLiteral(1) [8-9] {1}
+            StructLiteralElement [11-12] {2}
+              IntegerLiteral(2) [11-12] {2}
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_multi]
@@ -1383,22 +1397,25 @@
       select_list
         select_expr
           struct_literal
-            integer_literal	1
-            integer_literal	2
-            integer_literal	3
+            struct_literal_item
+              integer_literal	1
+            struct_literal_item
+              integer_literal	2
+            struct_literal_item
+              integer_literal	3
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StructLiteral
-            StructLiteralElement
-              IntegerLiteral(1)
-            StructLiteralElement
-              IntegerLiteral(2)
-            StructLiteralElement
-              IntegerLiteral(3)
+  Query [0-16] {SELECT (1, 2, 3)}
+    Select(distinct=False) [0-16] {SELECT (1, 2, 3)}
+      SelectList [7-16] {(1, 2, 3)}
+        SelectColumn [7-16] {(1, 2, 3)}
+          StructLiteral [7-16] {(1, 2, 3)}
+            StructLiteralElement [8-9] {1}
+              IntegerLiteral(1) [8-9] {1}
+            StructLiteralElement [11-12] {2}
+              IntegerLiteral(2) [11-12] {2}
+            StructLiteralElement [14-15] {3}
+              IntegerLiteral(3) [14-15] {3}
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named]
@@ -1422,17 +1439,17 @@
                 integer_literal	3
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StructLiteral
-            StructLiteralElement
-              IntegerLiteral(1)
-            StructLiteralElement
-              IntegerLiteral(2)
-            StructLiteralElement
-              IntegerLiteral(3)
+  Query [0-22] {SELECT STRUCT(1, 2, 3)}
+    Select(distinct=False) [0-22] {SELECT STRUCT(1, 2, 3)}
+      SelectList [7-22] {STRUCT(1, 2, 3)}
+        SelectColumn [7-22] {STRUCT(1, 2, 3)}
+          StructLiteral [7-22] {STRUCT(1, 2, 3)}
+            StructLiteralElement [14-15] {1}
+              IntegerLiteral(1) [14-15] {1}
+            StructLiteralElement [17-18] {2}
+              IntegerLiteral(2) [17-18] {2}
+            StructLiteralElement [20-21] {3}
+              IntegerLiteral(3) [20-21] {3}
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named_alias]
@@ -1462,23 +1479,23 @@
                   ident	c
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StructLiteral
-            StructLiteralElement
-              IntegerLiteral(1)
-              Alias
-                Ident(a)
-            StructLiteralElement
-              IntegerLiteral(2)
-              Alias
-                Ident(b)
-            StructLiteralElement
-              IntegerLiteral(3)
-              Alias
-                Ident(c)
+  Query [0-37] {SELECT STRUCT(1 ... 2 AS b, 3 AS c)}
+    Select(distinct=False) [0-37] {SELECT STRUCT(1 ... 2 AS b, 3 AS c)}
+      SelectList [7-37] {STRUCT(1 AS a, 2 AS b, 3 AS c)}
+        SelectColumn [7-37] {STRUCT(1 AS a, 2 AS b, 3 AS c)}
+          StructLiteral [7-37] {STRUCT(1 AS a, 2 AS b, 3 AS c)}
+            StructLiteralElement [14-20] {1 AS a}
+              IntegerLiteral(1) [14-15] {1}
+              Alias [16-20] {AS a}
+                Ident(a) [19-20] {a}
+            StructLiteralElement [22-28] {2 AS b}
+              IntegerLiteral(2) [22-23] {2}
+              Alias [24-28] {AS b}
+                Ident(b) [27-28] {b}
+            StructLiteralElement [30-36] {3 AS c}
+              IntegerLiteral(3) [30-31] {3}
+              Alias [32-36] {AS c}
+                Ident(c) [35-36] {c}
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named_compound_type_decl]
@@ -1513,17 +1530,17 @@
                 integer_literal	3
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StructLiteral
-            StructLiteralElement
-              IntegerLiteral(1)
-            StructLiteralElement
-              IntegerLiteral(2)
-            StructLiteralElement
-              IntegerLiteral(3)
+  Query [0-43] {SELECT STRUCT<IN... INT64>(1, 2, 3)}
+    Select(distinct=False) [0-43] {SELECT STRUCT<IN... INT64>(1, 2, 3)}
+      SelectList [7-43] {STRUCT<INT64, IN... INT64>(1, 2, 3)}
+        SelectColumn [7-43] {STRUCT<INT64, IN... INT64>(1, 2, 3)}
+          StructLiteral [7-43] {STRUCT<INT64, IN... INT64>(1, 2, 3)}
+            StructLiteralElement [35-36] {1}
+              IntegerLiteral(1) [35-36] {1}
+            StructLiteralElement [38-39] {2}
+              IntegerLiteral(2) [38-39] {2}
+            StructLiteralElement [41-42] {3}
+              IntegerLiteral(3) [41-42] {3}
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named_compound_type_decl_column]
@@ -1561,17 +1578,17 @@
                 integer_literal	3
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StructLiteral
-            StructLiteralElement
-              IntegerLiteral(1)
-            StructLiteralElement
-              IntegerLiteral(2)
-            StructLiteralElement
-              IntegerLiteral(3)
+  Query [0-49] {SELECT STRUCT<a ... INT64>(1, 2, 3)}
+    Select(distinct=False) [0-49] {SELECT STRUCT<a ... INT64>(1, 2, 3)}
+      SelectList [7-49] {STRUCT<a INT64, ... INT64>(1, 2, 3)}
+        SelectColumn [7-49] {STRUCT<a INT64, ... INT64>(1, 2, 3)}
+          StructLiteral [7-49] {STRUCT<a INT64, ... INT64>(1, 2, 3)}
+            StructLiteralElement [41-42] {1}
+              IntegerLiteral(1) [41-42] {1}
+            StructLiteralElement [44-45] {2}
+              IntegerLiteral(2) [44-45] {2}
+            StructLiteralElement [47-48] {3}
+              IntegerLiteral(3) [47-48] {3}
   '''
 # ---
 # name: test_struct_literal_ok[literal_struct_named_compound_type_decl_nested]
@@ -1617,18 +1634,18 @@
                       integer_literal	3
       None
   
-  Query
-    Select(distinct=False)
-      SelectList
-        SelectColumn
-          StructLiteral
-            StructLiteralElement
-              IntegerLiteral(1)
-            StructLiteralElement
-              StructLiteral
-                StructLiteralElement
-                  IntegerLiteral(2)
-                StructLiteralElement
-                  IntegerLiteral(3)
+  Query [0-65] {SELECT STRUCT<a ...1, STRUCT(2, 3))}
+    Select(distinct=False) [0-65] {SELECT STRUCT<a ...1, STRUCT(2, 3))}
+      SelectList [7-65] {STRUCT<a INT64, ...1, STRUCT(2, 3))}
+        SelectColumn [7-65] {STRUCT<a INT64, ...1, STRUCT(2, 3))}
+          StructLiteral [7-65] {STRUCT<a INT64, ...1, STRUCT(2, 3))}
+            StructLiteralElement [49-50] {1}
+              IntegerLiteral(1) [49-50] {1}
+            StructLiteralElement [52-64] {STRUCT(2, 3)}
+              StructLiteral [52-64] {STRUCT(2, 3)}
+                StructLiteralElement [59-60] {2}
+                  IntegerLiteral(2) [59-60] {2}
+                StructLiteralElement [62-63] {3}
+                  IntegerLiteral(3) [62-63] {3}
   '''
 # ---

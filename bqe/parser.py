@@ -16,6 +16,7 @@ parser = Lark(
     parser="lalr",
     start=["start_query", "start_pipe", "start_expr"],
     debug=BQE_DEBUG,
+    propagate_positions=True,
 )
 
 parser_transformer = ParserTransformer()

@@ -1,7 +1,8 @@
 from typing import Optional
+from lark.tree import Meta
 
 
-def pretty(node: "Node", indent="  ", nl="\n"):
+def pretty(node: "Node", indent="  ", nl="\n", max_snippet_size=32, sql=None):
     """Pretty-print an AST."""
 
     def render(s: str, depth: int):
@@ -30,6 +31,18 @@ def pretty(node: "Node", indent="  ", nl="\n"):
         if args:
             result += "(" + ", ".join(args) + ")"
 
+        if node._metadata is not None:
+            metadata = node._metadata
+            result += f" [{metadata.start_pos}-{metadata.end_pos}]"
+            if sql is not None:
+                snippet = sql[metadata.start_pos : metadata.end_pos]
+                snippet = " ".join(snippet.split())
+                if len(snippet) > max_snippet_size:
+                    snippet_part_size = max_snippet_size // 2
+                    snippet = snippet[:snippet_part_size] + "..." + snippet[-snippet_part_size:]
+
+                result += f" {{{snippet}}}"
+
         for child_name in node._children:
             child = getattr(node, child_name)
             if child is not None:
@@ -47,6 +60,13 @@ class Node:
     _children: tuple[str, ...] = ()
     _options: tuple[str, ...] = ()
     _value: Optional[str] = None
+
+    _metadata: Optional[Meta] = None
+
+    def with_metadata(self, metadata: Meta):
+        if not metadata.empty:
+            self._metadata = metadata
+        return self
 
 
 class Query(Node):
