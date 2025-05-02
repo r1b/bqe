@@ -86,17 +86,10 @@ class Subquery(Node):
 
 class Select(Node):
     _children = ("select_list", "from_clause")
-    _options = ("distinct",)
 
-    def __init__(
-        self,
-        select_list: Node,
-        from_clause: Optional[Node] = None,
-        distinct: Optional[bool] = False,
-    ):
+    def __init__(self, select_list: Node, from_clause: Optional[Node] = None):
         self.select_list = select_list
         self.from_clause = from_clause
-        self.distinct = distinct
 
 
 class SelectAsStruct(Select):

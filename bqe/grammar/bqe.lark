@@ -638,9 +638,7 @@ pipe_from : _FROM from_clause
 
 # Ref: https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list
 
-select : _SELECT [ select_mode ] [ select_shape ] select_list [ select_from ]
-
-select_mode : ALL | DISTINCT
+select : _SELECT [ select_shape ] select_list [ select_from ]
 
 select_shape : _AS ( STRUCT | VALUE )
 
@@ -713,6 +711,7 @@ from_unnest_offset_expr : _WITH _OFFSET [ as_alias ]
     | pipe_tablesample
     | pipe_pivot
     | pipe_unpivot
+    | pipe_distinct
 
 # SELECT
 
@@ -905,3 +904,7 @@ unpivot_value_list : _LPAR unpivot_value_item ( _COMMA unpivot_value_item )* _RP
 unpivot_value_item : ( path_expression | path_expression_list ) unpivot_value_item_alias?
 
 unpivot_value_item_alias : [ _AS ] ( string_literal | integer_literal )
+
+# DISTINCT
+
+pipe_distinct : _DISTINCT

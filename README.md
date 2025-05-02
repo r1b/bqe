@@ -17,11 +17,12 @@ Traditionally, SQL interfaces require the developer to work with an expression A
 `bqe` understands a restricted subset of **BigQuery** Pipe SQL syntax:
 
 - All pipe operator syntax is fully supported
-- All traditional syntax that is redundant in Pipe SQL is either constrained or unsupported
-  - Constrained syntax
-    - Top-level SELECT is preserved to support DISTINCT and projection of values
-    - All FROM clauses must have exactly one table expression
-      - PIVOT, UNPIVOT, TABLESAMPLE and JOIN (including comma CROSS JOIN) are unsupported
+- All traditional syntax is either restricted or unsupported
+  - Restricted syntax
+    - SELECT clauses cannot contain ALL or DISTINCT
+      - Instead, use the DISTINCT pipe operator
+    - FROM clauses cannot contain PIVOT, UNPIVOT, TABLESAMPLE or JOIN (including comma CROSS JOIN)
+      - Instead, chain the corresponding pipe operator(s)
   - Unsupported syntax
     - WHERE
     - GROUP BY
@@ -39,6 +40,10 @@ Traditionally, SQL interfaces require the developer to work with an expression A
   - Operators
   - Functions
   - Expressions
+
+It should be true that all transformations that can be expressed in the traditional syntax can also be expressed in the restricted syntax without impacting the result or the mechanics of the underlying query plan.
+
+**If this is not true, please file an issue**.
 
 There are no plans to support any other dialect of Pipe SQL or any other database engine.
 

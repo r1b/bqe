@@ -37,12 +37,6 @@ import pytest
         ),
         pytest.param(
             """
-            SELECT DISTINCT column1 FROM table1
-            """,
-            id="select_distinct",
-        ),
-        pytest.param(
-            """
             SELECT * EXCEPT(column1, column2) FROM table1
             """,
             id="select_star_except",

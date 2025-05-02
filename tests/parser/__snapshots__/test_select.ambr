@@ -5,7 +5,6 @@
   
   query_expr
     select
-      None
       select_shape	STRUCT
       select_list
         select_expr
@@ -18,7 +17,7 @@
           None
   
   Query [0-36] {SELECT AS STRUCT...umn1 FROM table1}
-    SelectAsStruct(distinct=False) [0-36] {SELECT AS STRUCT...umn1 FROM table1}
+    SelectAsStruct [0-36] {SELECT AS STRUCT...umn1 FROM table1}
       SelectList [17-24] {column1}
         SelectColumn [17-24] {column1}
           Ident(column1) [17-24] {column1}
@@ -34,7 +33,6 @@
   
   query_expr
     select
-      None
       select_shape	VALUE
       select_list
         select_expr
@@ -47,7 +45,7 @@
           None
   
   Query [0-35] {SELECT AS VALUE ...umn1 FROM table1}
-    SelectAsValue(distinct=False) [0-35] {SELECT AS VALUE ...umn1 FROM table1}
+    SelectAsValue [0-35] {SELECT AS VALUE ...umn1 FROM table1}
       SelectList [16-23] {column1}
         SelectColumn [16-23] {column1}
           Ident(column1) [16-23] {column1}
@@ -57,42 +55,12 @@
             Ident(table1) [29-35] {table1}
   '''
 # ---
-# name: test_select_ok[select_distinct]
-  '''
-  SELECT DISTINCT column1 FROM table1
-  
-  query_expr
-    select
-      select_mode	DISTINCT
-      None
-      select_list
-        select_expr
-          ident	column1
-      from_clause
-        from_item_table
-          path_expression
-            ident	table1
-          None
-          None
-  
-  Query [13-48] {SELECT DISTINCT ...umn1 FROM table1}
-    Select(distinct=True) [13-48] {SELECT DISTINCT ...umn1 FROM table1}
-      SelectList [29-36] {column1}
-        SelectColumn [29-36] {column1}
-          Ident(column1) [29-36] {column1}
-      FromClause [42-48] {table1}
-        TablePathExpression [42-48] {table1}
-          PathExpression [42-48] {table1}
-            Ident(table1) [42-48] {table1}
-  '''
-# ---
 # name: test_select_ok[select_dot_star_except]
   '''
   SELECT struct_column.* EXCEPT(column1, column2) FROM table1
   
   query_expr
     select
-      None
       None
       select_list
         select_dot_star
@@ -112,7 +80,7 @@
           None
   
   Query [13-72] {SELECT struct_co...mn2) FROM table1}
-    Select(distinct=False) [13-72] {SELECT struct_co...mn2) FROM table1}
+    Select [13-72] {SELECT struct_co...mn2) FROM table1}
       SelectList [20-60] {struct_column.* ...olumn1, column2)}
         SelectDotStar [20-60] {struct_column.* ...olumn1, column2)}
           Ident(struct_column) [20-33] {struct_column}
@@ -134,7 +102,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_dot_star
           ident	struct_column
@@ -155,7 +122,7 @@
           None
   
   Query [13-83] {SELECT struct_co...mn2) FROM table1}
-    Select(distinct=False) [13-83] {SELECT struct_co...mn2) FROM table1}
+    Select [13-83] {SELECT struct_co...mn2) FROM table1}
       SelectList [20-71] {struct_column.* ...1, 2 AS column2)}
         SelectDotStar [20-71] {struct_column.* ...1, 2 AS column2)}
           Ident(struct_column) [20-33] {struct_column}
@@ -179,7 +146,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -192,7 +158,7 @@
           None
   
   Query [0-36] {SELECT column1 F...table1 AS alias1}
-    Select(distinct=False) [0-36] {SELECT column1 F...table1 AS alias1}
+    Select [0-36] {SELECT column1 F...table1 AS alias1}
       SelectList [7-14] {column1}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}
@@ -211,7 +177,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -224,7 +189,7 @@
           None
   
   Query [0-33] {SELECT column1 F...OM table1 alias1}
-    Select(distinct=False) [0-33] {SELECT column1 F...OM table1 alias1}
+    Select [0-33] {SELECT column1 F...OM table1 alias1}
       SelectList [7-14] {column1}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}
@@ -243,7 +208,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -256,7 +220,7 @@
             string_literal	'1970-01-01'
   
   Query [0-61] {SELECT column1 F... OF '1970-01-01'}
-    Select(distinct=False) [0-61] {SELECT column1 F... OF '1970-01-01'}
+    Select [0-61] {SELECT column1 F... OF '1970-01-01'}
       SelectList [7-14] {column1}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}
@@ -275,7 +239,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -289,7 +252,7 @@
           None
   
   Query [0-36] {SELECT column1 A...ias1 FROM table1}
-    Select(distinct=False) [0-36] {SELECT column1 A...ias1 FROM table1}
+    Select [0-36] {SELECT column1 A...ias1 FROM table1}
       SelectList [7-24] {column1 AS alias1}
         SelectColumn [7-24] {column1 AS alias1}
           Ident(column1) [7-14] {column1}
@@ -308,7 +271,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -322,7 +284,7 @@
           None
   
   Query [0-33] {SELECT column1 a...ias1 FROM table1}
-    Select(distinct=False) [0-33] {SELECT column1 a...ias1 FROM table1}
+    Select [0-33] {SELECT column1 a...ias1 FROM table1}
       SelectList [7-21] {column1 alias1}
         SelectColumn [7-21] {column1 alias1}
           Ident(column1) [7-14] {column1}
@@ -341,7 +303,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -355,7 +316,7 @@
           None
   
   Query [0-35] {SELECT column1, ...umn2 FROM table1}
-    Select(distinct=False) [0-35] {SELECT column1, ...umn2 FROM table1}
+    Select [0-35] {SELECT column1, ...umn2 FROM table1}
       SelectList [7-23] {column1, column2}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}
@@ -374,7 +335,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -386,7 +346,7 @@
           None
   
   Query [0-26] {SELECT column1 FROM table1}
-    Select(distinct=False) [0-26] {SELECT column1 FROM table1}
+    Select [0-26] {SELECT column1 FROM table1}
       SelectList [7-14] {column1}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}
@@ -403,7 +363,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -415,7 +374,7 @@
           None
   
   Query [0-27] {SELECT column1, FROM table2}
-    Select(distinct=False) [0-27] {SELECT column1, FROM table2}
+    Select [0-27] {SELECT column1, FROM table2}
       SelectList [7-15] {column1,}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}
@@ -432,14 +391,13 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           integer_literal	1
       None
   
   Query [0-8] {SELECT 1}
-    Select(distinct=False) [0-8] {SELECT 1}
+    Select [0-8] {SELECT 1}
       SelectList [7-8] {1}
         SelectColumn [7-8] {1}
           IntegerLiteral(1) [7-8] {1}
@@ -451,7 +409,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_star
@@ -465,7 +422,7 @@
           None
   
   Query [0-20] {SELECT * FROM table1}
-    Select(distinct=False) [0-20] {SELECT * FROM table1}
+    Select [0-20] {SELECT * FROM table1}
       SelectList [7-8] {*}
         SelectStar [7-8] {*}
       FromClause [14-20] {table1}
@@ -480,7 +437,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_star
@@ -499,7 +455,7 @@
           None
   
   Query [13-58] {SELECT * EXCEPT(...mn2) FROM table1}
-    Select(distinct=False) [13-58] {SELECT * EXCEPT(...mn2) FROM table1}
+    Select [13-58] {SELECT * EXCEPT(...mn2) FROM table1}
       SelectList [20-46] {* EXCEPT(column1, column2)}
         SelectStar [20-46] {* EXCEPT(column1, column2)}
           ExceptModifierList [29-45] {column1, column2}
@@ -520,7 +476,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_star
           None
@@ -540,7 +495,7 @@
           None
   
   Query [13-69] {SELECT * REPLACE...mn2) FROM table1}
-    Select(distinct=False) [13-69] {SELECT * REPLACE...mn2) FROM table1}
+    Select [13-69] {SELECT * REPLACE...mn2) FROM table1}
       SelectList [20-57] {* REPLACE(1 AS c...1, 2 AS column2)}
         SelectStar [20-57] {* REPLACE(1 AS c...1, 2 AS column2)}
           ReplaceModifierList [30-56] {1 AS column1, 2 AS column2}
@@ -563,7 +518,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_dot_star
           ident	column1
@@ -577,7 +531,7 @@
           None
   
   Query [0-28] {SELECT column1.* FROM table1}
-    Select(distinct=False) [0-28] {SELECT column1.* FROM table1}
+    Select [0-28] {SELECT column1.* FROM table1}
       SelectList [7-16] {column1.*}
         SelectDotStar [7-16] {column1.*}
           Ident(column1) [7-14] {column1}
@@ -594,7 +548,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_dot_star
           path_expression
@@ -610,7 +563,7 @@
           None
   
   Query [0-36] {SELECT column1.c...n2.* FROM table1}
-    Select(distinct=False) [0-36] {SELECT column1.c...n2.* FROM table1}
+    Select [0-36] {SELECT column1.c...n2.* FROM table1}
       SelectList [7-24] {column1.column2.*}
         SelectDotStar [7-24] {column1.column2.*}
           PathExpression [7-22] {column1.column2}
@@ -634,7 +587,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_star
           None
@@ -645,7 +597,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -658,7 +609,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -673,7 +623,7 @@
             ident	alias2
   
   Query [13-173] {SELECT *, column...able2) AS alias2}
-    Select(distinct=False) [13-173] {SELECT *, column...able2) AS alias2}
+    Select [13-173] {SELECT *, column...able2) AS alias2}
       SelectList [36-101] {*, column1, (SEL...CT 1) AS column2}
         SelectStar [36-37] {*}
         SelectColumn [55-62] {column1}
@@ -681,7 +631,7 @@
         SelectColumn [80-101] {(SELECT 1) AS column2}
           Subquery [80-90] {(SELECT 1)}
             Query [81-89] {SELECT 1}
-              Select(distinct=False) [81-89] {SELECT 1}
+              Select [81-89] {SELECT 1}
                 SelectList [88-89] {1}
                   SelectColumn [88-89] {1}
                     IntegerLiteral(1) [88-89] {1}
@@ -691,7 +641,7 @@
         TableSubquery [135-173] {(SELECT column7 ...able2) AS alias2}
           Subquery [135-163] {(SELECT column7 FROM table2)}
             Query [136-162] {SELECT column7 FROM table2}
-              Select(distinct=False) [136-162] {SELECT column7 FROM table2}
+              Select [136-162] {SELECT column7 FROM table2}
                 SelectList [143-150] {column7}
                   SelectColumn [143-150] {column7}
                     Ident(column7) [143-150] {column7}
@@ -710,7 +660,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -719,7 +668,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -733,7 +681,7 @@
           None
   
   Query [0-48] {SELECT column1 F...mn1 FROM table1)}
-    Select(distinct=False) [0-48] {SELECT column1 F...mn1 FROM table1)}
+    Select [0-48] {SELECT column1 F...mn1 FROM table1)}
       SelectList [7-14] {column1}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}
@@ -741,7 +689,7 @@
         TableSubquery [20-48] {(SELECT column1 FROM table1)}
           Subquery [20-48] {(SELECT column1 FROM table1)}
             Query [21-47] {SELECT column1 FROM table1}
-              Select(distinct=False) [21-47] {SELECT column1 FROM table1}
+              Select [21-47] {SELECT column1 FROM table1}
                 SelectList [28-35] {column1}
                   SelectColumn [28-35] {column1}
                     Ident(column1) [28-35] {column1}
@@ -758,7 +706,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -767,7 +714,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -782,7 +728,7 @@
             ident	table2
   
   Query [0-58] {SELECT column1 F...able1) AS table2}
-    Select(distinct=False) [0-58] {SELECT column1 F...able1) AS table2}
+    Select [0-58] {SELECT column1 F...able1) AS table2}
       SelectList [7-14] {column1}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}
@@ -790,7 +736,7 @@
         TableSubquery [20-58] {(SELECT column1 ...able1) AS table2}
           Subquery [20-48] {(SELECT column1 FROM table1)}
             Query [21-47] {SELECT column1 FROM table1}
-              Select(distinct=False) [21-47] {SELECT column1 FROM table1}
+              Select [21-47] {SELECT column1 FROM table1}
                 SelectList [28-35] {column1}
                   SelectColumn [28-35] {column1}
                     Ident(column1) [28-35] {column1}
@@ -811,7 +757,6 @@
       query_expr
         select
           None
-          None
           select_list
             select_expr
               integer_literal	1
@@ -820,7 +765,7 @@
   Query [0-10] {(SELECT 1)}
     Subquery [0-10] {(SELECT 1)}
       Query [1-9] {SELECT 1}
-        Select(distinct=False) [1-9] {SELECT 1}
+        Select [1-9] {SELECT 1}
           SelectList [8-9] {1}
             SelectColumn [8-9] {1}
               IntegerLiteral(1) [8-9] {1}
@@ -835,20 +780,17 @@
       query_expr
         select
           None
-          None
           select_list
             select_expr
               subquery
                 query_expr
                   select
                     None
-                    None
                     select_list
                       select_expr
                         subquery
                           query_expr
                             select
-                              None
                               None
                               select_list
                                 select_expr
@@ -860,17 +802,17 @@
   Query [0-28] {(SELECT (SELECT (SELECT 1)))}
     Subquery [0-28] {(SELECT (SELECT (SELECT 1)))}
       Query [1-27] {SELECT (SELECT (SELECT 1))}
-        Select(distinct=False) [1-27] {SELECT (SELECT (SELECT 1))}
+        Select [1-27] {SELECT (SELECT (SELECT 1))}
           SelectList [8-27] {(SELECT (SELECT 1))}
             SelectColumn [8-27] {(SELECT (SELECT 1))}
               Subquery [8-27] {(SELECT (SELECT 1))}
                 Query [9-26] {SELECT (SELECT 1)}
-                  Select(distinct=False) [9-26] {SELECT (SELECT 1)}
+                  Select [9-26] {SELECT (SELECT 1)}
                     SelectList [16-26] {(SELECT 1)}
                       SelectColumn [16-26] {(SELECT 1)}
                         Subquery [16-26] {(SELECT 1)}
                           Query [17-25] {SELECT 1}
-                            Select(distinct=False) [17-25] {SELECT 1}
+                            Select [17-25] {SELECT 1}
                               SelectList [24-25] {1}
                                 SelectColumn [24-25] {1}
                                   IntegerLiteral(1) [24-25] {1}
@@ -883,7 +825,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -895,7 +836,7 @@
           None
   
   Query [0-34] {SELECT column1 F...M UNNEST(array1)}
-    Select(distinct=False) [0-34] {SELECT column1 F...M UNNEST(array1)}
+    Select [0-34] {SELECT column1 F...M UNNEST(array1)}
       SelectList [7-14] {column1}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}
@@ -912,7 +853,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -925,7 +865,7 @@
           None
   
   Query [0-44] {SELECT column1 F...rray1) AS alias1}
-    Select(distinct=False) [0-44] {SELECT column1 F...rray1) AS alias1}
+    Select [0-44] {SELECT column1 F...rray1) AS alias1}
       SelectList [7-14] {column1}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}
@@ -944,7 +884,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -959,7 +898,7 @@
               ident	alias2
   
   Query [0-66] {SELECT column1 F...OFFSET AS alias2}
-    Select(distinct=False) [0-66] {SELECT column1 F...OFFSET AS alias2}
+    Select [0-66] {SELECT column1 F...OFFSET AS alias2}
       SelectList [7-14] {column1}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}
@@ -981,7 +920,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -993,7 +931,7 @@
           from_unnest_offset_expr	None
   
   Query [0-46] {SELECT column1 F...ay1) WITH OFFSET}
-    Select(distinct=False) [0-46] {SELECT column1 F...ay1) WITH OFFSET}
+    Select [0-46] {SELECT column1 F...ay1) WITH OFFSET}
       SelectList [7-14] {column1}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}
@@ -1011,7 +949,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -1025,7 +962,7 @@
               ident	alias1
   
   Query [0-56] {SELECT column1 F...OFFSET AS alias1}
-    Select(distinct=False) [0-56] {SELECT column1 F...OFFSET AS alias1}
+    Select [0-56] {SELECT column1 F...OFFSET AS alias1}
       SelectList [7-14] {column1}
         SelectColumn [7-14] {column1}
           Ident(column1) [7-14] {column1}

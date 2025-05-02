@@ -373,3 +373,11 @@ def test_pivot_ok(sql, assert_parse_tree):
 )
 def test_unpivot_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (pytest.param("FROM table1 |> DISTINCT", id="distinct"),),
+)
+def test_distinct_ok(sql, assert_parse_tree):
+    assert_parse_tree(sql)

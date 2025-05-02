@@ -66,7 +66,7 @@ class AstTransformer(Transformer):
     # SELECT
 
     @v_args(meta=True, inline=True)
-    def select(self, meta, all_or_distinct, select_as, select_list, from_clause):
+    def select(self, meta, select_as, select_list, from_clause):
         if select_as is None:
             cls = ast.Select
         else:
@@ -77,14 +77,7 @@ class AstTransformer(Transformer):
             else:
                 raise ValueError("Unexpected select_as: ", select_as)
 
-        all_or_distinct = all_or_distinct or "ALL"
-        distinct = all_or_distinct == "DISTINCT"
-
-        return cls(select_list, from_clause, distinct=distinct).with_metadata(meta)
-
-    @v_args(inline=True)
-    def select_mode(self, all_or_distinct):
-        return str(all_or_distinct).upper()
+        return cls(select_list, from_clause).with_metadata(meta)
 
     @v_args(inline=True)
     def select_shape(self, select_as):

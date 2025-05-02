@@ -8,7 +8,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           integer_literal	1
@@ -25,7 +24,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           integer_literal	1
@@ -39,7 +37,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -55,7 +52,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -73,7 +69,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           integer_literal	1
@@ -87,7 +82,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -103,7 +97,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -121,7 +114,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           integer_literal	1
@@ -135,7 +127,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr

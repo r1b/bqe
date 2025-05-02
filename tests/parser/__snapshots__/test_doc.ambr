@@ -9,7 +9,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           string_literal	'apples'
@@ -30,7 +29,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -50,7 +48,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -135,7 +132,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           string_literal	'apples'
@@ -156,7 +152,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -176,7 +171,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -316,7 +310,6 @@
         query_expr
           select
             None
-            None
             select_list
               select_expr
                 string_literal	"000123"
@@ -340,7 +333,6 @@
                 subquery
                   query_expr
                     select
-                      None
                       None
                       select_list
                         select_expr
@@ -384,7 +376,6 @@
         subquery
           query_expr
             select
-              None
               None
               select_list
                 select_expr
@@ -462,7 +453,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           string_literal	'apples'
@@ -498,7 +488,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -541,7 +530,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_star
           None
@@ -578,7 +566,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_star
                     None
@@ -608,7 +595,6 @@
                     subquery
                       query_expr
                         select
-                          None
                           None
                           select_list
                             select_star
@@ -641,7 +627,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           string_literal	'apples'
@@ -661,7 +646,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -733,7 +717,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           string_literal	'apples'
@@ -754,7 +737,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -774,7 +756,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -855,7 +836,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           integer_literal	1
@@ -876,7 +856,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     integer_literal	2
@@ -892,7 +871,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -910,7 +888,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -939,7 +916,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           string_literal	'apples'
@@ -960,7 +936,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -979,7 +954,6 @@
         subquery
           query_expr
             select
-              None
               None
               select_list
                 select_expr
@@ -1025,7 +999,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           string_literal	'apples'
@@ -1046,7 +1019,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -1066,7 +1038,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -1098,7 +1069,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           string_literal	'apples'
@@ -1119,7 +1089,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -1139,7 +1108,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -1172,7 +1140,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           integer_literal	1
@@ -1189,7 +1156,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     integer_literal	3
@@ -1205,7 +1171,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -1232,7 +1197,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           string_literal	"kale"
@@ -1256,7 +1220,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -1282,7 +1245,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     string_literal	"kale"
@@ -1307,7 +1269,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     string_literal	"apple"
@@ -1331,7 +1292,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -1438,7 +1398,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           integer_literal	1
@@ -1487,7 +1446,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     string_literal	'apples'
@@ -1516,7 +1474,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           integer_literal	1
@@ -1536,7 +1493,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -1573,7 +1529,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -1637,7 +1592,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_star
           None
@@ -1670,7 +1624,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     integer_literal	1
@@ -1685,7 +1638,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -1708,7 +1660,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     integer_literal	20
@@ -1730,7 +1681,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           integer_literal	1
@@ -1750,7 +1700,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -1774,7 +1723,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_star
           None
@@ -1807,7 +1755,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     integer_literal	1
@@ -1815,7 +1762,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -1831,7 +1777,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_star
           None
@@ -1864,7 +1809,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     integer_literal	1
@@ -1879,7 +1823,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -1904,7 +1847,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -1939,7 +1881,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           string_literal	'apples'
@@ -1960,7 +1901,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     string_literal	'bananas'
@@ -1980,7 +1920,6 @@
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr

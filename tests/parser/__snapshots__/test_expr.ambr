@@ -6,7 +6,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           function_call_expr
@@ -25,7 +24,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -48,7 +46,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           function_call_expr
@@ -70,7 +67,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           function_call_expr
@@ -91,7 +87,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           function_call_expr
@@ -111,7 +106,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -136,7 +130,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           function_call_expr
@@ -157,7 +150,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           or_expr
@@ -175,7 +167,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -196,7 +187,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           and_expr
@@ -214,7 +204,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -235,7 +224,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -259,7 +247,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           case_match_expr
@@ -276,7 +263,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -296,7 +282,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -319,7 +304,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           case_expr
@@ -336,7 +320,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           cast_expr_kind_cast
@@ -352,7 +335,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -372,7 +354,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           cast_expr_kind_safe_cast
@@ -389,7 +370,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           add_expr
@@ -405,7 +385,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           and_expr
@@ -420,7 +399,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -438,7 +416,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           bitwise_and_expr
@@ -454,7 +431,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           bitwise_not_expr
@@ -468,7 +444,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -485,7 +460,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           bitwise_shr_expr
@@ -500,7 +474,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -517,7 +490,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           div_expr
@@ -532,7 +504,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -549,7 +520,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           path_expression
@@ -564,7 +534,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -581,7 +550,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           gte_expr
@@ -596,7 +564,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -616,7 +583,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           is_expr
@@ -632,7 +598,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           distinct_expr
@@ -647,7 +612,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -665,7 +629,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           like_expr
@@ -680,7 +643,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -697,7 +659,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           lte_expr
@@ -712,7 +673,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -729,7 +689,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ne_expr
@@ -744,7 +703,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -761,7 +719,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           not_expr
@@ -775,7 +732,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -793,7 +749,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -820,7 +775,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           like_expr
@@ -836,7 +790,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -857,7 +810,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           or_expr
@@ -872,7 +824,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -891,7 +842,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -916,7 +866,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           sub_expr
@@ -931,7 +880,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -948,7 +896,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           uminus_expr
@@ -963,7 +910,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           uplus_expr
@@ -977,7 +923,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -995,7 +940,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           path_expression
@@ -1010,7 +954,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -1032,7 +975,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           ident	column1
@@ -1051,7 +993,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -1073,7 +1014,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -1097,7 +1037,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           function_call_expr
@@ -1116,7 +1055,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -1138,7 +1076,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           function_call_expr
@@ -1159,7 +1096,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           function_call_expr
@@ -1174,7 +1110,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -1194,7 +1129,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           function_call_expr
@@ -1212,14 +1146,12 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           array_subquery_expr
             subquery
               query_expr
                 select
-                  None
                   None
                   select_list
                     select_expr
@@ -1235,14 +1167,12 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           exists_subquery_expr
             subquery
               query_expr
                 select
-                  None
                   None
                   select_list
                     select_expr
@@ -1263,7 +1193,6 @@
             query_expr
               select
                 None
-                None
                 select_list
                   select_expr
                     integer_literal	1
@@ -1279,7 +1208,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           sub_expr
@@ -1287,7 +1215,6 @@
             subquery
               query_expr
                 select
-                  None
                   None
                   select_list
                     select_expr
@@ -1310,7 +1237,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           sub_expr
@@ -1320,7 +1246,6 @@
                   query_expr
                     select
                       None
-                      None
                       select_list
                         select_expr
                           integer_literal	1
@@ -1328,7 +1253,6 @@
                 subquery
                   query_expr
                     select
-                      None
                       None
                       select_list
                         select_expr
@@ -1345,14 +1269,12 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           add_expr
             subquery
               query_expr
                 select
-                  None
                   None
                   select_list
                     select_expr
@@ -1361,7 +1283,6 @@
             subquery
               query_expr
                 select
-                  None
                   None
                   select_list
                     select_expr
@@ -1377,13 +1298,11 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -1392,7 +1311,6 @@
                         query_expr
                           select
                             None
-                            None
                             select_list
                               select_expr
                                 integer_literal	1
@@ -1400,7 +1318,6 @@
                       subquery
                         query_expr
                           select
-                            None
                             None
                             select_list
                               select_expr
@@ -1422,7 +1339,6 @@
         query_expr
           select
             None
-            None
             select_list
               select_expr
                 integer_literal	1
@@ -1438,13 +1354,11 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           subquery
             query_expr
               select
-                None
                 None
                 select_list
                   select_expr
@@ -1461,7 +1375,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -1480,7 +1393,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           subscript_expr
@@ -1495,7 +1407,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
@@ -1525,7 +1436,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           subscript_expr
@@ -1546,7 +1456,6 @@
   query_expr
     select
       None
-      None
       select_list
         select_expr
           subscript_expr
@@ -1565,7 +1474,6 @@
   
   query_expr
     select
-      None
       None
       select_list
         select_expr
