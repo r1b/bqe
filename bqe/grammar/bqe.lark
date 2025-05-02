@@ -207,7 +207,9 @@ path_expression : ident ( _DOT ident )*
     | "UNPIVOT"i
     | "VALUE"i
 
-parameter : _AT UNQUOTED_IDENT
+# Redefinition here because parameters can contain reserved keywords
+PARAMETER : CNAME
+parameter : _AT PARAMETER
 
 ################################################################################
 # Types

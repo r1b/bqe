@@ -1,5 +1,7 @@
 import pytest
 
+from bqe.lexer import BqeSyntaxError
+
 
 @pytest.mark.parametrize(
     "sql",
@@ -15,3 +17,15 @@ import pytest
 )
 def test_nonreserved_keyword_ok(sql, assert_parse_tree):
     assert_parse_tree(sql)
+
+
+@pytest.mark.parametrize(
+    "sql",
+    (
+        pytest.param("SELECT SELECT", id="select_kw_select_column"),
+        pytest.param("SELECT one.two.select", id="select_kw_select_path"),
+        pytest.param("SELECT foo select", id="select_kw_select_alias"),
+    ),
+)
+def test_reserved_keyword_error(sql, assert_parse_tree_error):
+    assert_parse_tree_error(sql, expected_exception=BqeSyntaxError)

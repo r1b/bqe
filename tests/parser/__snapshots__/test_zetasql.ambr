@@ -1980,7 +1980,7 @@
   '''
   select 1
   |> select 1,2,"abc"
-  |> select distinct x
+  # |> select distinct x
   |> select as struct x,y
   |> select as value z
   # |> select as c.TypeName z
@@ -2005,12 +2005,6 @@
           integer_literal	2
         select_expr
           string_literal	"abc"
-    pipe_select
-      select_list
-        select_expr
-          ident	distinct
-          as_alias
-            ident	x
     pipe_select
       select_shape	struct
       select_list

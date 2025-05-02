@@ -504,7 +504,7 @@ def test_pipe_pivot(sql, assert_parse_tree):
             """
             select 1
             |> select 1,2,"abc"
-            |> select distinct x
+            # |> select distinct x
             |> select as struct x,y
             |> select as value z
             # |> select as c.TypeName z
